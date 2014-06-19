@@ -16,5 +16,11 @@ namespace ChiuMartSAIS2.App
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
