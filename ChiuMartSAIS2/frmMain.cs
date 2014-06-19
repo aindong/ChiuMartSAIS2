@@ -16,5 +16,11 @@ namespace ChiuMartSAIS2
         {
             InitializeComponent();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            //TODO: SHOW CONFIRMATION DIALOG FIRST AND ASK THE USER BEFORE THEY EXIT THE PROGRAM
+            this.Close();
+        }
     }
 }
