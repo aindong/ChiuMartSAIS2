@@ -118,22 +118,37 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="1400994139_user_half_settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1400994139_user_half_settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="1400994489_purchase_order" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1400994489_purchase_order.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1400994096_synaptic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1400994096_synaptic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1400994707_gnome-mime-application-vnd.lotus-1-2-3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1400994707_gnome-mime-application-vnd.lotus-1-2-3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="1400994674_Usercard_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1400994674_Usercard_01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="1400994188_Units" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1400994188_Units.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="1400994602_inventory-maintenance" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1400994602_inventory-maintenance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1403207925_point-of-interest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1403207925_point-of-interest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1400994139_user_half_settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1400994139_user_half_settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1400994188_Units" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1400994188_Units.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="1400994074_category" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1400994074_category.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="1400994556_stock-market" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1400994556_stock-market.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1400994652_sales-report" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1400994652_sales-report.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

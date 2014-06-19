@@ -44,28 +44,28 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pnlSystemManagement = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
+            this.btnConnection = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
+            this.btnRestore = new System.Windows.Forms.Button();
+            this.btnBackup = new System.Windows.Forms.Button();
+            this.btnHelp = new System.Windows.Forms.Button();
+            this.btnNotes = new System.Windows.Forms.Button();
+            this.btnCalculator = new System.Windows.Forms.Button();
+            this.btnTime = new System.Windows.Forms.Button();
+            this.btnLogs = new System.Windows.Forms.Button();
+            this.btnUsersList = new System.Windows.Forms.Button();
+            this.btnSalesReport = new System.Windows.Forms.Button();
+            this.btnInventoryReport = new System.Windows.Forms.Button();
+            this.btnPurchaseOrder = new System.Windows.Forms.Button();
+            this.btnInventoryMonitoring = new System.Windows.Forms.Button();
+            this.btnPOS = new System.Windows.Forms.Button();
+            this.btnPermissions = new System.Windows.Forms.Button();
+            this.btnUsers = new System.Windows.Forms.Button();
+            this.btnClients = new System.Windows.Forms.Button();
+            this.btnSuppliers = new System.Windows.Forms.Button();
+            this.btnUnits = new System.Windows.Forms.Button();
+            this.btnCategories = new System.Windows.Forms.Button();
+            this.btnProducts = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlDatabaseManagement.SuspendLayout();
@@ -154,12 +154,12 @@
             // 
             this.pnlDatabaseManagement.BackColor = System.Drawing.Color.LemonChiffon;
             this.pnlDatabaseManagement.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlDatabaseManagement.Controls.Add(this.button22);
+            this.pnlDatabaseManagement.Controls.Add(this.btnConnection);
             this.pnlDatabaseManagement.Controls.Add(this.button21);
-            this.pnlDatabaseManagement.Controls.Add(this.button19);
-            this.pnlDatabaseManagement.Controls.Add(this.button20);
+            this.pnlDatabaseManagement.Controls.Add(this.btnRestore);
+            this.pnlDatabaseManagement.Controls.Add(this.btnBackup);
             this.pnlDatabaseManagement.Controls.Add(this.label5);
-            this.pnlDatabaseManagement.Location = new System.Drawing.Point(445, 356);
+            this.pnlDatabaseManagement.Location = new System.Drawing.Point(416, 350);
             this.pnlDatabaseManagement.Name = "pnlDatabaseManagement";
             this.pnlDatabaseManagement.Size = new System.Drawing.Size(322, 269);
             this.pnlDatabaseManagement.TabIndex = 4;
@@ -181,12 +181,12 @@
             // 
             this.pnlSystemUtilities.BackColor = System.Drawing.Color.LemonChiffon;
             this.pnlSystemUtilities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlSystemUtilities.Controls.Add(this.button18);
-            this.pnlSystemUtilities.Controls.Add(this.button17);
-            this.pnlSystemUtilities.Controls.Add(this.button15);
-            this.pnlSystemUtilities.Controls.Add(this.button16);
+            this.pnlSystemUtilities.Controls.Add(this.btnHelp);
+            this.pnlSystemUtilities.Controls.Add(this.btnNotes);
+            this.pnlSystemUtilities.Controls.Add(this.btnCalculator);
+            this.pnlSystemUtilities.Controls.Add(this.btnTime);
             this.pnlSystemUtilities.Controls.Add(this.label4);
-            this.pnlSystemUtilities.Location = new System.Drawing.Point(75, 356);
+            this.pnlSystemUtilities.Location = new System.Drawing.Point(46, 350);
             this.pnlSystemUtilities.Name = "pnlSystemUtilities";
             this.pnlSystemUtilities.Size = new System.Drawing.Size(331, 269);
             this.pnlSystemUtilities.TabIndex = 3;
@@ -209,12 +209,12 @@
             this.pnlReports.AutoScrollMargin = new System.Drawing.Size(20, 0);
             this.pnlReports.BackColor = System.Drawing.Color.LemonChiffon;
             this.pnlReports.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlReports.Controls.Add(this.button14);
-            this.pnlReports.Controls.Add(this.button13);
-            this.pnlReports.Controls.Add(this.button12);
-            this.pnlReports.Controls.Add(this.button11);
+            this.pnlReports.Controls.Add(this.btnLogs);
+            this.pnlReports.Controls.Add(this.btnUsersList);
+            this.pnlReports.Controls.Add(this.btnSalesReport);
+            this.pnlReports.Controls.Add(this.btnInventoryReport);
             this.pnlReports.Controls.Add(this.label7);
-            this.pnlReports.Location = new System.Drawing.Point(807, 22);
+            this.pnlReports.Location = new System.Drawing.Point(778, 16);
             this.pnlReports.Name = "pnlReports";
             this.pnlReports.Size = new System.Drawing.Size(318, 294);
             this.pnlReports.TabIndex = 2;
@@ -236,11 +236,11 @@
             // 
             this.pnlTransactions.BackColor = System.Drawing.Color.LemonChiffon;
             this.pnlTransactions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlTransactions.Controls.Add(this.button10);
-            this.pnlTransactions.Controls.Add(this.button9);
-            this.pnlTransactions.Controls.Add(this.button8);
+            this.pnlTransactions.Controls.Add(this.btnPurchaseOrder);
+            this.pnlTransactions.Controls.Add(this.btnInventoryMonitoring);
+            this.pnlTransactions.Controls.Add(this.btnPOS);
             this.pnlTransactions.Controls.Add(this.label3);
-            this.pnlTransactions.Location = new System.Drawing.Point(445, 22);
+            this.pnlTransactions.Location = new System.Drawing.Point(416, 16);
             this.pnlTransactions.Name = "pnlTransactions";
             this.pnlTransactions.Size = new System.Drawing.Size(322, 294);
             this.pnlTransactions.TabIndex = 1;
@@ -262,15 +262,15 @@
             // 
             this.pnlSystemManagement.BackColor = System.Drawing.Color.LemonChiffon;
             this.pnlSystemManagement.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlSystemManagement.Controls.Add(this.button7);
-            this.pnlSystemManagement.Controls.Add(this.button5);
-            this.pnlSystemManagement.Controls.Add(this.button6);
-            this.pnlSystemManagement.Controls.Add(this.button3);
-            this.pnlSystemManagement.Controls.Add(this.button4);
-            this.pnlSystemManagement.Controls.Add(this.button2);
-            this.pnlSystemManagement.Controls.Add(this.button1);
+            this.pnlSystemManagement.Controls.Add(this.btnPermissions);
+            this.pnlSystemManagement.Controls.Add(this.btnUsers);
+            this.pnlSystemManagement.Controls.Add(this.btnClients);
+            this.pnlSystemManagement.Controls.Add(this.btnSuppliers);
+            this.pnlSystemManagement.Controls.Add(this.btnUnits);
+            this.pnlSystemManagement.Controls.Add(this.btnCategories);
+            this.pnlSystemManagement.Controls.Add(this.btnProducts);
             this.pnlSystemManagement.Controls.Add(this.label2);
-            this.pnlSystemManagement.Location = new System.Drawing.Point(75, 22);
+            this.pnlSystemManagement.Location = new System.Drawing.Point(46, 16);
             this.pnlSystemManagement.Name = "pnlSystemManagement";
             this.pnlSystemManagement.Size = new System.Drawing.Size(331, 294);
             this.pnlSystemManagement.TabIndex = 0;
@@ -288,325 +288,21 @@
             this.label2.Text = "System Management";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button5
+            // btnConnection
             // 
-            this.button5.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Image = global::ChiuMartSAIS2.Properties.Resources._1400994674_Usercard_01;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(168, 164);
-            this.button5.Name = "button5";
-            this.button5.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button5.Size = new System.Drawing.Size(150, 50);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Users";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Image = global::ChiuMartSAIS2.Properties.Resources._1400994139_user_half_settings;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(14, 164);
-            this.button6.Name = "button6";
-            this.button6.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button6.Size = new System.Drawing.Size(147, 50);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "Clients";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Image = global::ChiuMartSAIS2.Properties.Resources._1400994556_stock_market;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(168, 108);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button3.Size = new System.Drawing.Size(150, 50);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Suppliers";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Image = global::ChiuMartSAIS2.Properties.Resources._1400994188_Units;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(14, 108);
-            this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button4.Size = new System.Drawing.Size(147, 50);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Units";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = global::ChiuMartSAIS2.Properties.Resources._1400994074_category;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(168, 50);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button2.Size = new System.Drawing.Size(150, 50);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Category";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(14, 50);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button1.Size = new System.Drawing.Size(147, 50);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Products";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Image = global::ChiuMartSAIS2.Properties.Resources._1400994139_user_half_settings;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(14, 220);
-            this.button7.Name = "button7";
-            this.button7.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button7.Size = new System.Drawing.Size(147, 50);
-            this.button7.TabIndex = 9;
-            this.button7.Text = "Permissions";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(12, 50);
-            this.button8.Name = "button8";
-            this.button8.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button8.Size = new System.Drawing.Size(293, 50);
-            this.button8.TabIndex = 4;
-            this.button8.Text = "Point of Sales";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(12, 108);
-            this.button9.Name = "button9";
-            this.button9.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button9.Size = new System.Drawing.Size(293, 50);
-            this.button9.TabIndex = 5;
-            this.button9.Text = "Inventory Monitoring";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button9.UseVisualStyleBackColor = false;
-            // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
-            this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.Location = new System.Drawing.Point(12, 164);
-            this.button10.Name = "button10";
-            this.button10.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button10.Size = new System.Drawing.Size(293, 50);
-            this.button10.TabIndex = 6;
-            this.button10.Text = "Purchase Order";
-            this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button10.UseVisualStyleBackColor = false;
-            // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
-            this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.Location = new System.Drawing.Point(10, 50);
-            this.button11.Name = "button11";
-            this.button11.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button11.Size = new System.Drawing.Size(147, 50);
-            this.button11.TabIndex = 4;
-            this.button11.Text = "Inventory";
-            this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button11.UseVisualStyleBackColor = false;
-            // 
-            // button12
-            // 
-            this.button12.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
-            this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Location = new System.Drawing.Point(160, 50);
-            this.button12.Name = "button12";
-            this.button12.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button12.Size = new System.Drawing.Size(147, 50);
-            this.button12.TabIndex = 5;
-            this.button12.Text = "Sales";
-            this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button12.UseVisualStyleBackColor = false;
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
-            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.Location = new System.Drawing.Point(10, 106);
-            this.button13.Name = "button13";
-            this.button13.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button13.Size = new System.Drawing.Size(147, 50);
-            this.button13.TabIndex = 6;
-            this.button13.Text = "Users List";
-            this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button13.UseVisualStyleBackColor = false;
-            // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
-            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(160, 108);
-            this.button14.Name = "button14";
-            this.button14.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button14.Size = new System.Drawing.Size(147, 50);
-            this.button14.TabIndex = 7;
-            this.button14.Text = "Logs";
-            this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button14.UseVisualStyleBackColor = false;
-            // 
-            // button15
-            // 
-            this.button15.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Image = global::ChiuMartSAIS2.Properties.Resources._1400994074_category;
-            this.button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button15.Location = new System.Drawing.Point(168, 47);
-            this.button15.Name = "button15";
-            this.button15.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button15.Size = new System.Drawing.Size(150, 50);
-            this.button15.TabIndex = 6;
-            this.button15.Text = "Calculator";
-            this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button15.UseVisualStyleBackColor = false;
-            // 
-            // button16
-            // 
-            this.button16.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
-            this.button16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button16.Location = new System.Drawing.Point(14, 47);
-            this.button16.Name = "button16";
-            this.button16.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button16.Size = new System.Drawing.Size(147, 50);
-            this.button16.TabIndex = 5;
-            this.button16.Text = "System Time/Date";
-            this.button16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button16.UseVisualStyleBackColor = false;
-            // 
-            // button17
-            // 
-            this.button17.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Image = global::ChiuMartSAIS2.Properties.Resources._1400994074_category;
-            this.button17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button17.Location = new System.Drawing.Point(14, 103);
-            this.button17.Name = "button17";
-            this.button17.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button17.Size = new System.Drawing.Size(147, 50);
-            this.button17.TabIndex = 7;
-            this.button17.Text = "Notes";
-            this.button17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button17.UseVisualStyleBackColor = false;
-            // 
-            // button18
-            // 
-            this.button18.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.Image = global::ChiuMartSAIS2.Properties.Resources._1400994074_category;
-            this.button18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button18.Location = new System.Drawing.Point(167, 103);
-            this.button18.Name = "button18";
-            this.button18.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button18.Size = new System.Drawing.Size(151, 50);
-            this.button18.TabIndex = 8;
-            this.button18.Text = "Help";
-            this.button18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button18.UseVisualStyleBackColor = false;
-            // 
-            // button19
-            // 
-            this.button19.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button19.Image = global::ChiuMartSAIS2.Properties.Resources._1400994074_category;
-            this.button19.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button19.Location = new System.Drawing.Point(163, 46);
-            this.button19.Name = "button19";
-            this.button19.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button19.Size = new System.Drawing.Size(150, 50);
-            this.button19.TabIndex = 8;
-            this.button19.Text = "Restore";
-            this.button19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button19.UseVisualStyleBackColor = false;
-            // 
-            // button20
-            // 
-            this.button20.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button20.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
-            this.button20.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button20.Location = new System.Drawing.Point(9, 46);
-            this.button20.Name = "button20";
-            this.button20.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button20.Size = new System.Drawing.Size(147, 50);
-            this.button20.TabIndex = 7;
-            this.button20.Text = "Backup";
-            this.button20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button20.UseVisualStyleBackColor = false;
+            this.btnConnection.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConnection.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConnection.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
+            this.btnConnection.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConnection.Location = new System.Drawing.Point(163, 103);
+            this.btnConnection.Name = "btnConnection";
+            this.btnConnection.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnConnection.Size = new System.Drawing.Size(150, 50);
+            this.btnConnection.TabIndex = 10;
+            this.btnConnection.Text = "Connection";
+            this.btnConnection.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnConnection.UseVisualStyleBackColor = false;
             // 
             // button21
             // 
@@ -624,21 +320,326 @@
             this.button21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button21.UseVisualStyleBackColor = false;
             // 
-            // button22
+            // btnRestore
             // 
-            this.button22.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button22.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button22.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
-            this.button22.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button22.Location = new System.Drawing.Point(163, 103);
-            this.button22.Name = "button22";
-            this.button22.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button22.Size = new System.Drawing.Size(150, 50);
-            this.button22.TabIndex = 10;
-            this.button22.Text = "Connection";
-            this.button22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button22.UseVisualStyleBackColor = false;
+            this.btnRestore.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRestore.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestore.Image = global::ChiuMartSAIS2.Properties.Resources._1400994074_category;
+            this.btnRestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRestore.Location = new System.Drawing.Point(163, 46);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnRestore.Size = new System.Drawing.Size(150, 50);
+            this.btnRestore.TabIndex = 8;
+            this.btnRestore.Text = "Restore";
+            this.btnRestore.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRestore.UseVisualStyleBackColor = false;
+            // 
+            // btnBackup
+            // 
+            this.btnBackup.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackup.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackup.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
+            this.btnBackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBackup.Location = new System.Drawing.Point(9, 46);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnBackup.Size = new System.Drawing.Size(147, 50);
+            this.btnBackup.TabIndex = 7;
+            this.btnBackup.Text = "Backup";
+            this.btnBackup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBackup.UseVisualStyleBackColor = false;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.Image = global::ChiuMartSAIS2.Properties.Resources._1400994074_category;
+            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHelp.Location = new System.Drawing.Point(167, 103);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnHelp.Size = new System.Drawing.Size(151, 50);
+            this.btnHelp.TabIndex = 8;
+            this.btnHelp.Text = "Help";
+            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHelp.UseVisualStyleBackColor = false;
+            // 
+            // btnNotes
+            // 
+            this.btnNotes.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnNotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNotes.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNotes.Image = global::ChiuMartSAIS2.Properties.Resources._1400994074_category;
+            this.btnNotes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNotes.Location = new System.Drawing.Point(14, 103);
+            this.btnNotes.Name = "btnNotes";
+            this.btnNotes.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnNotes.Size = new System.Drawing.Size(147, 50);
+            this.btnNotes.TabIndex = 7;
+            this.btnNotes.Text = "Notes";
+            this.btnNotes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNotes.UseVisualStyleBackColor = false;
+            // 
+            // btnCalculator
+            // 
+            this.btnCalculator.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnCalculator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalculator.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalculator.Image = global::ChiuMartSAIS2.Properties.Resources._1400994074_category;
+            this.btnCalculator.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCalculator.Location = new System.Drawing.Point(168, 47);
+            this.btnCalculator.Name = "btnCalculator";
+            this.btnCalculator.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnCalculator.Size = new System.Drawing.Size(150, 50);
+            this.btnCalculator.TabIndex = 6;
+            this.btnCalculator.Text = "Calculator";
+            this.btnCalculator.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCalculator.UseVisualStyleBackColor = false;
+            // 
+            // btnTime
+            // 
+            this.btnTime.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTime.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTime.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
+            this.btnTime.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTime.Location = new System.Drawing.Point(14, 47);
+            this.btnTime.Name = "btnTime";
+            this.btnTime.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnTime.Size = new System.Drawing.Size(147, 50);
+            this.btnTime.TabIndex = 5;
+            this.btnTime.Text = "System Time/Date";
+            this.btnTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTime.UseVisualStyleBackColor = false;
+            // 
+            // btnLogs
+            // 
+            this.btnLogs.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogs.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogs.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
+            this.btnLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogs.Location = new System.Drawing.Point(160, 108);
+            this.btnLogs.Name = "btnLogs";
+            this.btnLogs.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnLogs.Size = new System.Drawing.Size(147, 50);
+            this.btnLogs.TabIndex = 7;
+            this.btnLogs.Text = "Logs";
+            this.btnLogs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLogs.UseVisualStyleBackColor = false;
+            // 
+            // btnUsersList
+            // 
+            this.btnUsersList.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnUsersList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsersList.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsersList.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
+            this.btnUsersList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsersList.Location = new System.Drawing.Point(10, 106);
+            this.btnUsersList.Name = "btnUsersList";
+            this.btnUsersList.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnUsersList.Size = new System.Drawing.Size(147, 50);
+            this.btnUsersList.TabIndex = 6;
+            this.btnUsersList.Text = "Users List";
+            this.btnUsersList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUsersList.UseVisualStyleBackColor = false;
+            // 
+            // btnSalesReport
+            // 
+            this.btnSalesReport.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnSalesReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalesReport.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalesReport.Image = global::ChiuMartSAIS2.Properties.Resources._1400994652_sales_report;
+            this.btnSalesReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalesReport.Location = new System.Drawing.Point(160, 50);
+            this.btnSalesReport.Name = "btnSalesReport";
+            this.btnSalesReport.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnSalesReport.Size = new System.Drawing.Size(147, 50);
+            this.btnSalesReport.TabIndex = 5;
+            this.btnSalesReport.Text = "Sales";
+            this.btnSalesReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalesReport.UseVisualStyleBackColor = false;
+            // 
+            // btnInventoryReport
+            // 
+            this.btnInventoryReport.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnInventoryReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInventoryReport.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventoryReport.Image = global::ChiuMartSAIS2.Properties.Resources._1400994707_gnome_mime_application_vnd_lotus_1_2_3;
+            this.btnInventoryReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInventoryReport.Location = new System.Drawing.Point(10, 50);
+            this.btnInventoryReport.Name = "btnInventoryReport";
+            this.btnInventoryReport.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnInventoryReport.Size = new System.Drawing.Size(147, 50);
+            this.btnInventoryReport.TabIndex = 4;
+            this.btnInventoryReport.Text = "Inventory";
+            this.btnInventoryReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInventoryReport.UseVisualStyleBackColor = false;
+            // 
+            // btnPurchaseOrder
+            // 
+            this.btnPurchaseOrder.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnPurchaseOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPurchaseOrder.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPurchaseOrder.Image = global::ChiuMartSAIS2.Properties.Resources._1400994489_purchase_order;
+            this.btnPurchaseOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPurchaseOrder.Location = new System.Drawing.Point(12, 164);
+            this.btnPurchaseOrder.Name = "btnPurchaseOrder";
+            this.btnPurchaseOrder.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnPurchaseOrder.Size = new System.Drawing.Size(293, 50);
+            this.btnPurchaseOrder.TabIndex = 6;
+            this.btnPurchaseOrder.Tag = "";
+            this.btnPurchaseOrder.Text = "Purchase Order";
+            this.btnPurchaseOrder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPurchaseOrder.UseVisualStyleBackColor = false;
+            // 
+            // btnInventoryMonitoring
+            // 
+            this.btnInventoryMonitoring.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnInventoryMonitoring.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInventoryMonitoring.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventoryMonitoring.Image = global::ChiuMartSAIS2.Properties.Resources._1400994096_synaptic;
+            this.btnInventoryMonitoring.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInventoryMonitoring.Location = new System.Drawing.Point(12, 108);
+            this.btnInventoryMonitoring.Name = "btnInventoryMonitoring";
+            this.btnInventoryMonitoring.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnInventoryMonitoring.Size = new System.Drawing.Size(293, 50);
+            this.btnInventoryMonitoring.TabIndex = 5;
+            this.btnInventoryMonitoring.Text = "Inventory Monitoring";
+            this.btnInventoryMonitoring.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInventoryMonitoring.UseVisualStyleBackColor = false;
+            // 
+            // btnPOS
+            // 
+            this.btnPOS.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnPOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPOS.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPOS.Image = global::ChiuMartSAIS2.Properties.Resources._1403207925_point_of_interest;
+            this.btnPOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPOS.Location = new System.Drawing.Point(12, 50);
+            this.btnPOS.Name = "btnPOS";
+            this.btnPOS.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnPOS.Size = new System.Drawing.Size(293, 50);
+            this.btnPOS.TabIndex = 4;
+            this.btnPOS.Text = "Point of Sales";
+            this.btnPOS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPOS.UseVisualStyleBackColor = false;
+            // 
+            // btnPermissions
+            // 
+            this.btnPermissions.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnPermissions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPermissions.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPermissions.Image = global::ChiuMartSAIS2.Properties.Resources._1400994139_user_half_settings;
+            this.btnPermissions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPermissions.Location = new System.Drawing.Point(14, 220);
+            this.btnPermissions.Name = "btnPermissions";
+            this.btnPermissions.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnPermissions.Size = new System.Drawing.Size(147, 50);
+            this.btnPermissions.TabIndex = 9;
+            this.btnPermissions.Text = "Permissions";
+            this.btnPermissions.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPermissions.UseVisualStyleBackColor = false;
+            // 
+            // btnUsers
+            // 
+            this.btnUsers.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsers.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsers.Image = global::ChiuMartSAIS2.Properties.Resources._1400994674_Usercard_01;
+            this.btnUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsers.Location = new System.Drawing.Point(168, 164);
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnUsers.Size = new System.Drawing.Size(150, 50);
+            this.btnUsers.TabIndex = 8;
+            this.btnUsers.Text = "Users";
+            this.btnUsers.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUsers.UseVisualStyleBackColor = false;
+            // 
+            // btnClients
+            // 
+            this.btnClients.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClients.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClients.Image = global::ChiuMartSAIS2.Properties.Resources._1400994139_user_half_settings;
+            this.btnClients.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClients.Location = new System.Drawing.Point(14, 164);
+            this.btnClients.Name = "btnClients";
+            this.btnClients.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnClients.Size = new System.Drawing.Size(147, 50);
+            this.btnClients.TabIndex = 7;
+            this.btnClients.Text = "Clients";
+            this.btnClients.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClients.UseVisualStyleBackColor = false;
+            // 
+            // btnSuppliers
+            // 
+            this.btnSuppliers.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSuppliers.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuppliers.Image = global::ChiuMartSAIS2.Properties.Resources._1400994556_stock_market;
+            this.btnSuppliers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSuppliers.Location = new System.Drawing.Point(168, 108);
+            this.btnSuppliers.Name = "btnSuppliers";
+            this.btnSuppliers.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnSuppliers.Size = new System.Drawing.Size(150, 50);
+            this.btnSuppliers.TabIndex = 6;
+            this.btnSuppliers.Text = "Suppliers";
+            this.btnSuppliers.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSuppliers.UseVisualStyleBackColor = false;
+            // 
+            // btnUnits
+            // 
+            this.btnUnits.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnUnits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUnits.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUnits.Image = global::ChiuMartSAIS2.Properties.Resources._1400994188_Units;
+            this.btnUnits.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUnits.Location = new System.Drawing.Point(14, 108);
+            this.btnUnits.Name = "btnUnits";
+            this.btnUnits.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnUnits.Size = new System.Drawing.Size(147, 50);
+            this.btnUnits.TabIndex = 5;
+            this.btnUnits.Text = "Units";
+            this.btnUnits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUnits.UseVisualStyleBackColor = false;
+            // 
+            // btnCategories
+            // 
+            this.btnCategories.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategories.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategories.Image = global::ChiuMartSAIS2.Properties.Resources._1400994074_category;
+            this.btnCategories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCategories.Location = new System.Drawing.Point(168, 50);
+            this.btnCategories.Name = "btnCategories";
+            this.btnCategories.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnCategories.Size = new System.Drawing.Size(150, 50);
+            this.btnCategories.TabIndex = 4;
+            this.btnCategories.Text = "Category";
+            this.btnCategories.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCategories.UseVisualStyleBackColor = false;
+            // 
+            // btnProducts
+            // 
+            this.btnProducts.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProducts.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProducts.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
+            this.btnProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProducts.Location = new System.Drawing.Point(14, 50);
+            this.btnProducts.Name = "btnProducts";
+            this.btnProducts.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnProducts.Size = new System.Drawing.Size(147, 50);
+            this.btnProducts.TabIndex = 3;
+            this.btnProducts.Text = "Products";
+            this.btnProducts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProducts.UseVisualStyleBackColor = false;
             // 
             // frmMain
             // 
@@ -686,28 +687,28 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel pnlSystemManagement;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button btnUsers;
+        private System.Windows.Forms.Button btnClients;
+        private System.Windows.Forms.Button btnSuppliers;
+        private System.Windows.Forms.Button btnUnits;
+        private System.Windows.Forms.Button btnCategories;
+        private System.Windows.Forms.Button btnProducts;
+        private System.Windows.Forms.Button btnPermissions;
+        private System.Windows.Forms.Button btnInventoryMonitoring;
+        private System.Windows.Forms.Button btnPOS;
+        private System.Windows.Forms.Button btnPurchaseOrder;
+        private System.Windows.Forms.Button btnLogs;
+        private System.Windows.Forms.Button btnUsersList;
+        private System.Windows.Forms.Button btnSalesReport;
+        private System.Windows.Forms.Button btnInventoryReport;
+        private System.Windows.Forms.Button btnNotes;
+        private System.Windows.Forms.Button btnCalculator;
+        private System.Windows.Forms.Button btnTime;
+        private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.Button btnRestore;
+        private System.Windows.Forms.Button btnBackup;
         private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button btnConnection;
     }
 }
 

@@ -100,6 +100,21 @@
   <ItemGroup>
     <None Include="Resources\1400994556_stock-market.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1403207925_point-of-interest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1400994096_synaptic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1400994489_purchase_order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1400994707_gnome-mime-application-vnd.lotus-1-2-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1400994652_sales-report.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

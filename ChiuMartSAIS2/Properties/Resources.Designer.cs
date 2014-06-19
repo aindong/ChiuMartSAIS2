@@ -73,6 +73,16 @@ namespace ChiuMartSAIS2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1400994096_synaptic {
+            get {
+                object obj = ResourceManager.GetObject("1400994096_synaptic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _1400994139_user_half_settings {
             get {
                 object obj = ResourceManager.GetObject("1400994139_user_half_settings", resourceCulture);
@@ -86,6 +96,16 @@ namespace ChiuMartSAIS2.Properties {
         internal static System.Drawing.Bitmap _1400994188_Units {
             get {
                 object obj = ResourceManager.GetObject("1400994188_Units", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1400994489_purchase_order {
+            get {
+                object obj = ResourceManager.GetObject("1400994489_purchase_order", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +133,39 @@ namespace ChiuMartSAIS2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1400994652_sales_report {
+            get {
+                object obj = ResourceManager.GetObject("1400994652_sales-report", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _1400994674_Usercard_01 {
             get {
                 object obj = ResourceManager.GetObject("1400994674_Usercard_01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1400994707_gnome_mime_application_vnd_lotus_1_2_3 {
+            get {
+                object obj = ResourceManager.GetObject("1400994707_gnome-mime-application-vnd.lotus-1-2-3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1403207925_point_of_interest {
+            get {
+                object obj = ResourceManager.GetObject("1403207925_point-of-interest", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
