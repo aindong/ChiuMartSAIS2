@@ -63,6 +63,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -80,6 +81,39 @@
   <ItemGroup>
     <Folder Include="App\" />
     <Folder Include="Lib\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1400994602_inventory-maintenance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1400994074_category.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1400994188_Units.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1400994139_user_half_settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1400994674_Usercard_01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1400994556_stock-market.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1403207925_point-of-interest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1400994096_synaptic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1400994489_purchase_order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1400994707_gnome-mime-application-vnd.lotus-1-2-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1400994652_sales-report.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
