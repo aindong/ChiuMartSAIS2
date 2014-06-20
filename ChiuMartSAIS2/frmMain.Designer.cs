@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -159,7 +160,7 @@
             this.pnlDatabaseManagement.Controls.Add(this.btnRestore);
             this.pnlDatabaseManagement.Controls.Add(this.btnBackup);
             this.pnlDatabaseManagement.Controls.Add(this.label5);
-            this.pnlDatabaseManagement.Location = new System.Drawing.Point(416, 350);
+            this.pnlDatabaseManagement.Location = new System.Drawing.Point(447, 355);
             this.pnlDatabaseManagement.Name = "pnlDatabaseManagement";
             this.pnlDatabaseManagement.Size = new System.Drawing.Size(322, 269);
             this.pnlDatabaseManagement.TabIndex = 4;
@@ -186,7 +187,7 @@
             this.pnlSystemUtilities.Controls.Add(this.btnCalculator);
             this.pnlSystemUtilities.Controls.Add(this.btnTime);
             this.pnlSystemUtilities.Controls.Add(this.label4);
-            this.pnlSystemUtilities.Location = new System.Drawing.Point(46, 350);
+            this.pnlSystemUtilities.Location = new System.Drawing.Point(77, 355);
             this.pnlSystemUtilities.Name = "pnlSystemUtilities";
             this.pnlSystemUtilities.Size = new System.Drawing.Size(331, 269);
             this.pnlSystemUtilities.TabIndex = 3;
@@ -214,7 +215,7 @@
             this.pnlReports.Controls.Add(this.btnSalesReport);
             this.pnlReports.Controls.Add(this.btnInventoryReport);
             this.pnlReports.Controls.Add(this.label7);
-            this.pnlReports.Location = new System.Drawing.Point(778, 16);
+            this.pnlReports.Location = new System.Drawing.Point(809, 21);
             this.pnlReports.Name = "pnlReports";
             this.pnlReports.Size = new System.Drawing.Size(318, 294);
             this.pnlReports.TabIndex = 2;
@@ -240,7 +241,7 @@
             this.pnlTransactions.Controls.Add(this.btnInventoryMonitoring);
             this.pnlTransactions.Controls.Add(this.btnPOS);
             this.pnlTransactions.Controls.Add(this.label3);
-            this.pnlTransactions.Location = new System.Drawing.Point(416, 16);
+            this.pnlTransactions.Location = new System.Drawing.Point(447, 21);
             this.pnlTransactions.Name = "pnlTransactions";
             this.pnlTransactions.Size = new System.Drawing.Size(322, 294);
             this.pnlTransactions.TabIndex = 1;
@@ -270,7 +271,7 @@
             this.pnlSystemManagement.Controls.Add(this.btnCategories);
             this.pnlSystemManagement.Controls.Add(this.btnProducts);
             this.pnlSystemManagement.Controls.Add(this.label2);
-            this.pnlSystemManagement.Location = new System.Drawing.Point(46, 16);
+            this.pnlSystemManagement.Location = new System.Drawing.Point(77, 21);
             this.pnlSystemManagement.Name = "pnlSystemManagement";
             this.pnlSystemManagement.Size = new System.Drawing.Size(331, 294);
             this.pnlSystemManagement.TabIndex = 0;
@@ -373,7 +374,7 @@
             this.btnNotes.BackColor = System.Drawing.Color.MediumVioletRed;
             this.btnNotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNotes.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNotes.Image = global::ChiuMartSAIS2.Properties.Resources._1400994074_category;
+            this.btnNotes.Image = global::ChiuMartSAIS2.Properties.Resources._1403208314_notes;
             this.btnNotes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNotes.Location = new System.Drawing.Point(14, 103);
             this.btnNotes.Name = "btnNotes";
@@ -389,7 +390,7 @@
             this.btnCalculator.BackColor = System.Drawing.Color.MediumVioletRed;
             this.btnCalculator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCalculator.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalculator.Image = global::ChiuMartSAIS2.Properties.Resources._1400994074_category;
+            this.btnCalculator.Image = global::ChiuMartSAIS2.Properties.Resources._1403208301_475331_calculate;
             this.btnCalculator.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCalculator.Location = new System.Drawing.Point(168, 47);
             this.btnCalculator.Name = "btnCalculator";
@@ -405,7 +406,7 @@
             this.btnTime.BackColor = System.Drawing.Color.MediumVioletRed;
             this.btnTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTime.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTime.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
+            this.btnTime.Image = global::ChiuMartSAIS2.Properties.Resources._1403208278_calendar;
             this.btnTime.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTime.Location = new System.Drawing.Point(14, 47);
             this.btnTime.Name = "btnTime";
@@ -421,9 +422,9 @@
             this.btnLogs.BackColor = System.Drawing.Color.MediumVioletRed;
             this.btnLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogs.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogs.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
+            this.btnLogs.Image = ((System.Drawing.Image)(resources.GetObject("btnLogs.Image")));
             this.btnLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogs.Location = new System.Drawing.Point(160, 108);
+            this.btnLogs.Location = new System.Drawing.Point(160, 106);
             this.btnLogs.Name = "btnLogs";
             this.btnLogs.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnLogs.Size = new System.Drawing.Size(147, 50);
@@ -437,7 +438,7 @@
             this.btnUsersList.BackColor = System.Drawing.Color.MediumVioletRed;
             this.btnUsersList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsersList.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsersList.Image = global::ChiuMartSAIS2.Properties.Resources._1400994602_inventory_maintenance;
+            this.btnUsersList.Image = ((System.Drawing.Image)(resources.GetObject("btnUsersList.Image")));
             this.btnUsersList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUsersList.Location = new System.Drawing.Point(10, 106);
             this.btnUsersList.Name = "btnUsersList";

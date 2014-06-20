@@ -50,17 +50,35 @@
     <Compile Include="App\frmCategory.Designer.cs">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\frmClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\frmClient.Designer.cs">
+      <DependentUpon>frmClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\frmProduct.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="App\frmProduct.Designer.cs">
       <DependentUpon>frmProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\frmSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\frmSupplier.Designer.cs">
+      <DependentUpon>frmSupplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\frmUnits.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="App\frmUnits.Designer.cs">
       <DependentUpon>frmUnits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\frmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\frmUsers.Designer.cs">
+      <DependentUpon>frmUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -73,11 +91,20 @@
     <EmbeddedResource Include="App\frmCategory.resx">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="App\frmClient.resx">
+      <DependentUpon>frmClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App\frmProduct.resx">
       <DependentUpon>frmProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="App\frmSupplier.resx">
+      <DependentUpon>frmSupplier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App\frmUnits.resx">
       <DependentUpon>frmUnits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\frmUsers.resx">
+      <DependentUpon>frmUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -90,6 +117,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -106,6 +134,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lib\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1403208278_calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1403208301_475331-calculate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1403208314_notes.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
