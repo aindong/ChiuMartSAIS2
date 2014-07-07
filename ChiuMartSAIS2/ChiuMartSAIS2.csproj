@@ -32,6 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.8.3\Assemblies\v4.5\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,6 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Dialogs\dlgCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgCategory.Designer.cs">
+      <DependentUpon>dlgCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgPasswordAuth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgPasswordAuth.Designer.cs">
+      <DependentUpon>dlgPasswordAuth.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\frmCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +72,24 @@
     </Compile>
     <Compile Include="App\frmClient.Designer.cs">
       <DependentUpon>frmClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\frmInventoryMonitoring.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\frmInventoryMonitoring.Designer.cs">
+      <DependentUpon>frmInventoryMonitoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\frmPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\frmPO.Designer.cs">
+      <DependentUpon>frmPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\frmPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\frmPOS.Designer.cs">
+      <DependentUpon>frmPOS.cs</DependentUpon>
     </Compile>
     <Compile Include="App\frmProduct.cs">
       <SubType>Form</SubType>
@@ -88,11 +123,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="App\Dialogs\dlgCategory.resx">
+      <DependentUpon>dlgCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgPasswordAuth.resx">
+      <DependentUpon>dlgPasswordAuth.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App\frmCategory.resx">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\frmClient.resx">
       <DependentUpon>frmClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\frmInventoryMonitoring.resx">
+      <DependentUpon>frmInventoryMonitoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\frmPOS.resx">
+      <DependentUpon>frmPOS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\frmProduct.resx">
       <DependentUpon>frmProduct.cs</DependentUpon>

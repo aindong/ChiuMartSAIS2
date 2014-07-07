@@ -16,3 +16,8 @@ C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSA
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmClient.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmSupplier.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmUsers.resources
+C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmPOS.resources
+C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.dll
+C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgCategory.resources
+C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmInventoryMonitoring.resources
+C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgPasswordAuth.resources

@@ -117,6 +117,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Location = new System.Drawing.Point(28, 290);
             this.btnClose.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.btnClose.Name = "btnClose";
@@ -127,6 +128,7 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Location = new System.Drawing.Point(28, 229);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.btnDelete.Name = "btnDelete";
@@ -137,6 +139,7 @@
             // 
             // btnEdit
             // 
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Location = new System.Drawing.Point(28, 162);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.btnEdit.Name = "btnEdit";
@@ -147,6 +150,7 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Location = new System.Drawing.Point(28, 95);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.btnAdd.Name = "btnAdd";

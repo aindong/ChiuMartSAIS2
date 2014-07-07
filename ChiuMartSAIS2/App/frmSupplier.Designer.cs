@@ -31,6 +31,7 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -40,7 +41,6 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listView1
@@ -68,6 +68,11 @@
             // 
             this.columnHeader2.Text = "Supplier Name";
             this.columnHeader2.Width = 306;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Contacts";
+            this.columnHeader3.Width = 188;
             // 
             // radioButton2
             // 
@@ -112,6 +117,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Location = new System.Drawing.Point(18, 297);
             this.btnClose.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.btnClose.Name = "btnClose";
@@ -122,6 +128,7 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Location = new System.Drawing.Point(18, 229);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.btnDelete.Name = "btnDelete";
@@ -132,6 +139,7 @@
             // 
             // btnEdit
             // 
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Location = new System.Drawing.Point(18, 155);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.btnEdit.Name = "btnEdit";
@@ -142,6 +150,7 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Location = new System.Drawing.Point(18, 80);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.btnAdd.Name = "btnAdd";
@@ -160,11 +169,6 @@
             this.label1.TabIndex = 36;
             this.label1.Text = "Search :";
             // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Contacts";
-            this.columnHeader3.Width = 188;
-            // 
             // frmSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -182,7 +186,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSupplier";
