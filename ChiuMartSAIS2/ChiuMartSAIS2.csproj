@@ -37,6 +37,22 @@
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.8.3\Assemblies\v4.5\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MySql.Data.Entity, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.8.3\Assemblies\v4.0\MySql.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF5, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.8.3\Assemblies\v4.5\MySql.Data.Entity.EF5.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.8.3\Assemblies\v4.5\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.8.3\Assemblies\v4.5\MySql.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,11 +71,41 @@
     <Compile Include="App\Dialogs\dlgCategory.Designer.cs">
       <DependentUpon>dlgCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\Dialogs\dlgClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgClient.Designer.cs">
+      <DependentUpon>dlgClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\Dialogs\dlgPasswordAuth.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="App\Dialogs\dlgPasswordAuth.Designer.cs">
       <DependentUpon>dlgPasswordAuth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgProducts.Designer.cs">
+      <DependentUpon>dlgProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgSupplier.Designer.cs">
+      <DependentUpon>dlgSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgUnits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgUnits.Designer.cs">
+      <DependentUpon>dlgUnits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgUsers.Designer.cs">
+      <DependentUpon>dlgUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="App\frmCategory.cs">
       <SubType>Form</SubType>
@@ -115,6 +161,7 @@
     <Compile Include="App\frmUsers.Designer.cs">
       <DependentUpon>frmUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Configuration.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,8 +173,23 @@
     <EmbeddedResource Include="App\Dialogs\dlgCategory.resx">
       <DependentUpon>dlgCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgClient.resx">
+      <DependentUpon>dlgClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgPasswordAuth.resx">
       <DependentUpon>dlgPasswordAuth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgProducts.resx">
+      <DependentUpon>dlgProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgSupplier.resx">
+      <DependentUpon>dlgSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgUnits.resx">
+      <DependentUpon>dlgUnits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgUsers.resx">
+      <DependentUpon>dlgUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\frmCategory.resx">
       <DependentUpon>frmCategory.cs</DependentUpon>

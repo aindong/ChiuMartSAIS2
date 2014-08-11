@@ -140,6 +140,7 @@
             this.btnEdit.TabIndex = 28;
             this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -151,6 +152,7 @@
             this.btnAdd.TabIndex = 27;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label1
             // 
@@ -186,6 +188,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Units Maintenance";
+            this.Load += new System.EventHandler(this.frmUnits_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

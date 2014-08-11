@@ -8,16 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace ChiuMartSAIS2.App.Dialogs
 {
-    public partial class dlgCategory : Form
+    public partial class dlgSupplier : Form
     {
-
         //variable declarations
         private string _action;
         private string _crit;
-        public dlgCategory(string action, string crit)
+        public dlgSupplier(string action, string crit)
         {
             InitializeComponent();
 
@@ -25,7 +23,12 @@ namespace ChiuMartSAIS2.App.Dialogs
             _crit = crit;
         }
 
-        private void dlgCategory_Load(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dlgSupplier_Load(object sender, EventArgs e)
         {
 
         }
@@ -64,13 +67,20 @@ namespace ChiuMartSAIS2.App.Dialogs
         /// <returns></returns>
         private bool checkEmpty()
         {
-            if (txtCategoryName.Text == "")
+            if (txtSupplierName.Text == "")
             {
                 return false;
             }
             else
             {
-                return true;
+                if (txtSupplierAddress.Text == "")
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
         }
     }

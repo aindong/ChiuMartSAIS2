@@ -62,7 +62,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Supplier ID";
-            this.columnHeader1.Width = 90;
+            this.columnHeader1.Width = 110;
             // 
             // columnHeader2
             // 
@@ -147,6 +147,7 @@
             this.btnEdit.TabIndex = 38;
             this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -158,6 +159,7 @@
             this.btnAdd.TabIndex = 37;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label1
             // 
@@ -193,6 +195,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supplier Maintenance";
+            this.Load += new System.EventHandler(this.frmSupplier_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
