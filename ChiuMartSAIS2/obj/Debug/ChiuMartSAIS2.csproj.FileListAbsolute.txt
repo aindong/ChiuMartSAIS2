@@ -48,6 +48,7 @@ C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.Entity.
 C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.Entity.EF6.dll
 C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgUnits.resources
 C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgUsers.resources
+<<<<<<< HEAD
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.exe
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.pdb
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.dll
@@ -72,3 +73,5 @@ C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAI
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.frmMain.resources
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.Properties.Resources.resources
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.csproj.GenerateResource.Cache
+=======
+>>>>>>> 76a520ed7447420304bf0e9b39a1e6cf7eae651c

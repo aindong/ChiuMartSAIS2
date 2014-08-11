@@ -10,14 +10,6 @@ namespace ChiuMartSAIS2.Classes
     {
         //configuration variables
         private string _cnString = "Server=localhost;Database=chuisais;Uid=root;Pwd=;";
-        //public static user variables
-        public static string username;
-        public static string accessright;
-        public static string fname;
-        public static string lname;
-        public static string mname;
-
-
 
         //setters and getters
         public string connectionstring
