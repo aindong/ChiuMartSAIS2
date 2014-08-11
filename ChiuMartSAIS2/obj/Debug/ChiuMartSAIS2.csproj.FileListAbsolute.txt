@@ -21,3 +21,30 @@ C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSA
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgCategory.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmInventoryMonitoring.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgPasswordAuth.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.exe.config
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.exe
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.pdb
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.exe
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.pdb
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.dll
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.csprojResolveAssemblyReference.cache
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgCategory.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgPasswordAuth.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmCategory.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmClient.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmInventoryMonitoring.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmPOS.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmProduct.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmSupplier.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmUnits.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmUsers.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.frmMain.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.Properties.Resources.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.csproj.GenerateResource.Cache
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgClient.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgProducts.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgSupplier.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.Entity.EF5.dll
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgUnits.resources
+C:\Users\NKMC\Documents\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgUsers.resources
