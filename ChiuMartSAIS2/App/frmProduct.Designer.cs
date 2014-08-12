@@ -45,6 +45,9 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.rboProductName = new System.Windows.Forms.RadioButton();
+            this.rboProductId = new System.Windows.Forms.RadioButton();
+            this.rboCategory = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // listView1
@@ -188,6 +191,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(774, 26);
             this.txtSearch.TabIndex = 23;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label1
             // 
@@ -198,11 +202,47 @@
             this.label1.TabIndex = 22;
             this.label1.Text = "Search :";
             // 
+            // rboProductName
+            // 
+            this.rboProductName.AutoSize = true;
+            this.rboProductName.Checked = true;
+            this.rboProductName.Location = new System.Drawing.Point(12, 65);
+            this.rboProductName.Name = "rboProductName";
+            this.rboProductName.Size = new System.Drawing.Size(128, 24);
+            this.rboProductName.TabIndex = 26;
+            this.rboProductName.TabStop = true;
+            this.rboProductName.Text = "Product Name";
+            this.rboProductName.UseVisualStyleBackColor = true;
+            // 
+            // rboProductId
+            // 
+            this.rboProductId.AutoSize = true;
+            this.rboProductId.Location = new System.Drawing.Point(146, 65);
+            this.rboProductId.Name = "rboProductId";
+            this.rboProductId.Size = new System.Drawing.Size(100, 24);
+            this.rboProductId.TabIndex = 27;
+            this.rboProductId.TabStop = true;
+            this.rboProductId.Text = "Product Id";
+            this.rboProductId.UseVisualStyleBackColor = true;
+            // 
+            // rboCategory
+            // 
+            this.rboCategory.AutoSize = true;
+            this.rboCategory.Location = new System.Drawing.Point(252, 65);
+            this.rboCategory.Name = "rboCategory";
+            this.rboCategory.Size = new System.Drawing.Size(91, 24);
+            this.rboCategory.TabIndex = 29;
+            this.rboCategory.Text = "Category";
+            this.rboCategory.UseVisualStyleBackColor = true;
+            // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(816, 397);
+            this.Controls.Add(this.rboCategory);
+            this.Controls.Add(this.rboProductId);
+            this.Controls.Add(this.rboProductName);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.txtSearch);
@@ -247,5 +287,8 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton rboProductName;
+        private System.Windows.Forms.RadioButton rboProductId;
+        private System.Windows.Forms.RadioButton rboCategory;
     }
 }
