@@ -15,6 +15,9 @@ namespace ChiuMartSAIS2.App.Dialogs
         //variable declarations
         private string _action;
         private string _crit;
+
+        public List<String> units = new List<string>();
+
         public dlgProducts(string action, string crit)
         {
             InitializeComponent();
@@ -25,7 +28,10 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         private void dlgProducts_Load(object sender, EventArgs e)
         {
-
+            foreach(string unit in units){
+                cboUnits.Items.Add(unit);
+            }
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)

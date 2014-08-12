@@ -14,6 +14,12 @@ namespace ChiuMartSAIS2.App
 {
     public partial class frmSupplier : Form
     {
+
+        // fields declaration
+        private int supplierId = 0;
+        private string supplierName = "";
+        private string supplierContact = "";
+
         private Classes.Configuration conf;
         public frmSupplier()
         {
@@ -52,12 +58,90 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        private void insertSupplier(string supplierName, string supplierContact)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "INSERT INTO supplier (supplierName, supplierContact) VALUES (@supplierName, @supplierContact)";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("supplierName", supplierName);
+                    sqlCmd.Parameters.AddWithValue("supplierContact", supplierContact);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Supplier successfully added", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Adding new Supplier error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void updateSupplier(string supplierName, string supplierContact, int criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE supplier SET supplierName=@supplierName, supplierContact=@supplierContact WHERE supplierId=@criteria";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("supplierName", supplierName);
+                    sqlCmd.Parameters.AddWithValue("supplierContact", supplierContact);
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Supplier successfully updated", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Updating new Supplier error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void deleteSupplier()
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "DELETE FROM supplier WHERE supplierId=@criteria";
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("criteria", listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
+
+                    sqlCmd.ExecuteNonQuery();
+
+                    MessageBox.Show(this, "Supplier data successfully deleted", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Dialogs.dlgSupplier frmSupplierAdd = new Dialogs.dlgSupplier("add", "");
+            Dialogs.dlgSupplier frmSupplierAdd = new Dialogs.dlgSupplier("add", 0);
             if (frmSupplierAdd.ShowDialog(this) == DialogResult.OK)
             {
-
+                // If all validations were valid, we're going to get the supplier
+                frmSupplierAdd.getSupplier(out supplierId, out supplierName, out supplierContact);
+                insertSupplier(supplierName, supplierContact);
+                populateSupplier();
             }
         }
 
@@ -68,15 +152,34 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
-            Dialogs.dlgSupplier frmSupplierEdit = new Dialogs.dlgSupplier("edit", listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
+            Dialogs.dlgSupplier frmSupplierEdit = new Dialogs.dlgSupplier("edit", supplierId);
+            frmSupplierEdit.supplierName = this.supplierName;
+            frmSupplierEdit.supplierContact = this.supplierContact;
             if (frmSupplierEdit.ShowDialog(this) == DialogResult.OK)
             {
-
+                // If all validations were valid, we're going to get the supplier
+                frmSupplierEdit.getSupplier(out supplierId, out supplierName, out supplierContact);
+                updateSupplier(supplierName, supplierContact, supplierId);
+                populateSupplier();
             }
         }
 
         private void frmSupplier_Load(object sender, EventArgs e)
         {
+            populateSupplier();
+        }
+
+        private void listView1_Click(object sender, EventArgs e)
+        {
+            int id = Int32.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
+            supplierId = id;
+            supplierName = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[1].Text;
+            supplierContact = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[2].Text;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            deleteSupplier();
             populateSupplier();
         }
     }

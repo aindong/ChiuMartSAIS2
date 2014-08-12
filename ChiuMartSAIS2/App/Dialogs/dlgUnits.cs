@@ -14,8 +14,10 @@ namespace ChiuMartSAIS2.App.Dialogs
     {
         //variable declarations
         private string _action;
-        private string _crit;
-        public dlgUnits(string action, string crit)
+        private int _crit;
+
+        public string unitDesc;
+        public dlgUnits(string action, int crit)
         {
             InitializeComponent();
 
@@ -23,9 +25,22 @@ namespace ChiuMartSAIS2.App.Dialogs
             _crit = crit;
         }
 
+        /// <summary>
+        /// This will give out the unit value to the parent form
+        /// </summary>
+        /// <param name="client">unit variable to handle the given/setted unit</param>
+        public void getUnit(out int unitId, out string unitDesc)
+        {
+            // Set the unit id
+            unitId = _crit;
+
+            // Set the unit description
+            unitDesc = txtUnitDescription.Text;
+        }
+
         private void dlgUnits_Load(object sender, EventArgs e)
         {
-
+            txtUnitDescription.Text = unitDesc;
         }
 
         private void txtUnitDescription_TextChanged(object sender, EventArgs e)

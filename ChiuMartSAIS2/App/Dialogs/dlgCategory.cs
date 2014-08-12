@@ -16,8 +16,11 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         //variable declarations
         private string _action;
-        private string _crit;
-        public dlgCategory(string action, string crit)
+        private int _crit;
+
+        public string categoryName;
+
+        public dlgCategory(string action, int crit)
         {
             InitializeComponent();
 
@@ -27,7 +30,20 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         private void dlgCategory_Load(object sender, EventArgs e)
         {
+            txtCategoryName.Text = categoryName;
+        }
 
+        /// <summary>
+        /// This will give out the category value to the parent form
+        /// </summary>
+        /// <param name="category">category variable to handle the given/setted category</param>
+        public void getCategory(out int categoryId, out string categoryName)
+        {
+            // Set the category id
+            categoryId = _crit;
+
+            // Set the category name
+            categoryName = txtCategoryName.Text;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

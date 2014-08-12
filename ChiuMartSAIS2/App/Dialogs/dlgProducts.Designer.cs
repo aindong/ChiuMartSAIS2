@@ -142,13 +142,6 @@
             // 
             this.cboUnits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUnits.FormattingEnabled = true;
-            this.cboUnits.Items.AddRange(new object[] {
-            "Kilo",
-            "Sack",
-            "Bag",
-            "Box",
-            "Retail",
-            "Pack"});
             this.cboUnits.Location = new System.Drawing.Point(17, 136);
             this.cboUnits.Name = "cboUnits";
             this.cboUnits.Size = new System.Drawing.Size(436, 28);

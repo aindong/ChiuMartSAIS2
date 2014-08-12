@@ -14,12 +14,42 @@ namespace ChiuMartSAIS2.App
 {
     public partial class frmProduct : Form
     {
+        public List<String> units = new List<string>();
+
         private Classes.Configuration conf;
         public frmProduct()
         {
             InitializeComponent();
 
             conf = new Classes.Configuration();
+        }
+
+        private void populateUnits()
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT * FROM units";
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    units.Clear();
+
+                    while (reader.Read())
+                    {
+                        units.Add(reader["unitDesc"].ToString());
+                    }
+
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.ToString());
+                    MessageBox.Show(this, errorCode + "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void populateProduct()
@@ -64,6 +94,8 @@ namespace ChiuMartSAIS2.App
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Dialogs.dlgProducts frmProductsAdd = new Dialogs.dlgProducts("add", "");
+            populateUnits();
+            frmProductsAdd.units = this.units;
             if (frmProductsAdd.ShowDialog(this) == DialogResult.OK)
             {
 
