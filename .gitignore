@@ -1,1 +1,6 @@
+# Exclude solution files
 ChiuMartSAIS2.v12.suo
+ChiuMartSAIS2.sln
+
+# Exclude bin directory
+ChiuMartSAIS2/bin/Debug/*
