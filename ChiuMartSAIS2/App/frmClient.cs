@@ -51,8 +51,8 @@ namespace ChiuMartSAIS2.App
                 }
                 catch (MySqlException ex)
                 {
-                    string errorCode = string.Format("Error Code : {0}", ex.ToString());
-                    MessageBox.Show(this,errorCode + "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this,"Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -149,7 +149,8 @@ namespace ChiuMartSAIS2.App
             {
                 return;
             }
-            Dialogs.dlgClient frmClientEdit = new Dialogs.dlgClient("edit", clientId);
+            int id = Int32.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
+            Dialogs.dlgClient frmClientEdit = new Dialogs.dlgClient("edit", id);
             frmClientEdit.clientName = this.clientName;
             frmClientEdit.clientAddress = this.clientAddress;
             if (frmClientEdit.ShowDialog(this) == DialogResult.OK)

@@ -70,7 +70,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(436, 42);
             this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "&Add";
+            this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -151,13 +151,6 @@
             // 
             this.cboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Items.AddRange(new object[] {
-            "Flour",
-            "Rice",
-            "Sugar",
-            "Salt",
-            "Yeast",
-            "Milk"});
             this.cboCategory.Location = new System.Drawing.Point(17, 255);
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(436, 28);
