@@ -89,6 +89,10 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        /// <summary>
+        /// This function will get the products from the database and will populate
+        /// the listview for products.
+        /// </summary>
         private void populateProduct()
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
@@ -99,6 +103,55 @@ namespace ChiuMartSAIS2.App
                     string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    listView1.Items.Clear();
+
+                    while (reader.Read())
+                    {
+                        listView1.Items.Add(reader["productId"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productPrice"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
+                    }
+
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /// <summary>
+        /// This function will search a specific product using a filter and a criteria
+        /// </summary>
+        private void searchProduct(string filter, string critera)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "";
+                    if (filter == "productName")
+                    {
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productName LIKE @crit";
+                    }
+                    else if (filter == "categoryName")
+                    {
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE c.categoryName LIKE @crit";
+                    }
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    // SQL Query Parameters
+                    sqlCmd.Parameters.AddWithValue("crit", "%" + critera + "%");
+
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
                     listView1.Items.Clear();
@@ -345,6 +398,7 @@ namespace ChiuMartSAIS2.App
             double stock = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[1].Text);
             double price = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[5].Text);
             double safety = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[6].Text);
+
             productId = id;
             productStocks = stock;
             productPrice = price;
