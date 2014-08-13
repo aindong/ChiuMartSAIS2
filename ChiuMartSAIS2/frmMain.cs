@@ -92,5 +92,34 @@ namespace ChiuMartSAIS2
         {
             System.Diagnostics.Process.Start(@"C:\Windows\Sysnative\StikyNot.exe");
         }
+
+        private void btnInventoryReport_Click(object sender, EventArgs e)
+        {
+            App.ReportDialog.dlgProductReport frm = new App.ReportDialog.dlgProductReport();
+            frm.ShowDialog();
+        }
+
+        private void btnSalesReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLogs_Click(object sender, EventArgs e)
+        {
+            App.ReportDialog.dlgAuditTrailReport frm = new App.ReportDialog.dlgAuditTrailReport();
+            frm.ShowDialog();
+        }
+
+        private void btnClient_Click(object sender, EventArgs e)
+        {
+            App.ReportDialog.dlgClientListReport frm = new App.ReportDialog.dlgClientListReport();
+            frm.ShowDialog();
+        }
+
+        private void btnSupplier_Click(object sender, EventArgs e)
+        {
+            App.ReportDialog.dlgSupplierReport frm = new App.ReportDialog.dlgSupplierReport();
+            frm.ShowDialog();
+        }
     }
 }

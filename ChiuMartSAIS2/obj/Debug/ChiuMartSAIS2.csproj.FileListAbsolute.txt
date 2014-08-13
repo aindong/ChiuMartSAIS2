@@ -1,32 +1,4 @@
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.exe.config
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.exe
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.pdb
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.dll
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.Entity.EF5.dll
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.Entity.EF6.dll
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgCategory.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgClient.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgPasswordAuth.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgProducts.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgSupplier.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgUnits.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgUsers.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmCategory.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmClient.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmInventoryMonitoring.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmPOS.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmProduct.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmSupplier.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmUnits.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmUsers.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.frmMain.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.Properties.Resources.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.csproj.GenerateResource.Cache
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.exe
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.pdb
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.exe.config
-C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.exe
-C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.pdb
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.exe
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.pdb
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.dll
@@ -35,6 +7,7 @@ C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSA
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.csprojResolveAssemblyReference.cache
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgCategory.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgClient.resources
+C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgInventoryAdjust.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgPasswordAuth.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgProducts.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgSupplier.resources
@@ -48,67 +21,12 @@ C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSA
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmSupplier.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmUnits.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmUsers.resources
+C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgAuditTrailReport.resources
+C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgClientListReport.resources
+C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgProductReport.resources
+C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgSupplierReport.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.frmMain.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.Properties.Resources.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.csproj.GenerateResource.Cache
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.exe.config
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.exe
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.pdb
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.exe
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.pdb
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.dll
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.Entity.dll
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Web.dll
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.csprojResolveAssemblyReference.cache
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgCategory.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgClient.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgPasswordAuth.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgProducts.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgSupplier.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgUnits.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgUsers.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmCategory.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmClient.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmInventoryMonitoring.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmPOS.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmProduct.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmSupplier.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmUnits.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmUsers.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.frmMain.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.Properties.Resources.resources
-C:\Users\User\Desktop\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.csproj.GenerateResource.Cache
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.exe.config
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.exe
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.pdb
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.exe
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.pdb
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.dll
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\MySql.Data.Entity.dll
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.csprojResolveAssemblyReference.cache
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgCategory.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgClient.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgPasswordAuth.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgProducts.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgSupplier.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgUnits.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgUsers.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmCategory.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmClient.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmInventoryMonitoring.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmPOS.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmProduct.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmSupplier.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmUnits.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmUsers.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.frmMain.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.Properties.Resources.resources
-D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.csproj.GenerateResource.Cache
-<<<<<<< HEAD
-C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgProductReport.resources
-=======
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.csprojResolveAssemblyReference.cache
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgClientListReport.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgProductReport.resources
-C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgInventoryAdjust.resources
->>>>>>> 7c35ee3dcb4df8e7d2eadaffc6561f227e85a996
+C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.exe
+C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.pdb
