@@ -77,6 +77,12 @@
     <Compile Include="App\Dialogs\dlgClient.Designer.cs">
       <DependentUpon>dlgClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\Dialogs\dlgInventoryAdjust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgInventoryAdjust.Designer.cs">
+      <DependentUpon>dlgInventoryAdjust.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\Dialogs\dlgPasswordAuth.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgClient.resx">
       <DependentUpon>dlgClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgInventoryAdjust.resx">
+      <DependentUpon>dlgInventoryAdjust.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgPasswordAuth.resx">
       <DependentUpon>dlgPasswordAuth.cs</DependentUpon>

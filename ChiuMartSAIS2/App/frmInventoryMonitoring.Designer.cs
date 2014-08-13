@@ -66,6 +66,7 @@
             this.lstProducts.TabIndex = 0;
             this.lstProducts.UseCompatibleStateImageBehavior = false;
             this.lstProducts.View = System.Windows.Forms.View.Details;
+            this.lstProducts.Click += new System.EventHandler(this.lstProducts_Click);
             // 
             // columnHeader1
             // 
@@ -161,6 +162,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Adjust";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
