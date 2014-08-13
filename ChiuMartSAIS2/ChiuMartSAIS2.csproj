@@ -101,6 +101,12 @@
     <Compile Include="App\Dialogs\dlgSupplier.Designer.cs">
       <DependentUpon>dlgSupplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\Dialogs\dlgTransactionHistoy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgTransactionHistoy.Designer.cs">
+      <DependentUpon>dlgTransactionHistoy.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\Dialogs\dlgUnits.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgSupplier.resx">
       <DependentUpon>dlgSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgTransactionHistoy.resx">
+      <DependentUpon>dlgTransactionHistoy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgUnits.resx">
       <DependentUpon>dlgUnits.cs</DependentUpon>

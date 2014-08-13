@@ -195,7 +195,11 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-
+        /// <summary>
+        /// Searching of Suppliers using filters. 
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="critera"></param>
         private void searchSupplier(string filter, string critera)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
