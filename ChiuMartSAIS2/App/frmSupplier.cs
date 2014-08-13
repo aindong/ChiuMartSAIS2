@@ -189,9 +189,71 @@ namespace ChiuMartSAIS2.App
             populateSupplier();
         }
 
+
+        private void searchSupplier(string filter, string critera)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "";
+                    if (filter == "supName")
+                    {
+                        sqlQuery = "SELECT * FROM supplier WHERE supplierName LIKE @crit AND status = @status";
+                    }
+                    else if (filter == "supConPerson")
+                    {
+                        sqlQuery = "SELECT * FROM supplier WHERE supplierContactPerson LIKE @crit AND status = @status";
+                    }
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    // SQL Query Parameters
+                    sqlCmd.Parameters.AddWithValue("crit", "%" + critera + "%");
+                    sqlCmd.Parameters.AddWithValue("status", this.status);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    listView1.Items.Clear();
+
+                    while (reader.Read())
+                    {
+                        listView1.Items.Add(reader["supplierId"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContact"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContactPerson"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
+                    }
+
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
+            //Selecting which filter to use. 
 
+            string filter = "";
+
+            if (rboSupName.Checked)
+            {
+                filter = "supName";
+            }
+            else if (rboSupConPerson.Checked)
+            {
+                filter = "supConPerson";
+            }
+
+
+            searchSupplier(filter, txtSearch.Text);
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)

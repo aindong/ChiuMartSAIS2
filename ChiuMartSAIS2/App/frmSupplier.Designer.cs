@@ -32,6 +32,9 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -41,9 +44,8 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.rboSupName = new System.Windows.Forms.RadioButton();
+            this.rboSupConPerson = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // listView1
@@ -81,6 +83,18 @@
             // 
             this.columnHeader3.Text = "Contacts";
             this.columnHeader3.Width = 188;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Created Date";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Updated Date";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Status";
             // 
             // statusStrip1
             // 
@@ -177,23 +191,35 @@
             this.label1.TabIndex = 42;
             this.label1.Text = "Search :";
             // 
-            // columnHeader4
+            // rboSupName
             // 
-            this.columnHeader4.Text = "Created Date";
+            this.rboSupName.AutoSize = true;
+            this.rboSupName.Location = new System.Drawing.Point(15, 61);
+            this.rboSupName.Name = "rboSupName";
+            this.rboSupName.Size = new System.Drawing.Size(131, 24);
+            this.rboSupName.TabIndex = 46;
+            this.rboSupName.TabStop = true;
+            this.rboSupName.Text = "Supplier Name";
+            this.rboSupName.UseVisualStyleBackColor = true;
             // 
-            // columnHeader5
+            // rboSupConPerson
             // 
-            this.columnHeader5.Text = "Updated Date";
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Status";
+            this.rboSupConPerson.AutoSize = true;
+            this.rboSupConPerson.Location = new System.Drawing.Point(170, 61);
+            this.rboSupConPerson.Name = "rboSupConPerson";
+            this.rboSupConPerson.Size = new System.Drawing.Size(199, 24);
+            this.rboSupConPerson.TabIndex = 47;
+            this.rboSupConPerson.TabStop = true;
+            this.rboSupConPerson.Text = "Supplier Contact Person";
+            this.rboSupConPerson.UseVisualStyleBackColor = true;
             // 
             // frmSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(816, 397);
+            this.Controls.Add(this.rboSupConPerson);
+            this.Controls.Add(this.rboSupName);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.txtSearch);
@@ -237,5 +263,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.RadioButton rboSupName;
+        private System.Windows.Forms.RadioButton rboSupConPerson;
     }
 }
