@@ -28,55 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lstProducts = new System.Windows.Forms.ListView();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.rboActive = new System.Windows.Forms.RadioButton();
+            this.rboInactive = new System.Windows.Forms.RadioButton();
+            this.rboProductName = new System.Windows.Forms.RadioButton();
+            this.rboProductID = new System.Windows.Forms.RadioButton();
+            this.rboCategory = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
-            // listView1
+            // lstProducts
             // 
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(12, 105);
-            this.listView1.MultiSelect = false;
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(866, 285);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lstProducts.FullRowSelect = true;
+            this.lstProducts.GridLines = true;
+            this.lstProducts.Location = new System.Drawing.Point(12, 105);
+            this.lstProducts.MultiSelect = false;
+            this.lstProducts.Name = "lstProducts";
+            this.lstProducts.Size = new System.Drawing.Size(866, 285);
+            this.lstProducts.TabIndex = 0;
+            this.lstProducts.UseCompatibleStateImageBehavior = false;
+            this.lstProducts.View = System.Windows.Forms.View.Details;
             // 
-            // button1
+            // btnPrint
             // 
-            this.button1.Location = new System.Drawing.Point(149, 396);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(259, 48);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Print";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnPrint.Location = new System.Drawing.Point(149, 396);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(259, 48);
+            this.btnPrint.TabIndex = 1;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnClose
             // 
-            this.button2.Location = new System.Drawing.Point(424, 396);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(259, 48);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Close";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnClose.Location = new System.Drawing.Point(424, 396);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(259, 48);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtSearch
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(11, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(628, 27);
-            this.textBox1.TabIndex = 3;
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(11, 24);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(628, 27);
+            this.txtSearch.TabIndex = 3;
             // 
             // label1
             // 
@@ -88,81 +88,81 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Search";
             // 
-            // radioButton1
+            // rboActive
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(654, 25);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(68, 24);
-            this.radioButton1.TabIndex = 5;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Active";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rboActive.AutoSize = true;
+            this.rboActive.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rboActive.Location = new System.Drawing.Point(654, 25);
+            this.rboActive.Name = "rboActive";
+            this.rboActive.Size = new System.Drawing.Size(68, 24);
+            this.rboActive.TabIndex = 5;
+            this.rboActive.TabStop = true;
+            this.rboActive.Text = "Active";
+            this.rboActive.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rboInactive
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(760, 25);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(78, 24);
-            this.radioButton2.TabIndex = 6;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Inactive";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rboInactive.AutoSize = true;
+            this.rboInactive.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rboInactive.Location = new System.Drawing.Point(760, 25);
+            this.rboInactive.Name = "rboInactive";
+            this.rboInactive.Size = new System.Drawing.Size(78, 24);
+            this.rboInactive.TabIndex = 6;
+            this.rboInactive.TabStop = true;
+            this.rboInactive.Text = "Inactive";
+            this.rboInactive.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rboProductName
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(12, 52);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(122, 24);
-            this.radioButton3.TabIndex = 7;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Product Name";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rboProductName.AutoSize = true;
+            this.rboProductName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rboProductName.Location = new System.Drawing.Point(12, 52);
+            this.rboProductName.Name = "rboProductName";
+            this.rboProductName.Size = new System.Drawing.Size(122, 24);
+            this.rboProductName.TabIndex = 7;
+            this.rboProductName.TabStop = true;
+            this.rboProductName.Text = "Product Name";
+            this.rboProductName.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // rboProductID
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton4.Location = new System.Drawing.Point(140, 52);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(95, 24);
-            this.radioButton4.TabIndex = 8;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Product Id";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rboProductID.AutoSize = true;
+            this.rboProductID.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rboProductID.Location = new System.Drawing.Point(140, 52);
+            this.rboProductID.Name = "rboProductID";
+            this.rboProductID.Size = new System.Drawing.Size(95, 24);
+            this.rboProductID.TabIndex = 8;
+            this.rboProductID.TabStop = true;
+            this.rboProductID.Text = "Product Id";
+            this.rboProductID.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // rboCategory
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.Location = new System.Drawing.Point(241, 52);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(87, 24);
-            this.radioButton5.TabIndex = 9;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Category";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.rboCategory.AutoSize = true;
+            this.rboCategory.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rboCategory.Location = new System.Drawing.Point(241, 52);
+            this.rboCategory.Name = "rboCategory";
+            this.rboCategory.Size = new System.Drawing.Size(87, 24);
+            this.rboCategory.TabIndex = 9;
+            this.rboCategory.TabStop = true;
+            this.rboCategory.Text = "Category";
+            this.rboCategory.UseVisualStyleBackColor = true;
             // 
             // dlgProductReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 456);
-            this.Controls.Add(this.radioButton5);
-            this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.rboCategory);
+            this.Controls.Add(this.rboProductID);
+            this.Controls.Add(this.rboProductName);
+            this.Controls.Add(this.rboInactive);
+            this.Controls.Add(this.rboActive);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnPrint);
+            this.Controls.Add(this.lstProducts);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -178,15 +178,15 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListView lstProducts;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton rboActive;
+        private System.Windows.Forms.RadioButton rboInactive;
+        private System.Windows.Forms.RadioButton rboProductName;
+        private System.Windows.Forms.RadioButton rboProductID;
+        private System.Windows.Forms.RadioButton rboCategory;
     }
 }

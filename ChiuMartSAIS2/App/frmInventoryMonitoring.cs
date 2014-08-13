@@ -17,6 +17,9 @@ namespace ChiuMartSAIS2.App
         // Objects declaration
         private Classes.Configuration conf;
 
+        public int productId;
+        public int productStocks;
+
         public frmInventoryMonitoring()
         {
             InitializeComponent();
@@ -56,8 +59,8 @@ namespace ChiuMartSAIS2.App
                         lstProducts.Items.Add(reader["productId"].ToString());
                         lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
                         lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
-                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
                         lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
                     }
 
                 }
@@ -158,6 +161,35 @@ namespace ChiuMartSAIS2.App
         }
 
         /// <summary>
+        /// Updates the stocks of selected product
+        /// </summary>
+        /// <param name="categoryName"></param>
+        /// <param name="criteria"></param>
+        private void updateStock(int productStock, int criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE products SET productStock=@productStock WHERE productId=@criteria";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("productStock", productStock);
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Stock successfully updated", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Updating stock error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /// <summary>
         /// This function is responsible for checking the stock level of a product, it will change the color of a row for
         /// a specific stock level
         /// </summary>
@@ -222,6 +254,32 @@ namespace ChiuMartSAIS2.App
         {
             getProductByStockLevel("Out of Stock");
             checkStockLevel();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (lstProducts.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            Dialogs.dlgInventoryAdjust frmInventoryAdjust = new Dialogs.dlgInventoryAdjust(productId);
+            frmInventoryAdjust.productStocks = this.productStocks;
+            if (frmInventoryAdjust.ShowDialog(this) == DialogResult.OK)
+            {
+                // If all validations were valid, we're going to get the quantity
+                frmInventoryAdjust.getStocks(out productId, out productStocks);
+                updateStock(productStocks, productId);
+                populateProduct();
+                checkStockLevel();
+            }
+        }
+
+        private void lstProducts_Click(object sender, EventArgs e)
+        {
+            int id = Int32.Parse(lstProducts.SelectedItems[lstProducts.SelectedItems.Count - 1].Text);
+            productId = id;
+            productStocks = Int32.Parse(lstProducts.SelectedItems[lstProducts.SelectedItems.Count - 1].SubItems[4].Text);
         }
     }
 }
