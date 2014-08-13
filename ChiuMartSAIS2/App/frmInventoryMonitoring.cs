@@ -8,13 +8,220 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using MySql.Data.MySqlClient;
+
 namespace ChiuMartSAIS2.App
 {
     public partial class frmInventoryMonitoring : Form
     {
+        // Objects declaration
+        private Classes.Configuration conf;
+
         public frmInventoryMonitoring()
         {
             InitializeComponent();
+
+            // Create the configuration object
+            conf = new Classes.Configuration();
+        }
+
+
+        private void frmInventoryMonitoring_Load(object sender, EventArgs e)
+        {
+            // Populare the listview with product data
+            populateProduct();
+            checkStockLevel();
+        }
+
+        /// <summary>
+        /// This function will get the products from the database and will populate
+        /// the listview for products.
+        /// </summary>
+        private void populateProduct()
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId";
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    lstProducts.Items.Clear();
+
+                    while (reader.Read())
+                    {
+                        lstProducts.Items.Add(reader["productId"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
+                    }
+
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /// <summary>
+        /// This function is responsible for getting the product list by stock level
+        /// </summary>
+        private void getProductByStockLevel(string stockLevel)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId";
+                    if (stockLevel == "Good")
+                    {
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock > p.productSafetyStock";
+                    }
+                    else if (stockLevel == "Safety")
+                    {
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock = p.productSafetyStock";
+                    }
+                    else if (stockLevel == "Critical")
+                    {
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock < p.productSafetyStock";
+                    }
+                    else if (stockLevel == "Out of Stock")
+                    {
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock <= 0";
+                    }
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    lstProducts.Items.Clear();
+
+                    while (reader.Read())
+                    {
+                        lstProducts.Items.Add(reader["productId"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
+                    }
+
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /// <summary>
+        /// This function is responsible for searching a specific product on the stocks
+        /// </summary>
+        private void searchProduct(string criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productName = @criteria";
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("criteria", "%" + criteria + "%");
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    lstProducts.Items.Clear();
+
+                    while (reader.Read())
+                    {
+                        lstProducts.Items.Add(reader["productId"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
+                    }
+
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /// <summary>
+        /// This function is responsible for checking the stock level of a product, it will change the color of a row for
+        /// a specific stock level
+        /// </summary>
+        private void checkStockLevel()
+        {
+            // Check the stock of current product
+            foreach (ListViewItem lvw in lstProducts.Items)
+            {
+                int currentStock = Int32.Parse(lvw.SubItems[4].Text);
+                int safetyStock = Int32.Parse(lvw.SubItems[3].Text);
+
+                // Check for safety stocks
+                if (currentStock == safetyStock)
+                {
+                    lvw.BackColor = Color.LimeGreen;
+                }
+
+                // Check for CRITICAL STOCKS
+                if (currentStock < safetyStock)
+                {
+                    lvw.BackColor = Color.IndianRed;
+                }
+
+                // Then check if it's out of stock
+                if (currentStock <= 0)
+                {
+                    lvw.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            searchProduct(textBox1.Text);
+        }
+
+        private void lblAll_Click(object sender, EventArgs e)
+        {
+            getProductByStockLevel("All");
+            checkStockLevel();
+        }
+
+        private void lblGood_Click(object sender, EventArgs e)
+        {
+            getProductByStockLevel("Good");
+            checkStockLevel();
+        }
+
+        private void lblSafety_Click(object sender, EventArgs e)
+        {
+            getProductByStockLevel("Safety");
+            checkStockLevel();
+        }
+
+        private void lblCritical_Click(object sender, EventArgs e)
+        {
+            getProductByStockLevel("Critical");
+            checkStockLevel();
+        }
+
+        private void lblOutOfStock_Click(object sender, EventArgs e)
+        {
+            getProductByStockLevel("Out of Stock");
+            checkStockLevel();
         }
     }
 }

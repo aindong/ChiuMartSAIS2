@@ -35,16 +35,17 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblGood = new System.Windows.Forms.Label();
+            this.lblSafety = new System.Windows.Forms.Label();
+            this.lblCritical = new System.Windows.Forms.Label();
+            this.lblOutOfStock = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.lblAll = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lstProducts
@@ -61,7 +62,7 @@
             this.lstProducts.GridLines = true;
             this.lstProducts.Location = new System.Drawing.Point(12, 52);
             this.lstProducts.Name = "lstProducts";
-            this.lstProducts.Size = new System.Drawing.Size(860, 324);
+            this.lstProducts.Size = new System.Drawing.Size(927, 324);
             this.lstProducts.TabIndex = 0;
             this.lstProducts.UseCompatibleStateImageBehavior = false;
             this.lstProducts.View = System.Windows.Forms.View.Details;
@@ -74,7 +75,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Product";
-            this.columnHeader2.Width = 219;
+            this.columnHeader2.Width = 283;
             // 
             // columnHeader3
             // 
@@ -96,57 +97,61 @@
             this.columnHeader6.Text = "Last Updated";
             this.columnHeader6.Width = 184;
             // 
-            // label1
+            // lblGood
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 6);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(10);
-            this.label1.Size = new System.Drawing.Size(70, 43);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Good";
+            this.lblGood.AutoSize = true;
+            this.lblGood.BackColor = System.Drawing.Color.White;
+            this.lblGood.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblGood.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGood.Location = new System.Drawing.Point(73, 6);
+            this.lblGood.Name = "lblGood";
+            this.lblGood.Padding = new System.Windows.Forms.Padding(10);
+            this.lblGood.Size = new System.Drawing.Size(70, 43);
+            this.lblGood.TabIndex = 1;
+            this.lblGood.Text = "Good";
+            this.lblGood.Click += new System.EventHandler(this.lblGood_Click);
             // 
-            // label2
+            // lblSafety
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.LimeGreen;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(88, 6);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(10);
-            this.label2.Size = new System.Drawing.Size(75, 43);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Safety";
+            this.lblSafety.AutoSize = true;
+            this.lblSafety.BackColor = System.Drawing.Color.LimeGreen;
+            this.lblSafety.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSafety.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSafety.Location = new System.Drawing.Point(149, 6);
+            this.lblSafety.Name = "lblSafety";
+            this.lblSafety.Padding = new System.Windows.Forms.Padding(10);
+            this.lblSafety.Size = new System.Drawing.Size(75, 43);
+            this.lblSafety.TabIndex = 2;
+            this.lblSafety.Text = "Safety";
+            this.lblSafety.Click += new System.EventHandler(this.lblSafety_Click);
             // 
-            // label3
+            // lblCritical
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.IndianRed;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(169, 6);
-            this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(10);
-            this.label3.Size = new System.Drawing.Size(80, 43);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Critical";
+            this.lblCritical.AutoSize = true;
+            this.lblCritical.BackColor = System.Drawing.Color.IndianRed;
+            this.lblCritical.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblCritical.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCritical.Location = new System.Drawing.Point(230, 6);
+            this.lblCritical.Name = "lblCritical";
+            this.lblCritical.Padding = new System.Windows.Forms.Padding(10);
+            this.lblCritical.Size = new System.Drawing.Size(80, 43);
+            this.lblCritical.TabIndex = 3;
+            this.lblCritical.Text = "Critical";
+            this.lblCritical.Click += new System.EventHandler(this.lblCritical_Click);
             // 
-            // label4
+            // lblOutOfStock
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Red;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(255, 6);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(10);
-            this.label4.Size = new System.Drawing.Size(125, 43);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Out of Stocks";
+            this.lblOutOfStock.AutoSize = true;
+            this.lblOutOfStock.BackColor = System.Drawing.Color.Red;
+            this.lblOutOfStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblOutOfStock.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOutOfStock.Location = new System.Drawing.Point(316, 6);
+            this.lblOutOfStock.Name = "lblOutOfStock";
+            this.lblOutOfStock.Padding = new System.Windows.Forms.Padding(10);
+            this.lblOutOfStock.Size = new System.Drawing.Size(125, 43);
+            this.lblOutOfStock.TabIndex = 4;
+            this.lblOutOfStock.Text = "Out of Stocks";
+            this.lblOutOfStock.Click += new System.EventHandler(this.lblOutOfStock_Click);
             // 
             // button1
             // 
@@ -169,15 +174,16 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(456, 19);
+            this.textBox1.Location = new System.Drawing.Point(523, 17);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(416, 29);
             this.textBox1.TabIndex = 7;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(453, 3);
+            this.label5.Location = new System.Drawing.Point(520, 1);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 13);
             this.label5.TabIndex = 8;
@@ -187,7 +193,7 @@
             // 
             this.button3.Location = new System.Drawing.Point(759, 382);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(113, 49);
+            this.button3.Size = new System.Drawing.Size(180, 49);
             this.button3.TabIndex = 9;
             this.button3.Text = "Cancel";
             this.button3.UseVisualStyleBackColor = true;
@@ -201,21 +207,36 @@
             this.button4.Text = "Overview";
             this.button4.UseVisualStyleBackColor = true;
             // 
+            // lblAll
+            // 
+            this.lblAll.AutoSize = true;
+            this.lblAll.BackColor = System.Drawing.Color.White;
+            this.lblAll.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblAll.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAll.Location = new System.Drawing.Point(17, 6);
+            this.lblAll.Name = "lblAll";
+            this.lblAll.Padding = new System.Windows.Forms.Padding(10);
+            this.lblAll.Size = new System.Drawing.Size(50, 43);
+            this.lblAll.TabIndex = 11;
+            this.lblAll.Text = "All";
+            this.lblAll.Click += new System.EventHandler(this.lblAll_Click);
+            // 
             // frmInventoryMonitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 443);
+            this.ClientSize = new System.Drawing.Size(951, 443);
+            this.Controls.Add(this.lblAll);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblOutOfStock);
+            this.Controls.Add(this.lblCritical);
+            this.Controls.Add(this.lblSafety);
+            this.Controls.Add(this.lblGood);
             this.Controls.Add(this.lstProducts);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -225,6 +246,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory Monitoring";
+            this.Load += new System.EventHandler(this.frmInventoryMonitoring_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,15 +261,16 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblGood;
+        private System.Windows.Forms.Label lblSafety;
+        private System.Windows.Forms.Label lblCritical;
+        private System.Windows.Forms.Label lblOutOfStock;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label lblAll;
     }
 }
