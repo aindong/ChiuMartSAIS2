@@ -70,7 +70,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "INSERT INTO client (clientName, clientAddress) VALUES (@clientName, @clientAddress)";
+                    string sqlQuery = "INSERT INTO client (clientName, clientAddress, status) VALUES (@clientName, @clientAddress, 'active')";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("clientName", clientName);

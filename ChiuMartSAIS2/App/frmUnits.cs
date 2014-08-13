@@ -111,7 +111,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "INSERT INTO units (unitDesc) VALUES (@unitDesc)";
+                    string sqlQuery = "INSERT INTO units (unitDesc, status) VALUES (@unitDesc, 'active')";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("unitDesc", unitDesc);

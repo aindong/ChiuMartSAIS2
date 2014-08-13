@@ -71,7 +71,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "INSERT INTO supplier (supplierName, supplierContact) VALUES (@supplierName, @supplierContact)";
+                    string sqlQuery = "INSERT INTO supplier (supplierName, supplierContact, status) VALUES (@supplierName, @supplierContact, 'active')";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("supplierName", supplierName);

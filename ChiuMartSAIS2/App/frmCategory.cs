@@ -119,7 +119,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "INSERT INTO category (categoryName) VALUES (@categoryName)";
+                    string sqlQuery = "INSERT INTO category (categoryName, status) VALUES (@categoryName, 'active')";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("categoryName", categoryName);

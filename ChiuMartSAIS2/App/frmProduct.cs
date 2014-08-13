@@ -267,7 +267,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "INSERT INTO products (productPrice, productStock, productSafetyStock, productName, unitId, categoryId) VALUES (@productPrice, @productStock, @productSafetyStock, @productName, @unitId, @categoryId)";
+                    string sqlQuery = "INSERT INTO products (productPrice, productStock, productSafetyStock, productName, unitId, categoryId, status) VALUES (@productPrice, @productStock, @productSafetyStock, @productName, @unitId, @categoryId, 'active')";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("productPrice", productPrice);
