@@ -1,6 +1,5 @@
 # Exclude solution files
 *.suo
-*.sln
 
 # Exclude bin directory
 ChiuMartSAIS2/bin/Debug/*
