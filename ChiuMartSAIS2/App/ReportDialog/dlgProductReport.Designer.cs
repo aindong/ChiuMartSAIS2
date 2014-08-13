@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstProducts = new System.Windows.Forms.ListView();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -38,23 +37,22 @@
             this.rboProductName = new System.Windows.Forms.RadioButton();
             this.rboProductID = new System.Windows.Forms.RadioButton();
             this.rboCategory = new System.Windows.Forms.RadioButton();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
-            // 
-            // lstProducts
-            // 
-            this.lstProducts.FullRowSelect = true;
-            this.lstProducts.GridLines = true;
-            this.lstProducts.Location = new System.Drawing.Point(12, 105);
-            this.lstProducts.MultiSelect = false;
-            this.lstProducts.Name = "lstProducts";
-            this.lstProducts.Size = new System.Drawing.Size(866, 285);
-            this.lstProducts.TabIndex = 0;
-            this.lstProducts.UseCompatibleStateImageBehavior = false;
-            this.lstProducts.View = System.Windows.Forms.View.Details;
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(149, 396);
+            this.btnPrint.Location = new System.Drawing.Point(351, 396);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(259, 48);
             this.btnPrint.TabIndex = 1;
@@ -63,7 +61,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(424, 396);
+            this.btnClose.Location = new System.Drawing.Point(616, 396);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(259, 48);
             this.btnClose.TabIndex = 2;
@@ -148,11 +146,83 @@
             this.rboCategory.Text = "Category";
             this.rboCategory.UseVisualStyleBackColor = true;
             // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader10});
+            this.listView1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
+            this.listView1.Location = new System.Drawing.Point(15, 87);
+            this.listView1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(860, 298);
+            this.listView1.TabIndex = 16;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Product ID";
+            this.columnHeader1.Width = 95;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Stocks";
+            this.columnHeader4.Width = 76;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Unit";
+            this.columnHeader5.Width = 88;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Product Name";
+            this.columnHeader2.Width = 279;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Category";
+            this.columnHeader3.Width = 150;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Price";
+            this.columnHeader6.Width = 88;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Safety Stock";
+            this.columnHeader7.Width = 107;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Created Date";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Updated Date";
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Status";
+            // 
             // dlgProductReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 456);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.rboCategory);
             this.Controls.Add(this.rboProductID);
             this.Controls.Add(this.rboProductName);
@@ -162,7 +232,6 @@
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPrint);
-            this.Controls.Add(this.lstProducts);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -178,7 +247,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView lstProducts;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.TextBox txtSearch;
@@ -188,5 +256,16 @@
         private System.Windows.Forms.RadioButton rboProductName;
         private System.Windows.Forms.RadioButton rboProductID;
         private System.Windows.Forms.RadioButton rboCategory;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
     }
 }
