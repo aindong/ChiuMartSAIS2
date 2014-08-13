@@ -17,6 +17,7 @@ namespace ChiuMartSAIS2.App
         // fields declaration
         private int unitId = 0;
         private string unitDesc = "";
+        private string status = "active";
 
         private Classes.Configuration conf;
         public frmUnits()
@@ -40,13 +41,14 @@ namespace ChiuMartSAIS2.App
                     Con.Open();
                     
                     
-                     string sqlQuery = "SELECT * FROM units WHERE unitDesc LIKE @crit";
+                     string sqlQuery = "SELECT * FROM units WHERE unitDesc LIKE @crit AND status = @status";
                    
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     // SQL Query Parameters
                     sqlCmd.Parameters.AddWithValue("crit", "%" + critera + "%");
+                    sqlCmd.Parameters.AddWithValue("status", this.status);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -72,9 +74,11 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM units";
+                    string sqlQuery = "SELECT * FROM units WHERE status = @status";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("status", this.status);
+
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
                     listView1.Items.Clear();

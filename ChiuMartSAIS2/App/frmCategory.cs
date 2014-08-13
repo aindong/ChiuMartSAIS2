@@ -19,6 +19,7 @@ namespace ChiuMartSAIS2.App
         // fields declaration
         private int categoryId = 0;
         private string categoryName = "";
+        private string status = "status";
 
         public frmCategory()
         {
@@ -42,17 +43,18 @@ namespace ChiuMartSAIS2.App
                     string sqlQuery = "";
                     if (filter == "categoryId")
                     {
-                        sqlQuery = "SELECT * FROM category WHERE categoryId LIKE @crit";
+                        sqlQuery = "SELECT * FROM category WHERE categoryId LIKE @crit AND status = @status";
                     }
                     else if (filter == "categoryName")
                     {
-                        sqlQuery = "SELECT * FROM category WHERE categoryName LIKE @crit";
+                        sqlQuery = "SELECT * FROM category WHERE categoryName LIKE @crit AND status = @status";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     // SQL Query Parameters
                     sqlCmd.Parameters.AddWithValue("crit", "%" + critera + "%");
+                    sqlCmd.Parameters.AddWithValue("status", this.status);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -62,6 +64,9 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["categoryId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
                 }
@@ -80,9 +85,11 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM category";
+                    string sqlQuery = "SELECT * FROM category WHERE status = @status";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("status", status);
+
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
                     listView1.Items.Clear();
@@ -91,6 +98,9 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["categoryId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
                 }

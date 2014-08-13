@@ -20,6 +20,8 @@ namespace ChiuMartSAIS2.App
         private int clientId = 0;
         private string clientName = "";
         private string clientAddress = "";
+        private string status = "active";
+
         public frmClient()
         {
             InitializeComponent();
@@ -34,9 +36,11 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM client";
+                    string sqlQuery = "SELECT * FROM client WHERE status = @status";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("status", this.status);
+
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
                     listView1.Items.Clear();
@@ -45,7 +49,9 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["clientId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientName"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientAddress"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
                 }
@@ -184,6 +190,11 @@ namespace ChiuMartSAIS2.App
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -31,7 +31,6 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -41,6 +40,9 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listView1
@@ -48,7 +50,9 @@
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3});
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(203, 95);
@@ -68,12 +72,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Client Name";
-            this.columnHeader2.Width = 237;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Address";
-            this.columnHeader3.Width = 255;
+            this.columnHeader2.Width = 327;
             // 
             // statusStrip1
             // 
@@ -160,6 +159,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(774, 26);
             this.txtSearch.TabIndex = 53;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label1
             // 
@@ -169,6 +169,21 @@
             this.label1.Size = new System.Drawing.Size(68, 20);
             this.label1.TabIndex = 52;
             this.label1.Text = "Search :";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Created Date";
+            this.columnHeader4.Width = 203;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Updated Date";
+            this.columnHeader5.Width = 197;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Status";
+            this.columnHeader6.Width = 160;
             // 
             // frmClient
             // 
@@ -205,7 +220,6 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnDelete;
@@ -215,5 +229,8 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }

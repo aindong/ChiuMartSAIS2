@@ -25,6 +25,8 @@ namespace ChiuMartSAIS2.App
         private double productPrice;
         private double productId;
 
+        private string status = "active";
+
         private Classes.Configuration conf;
         public frmProduct()
         {
@@ -100,9 +102,11 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId";
+                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE status = @status";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("status", this.status);
+
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
                     listView1.Items.Clear();
@@ -116,6 +120,9 @@ namespace ChiuMartSAIS2.App
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productPrice"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
                 }
@@ -140,21 +147,22 @@ namespace ChiuMartSAIS2.App
                     string sqlQuery = "";
                     if (filter == "productName")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productName LIKE @crit";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productName LIKE @crit AND status = @status";
                     }
                     else if (filter == "categoryName")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE c.categoryName LIKE @crit";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE c.categoryName LIKE @crit AND status = @status";
                     }
                     else if (filter == "productId")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productId LIKE @crit";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productId LIKE @crit AND status = @status";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     // SQL Query Parameters
                     sqlCmd.Parameters.AddWithValue("crit", "%" + critera + "%");
+                    sqlCmd.Parameters.AddWithValue("status", this.status);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -169,6 +177,9 @@ namespace ChiuMartSAIS2.App
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productPrice"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
                 }

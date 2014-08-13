@@ -19,6 +19,7 @@ namespace ChiuMartSAIS2.App
         private int supplierId = 0;
         private string supplierName = "";
         private string supplierContact = "";
+        private string status = "active";
 
         private Classes.Configuration conf;
         public frmSupplier()
@@ -35,9 +36,11 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM supplier";
+                    string sqlQuery = "SELECT * FROM supplier WHERE status = @status";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("status", this.status);
+
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
                     listView1.Items.Clear();
@@ -47,6 +50,9 @@ namespace ChiuMartSAIS2.App
                         listView1.Items.Add(reader["supplierId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierName"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContact"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
                 }
@@ -181,6 +187,16 @@ namespace ChiuMartSAIS2.App
         {
             deleteSupplier();
             populateSupplier();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

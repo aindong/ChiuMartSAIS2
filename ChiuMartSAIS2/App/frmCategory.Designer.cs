@@ -42,13 +42,19 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.rboCategoryName = new System.Windows.Forms.RadioButton();
             this.rboCategoryId = new System.Windows.Forms.RadioButton();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader2});
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(188, 114);
@@ -68,7 +74,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Category Name";
-            this.columnHeader2.Width = 450;
+            this.columnHeader2.Width = 336;
             // 
             // label1
             // 
@@ -188,6 +194,21 @@
             this.rboCategoryId.Text = "Category ID";
             this.rboCategoryId.UseVisualStyleBackColor = true;
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Created Date";
+            this.columnHeader3.Width = 172;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Updated Date";
+            this.columnHeader4.Width = 171;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Status";
+            this.columnHeader5.Width = 137;
+            // 
             // frmCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -236,5 +257,8 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton rboCategoryName;
         private System.Windows.Forms.RadioButton rboCategoryId;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }
