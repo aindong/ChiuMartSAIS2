@@ -321,6 +321,7 @@
             this.btnTime.Text = "System Time/Date";
             this.btnTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTime.UseVisualStyleBackColor = false;
+            this.btnTime.Click += new System.EventHandler(this.btnTime_Click);
             // 
             // label4
             // 

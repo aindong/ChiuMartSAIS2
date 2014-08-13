@@ -82,5 +82,10 @@ namespace ChiuMartSAIS2
             //This will open the built-in calculator on windows. 
             System.Diagnostics.Process.Start("calc");
         }
+
+        private void btnTime_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("timedate.cpl");
+        }
     }
 }
