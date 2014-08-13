@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.exe.config
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.exe
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\bin\Debug\ChiuMartSAIS2.pdb
@@ -118,3 +119,5 @@ D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Report
 D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgProductReport.resources
 D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgSupplierReport.resources
 D:\project(SALES)\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgTransactionHistoy.resources
+=======
+>>>>>>> 4ee8ef5d3e52552c5713d4e5869f966504319cd2
