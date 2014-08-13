@@ -167,6 +167,12 @@
     <Compile Include="App\frmUsers.Designer.cs">
       <DependentUpon>frmUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\ReportDialog\dlgAuditTrailReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\ReportDialog\dlgAuditTrailReport.Designer.cs">
+      <DependentUpon>dlgAuditTrailReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\ReportDialog\dlgClientListReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,12 @@
     </Compile>
     <Compile Include="App\ReportDialog\dlgProductReport.Designer.cs">
       <DependentUpon>dlgProductReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\ReportDialog\dlgSupplierReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\ReportDialog\dlgSupplierReport.Designer.cs">
+      <DependentUpon>dlgSupplierReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Configuration.cs" />
     <Compile Include="frmMain.cs">
@@ -236,11 +248,17 @@
     <EmbeddedResource Include="App\frmUsers.resx">
       <DependentUpon>frmUsers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="App\ReportDialog\dlgAuditTrailReport.resx">
+      <DependentUpon>dlgAuditTrailReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App\ReportDialog\dlgClientListReport.resx">
       <DependentUpon>dlgClientListReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\ReportDialog\dlgProductReport.resx">
       <DependentUpon>dlgProductReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\ReportDialog\dlgSupplierReport.resx">
+      <DependentUpon>dlgSupplierReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
