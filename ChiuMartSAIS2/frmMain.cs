@@ -87,5 +87,10 @@ namespace ChiuMartSAIS2
         {
             System.Diagnostics.Process.Start("timedate.cpl");
         }
+
+        private void btnNotes_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"C:\Windows\Sysnative\StikyNot.exe");
+        }
     }
 }

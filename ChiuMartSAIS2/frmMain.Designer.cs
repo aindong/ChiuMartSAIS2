@@ -288,6 +288,7 @@
             this.btnNotes.Text = "Notes";
             this.btnNotes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNotes.UseVisualStyleBackColor = false;
+            this.btnNotes.Click += new System.EventHandler(this.btnNotes_Click);
             // 
             // btnCalculator
             // 
