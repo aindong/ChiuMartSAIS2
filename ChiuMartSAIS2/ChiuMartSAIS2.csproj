@@ -242,7 +242,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\ReportDialog\" />
     <Folder Include="Lib\" />
+    <Folder Include="Reports\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\1403208278_calendar.png" />
