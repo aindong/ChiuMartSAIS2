@@ -36,30 +36,29 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlDatabaseManagement = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pnlSystemUtilities = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pnlReports = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.pnlTransactions = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pnlSystemManagement = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnConnection = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
             this.btnRestore = new System.Windows.Forms.Button();
             this.btnBackup = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pnlSystemUtilities = new System.Windows.Forms.Panel();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnNotes = new System.Windows.Forms.Button();
             this.btnCalculator = new System.Windows.Forms.Button();
             this.btnTime = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pnlReports = new System.Windows.Forms.Panel();
             this.btnLogs = new System.Windows.Forms.Button();
             this.btnUsersList = new System.Windows.Forms.Button();
             this.btnSalesReport = new System.Windows.Forms.Button();
             this.btnInventoryReport = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pnlTransactions = new System.Windows.Forms.Panel();
             this.btnPurchaseOrder = new System.Windows.Forms.Button();
             this.btnInventoryMonitoring = new System.Windows.Forms.Button();
             this.btnPOS = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pnlSystemManagement = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnPermissions = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
@@ -68,6 +67,7 @@
             this.btnUnits = new System.Windows.Forms.Button();
             this.btnCategories = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlDatabaseManagement.SuspendLayout();
@@ -166,131 +166,6 @@
             this.pnlDatabaseManagement.Size = new System.Drawing.Size(322, 269);
             this.pnlDatabaseManagement.TabIndex = 4;
             // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.SteelBlue;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(320, 33);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Database Management";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pnlSystemUtilities
-            // 
-            this.pnlSystemUtilities.BackColor = System.Drawing.Color.LemonChiffon;
-            this.pnlSystemUtilities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlSystemUtilities.Controls.Add(this.btnHelp);
-            this.pnlSystemUtilities.Controls.Add(this.btnNotes);
-            this.pnlSystemUtilities.Controls.Add(this.btnCalculator);
-            this.pnlSystemUtilities.Controls.Add(this.btnTime);
-            this.pnlSystemUtilities.Controls.Add(this.label4);
-            this.pnlSystemUtilities.Location = new System.Drawing.Point(77, 355);
-            this.pnlSystemUtilities.Name = "pnlSystemUtilities";
-            this.pnlSystemUtilities.Size = new System.Drawing.Size(331, 269);
-            this.pnlSystemUtilities.TabIndex = 3;
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.SteelBlue;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(329, 33);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "System Utilities";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pnlReports
-            // 
-            this.pnlReports.AutoScrollMargin = new System.Drawing.Size(20, 0);
-            this.pnlReports.BackColor = System.Drawing.Color.LemonChiffon;
-            this.pnlReports.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlReports.Controls.Add(this.btnLogs);
-            this.pnlReports.Controls.Add(this.btnUsersList);
-            this.pnlReports.Controls.Add(this.btnSalesReport);
-            this.pnlReports.Controls.Add(this.btnInventoryReport);
-            this.pnlReports.Controls.Add(this.label7);
-            this.pnlReports.Location = new System.Drawing.Point(809, 21);
-            this.pnlReports.Name = "pnlReports";
-            this.pnlReports.Size = new System.Drawing.Size(318, 294);
-            this.pnlReports.TabIndex = 2;
-            // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.SteelBlue;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(0, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(316, 33);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Reports";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pnlTransactions
-            // 
-            this.pnlTransactions.BackColor = System.Drawing.Color.LemonChiffon;
-            this.pnlTransactions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlTransactions.Controls.Add(this.btnPurchaseOrder);
-            this.pnlTransactions.Controls.Add(this.btnInventoryMonitoring);
-            this.pnlTransactions.Controls.Add(this.btnPOS);
-            this.pnlTransactions.Controls.Add(this.label3);
-            this.pnlTransactions.Location = new System.Drawing.Point(447, 21);
-            this.pnlTransactions.Name = "pnlTransactions";
-            this.pnlTransactions.Size = new System.Drawing.Size(322, 294);
-            this.pnlTransactions.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.SteelBlue;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(320, 33);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Transactions";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pnlSystemManagement
-            // 
-            this.pnlSystemManagement.BackColor = System.Drawing.Color.LemonChiffon;
-            this.pnlSystemManagement.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlSystemManagement.Controls.Add(this.button1);
-            this.pnlSystemManagement.Controls.Add(this.btnPermissions);
-            this.pnlSystemManagement.Controls.Add(this.btnUsers);
-            this.pnlSystemManagement.Controls.Add(this.btnClients);
-            this.pnlSystemManagement.Controls.Add(this.btnSuppliers);
-            this.pnlSystemManagement.Controls.Add(this.btnUnits);
-            this.pnlSystemManagement.Controls.Add(this.btnCategories);
-            this.pnlSystemManagement.Controls.Add(this.btnProducts);
-            this.pnlSystemManagement.Controls.Add(this.label2);
-            this.pnlSystemManagement.Location = new System.Drawing.Point(77, 21);
-            this.pnlSystemManagement.Name = "pnlSystemManagement";
-            this.pnlSystemManagement.Size = new System.Drawing.Size(331, 294);
-            this.pnlSystemManagement.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.SteelBlue;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(329, 33);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "System Management";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnConnection
             // 
             this.btnConnection.BackColor = System.Drawing.Color.MediumVioletRed;
@@ -355,6 +230,33 @@
             this.btnBackup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBackup.UseVisualStyleBackColor = false;
             // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.SteelBlue;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(320, 33);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Database Management";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlSystemUtilities
+            // 
+            this.pnlSystemUtilities.BackColor = System.Drawing.Color.LemonChiffon;
+            this.pnlSystemUtilities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSystemUtilities.Controls.Add(this.btnHelp);
+            this.pnlSystemUtilities.Controls.Add(this.btnNotes);
+            this.pnlSystemUtilities.Controls.Add(this.btnCalculator);
+            this.pnlSystemUtilities.Controls.Add(this.btnTime);
+            this.pnlSystemUtilities.Controls.Add(this.label4);
+            this.pnlSystemUtilities.Location = new System.Drawing.Point(77, 355);
+            this.pnlSystemUtilities.Name = "pnlSystemUtilities";
+            this.pnlSystemUtilities.Size = new System.Drawing.Size(331, 269);
+            this.pnlSystemUtilities.TabIndex = 3;
+            // 
             // btnHelp
             // 
             this.btnHelp.BackColor = System.Drawing.Color.MediumVioletRed;
@@ -402,6 +304,7 @@
             this.btnCalculator.Text = "Calculator";
             this.btnCalculator.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCalculator.UseVisualStyleBackColor = false;
+            this.btnCalculator.Click += new System.EventHandler(this.btnCalculator_Click);
             // 
             // btnTime
             // 
@@ -418,6 +321,34 @@
             this.btnTime.Text = "System Time/Date";
             this.btnTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTime.UseVisualStyleBackColor = false;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.SteelBlue;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(329, 33);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "System Utilities";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlReports
+            // 
+            this.pnlReports.AutoScrollMargin = new System.Drawing.Size(20, 0);
+            this.pnlReports.BackColor = System.Drawing.Color.LemonChiffon;
+            this.pnlReports.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlReports.Controls.Add(this.btnLogs);
+            this.pnlReports.Controls.Add(this.btnUsersList);
+            this.pnlReports.Controls.Add(this.btnSalesReport);
+            this.pnlReports.Controls.Add(this.btnInventoryReport);
+            this.pnlReports.Controls.Add(this.label7);
+            this.pnlReports.Location = new System.Drawing.Point(809, 21);
+            this.pnlReports.Name = "pnlReports";
+            this.pnlReports.Size = new System.Drawing.Size(318, 294);
+            this.pnlReports.TabIndex = 2;
             // 
             // btnLogs
             // 
@@ -483,6 +414,32 @@
             this.btnInventoryReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnInventoryReport.UseVisualStyleBackColor = false;
             // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.SteelBlue;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label7.Location = new System.Drawing.Point(0, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(316, 33);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Reports";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlTransactions
+            // 
+            this.pnlTransactions.BackColor = System.Drawing.Color.LemonChiffon;
+            this.pnlTransactions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTransactions.Controls.Add(this.btnPurchaseOrder);
+            this.pnlTransactions.Controls.Add(this.btnInventoryMonitoring);
+            this.pnlTransactions.Controls.Add(this.btnPOS);
+            this.pnlTransactions.Controls.Add(this.label3);
+            this.pnlTransactions.Location = new System.Drawing.Point(447, 21);
+            this.pnlTransactions.Name = "pnlTransactions";
+            this.pnlTransactions.Size = new System.Drawing.Size(322, 294);
+            this.pnlTransactions.TabIndex = 1;
+            // 
             // btnPurchaseOrder
             // 
             this.btnPurchaseOrder.BackColor = System.Drawing.Color.MediumVioletRed;
@@ -533,6 +490,37 @@
             this.btnPOS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPOS.UseVisualStyleBackColor = false;
             this.btnPOS.Click += new System.EventHandler(this.btnPOS_Click);
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.SteelBlue;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(320, 33);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Transactions";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlSystemManagement
+            // 
+            this.pnlSystemManagement.BackColor = System.Drawing.Color.LemonChiffon;
+            this.pnlSystemManagement.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSystemManagement.Controls.Add(this.button1);
+            this.pnlSystemManagement.Controls.Add(this.btnPermissions);
+            this.pnlSystemManagement.Controls.Add(this.btnUsers);
+            this.pnlSystemManagement.Controls.Add(this.btnClients);
+            this.pnlSystemManagement.Controls.Add(this.btnSuppliers);
+            this.pnlSystemManagement.Controls.Add(this.btnUnits);
+            this.pnlSystemManagement.Controls.Add(this.btnCategories);
+            this.pnlSystemManagement.Controls.Add(this.btnProducts);
+            this.pnlSystemManagement.Controls.Add(this.label2);
+            this.pnlSystemManagement.Location = new System.Drawing.Point(77, 21);
+            this.pnlSystemManagement.Name = "pnlSystemManagement";
+            this.pnlSystemManagement.Size = new System.Drawing.Size(331, 294);
+            this.pnlSystemManagement.TabIndex = 0;
             // 
             // button1
             // 
@@ -668,6 +656,19 @@
             this.btnProducts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnProducts.UseVisualStyleBackColor = false;
             this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.SteelBlue;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(329, 33);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "System Management";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmMain
             // 
