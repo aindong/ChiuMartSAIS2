@@ -27,6 +27,57 @@ namespace ChiuMartSAIS2.App
             conf = new Classes.Configuration();
         }
 
+        /// <summary>
+        /// Searching of category using filters. 
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="critera"></param>
+        private void searchCategory(string filter, string critera)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "";
+                    if (filter == "categoryID")
+                    {
+                        sqlQuery = "SELECT * FROM category WHERE p.productName LIKE @crit";
+                    }
+                    else if (filter == "categoryName")
+                    {
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE c.categoryName LIKE @crit";
+                    }
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    // SQL Query Parameters
+                    sqlCmd.Parameters.AddWithValue("crit", "%" + critera + "%");
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    listView1.Items.Clear();
+
+                    while (reader.Read())
+                    {
+                        listView1.Items.Add(reader["productId"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productPrice"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
+                    }
+
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void populateCategory()
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
