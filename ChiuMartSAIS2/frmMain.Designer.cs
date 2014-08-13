@@ -68,6 +68,8 @@
             this.btnCategories = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnClient = new System.Windows.Forms.Button();
+            this.btnSupplier = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlDatabaseManagement.SuspendLayout();
@@ -342,6 +344,8 @@
             this.pnlReports.AutoScrollMargin = new System.Drawing.Size(20, 0);
             this.pnlReports.BackColor = System.Drawing.Color.LemonChiffon;
             this.pnlReports.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlReports.Controls.Add(this.btnSupplier);
+            this.pnlReports.Controls.Add(this.btnClient);
             this.pnlReports.Controls.Add(this.btnLogs);
             this.pnlReports.Controls.Add(this.btnUsersList);
             this.pnlReports.Controls.Add(this.btnSalesReport);
@@ -367,6 +371,7 @@
             this.btnLogs.Text = "Logs";
             this.btnLogs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogs.UseVisualStyleBackColor = false;
+            this.btnLogs.Click += new System.EventHandler(this.btnLogs_Click);
             // 
             // btnUsersList
             // 
@@ -399,6 +404,7 @@
             this.btnSalesReport.Text = "Sales";
             this.btnSalesReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalesReport.UseVisualStyleBackColor = false;
+            this.btnSalesReport.Click += new System.EventHandler(this.btnSalesReport_Click);
             // 
             // btnInventoryReport
             // 
@@ -415,6 +421,7 @@
             this.btnInventoryReport.Text = "Inventory";
             this.btnInventoryReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnInventoryReport.UseVisualStyleBackColor = false;
+            this.btnInventoryReport.Click += new System.EventHandler(this.btnInventoryReport_Click);
             // 
             // label7
             // 
@@ -672,6 +679,40 @@
             this.label2.Text = "System Management";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnClient
+            // 
+            this.btnClient.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClient.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClient.Image = global::ChiuMartSAIS2.Properties.Resources._1400994707_gnome_mime_application_vnd_lotus_1_2_3;
+            this.btnClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClient.Location = new System.Drawing.Point(10, 162);
+            this.btnClient.Name = "btnClient";
+            this.btnClient.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnClient.Size = new System.Drawing.Size(147, 50);
+            this.btnClient.TabIndex = 8;
+            this.btnClient.Text = "Client";
+            this.btnClient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClient.UseVisualStyleBackColor = false;
+            this.btnClient.Click += new System.EventHandler(this.btnClient_Click);
+            // 
+            // btnSupplier
+            // 
+            this.btnSupplier.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSupplier.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSupplier.Image = global::ChiuMartSAIS2.Properties.Resources._1400994707_gnome_mime_application_vnd_lotus_1_2_3;
+            this.btnSupplier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSupplier.Location = new System.Drawing.Point(160, 162);
+            this.btnSupplier.Name = "btnSupplier";
+            this.btnSupplier.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnSupplier.Size = new System.Drawing.Size(147, 50);
+            this.btnSupplier.TabIndex = 9;
+            this.btnSupplier.Text = "Supplier";
+            this.btnSupplier.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSupplier.UseVisualStyleBackColor = false;
+            this.btnSupplier.Click += new System.EventHandler(this.btnSupplier_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -741,6 +782,8 @@
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button btnConnection;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSupplier;
+        private System.Windows.Forms.Button btnClient;
     }
 }
 
