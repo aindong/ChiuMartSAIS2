@@ -267,7 +267,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "INSERT INTO products (productPrice, productStock, productSafetyStock, productName, unitId, categoryId) VALUES (@productPrice, @productStock, @productSafetyStock, @productName, @unitId, @categoryId)";
+                    string sqlQuery = "INSERT INTO products (productPrice, productStock, productSafetyStock, productName, unitId, categoryId, status) VALUES (@productPrice, @productStock, @productSafetyStock, @productName, @unitId, @categoryId, 'active')";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("productPrice", productPrice);
@@ -318,27 +318,25 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void deleteProduct()
+        private void deleteProduct(double criteria)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "DELETE FROM client WHERE productId=@criteria";
-
+                    string sqlQuery = "UPDATE products SET status='inactive' WHERE productId=@criteria";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
-                    sqlCmd.Parameters.AddWithValue("criteria", listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
 
                     sqlCmd.ExecuteNonQuery();
-
-                    MessageBox.Show(this, "Product data successfully deleted", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, "Product successfully deleted", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (MySqlException ex)
                 {
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
-                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Deleting Product error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -426,8 +424,17 @@ namespace ChiuMartSAIS2.App
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            deleteProduct();
-            populateProduct();
+            if (listView1.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            if (MessageBox.Show(this, "Do you want to delete this product?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                deleteProduct(productId);
+                populateProduct();
+            }
+
         }
 
         /// <summary>
@@ -454,6 +461,18 @@ namespace ChiuMartSAIS2.App
 
             searchProduct(filter, txtSearch.Text);
 
+        }
+
+        private void rboActive_CheckedChanged(object sender, EventArgs e)
+        {
+            status = "active";
+            populateProduct();
+        }
+
+        private void rboInactive_CheckedChanged(object sender, EventArgs e)
+        {
+            status = "inactive";
+            populateProduct();
         }
     }
 }

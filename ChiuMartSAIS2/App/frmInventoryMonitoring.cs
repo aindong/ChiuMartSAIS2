@@ -61,6 +61,7 @@ namespace ChiuMartSAIS2.App
                         lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
                         lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
                         lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
                 }
@@ -82,22 +83,22 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE status = 'active'";
+                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.status = 'active'";
                     if (stockLevel == "Good")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock > p.productSafetyStock AND status = 'active'";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock > p.productSafetyStock AND p.status = 'active'";
                     }
                     else if (stockLevel == "Safety")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock = p.productSafetyStock AND status = 'active'";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock = p.productSafetyStock AND p.status = 'active'";
                     }
                     else if (stockLevel == "Critical")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock < p.productSafetyStock AND status = 'active'";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock < p.productSafetyStock AND p.status = 'active'";
                     }
                     else if (stockLevel == "Out of Stock")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock <= 0 AND status = 'active'";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock <= 0 AND p.status = 'active'";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -117,8 +118,8 @@ namespace ChiuMartSAIS2.App
                 }
                 catch (MySqlException ex)
                 {
-                    string errorCode = string.Format("Error Code : {0}", ex.Number);
-                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string errorCode = string.Format("Error Code : {0}", ex.ToString());
+                    MessageBox.Show(this, errorCode+"Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
