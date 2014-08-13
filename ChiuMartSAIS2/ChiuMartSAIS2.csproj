@@ -161,6 +161,12 @@
     <Compile Include="App\frmUsers.Designer.cs">
       <DependentUpon>frmUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\ReportDialog\dlgProductReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\ReportDialog\dlgProductReport.Designer.cs">
+      <DependentUpon>dlgProductReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Configuration.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -215,6 +221,9 @@
     <EmbeddedResource Include="App\frmUsers.resx">
       <DependentUpon>frmUsers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="App\ReportDialog\dlgProductReport.resx">
+      <DependentUpon>dlgProductReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -242,7 +251,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\ReportDialog\" />
     <Folder Include="Lib\" />
     <Folder Include="Reports\" />
   </ItemGroup>
