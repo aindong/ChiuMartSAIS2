@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -53,10 +54,6 @@
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvCart = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,7 +62,6 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -84,6 +80,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1008, 64);
             this.panel1.TabIndex = 0;
+            // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(307, 9);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(334, 42);
+            this.button8.TabIndex = 8;
+            this.button8.Text = "Transaction History";
+            this.button8.UseVisualStyleBackColor = true;
             // 
             // button7
             // 
@@ -301,10 +307,6 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.LightGray;
             this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Location = new System.Drawing.Point(630, 92);
             this.panel3.Name = "panel3";
@@ -316,69 +318,21 @@
             this.label9.BackColor = System.Drawing.Color.White;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(119, 126);
+            this.label9.Location = new System.Drawing.Point(118, 67);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(117, 21);
             this.label9.TabIndex = 11;
             this.label9.Text = "Amount Due";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.White;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(141, 64);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 17);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Tax";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(143, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 17);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Sub Total";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(14, 8);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(334, 49);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "0.0";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // label8
-            // 
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(14, 62);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(334, 47);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "0.0";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
             // label10
             // 
             this.label10.BackColor = System.Drawing.Color.White;
             this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(14, 124);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(14, 57);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(334, 93);
+            this.label10.Size = new System.Drawing.Size(334, 126);
             this.label10.TabIndex = 12;
             this.label10.Text = "0.0";
             this.label10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -410,38 +364,28 @@
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Item";
+            this.Column2.HeaderText = "QTY";
             this.Column2.Name = "Column2";
             // 
             // Column3
             // 
-            this.Column3.HeaderText = "Unit";
+            this.Column3.HeaderText = "Item";
             this.Column3.Name = "Column3";
             // 
             // Column4
             // 
-            this.Column4.HeaderText = "QTY";
+            this.Column4.HeaderText = "Unit";
             this.Column4.Name = "Column4";
             // 
             // Column5
             // 
-            this.Column5.HeaderText = "Sub-Total";
+            this.Column5.HeaderText = "Unit Price";
             this.Column5.Name = "Column5";
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Total";
             this.Column6.Name = "Column6";
-            // 
-            // button8
-            // 
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(307, 9);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(334, 42);
-            this.button8.TabIndex = 8;
-            this.button8.Text = "Transaction History";
-            this.button8.UseVisualStyleBackColor = true;
             // 
             // frmPOS
             // 
@@ -501,10 +445,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -514,12 +454,12 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
         private System.Windows.Forms.DataGridView dgvCart;
+        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.Button button8;
     }
 }
