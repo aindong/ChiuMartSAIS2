@@ -75,5 +75,12 @@ namespace ChiuMartSAIS2
             App.frmInventoryMonitoring frm = new App.frmInventoryMonitoring();
             frm.ShowDialog();
         }
+
+    
+        private void btnCalculator_Click(object sender, EventArgs e)
+        {
+            //This will open the built-in calculator on windows. 
+            System.Diagnostics.Process.Start("calc");
+        }
     }
 }
