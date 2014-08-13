@@ -146,6 +146,10 @@ namespace ChiuMartSAIS2.App
                     {
                         sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE c.categoryName LIKE @crit";
                     }
+                    else if (filter == "productId")
+                    {
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productId LIKE @crit";
+                    }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -413,6 +417,32 @@ namespace ChiuMartSAIS2.App
         {
             deleteProduct();
             populateProduct();
+        }
+
+        /// <summary>
+        /// This function has a textchange event, it will call the search function
+        /// </summary>
+        /// <param name="sender">Object sender</param>
+        /// <param name="e">Event handler</param>
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string filter = "";
+
+            if (rboProductName.Checked)
+            {
+                filter = "productName";
+            }
+            else if (rboCategory.Checked)
+            {
+                filter = "categoryName";
+            }
+            else if (rboProductId.Checked)
+            {
+                filter = "productId";
+            }
+
+            searchProduct(filter, txtSearch.Text);
+
         }
     }
 }
