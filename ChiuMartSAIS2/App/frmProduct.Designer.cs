@@ -48,6 +48,9 @@
             this.rboProductName = new System.Windows.Forms.RadioButton();
             this.rboProductId = new System.Windows.Forms.RadioButton();
             this.rboCategory = new System.Windows.Forms.RadioButton();
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listView1
@@ -59,7 +62,10 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader6,
-            this.columnHeader7});
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader10});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(190, 116);
@@ -235,6 +241,18 @@
             this.rboCategory.Text = "Category";
             this.rboCategory.UseVisualStyleBackColor = true;
             // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Created Date";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Updated Date";
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Status";
+            // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -290,5 +308,8 @@
         private System.Windows.Forms.RadioButton rboProductName;
         private System.Windows.Forms.RadioButton rboProductId;
         private System.Windows.Forms.RadioButton rboCategory;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
     }
 }

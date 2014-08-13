@@ -58,6 +58,9 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["unitId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
                 }
                 catch (MySqlException ex)
@@ -87,6 +90,9 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["unitId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
                 }
