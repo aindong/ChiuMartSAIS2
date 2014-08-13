@@ -26,6 +26,45 @@ namespace ChiuMartSAIS2.App
             conf = new Classes.Configuration();
         }
 
+        /// <summary>
+        /// Searching of units.
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="critera"></param>
+        private void searchUnit(string filter, string critera)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    
+                    
+                     string sqlQuery = "SELECT * FROM units WHERE unitDesc LIKE @crit";
+                   
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    // SQL Query Parameters
+                    sqlCmd.Parameters.AddWithValue("crit", "%" + critera + "%");
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    listView1.Items.Clear();
+
+                    while (reader.Read())
+                    {
+                        listView1.Items.Add(reader["unitId"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
         private void populateUnits()
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
@@ -179,6 +218,13 @@ namespace ChiuMartSAIS2.App
             int id = Int32.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
             unitId = id;
             unitDesc = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[1].Text;
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            //Setting filter for unit.
+            string filter = "unitDesc";
+            searchUnit(filter, txtSearch.Text);
         }
     }
 }
