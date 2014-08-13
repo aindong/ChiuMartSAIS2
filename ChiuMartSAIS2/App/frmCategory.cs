@@ -40,13 +40,13 @@ namespace ChiuMartSAIS2.App
                 {
                     Con.Open();
                     string sqlQuery = "";
-                    if (filter == "categoryID")
+                    if (filter == "categoryId")
                     {
-                        sqlQuery = "SELECT * FROM category WHERE p.productName LIKE @crit";
+                        sqlQuery = "SELECT * FROM category WHERE categoryId LIKE @crit";
                     }
                     else if (filter == "categoryName")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE c.categoryName LIKE @crit";
+                        sqlQuery = "SELECT * FROM category WHERE categoryName LIKE @crit";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -60,13 +60,8 @@ namespace ChiuMartSAIS2.App
 
                     while (reader.Read())
                     {
-                        listView1.Items.Add(reader["productId"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
+                        listView1.Items.Add(reader["categoryId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productPrice"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
                     }
 
                 }
@@ -238,6 +233,25 @@ namespace ChiuMartSAIS2.App
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            //Selecting which filter to use. 
+
+            string filter = "";
+
+            if (rboCategoryId.Checked)
+            {
+                filter = "categoryId";
+            }
+            else if (rboCategoryName.Checked)
+            {
+                filter = "categoryName";
+            }
+            
+
+            searchCategory(filter, txtSearch.Text);
         }
     }
 }

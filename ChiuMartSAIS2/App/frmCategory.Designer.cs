@@ -40,6 +40,8 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rboCategoryName = new System.Windows.Forms.RadioButton();
+            this.rboCategoryId = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // listView1
@@ -139,6 +141,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(774, 26);
             this.txtSearch.TabIndex = 12;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // radioButton1
             // 
@@ -162,11 +165,36 @@
             this.radioButton2.Text = "Inactive";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
+            // rboCategoryName
+            // 
+            this.rboCategoryName.AutoSize = true;
+            this.rboCategoryName.Location = new System.Drawing.Point(147, 67);
+            this.rboCategoryName.Name = "rboCategoryName";
+            this.rboCategoryName.Size = new System.Drawing.Size(137, 24);
+            this.rboCategoryName.TabIndex = 29;
+            this.rboCategoryName.TabStop = true;
+            this.rboCategoryName.Text = "Category Name";
+            this.rboCategoryName.UseVisualStyleBackColor = true;
+            // 
+            // rboCategoryId
+            // 
+            this.rboCategoryId.AutoSize = true;
+            this.rboCategoryId.Checked = true;
+            this.rboCategoryId.Location = new System.Drawing.Point(13, 67);
+            this.rboCategoryId.Name = "rboCategoryId";
+            this.rboCategoryId.Size = new System.Drawing.Size(112, 24);
+            this.rboCategoryId.TabIndex = 28;
+            this.rboCategoryId.TabStop = true;
+            this.rboCategoryId.Text = "Category ID";
+            this.rboCategoryId.UseVisualStyleBackColor = true;
+            // 
             // frmCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 396);
+            this.Controls.Add(this.rboCategoryName);
+            this.Controls.Add(this.rboCategoryId);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.txtSearch);
@@ -206,5 +234,7 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rboCategoryName;
+        private System.Windows.Forms.RadioButton rboCategoryId;
     }
 }
