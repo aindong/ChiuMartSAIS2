@@ -40,12 +40,14 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.rboSupName = new System.Windows.Forms.RadioButton();
             this.rboSupConPerson = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rboInactive = new System.Windows.Forms.RadioButton();
+            this.rboActive = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView1
@@ -59,7 +61,7 @@
             this.columnHeader6});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(188, 93);
+            this.listView1.Location = new System.Drawing.Point(188, 112);
             this.listView1.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(598, 273);
@@ -98,7 +100,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 375);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 397);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
             this.statusStrip1.Size = new System.Drawing.Size(816, 22);
@@ -108,7 +110,7 @@
             // btnClose
             // 
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(15, 309);
+            this.btnClose.Location = new System.Drawing.Point(15, 328);
             this.btnClose.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(149, 57);
@@ -119,7 +121,7 @@
             // btnDelete
             // 
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(15, 241);
+            this.btnDelete.Location = new System.Drawing.Point(15, 260);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(149, 57);
@@ -131,7 +133,7 @@
             // btnEdit
             // 
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Location = new System.Drawing.Point(15, 167);
+            this.btnEdit.Location = new System.Drawing.Point(15, 186);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(149, 57);
@@ -143,7 +145,7 @@
             // btnAdd
             // 
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(15, 92);
+            this.btnAdd.Location = new System.Drawing.Point(15, 111);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(149, 57);
@@ -151,28 +153,6 @@
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(704, 4);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(82, 24);
-            this.radioButton2.TabIndex = 45;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Inactive";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(611, 4);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(70, 24);
-            this.radioButton1.TabIndex = 44;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Active";
-            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // txtSearch
             // 
@@ -194,7 +174,7 @@
             // rboSupName
             // 
             this.rboSupName.AutoSize = true;
-            this.rboSupName.Location = new System.Drawing.Point(15, 61);
+            this.rboSupName.Location = new System.Drawing.Point(15, 71);
             this.rboSupName.Name = "rboSupName";
             this.rboSupName.Size = new System.Drawing.Size(131, 24);
             this.rboSupName.TabIndex = 46;
@@ -205,7 +185,7 @@
             // rboSupConPerson
             // 
             this.rboSupConPerson.AutoSize = true;
-            this.rboSupConPerson.Location = new System.Drawing.Point(170, 61);
+            this.rboSupConPerson.Location = new System.Drawing.Point(170, 71);
             this.rboSupConPerson.Name = "rboSupConPerson";
             this.rboSupConPerson.Size = new System.Drawing.Size(199, 24);
             this.rboSupConPerson.TabIndex = 47;
@@ -213,15 +193,48 @@
             this.rboSupConPerson.Text = "Supplier Contact Person";
             this.rboSupConPerson.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rboInactive);
+            this.groupBox1.Controls.Add(this.rboActive);
+            this.groupBox1.Location = new System.Drawing.Point(600, 61);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(186, 45);
+            this.groupBox1.TabIndex = 48;
+            this.groupBox1.TabStop = false;
+            // 
+            // rboInactive
+            // 
+            this.rboInactive.AutoSize = true;
+            this.rboInactive.Location = new System.Drawing.Point(99, 15);
+            this.rboInactive.Name = "rboInactive";
+            this.rboInactive.Size = new System.Drawing.Size(82, 24);
+            this.rboInactive.TabIndex = 16;
+            this.rboInactive.Text = "Inactive";
+            this.rboInactive.UseVisualStyleBackColor = true;
+            this.rboInactive.CheckedChanged += new System.EventHandler(this.rboInactive_CheckedChanged);
+            // 
+            // rboActive
+            // 
+            this.rboActive.AutoSize = true;
+            this.rboActive.Checked = true;
+            this.rboActive.Location = new System.Drawing.Point(23, 15);
+            this.rboActive.Name = "rboActive";
+            this.rboActive.Size = new System.Drawing.Size(70, 24);
+            this.rboActive.TabIndex = 15;
+            this.rboActive.TabStop = true;
+            this.rboActive.Text = "Active";
+            this.rboActive.UseVisualStyleBackColor = true;
+            this.rboActive.CheckedChanged += new System.EventHandler(this.rboActive_CheckedChanged);
+            // 
             // frmSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 397);
+            this.ClientSize = new System.Drawing.Size(816, 419);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rboSupConPerson);
             this.Controls.Add(this.rboSupName);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);
@@ -240,6 +253,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supplier Maintenance";
             this.Load += new System.EventHandler(this.frmSupplier_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,8 +271,6 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ColumnHeader columnHeader4;
@@ -265,5 +278,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.RadioButton rboSupName;
         private System.Windows.Forms.RadioButton rboSupConPerson;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rboInactive;
+        private System.Windows.Forms.RadioButton rboActive;
     }
 }

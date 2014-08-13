@@ -108,3 +108,5 @@ C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAI
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgClientListReport.resources
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgProductReport.resources
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgInventoryAdjust.resources
+C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgAuditTrailReport.resources
+C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgSupplierReport.resources

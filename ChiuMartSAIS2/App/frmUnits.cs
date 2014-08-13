@@ -151,27 +151,25 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void deleteUnit()
+        private void deleteUnit(int criteria)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "DELETE FROM units WHERE unitId=@criteria";
-
+                    string sqlQuery = "UPDATE units SET status='inactive' WHERE unitId=@criteria";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
-                    sqlCmd.Parameters.AddWithValue("criteria", listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
 
                     sqlCmd.ExecuteNonQuery();
-
-                    MessageBox.Show(this, "Unit data successfully deleted", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, "Unit successfully deleted", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (MySqlException ex)
                 {
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
-                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Deleting Unit error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -219,8 +217,16 @@ namespace ChiuMartSAIS2.App
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            deleteUnit();
-            populateUnits();
+            if (listView1.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            if (MessageBox.Show(this, "Do you want to delete this category?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                deleteUnit(unitId);
+                populateUnits();
+            }
         }
 
         private void listView1_Click(object sender, EventArgs e)
@@ -235,6 +241,18 @@ namespace ChiuMartSAIS2.App
             //Setting filter for unit.
             string filter = "unitDesc";
             searchUnit(filter, txtSearch.Text);
+        }
+
+        private void rboActive_CheckedChanged(object sender, EventArgs e)
+        {
+            status = "active";
+            populateUnits();
+        }
+
+        private void rboInactive_CheckedChanged(object sender, EventArgs e)
+        {
+            status = "inactive";
+            populateUnits();
         }
     }
 }

@@ -113,27 +113,25 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void deleteSupplier()
+        private void deleteSupplier(int criteria)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "DELETE FROM supplier WHERE supplierId=@criteria";
-
+                    string sqlQuery = "UPDATE supplier SET status='inactive' WHERE supplierId=@criteria";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
-                    sqlCmd.Parameters.AddWithValue("criteria", listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
 
                     sqlCmd.ExecuteNonQuery();
-
-                    MessageBox.Show(this, "Supplier data successfully deleted", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, "Supplier successfully delete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (MySqlException ex)
                 {
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
-                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Delete Supplier error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -185,8 +183,16 @@ namespace ChiuMartSAIS2.App
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            deleteSupplier();
-            populateSupplier();
+            if (listView1.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            if (MessageBox.Show(this, "Do you want to delete this supplier?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                deleteSupplier(supplierId);
+                populateSupplier();
+            }
         }
 
 
@@ -259,6 +265,18 @@ namespace ChiuMartSAIS2.App
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void rboActive_CheckedChanged(object sender, EventArgs e)
+        {
+            status = "active";
+            populateSupplier();
+        }
+
+        private void rboInactive_CheckedChanged(object sender, EventArgs e)
+        {
+            status = "inactive";
+            populateSupplier();
         }
     }
 }

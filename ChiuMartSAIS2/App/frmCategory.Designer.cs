@@ -31,6 +31,9 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -38,13 +41,12 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.rboCategoryName = new System.Windows.Forms.RadioButton();
             this.rboCategoryId = new System.Windows.Forms.RadioButton();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rboInactive = new System.Windows.Forms.RadioButton();
+            this.rboActive = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView1
@@ -75,6 +77,21 @@
             // 
             this.columnHeader2.Text = "Category Name";
             this.columnHeader2.Width = 336;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Created Date";
+            this.columnHeader3.Width = 172;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Updated Date";
+            this.columnHeader4.Width = 171;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Status";
+            this.columnHeader5.Width = 137;
             // 
             // label1
             // 
@@ -149,28 +166,6 @@
             this.txtSearch.TabIndex = 12;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(612, 5);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(70, 24);
-            this.radioButton1.TabIndex = 13;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Active";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(704, 5);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(82, 24);
-            this.radioButton2.TabIndex = 14;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Inactive";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
             // rboCategoryName
             // 
             this.rboCategoryName.AutoSize = true;
@@ -193,31 +188,50 @@
             this.rboCategoryId.TabStop = true;
             this.rboCategoryId.Text = "Category ID";
             this.rboCategoryId.UseVisualStyleBackColor = true;
+            this.rboCategoryId.CheckedChanged += new System.EventHandler(this.rboCategoryId_CheckedChanged);
             // 
-            // columnHeader3
+            // groupBox1
             // 
-            this.columnHeader3.Text = "Created Date";
-            this.columnHeader3.Width = 172;
+            this.groupBox1.Controls.Add(this.rboInactive);
+            this.groupBox1.Controls.Add(this.rboActive);
+            this.groupBox1.Location = new System.Drawing.Point(601, 61);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(186, 45);
+            this.groupBox1.TabIndex = 30;
+            this.groupBox1.TabStop = false;
             // 
-            // columnHeader4
+            // rboInactive
             // 
-            this.columnHeader4.Text = "Updated Date";
-            this.columnHeader4.Width = 171;
+            this.rboInactive.AutoSize = true;
+            this.rboInactive.Location = new System.Drawing.Point(99, 15);
+            this.rboInactive.Name = "rboInactive";
+            this.rboInactive.Size = new System.Drawing.Size(82, 24);
+            this.rboInactive.TabIndex = 16;
+            this.rboInactive.Text = "Inactive";
+            this.rboInactive.UseVisualStyleBackColor = true;
+            this.rboInactive.CheckedChanged += new System.EventHandler(this.rboInactive_CheckedChanged);
             // 
-            // columnHeader5
+            // rboActive
             // 
-            this.columnHeader5.Text = "Status";
-            this.columnHeader5.Width = 137;
+            this.rboActive.AutoSize = true;
+            this.rboActive.Checked = true;
+            this.rboActive.Location = new System.Drawing.Point(23, 15);
+            this.rboActive.Name = "rboActive";
+            this.rboActive.Size = new System.Drawing.Size(70, 24);
+            this.rboActive.TabIndex = 15;
+            this.rboActive.TabStop = true;
+            this.rboActive.Text = "Active";
+            this.rboActive.UseVisualStyleBackColor = true;
+            this.rboActive.CheckedChanged += new System.EventHandler(this.rboActive_CheckedChanged);
             // 
             // frmCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 396);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rboCategoryName);
             this.Controls.Add(this.rboCategoryId);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnClose);
@@ -236,6 +250,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Category Maintenance";
             this.Load += new System.EventHandler(this.frmCategory_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,12 +269,13 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton rboCategoryName;
         private System.Windows.Forms.RadioButton rboCategoryId;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rboInactive;
+        private System.Windows.Forms.RadioButton rboActive;
     }
 }

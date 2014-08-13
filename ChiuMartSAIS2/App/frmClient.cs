@@ -112,27 +112,25 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void deleteClient()
+        private void deleteClient(int criteria)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "DELETE FROM client WHERE clientId=@criteria";
-
+                    string sqlQuery = "UPDATE client SET status='inactive' WHERE clientId=@criteria";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
-                    sqlCmd.Parameters.AddWithValue("criteria", listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
 
                     sqlCmd.ExecuteNonQuery();
-
-                    MessageBox.Show(this, "Client data successfully deleted", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, "Client successfully deleted", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (MySqlException ex)
                 {
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
-                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Deleting client error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -175,8 +173,16 @@ namespace ChiuMartSAIS2.App
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            deleteClient();
-            populateClient();
+            if (listView1.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            if (MessageBox.Show(this, "Do you want to delete this client?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                deleteClient(clientId);
+                populateClient();
+            }
         }
 
         private void listView1_Click(object sender, EventArgs e)
@@ -195,6 +201,18 @@ namespace ChiuMartSAIS2.App
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void rboActive_CheckedChanged(object sender, EventArgs e)
+        {
+            status = "active";
+            populateClient();
+        }
+
+        private void rboInactive_CheckedChanged(object sender, EventArgs e)
+        {
+            status = "inactive";
+            populateClient();
         }
     }
 }

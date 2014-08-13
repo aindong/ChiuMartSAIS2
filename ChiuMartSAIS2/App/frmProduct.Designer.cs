@@ -36,21 +36,23 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.rboProductName = new System.Windows.Forms.RadioButton();
             this.rboProductId = new System.Windows.Forms.RadioButton();
             this.rboCategory = new System.Windows.Forms.RadioButton();
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rboInactive = new System.Windows.Forms.RadioButton();
+            this.rboActive = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView1
@@ -112,6 +114,18 @@
             this.columnHeader7.Text = "Safety Stock";
             this.columnHeader7.Width = 107;
             // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Created Date";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Updated Date";
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Status";
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 375);
@@ -169,28 +183,6 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(703, 3);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(82, 24);
-            this.radioButton2.TabIndex = 25;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Inactive";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(611, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(70, 24);
-            this.radioButton1.TabIndex = 24;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Active";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
             // txtSearch
             // 
             this.txtSearch.Location = new System.Drawing.Point(12, 33);
@@ -241,28 +233,49 @@
             this.rboCategory.Text = "Category";
             this.rboCategory.UseVisualStyleBackColor = true;
             // 
-            // columnHeader8
+            // groupBox1
             // 
-            this.columnHeader8.Text = "Created Date";
+            this.groupBox1.Controls.Add(this.rboInactive);
+            this.groupBox1.Controls.Add(this.rboActive);
+            this.groupBox1.Location = new System.Drawing.Point(602, 65);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(186, 45);
+            this.groupBox1.TabIndex = 31;
+            this.groupBox1.TabStop = false;
             // 
-            // columnHeader9
+            // rboInactive
             // 
-            this.columnHeader9.Text = "Updated Date";
+            this.rboInactive.AutoSize = true;
+            this.rboInactive.Location = new System.Drawing.Point(99, 15);
+            this.rboInactive.Name = "rboInactive";
+            this.rboInactive.Size = new System.Drawing.Size(82, 24);
+            this.rboInactive.TabIndex = 16;
+            this.rboInactive.Text = "Inactive";
+            this.rboInactive.UseVisualStyleBackColor = true;
+            this.rboInactive.CheckedChanged += new System.EventHandler(this.rboInactive_CheckedChanged);
             // 
-            // columnHeader10
+            // rboActive
             // 
-            this.columnHeader10.Text = "Status";
+            this.rboActive.AutoSize = true;
+            this.rboActive.Checked = true;
+            this.rboActive.Location = new System.Drawing.Point(23, 15);
+            this.rboActive.Name = "rboActive";
+            this.rboActive.Size = new System.Drawing.Size(70, 24);
+            this.rboActive.TabIndex = 15;
+            this.rboActive.TabStop = true;
+            this.rboActive.Text = "Active";
+            this.rboActive.UseVisualStyleBackColor = true;
+            this.rboActive.CheckedChanged += new System.EventHandler(this.rboActive_CheckedChanged);
             // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(816, 397);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rboCategory);
             this.Controls.Add(this.rboProductId);
             this.Controls.Add(this.rboProductName);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);
@@ -281,6 +294,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Product Maintenance";
             this.Load += new System.EventHandler(this.frmProduct_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,8 +316,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton rboProductName;
@@ -311,5 +324,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rboInactive;
+        private System.Windows.Forms.RadioButton rboActive;
     }
 }

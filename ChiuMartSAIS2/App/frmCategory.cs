@@ -159,27 +159,25 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void deleteCategory()
+        private void deleteCategory(int criteria)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "DELETE FROM category WHERE categoryId=@criteria";
-
+                    string sqlQuery = "UPDATE category SET status='inactive' WHERE categoryId=@criteria";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
-                    sqlCmd.Parameters.AddWithValue("criteria", listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
 
                     sqlCmd.ExecuteNonQuery();
-
-                    MessageBox.Show(this, "Category data successfully deleted", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, "Category successfully deleted", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (MySqlException ex)
                 {
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
-                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Deleting Category error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -216,6 +214,14 @@ namespace ChiuMartSAIS2.App
 
         private void frmCategory_Load(object sender, EventArgs e)
         {
+            if (rboActive.Checked)
+            {
+                status = "active";
+            }
+            else if (rboInactive.Checked)
+            {
+                status = "inactive";
+            }
             populateCategory();
         }
 
@@ -226,9 +232,9 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
-            if (MessageBox.Show(this, "Do you want to delete this batch?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(this, "Do you want to delete this category?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                deleteCategory();
+                deleteCategory(categoryId);
                 populateCategory();
             }
         }
@@ -262,6 +268,23 @@ namespace ChiuMartSAIS2.App
             
 
             searchCategory(filter, txtSearch.Text);
+        }
+
+        private void rboCategoryId_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rboActive_CheckedChanged(object sender, EventArgs e)
+        {
+            status = "active";
+            populateCategory();
+        }
+
+        private void rboInactive_CheckedChanged(object sender, EventArgs e)
+        {
+            status = "inactive";
+            populateCategory();
         }
     }
 }
