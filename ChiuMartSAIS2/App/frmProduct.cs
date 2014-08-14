@@ -357,7 +357,7 @@ namespace ChiuMartSAIS2.App
             if (frmProductsAdd.ShowDialog(this) == DialogResult.OK)
             {
                 // If all validations were valid, we're going to get the category
-                frmProductsAdd.getProduct(out productId, out productPrice, out productStocks, out productSafetyStock,
+                frmProductsAdd.getProduct(out productId, out productPrice, out productSafetyStock, out productStocks,
                     out productName, out productCategory, out productUnit);
                 double unitId = getUnitID(productUnit);
                 double categoryId = getCategoryID(productCategory);
@@ -390,7 +390,7 @@ namespace ChiuMartSAIS2.App
             if (frmProductsEdit.ShowDialog(this) == DialogResult.OK)
             {
                 // If all validations were valid, we're going to get the category
-                frmProductsEdit.getProduct(out productId, out productPrice, out productStocks, out productSafetyStock,
+                frmProductsEdit.getProduct(out productId, out productPrice, out productSafetyStock, out productStocks,
                     out productName, out productCategory, out productUnit);
                 double unitId = getUnitID(productUnit);
                 double categoryId = getCategoryID(productCategory);
