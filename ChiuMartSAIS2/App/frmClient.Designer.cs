@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -44,17 +39,26 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rboInactive = new System.Windows.Forms.RadioButton();
             this.rboActive = new System.Windows.Forms.RadioButton();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
+            this.columnHeader3,
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader11,
+            this.columnHeader12});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(203, 111);
@@ -65,31 +69,6 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.Click += new System.EventHandler(this.listView1_Click);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Client ID";
-            this.columnHeader1.Width = 95;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Client Name";
-            this.columnHeader2.Width = 327;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Created Date";
-            this.columnHeader4.Width = 203;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Updated Date";
-            this.columnHeader5.Width = 197;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Status";
-            this.columnHeader6.Width = 160;
             // 
             // statusStrip1
             // 
@@ -199,6 +178,41 @@
             this.rboActive.UseVisualStyleBackColor = true;
             this.rboActive.CheckedChanged += new System.EventHandler(this.rboActive_CheckedChanged);
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Id";
+            this.columnHeader3.Width = 92;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Name";
+            this.columnHeader7.Width = 155;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Contact";
+            this.columnHeader8.Width = 151;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Address";
+            this.columnHeader9.Width = 137;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Created Date";
+            this.columnHeader10.Width = 143;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Updated Date";
+            this.columnHeader11.Width = 140;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Status";
+            this.columnHeader12.Width = 88;
+            // 
             // frmClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -233,8 +247,6 @@
         #endregion
 
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnDelete;
@@ -242,11 +254,15 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rboInactive;
         private System.Windows.Forms.RadioButton rboActive;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
     }
 }
