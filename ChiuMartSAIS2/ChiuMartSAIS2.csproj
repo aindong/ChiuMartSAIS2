@@ -71,6 +71,12 @@
     <Compile Include="App\Dialogs\dlgCategory.Designer.cs">
       <DependentUpon>dlgCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\Dialogs\dlgCheckout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgCheckout.Designer.cs">
+      <DependentUpon>dlgCheckout.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\Dialogs\dlgClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,12 @@
     </Compile>
     <Compile Include="App\Dialogs\dlgProducts.Designer.cs">
       <DependentUpon>dlgProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgRestoreDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgRestoreDB.Designer.cs">
+      <DependentUpon>dlgRestoreDB.cs</DependentUpon>
     </Compile>
     <Compile Include="App\Dialogs\dlgSupplier.cs">
       <SubType>Form</SubType>
@@ -209,6 +221,9 @@
     <EmbeddedResource Include="App\Dialogs\dlgCategory.resx">
       <DependentUpon>dlgCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgCheckout.resx">
+      <DependentUpon>dlgCheckout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgClient.resx">
       <DependentUpon>dlgClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgProducts.resx">
       <DependentUpon>dlgProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgRestoreDB.resx">
+      <DependentUpon>dlgRestoreDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgSupplier.resx">
       <DependentUpon>dlgSupplier.cs</DependentUpon>
