@@ -18,7 +18,9 @@ namespace ChiuMartSAIS2.App
         // fields declaration
         private int supplierId = 0;
         private string supplierName = "";
+        private string supplierAddress = "";
         private string supplierContact = "";
+        private string supplierContactPerson = "";
         private string status = "active";
 
         private Classes.Configuration conf;
@@ -49,7 +51,9 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["supplierId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierAddress"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContact"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContactPerson"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
@@ -64,18 +68,20 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void insertSupplier(string supplierName, string supplierContact)
+        private void insertSupplier(string supplierName, string supplierAddress, string supplierContact, string supplierContactPerson)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "INSERT INTO supplier (supplierName, supplierContact, status) VALUES (@supplierName, @supplierContact, 'active')";
+                    string sqlQuery = "INSERT INTO supplier (supplierName, supplierAddress, supplierContact, supplierContactPerson, status) VALUES (@supplierName, @supplierAddress, @supplierContact, @supplierContactPerson, 'active')";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("supplierName", supplierName);
+                    sqlCmd.Parameters.AddWithValue("supplierAddress", supplierAddress);
                     sqlCmd.Parameters.AddWithValue("supplierContact", supplierContact);
+                    sqlCmd.Parameters.AddWithValue("supplierContactPerson", supplierContactPerson);
 
                     sqlCmd.ExecuteNonQuery();
                     MessageBox.Show(this, "Supplier successfully added", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -88,18 +94,20 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void updateSupplier(string supplierName, string supplierContact, int criteria)
+        private void updateSupplier(string supplierName, string supplierAddress, string supplierContact, string supplierContactPerson, int criteria)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "UPDATE supplier SET supplierName=@supplierName, supplierContact=@supplierContact WHERE supplierId=@criteria";
+                    string sqlQuery = "UPDATE supplier SET supplierName=@supplierName, supplierAddress=@supplierAddress, supplierContact=@supplierContact, supplierContactPerson=@supplierContactPerson WHERE supplierId=@criteria";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("supplierName", supplierName);
+                    sqlCmd.Parameters.AddWithValue("supplierAddress", supplierAddress);
                     sqlCmd.Parameters.AddWithValue("supplierContact", supplierContact);
+                    sqlCmd.Parameters.AddWithValue("supplierContactPerson", supplierContactPerson);
                     sqlCmd.Parameters.AddWithValue("criteria", criteria);
 
                     sqlCmd.ExecuteNonQuery();
@@ -143,8 +151,8 @@ namespace ChiuMartSAIS2.App
             if (frmSupplierAdd.ShowDialog(this) == DialogResult.OK)
             {
                 // If all validations were valid, we're going to get the supplier
-                frmSupplierAdd.getSupplier(out supplierId, out supplierName, out supplierContact);
-                insertSupplier(supplierName, supplierContact);
+                frmSupplierAdd.getSupplier(out supplierId, out supplierName, out supplierAddress, out supplierContact, out supplierContactPerson);
+                insertSupplier(supplierName, supplierAddress, supplierContact, supplierContactPerson);
                 populateSupplier();
             }
         }
@@ -162,8 +170,8 @@ namespace ChiuMartSAIS2.App
             if (frmSupplierEdit.ShowDialog(this) == DialogResult.OK)
             {
                 // If all validations were valid, we're going to get the supplier
-                frmSupplierEdit.getSupplier(out supplierId, out supplierName, out supplierContact);
-                updateSupplier(supplierName, supplierContact, supplierId);
+                frmSupplierEdit.getSupplier(out supplierId, out supplierName, out supplierAddress, out supplierContact, out supplierContactPerson);
+                updateSupplier(supplierName, supplierAddress, supplierContact, supplierContactPerson, supplierId);
                 populateSupplier();
             }
         }
@@ -231,6 +239,7 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["supplierId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierAddress"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContact"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContactPerson"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());

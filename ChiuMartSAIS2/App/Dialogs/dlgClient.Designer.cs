@@ -45,7 +45,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(436, 42);
-            this.btnSave.TabIndex = 3;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -85,7 +85,7 @@
             this.txtClientAddress.Location = new System.Drawing.Point(12, 217);
             this.txtClientAddress.Name = "txtClientAddress";
             this.txtClientAddress.Size = new System.Drawing.Size(436, 33);
-            this.txtClientAddress.TabIndex = 2;
+            this.txtClientAddress.TabIndex = 3;
             // 
             // label3
             // 
@@ -116,7 +116,7 @@
             this.txtContact.Location = new System.Drawing.Point(12, 145);
             this.txtContact.Name = "txtContact";
             this.txtContact.Size = new System.Drawing.Size(436, 33);
-            this.txtContact.TabIndex = 45;
+            this.txtContact.TabIndex = 2;
             // 
             // dlgClient
             // 

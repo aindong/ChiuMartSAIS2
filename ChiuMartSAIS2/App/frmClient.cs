@@ -50,6 +50,8 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["clientId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientContact"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientAddress"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
