@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -39,13 +46,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rboInactive = new System.Windows.Forms.RadioButton();
             this.rboActive = new System.Windows.Forms.RadioButton();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,18 +64,53 @@
             this.listView1.Location = new System.Drawing.Point(203, 111);
             this.listView1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(598, 246);
+            this.listView1.Size = new System.Drawing.Size(924, 246);
             this.listView1.TabIndex = 45;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.Click += new System.EventHandler(this.listView1_Click);
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Id";
+            this.columnHeader3.Width = 92;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Name";
+            this.columnHeader7.Width = 155;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Contact";
+            this.columnHeader8.Width = 151;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Address";
+            this.columnHeader9.Width = 137;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Created Date";
+            this.columnHeader10.Width = 143;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Updated Date";
+            this.columnHeader11.Width = 140;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Status";
+            this.columnHeader12.Width = 88;
+            // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 375);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 377);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(816, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1141, 22);
             this.statusStrip1.TabIndex = 51;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -131,7 +166,7 @@
             // 
             this.txtSearch.Location = new System.Drawing.Point(27, 34);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(774, 26);
+            this.txtSearch.Size = new System.Drawing.Size(1100, 26);
             this.txtSearch.TabIndex = 53;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -148,7 +183,7 @@
             // 
             this.groupBox1.Controls.Add(this.rboInactive);
             this.groupBox1.Controls.Add(this.rboActive);
-            this.groupBox1.Location = new System.Drawing.Point(614, 61);
+            this.groupBox1.Location = new System.Drawing.Point(941, 60);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(186, 45);
             this.groupBox1.TabIndex = 54;
@@ -178,46 +213,11 @@
             this.rboActive.UseVisualStyleBackColor = true;
             this.rboActive.CheckedChanged += new System.EventHandler(this.rboActive_CheckedChanged);
             // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Id";
-            this.columnHeader3.Width = 92;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Name";
-            this.columnHeader7.Width = 155;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Contact";
-            this.columnHeader8.Width = 151;
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Address";
-            this.columnHeader9.Width = 137;
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "Created Date";
-            this.columnHeader10.Width = 143;
-            // 
-            // columnHeader11
-            // 
-            this.columnHeader11.Text = "Updated Date";
-            this.columnHeader11.Width = 140;
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "Status";
-            this.columnHeader12.Width = 88;
-            // 
             // frmClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 397);
+            this.ClientSize = new System.Drawing.Size(1141, 399);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);

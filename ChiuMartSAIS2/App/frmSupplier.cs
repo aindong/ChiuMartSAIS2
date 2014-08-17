@@ -139,7 +139,30 @@ namespace ChiuMartSAIS2.App
                 catch (MySqlException ex)
                 {
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
-                    MessageBox.Show(this, "Delete Supplier error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Deleting Supplier error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void restoreSupplier(int criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE supplier SET status='active' WHERE supplierId=@criteria";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Supplier successfully restored", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Restoring Supplier error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -196,10 +219,21 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
-            if (MessageBox.Show(this, "Do you want to delete this supplier?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnDelete.Text == "&Delete")
             {
-                deleteSupplier(supplierId);
-                populateSupplier();
+                if (MessageBox.Show(this, "Do you want to delete this supplier?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    deleteSupplier(supplierId);
+                    populateSupplier();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show(this, "Do you want to restore this supplier?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    restoreSupplier(supplierId);
+                    populateSupplier();
+                }
             }
         }
 
@@ -283,12 +317,14 @@ namespace ChiuMartSAIS2.App
         private void rboActive_CheckedChanged(object sender, EventArgs e)
         {
             status = "active";
+            btnDelete.Text = "&Delete";
             populateSupplier();
         }
 
         private void rboInactive_CheckedChanged(object sender, EventArgs e)
         {
             status = "inactive";
+            btnDelete.Text = "&Restore";
             populateSupplier();
         }
     }

@@ -96,14 +96,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
             else
             {
-                if (txtClientAddress.Text == "")
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
         }
     }

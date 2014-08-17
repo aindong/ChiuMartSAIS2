@@ -182,6 +182,29 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        private void restoreCategory(int criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE category SET status='active' WHERE categoryId=@criteria";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Category successfully restored", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Restoring Category error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Dialogs.dlgCategory frmCategoryAdd = new Dialogs.dlgCategory("add", 0);
@@ -232,10 +255,21 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
-            if (MessageBox.Show(this, "Do you want to delete this category?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnDelete.Text == "&Delete")
             {
-                deleteCategory(categoryId);
-                populateCategory();
+                if (MessageBox.Show(this, "Do you want to delete this category?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    deleteCategory(categoryId);
+                    populateCategory();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show(this, "Do you want to restore this category?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    restoreCategory(categoryId);
+                    populateCategory();
+                }
             }
         }
 
@@ -277,6 +311,7 @@ namespace ChiuMartSAIS2.App
 
         private void rboActive_CheckedChanged(object sender, EventArgs e)
         {
+            btnDelete.Text = "&Delete";
             status = "active";
             populateCategory();
         }
@@ -284,6 +319,7 @@ namespace ChiuMartSAIS2.App
         private void rboInactive_CheckedChanged(object sender, EventArgs e)
         {
             status = "inactive";
+            btnDelete.Text = "&Restore";
             populateCategory();
         }
     }

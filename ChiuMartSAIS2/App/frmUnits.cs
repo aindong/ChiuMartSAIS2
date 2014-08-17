@@ -174,6 +174,28 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        private void restoreUnit(int criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE units SET status='active' WHERE unitId=@criteria";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Unit successfully restored", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Restored Unit error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -222,10 +244,21 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
-            if (MessageBox.Show(this, "Do you want to delete this category?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnDelete.Text == "&Delete")
             {
-                deleteUnit(unitId);
-                populateUnits();
+                if (MessageBox.Show(this, "Do you want to delete this Unit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    deleteUnit(unitId);
+                    populateUnits();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show(this, "Do you want to restore this Unit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    restoreUnit(unitId);
+                    populateUnits();
+                }
             }
         }
 
@@ -246,12 +279,14 @@ namespace ChiuMartSAIS2.App
         private void rboActive_CheckedChanged(object sender, EventArgs e)
         {
             status = "active";
+            btnDelete.Text = "&Delete";
             populateUnits();
         }
 
         private void rboInactive_CheckedChanged(object sender, EventArgs e)
         {
             status = "inactive";
+            btnDelete.Text = "&Restore";
             populateUnits();
         }
     }

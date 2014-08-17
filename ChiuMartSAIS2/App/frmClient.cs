@@ -140,6 +140,29 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        private void restoreClient(int criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE client SET status='active' WHERE clientId=@criteria";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Client successfully restored", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Restoring client error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Dialogs.dlgClient frmClientAdd = new Dialogs.dlgClient("add", 0);
@@ -183,10 +206,21 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
-            if (MessageBox.Show(this, "Do you want to delete this client?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnDelete.Text == "&Delete")
             {
-                deleteClient(clientId);
-                populateClient();
+                if (MessageBox.Show(this, "Do you want to delete this client?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    deleteClient(clientId);
+                    populateClient();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show(this, "Do you want to restore this client?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    restoreClient(clientId);
+                    populateClient();
+                }
             }
         }
 
@@ -210,6 +244,7 @@ namespace ChiuMartSAIS2.App
 
         private void rboActive_CheckedChanged(object sender, EventArgs e)
         {
+            btnDelete.Text = "&Delete";
             status = "active";
             populateClient();
         }
@@ -217,6 +252,7 @@ namespace ChiuMartSAIS2.App
         private void rboInactive_CheckedChanged(object sender, EventArgs e)
         {
             status = "inactive";
+            btnDelete.Text = "&Restore";
             populateClient();
         }
     }
