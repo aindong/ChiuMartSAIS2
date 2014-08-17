@@ -137,6 +137,12 @@
     <Compile Include="App\frmCategory.Designer.cs">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\frmChequeMonitoring.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\frmChequeMonitoring.Designer.cs">
+      <DependentUpon>frmChequeMonitoring.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\frmClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\frmCategory.resx">
       <DependentUpon>frmCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\frmChequeMonitoring.resx">
+      <DependentUpon>frmChequeMonitoring.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\frmClient.resx">
       <DependentUpon>frmClient.cs</DependentUpon>

@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace ChiuMartSAIS2.App
 {
-    public partial class frmPO : Form
+    public partial class frmChequeMonitoring : Form
     {
-        public frmPO()
+        public frmChequeMonitoring()
         {
             InitializeComponent();
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }
