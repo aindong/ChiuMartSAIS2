@@ -109,7 +109,7 @@ namespace ChiuMartSAIS2.App
                     while (reader.Read())
                     {
                         result[0] = reader["productId"].ToString();
-                        result[1] = txtQty.Text;
+                        result[1] = "";
                         result[2] = reader["productName"].ToString();
                         result[3] = reader["unitDesc"].ToString();
                         result[4] = reader["productPrice"].ToString();

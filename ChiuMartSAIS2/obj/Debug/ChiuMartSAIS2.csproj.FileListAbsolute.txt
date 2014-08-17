@@ -31,3 +31,5 @@ C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAI
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.csproj.GenerateResource.Cache
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.exe
 C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.pdb
+C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgCheckout.resources
+C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgRestoreDB.resources

@@ -34,15 +34,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtProduct = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtQty = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtClient = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.btnVoid = new System.Windows.Forms.Button();
             this.btnCheckout = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -119,7 +115,7 @@
             this.txtProduct.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProduct.Location = new System.Drawing.Point(12, 140);
             this.txtProduct.Name = "txtProduct";
-            this.txtProduct.Size = new System.Drawing.Size(251, 25);
+            this.txtProduct.Size = new System.Drawing.Size(612, 25);
             this.txtProduct.TabIndex = 2;
             this.txtProduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtProduct.Click += new System.EventHandler(this.txtProduct_Click);
@@ -130,39 +126,19 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 120);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 17);
+            this.label2.Size = new System.Drawing.Size(56, 17);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Search Item";
-            // 
-            // txtQty
-            // 
-            this.txtQty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQty.Location = new System.Drawing.Point(269, 140);
-            this.txtQty.Name = "txtQty";
-            this.txtQty.Size = new System.Drawing.Size(251, 25);
-            this.txtQty.TabIndex = 4;
-            this.txtQty.Text = "1";
-            this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label2.Text = "Address";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(526, 123);
+            this.button1.Location = new System.Drawing.Point(630, 63);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 42);
+            this.button1.Size = new System.Drawing.Size(98, 54);
             this.button1.TabIndex = 5;
             this.button1.Text = "Add to cart";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(266, 120);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 17);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Quantity";
             // 
             // txtClient
             // 
@@ -190,9 +166,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGray;
-            this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.btnVoid);
             this.panel2.Controls.Add(this.btnCheckout);
             this.panel2.Location = new System.Drawing.Point(630, 336);
@@ -200,35 +174,15 @@
             this.panel2.Size = new System.Drawing.Size(371, 223);
             this.panel2.TabIndex = 18;
             // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(188, 126);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(160, 52);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Mark as return";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(14, 126);
+            this.button5.Location = new System.Drawing.Point(14, 128);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(156, 52);
+            this.button5.Size = new System.Drawing.Size(334, 52);
             this.button5.TabIndex = 9;
             this.button5.Text = "Cancel";
             this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(188, 70);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(160, 52);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Discount";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // btnVoid
             // 
@@ -236,7 +190,7 @@
             this.btnVoid.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoid.Location = new System.Drawing.Point(14, 70);
             this.btnVoid.Name = "btnVoid";
-            this.btnVoid.Size = new System.Drawing.Size(156, 52);
+            this.btnVoid.Size = new System.Drawing.Size(334, 52);
             this.btnVoid.TabIndex = 7;
             this.btnVoid.Text = "Void";
             this.btnVoid.UseVisualStyleBackColor = false;
@@ -360,6 +314,7 @@
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.Size = new System.Drawing.Size(612, 388);
             this.dgvCart.TabIndex = 21;
+            this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellValueChanged);
             this.dgvCart.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellValueChanged);
             // 
             // Column1
@@ -411,9 +366,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtClient);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.txtQty);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtProduct);
             this.Controls.Add(this.panel1);
@@ -444,18 +397,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtProduct;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtQty;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtClient;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnVoid;
         private System.Windows.Forms.Button btnCheckout;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label9;
