@@ -31,29 +31,6 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -62,6 +39,30 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rboInactive = new System.Windows.Forms.RadioButton();
             this.rboActive = new System.Windows.Forms.RadioButton();
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader29 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader30 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader31 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader32 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader33 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader34 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader35 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader36 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader37 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader38 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader39 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader40 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader41 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader42 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader43 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader44 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader45 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader46 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader47 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,7 +70,7 @@
             // 
             this.txtSearch.Location = new System.Drawing.Point(15, 25);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(977, 20);
+            this.txtSearch.Size = new System.Drawing.Size(1051, 22);
             this.txtSearch.TabIndex = 50;
             // 
             // label1
@@ -84,132 +85,42 @@
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6,
-            this.columnHeader15,
-            this.columnHeader16,
-            this.columnHeader17,
-            this.columnHeader18,
-            this.columnHeader19,
-            this.columnHeader20,
-            this.columnHeader21,
-            this.columnHeader22,
-            this.columnHeader23,
-            this.columnHeader24,
-            this.columnHeader25,
-            this.columnHeader26,
-            this.columnHeader10,
-            this.columnHeader27,
-            this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9});
+            this.columnHeader11,
+            this.columnHeader12,
+            this.columnHeader13,
+            this.columnHeader14,
+            this.columnHeader28,
+            this.columnHeader29,
+            this.columnHeader30,
+            this.columnHeader31,
+            this.columnHeader32,
+            this.columnHeader33,
+            this.columnHeader34,
+            this.columnHeader35,
+            this.columnHeader36,
+            this.columnHeader37,
+            this.columnHeader38,
+            this.columnHeader39,
+            this.columnHeader40,
+            this.columnHeader41,
+            this.columnHeader42,
+            this.columnHeader43,
+            this.columnHeader44,
+            this.columnHeader45,
+            this.columnHeader46,
+            this.columnHeader47});
+            this.listView1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(172, 99);
             this.listView1.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(820, 420);
+            this.listView1.Size = new System.Drawing.Size(894, 420);
             this.listView1.TabIndex = 44;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Id";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Role";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Products";
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Categories";
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Units";
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Suppliers";
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "Clients";
-            // 
-            // columnHeader16
-            // 
-            this.columnHeader16.Text = "Users";
-            // 
-            // columnHeader17
-            // 
-            this.columnHeader17.Text = "Discounts";
-            // 
-            // columnHeader18
-            // 
-            this.columnHeader18.Text = "POS";
-            // 
-            // columnHeader19
-            // 
-            this.columnHeader19.Text = "Inventory Monitoring";
-            this.columnHeader19.Width = 112;
-            // 
-            // columnHeader20
-            // 
-            this.columnHeader20.Text = "Purchase Order";
-            this.columnHeader20.Width = 104;
-            // 
-            // columnHeader21
-            // 
-            this.columnHeader21.Text = "Inventory Report";
-            // 
-            // columnHeader22
-            // 
-            this.columnHeader22.Text = "Sales Report";
-            // 
-            // columnHeader23
-            // 
-            this.columnHeader23.Text = "Users Report";
-            // 
-            // columnHeader24
-            // 
-            this.columnHeader24.Text = "Logs Report";
-            // 
-            // columnHeader25
-            // 
-            this.columnHeader25.Text = "Client Report";
-            // 
-            // columnHeader26
-            // 
-            this.columnHeader26.Text = "Supplier Report";
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "Cheque Monitoring";
-            // 
-            // columnHeader27
-            // 
-            this.columnHeader27.Text = "System Utilities";
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Created Date";
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Updated Date";
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Status";
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.listView1.Click += new System.EventHandler(this.listView1_Click);
             // 
             // btnClose
             // 
@@ -232,6 +143,7 @@
             this.btnDelete.TabIndex = 47;
             this.btnDelete.Text = "&Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -243,6 +155,7 @@
             this.btnEdit.TabIndex = 46;
             this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -269,7 +182,7 @@
             // 
             this.groupBox1.Controls.Add(this.rboInactive);
             this.groupBox1.Controls.Add(this.rboActive);
-            this.groupBox1.Location = new System.Drawing.Point(806, 51);
+            this.groupBox1.Location = new System.Drawing.Point(880, 53);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(186, 45);
             this.groupBox1.TabIndex = 52;
@@ -278,9 +191,9 @@
             // rboInactive
             // 
             this.rboInactive.AutoSize = true;
-            this.rboInactive.Location = new System.Drawing.Point(99, 15);
+            this.rboInactive.Location = new System.Drawing.Point(116, 15);
             this.rboInactive.Name = "rboInactive";
-            this.rboInactive.Size = new System.Drawing.Size(63, 17);
+            this.rboInactive.Size = new System.Drawing.Size(64, 17);
             this.rboInactive.TabIndex = 16;
             this.rboInactive.Text = "Inactive";
             this.rboInactive.UseVisualStyleBackColor = true;
@@ -297,11 +210,103 @@
             this.rboActive.Text = "Active";
             this.rboActive.UseVisualStyleBackColor = true;
             // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Id";
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Role";
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Products";
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "Categories";
+            // 
+            // columnHeader28
+            // 
+            this.columnHeader28.Text = "Units";
+            // 
+            // columnHeader29
+            // 
+            this.columnHeader29.Text = "Suppliers";
+            // 
+            // columnHeader30
+            // 
+            this.columnHeader30.Text = "Permissions";
+            // 
+            // columnHeader31
+            // 
+            this.columnHeader31.Text = "Clients";
+            // 
+            // columnHeader32
+            // 
+            this.columnHeader32.Text = "Users";
+            // 
+            // columnHeader33
+            // 
+            this.columnHeader33.Text = "POS";
+            // 
+            // columnHeader34
+            // 
+            this.columnHeader34.Text = "Inventory Monitoring";
+            // 
+            // columnHeader35
+            // 
+            this.columnHeader35.Text = "Purchase Order";
+            // 
+            // columnHeader36
+            // 
+            this.columnHeader36.Text = "Cheque Monitoring";
+            // 
+            // columnHeader37
+            // 
+            this.columnHeader37.Text = "Inventory Report";
+            // 
+            // columnHeader38
+            // 
+            this.columnHeader38.Text = "Sales Report";
+            // 
+            // columnHeader39
+            // 
+            this.columnHeader39.Text = "Users Report";
+            // 
+            // columnHeader40
+            // 
+            this.columnHeader40.Text = "Logs Report";
+            // 
+            // columnHeader41
+            // 
+            this.columnHeader41.Text = "Client Report";
+            // 
+            // columnHeader42
+            // 
+            this.columnHeader42.Text = "Supplier Report";
+            // 
+            // columnHeader43
+            // 
+            this.columnHeader43.Text = "System Utilities";
+            // 
+            // columnHeader45
+            // 
+            this.columnHeader45.Text = "Created Date";
+            // 
+            // columnHeader46
+            // 
+            this.columnHeader46.Text = "Update Date";
+            // 
+            // columnHeader47
+            // 
+            this.columnHeader47.Text = "Status";
+            // 
             // frmPermissions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 526);
+            this.ClientSize = new System.Drawing.Size(1070, 526);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSearch);
@@ -311,6 +316,7 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -336,31 +342,32 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader15;
-        private System.Windows.Forms.ColumnHeader columnHeader16;
-        private System.Windows.Forms.ColumnHeader columnHeader17;
-        private System.Windows.Forms.ColumnHeader columnHeader18;
-        private System.Windows.Forms.ColumnHeader columnHeader19;
-        private System.Windows.Forms.ColumnHeader columnHeader20;
-        private System.Windows.Forms.ColumnHeader columnHeader21;
-        private System.Windows.Forms.ColumnHeader columnHeader22;
-        private System.Windows.Forms.ColumnHeader columnHeader23;
-        private System.Windows.Forms.ColumnHeader columnHeader24;
-        private System.Windows.Forms.ColumnHeader columnHeader25;
-        private System.Windows.Forms.ColumnHeader columnHeader26;
-        private System.Windows.Forms.ColumnHeader columnHeader27;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rboInactive;
         private System.Windows.Forms.RadioButton rboActive;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader columnHeader28;
+        private System.Windows.Forms.ColumnHeader columnHeader29;
+        private System.Windows.Forms.ColumnHeader columnHeader30;
+        private System.Windows.Forms.ColumnHeader columnHeader31;
+        private System.Windows.Forms.ColumnHeader columnHeader32;
+        private System.Windows.Forms.ColumnHeader columnHeader33;
+        private System.Windows.Forms.ColumnHeader columnHeader34;
+        private System.Windows.Forms.ColumnHeader columnHeader35;
+        private System.Windows.Forms.ColumnHeader columnHeader36;
+        private System.Windows.Forms.ColumnHeader columnHeader37;
+        private System.Windows.Forms.ColumnHeader columnHeader38;
+        private System.Windows.Forms.ColumnHeader columnHeader39;
+        private System.Windows.Forms.ColumnHeader columnHeader40;
+        private System.Windows.Forms.ColumnHeader columnHeader41;
+        private System.Windows.Forms.ColumnHeader columnHeader42;
+        private System.Windows.Forms.ColumnHeader columnHeader43;
+        private System.Windows.Forms.ColumnHeader columnHeader44;
+        private System.Windows.Forms.ColumnHeader columnHeader45;
+        private System.Windows.Forms.ColumnHeader columnHeader46;
+        private System.Windows.Forms.ColumnHeader columnHeader47;
     }
 }
