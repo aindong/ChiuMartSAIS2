@@ -31,11 +31,6 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -58,9 +53,15 @@
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rboInactive = new System.Windows.Forms.RadioButton();
             this.rboActive = new System.Windows.Forms.RadioButton();
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,6 +102,7 @@
             this.columnHeader24,
             this.columnHeader25,
             this.columnHeader26,
+            this.columnHeader10,
             this.columnHeader27,
             this.columnHeader7,
             this.columnHeader8,
@@ -114,59 +116,6 @@
             this.listView1.TabIndex = 44;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // btnClose
-            // 
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(15, 316);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(145, 57);
-            this.btnClose.TabIndex = 48;
-            this.btnClose.Text = "&Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(15, 248);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(145, 57);
-            this.btnDelete.TabIndex = 47;
-            this.btnDelete.Text = "&Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Location = new System.Drawing.Point(15, 174);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(145, 57);
-            this.btnEdit.TabIndex = 46;
-            this.btnEdit.Text = "&Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(15, 99);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(145, 57);
-            this.btnAdd.TabIndex = 45;
-            this.btnAdd.Text = "&Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 51;
-            this.label2.Text = "Search :";
             // 
             // columnHeader1
             // 
@@ -258,6 +207,59 @@
             // 
             this.columnHeader9.Text = "Status";
             // 
+            // btnClose
+            // 
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Location = new System.Drawing.Point(15, 316);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(145, 57);
+            this.btnClose.TabIndex = 48;
+            this.btnClose.Text = "&Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Location = new System.Drawing.Point(15, 248);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(145, 57);
+            this.btnDelete.TabIndex = 47;
+            this.btnDelete.Text = "&Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Location = new System.Drawing.Point(15, 174);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(145, 57);
+            this.btnEdit.TabIndex = 46;
+            this.btnEdit.Text = "&Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Location = new System.Drawing.Point(15, 99);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(145, 57);
+            this.btnAdd.TabIndex = 45;
+            this.btnAdd.Text = "&Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 51;
+            this.label2.Text = "Search :";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rboInactive);
@@ -289,6 +291,10 @@
             this.rboActive.TabStop = true;
             this.rboActive.Text = "Active";
             this.rboActive.UseVisualStyleBackColor = true;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Cheque Monitoring";
             // 
             // frmPermissions
             // 
@@ -348,5 +354,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rboInactive;
         private System.Windows.Forms.RadioButton rboActive;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
     }
 }

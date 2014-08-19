@@ -69,6 +69,7 @@
             this.btnCategories = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlDatabaseManagement.SuspendLayout();
@@ -473,6 +474,7 @@
             // 
             this.pnlTransactions.BackColor = System.Drawing.Color.LemonChiffon;
             this.pnlTransactions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTransactions.Controls.Add(this.button1);
             this.pnlTransactions.Controls.Add(this.btnPurchaseOrder);
             this.pnlTransactions.Controls.Add(this.btnInventoryMonitoring);
             this.pnlTransactions.Controls.Add(this.btnPOS);
@@ -695,6 +697,23 @@
             this.label2.Text = "System Management";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::ChiuMartSAIS2.Properties.Resources._1400994489_purchase_order;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(12, 220);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.button1.Size = new System.Drawing.Size(293, 50);
+            this.button1.TabIndex = 7;
+            this.button1.Tag = "";
+            this.button1.Text = "Cheque Monitoring";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -765,6 +784,7 @@
         private System.Windows.Forms.Button btnConnection;
         private System.Windows.Forms.Button btnSupplier;
         private System.Windows.Forms.Button btnClient;
+        private System.Windows.Forms.Button button1;
     }
 }
 
