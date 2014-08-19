@@ -73,3 +73,6 @@ C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSA
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmChequeMonitoring.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmPermissions.resources
 C:\Users\papabear\Documents\Visual Studio 2013\Projects\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgSalesReport.resources
+C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.Dialogs.dlgPermission.resources
+C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.frmPermissions.resources
+C:\Users\NKMC\Documents\GitHub\ChiuMartSAIS2\ChiuMartSAIS2\obj\Debug\ChiuMartSAIS2.App.ReportDialog.dlgSalesReport.resources
