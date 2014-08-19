@@ -30,38 +30,38 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtRoleName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkDiscounts = new System.Windows.Forms.CheckBox();
+            this.chkPermissions = new System.Windows.Forms.CheckBox();
+            this.chkUsers = new System.Windows.Forms.CheckBox();
+            this.chkClients = new System.Windows.Forms.CheckBox();
+            this.chkSuppliers = new System.Windows.Forms.CheckBox();
+            this.chkUnits = new System.Windows.Forms.CheckBox();
+            this.chkCategories = new System.Windows.Forms.CheckBox();
+            this.chkProducts = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.checkBox13 = new System.Windows.Forms.CheckBox();
-            this.checkBox12 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.chkChequeMonitoring = new System.Windows.Forms.CheckBox();
+            this.chkPurchaseOrder = new System.Windows.Forms.CheckBox();
+            this.chkInventoryMonitoring = new System.Windows.Forms.CheckBox();
+            this.chkPointOfSales = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.checkBox17 = new System.Windows.Forms.CheckBox();
-            this.checkBox18 = new System.Windows.Forms.CheckBox();
-            this.checkBox16 = new System.Windows.Forms.CheckBox();
-            this.checkBox15 = new System.Windows.Forms.CheckBox();
-            this.checkBox14 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.chkSupplierReport = new System.Windows.Forms.CheckBox();
+            this.chkClientReport = new System.Windows.Forms.CheckBox();
+            this.chkLogsReport = new System.Windows.Forms.CheckBox();
+            this.chkUsersList = new System.Windows.Forms.CheckBox();
+            this.chkSalesReport = new System.Windows.Forms.CheckBox();
+            this.chkInventoryReport = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.chkSystemUtilities = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.checkBox19 = new System.Windows.Forms.CheckBox();
+            this.btnCheckAll = new System.Windows.Forms.Button();
+            this.btnUnCheckAll = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -91,118 +91,118 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Position name";
             // 
-            // textBox1
+            // txtRoleName
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(16, 89);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(939, 27);
-            this.textBox1.TabIndex = 2;
+            this.txtRoleName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRoleName.Location = new System.Drawing.Point(16, 89);
+            this.txtRoleName.Name = "txtRoleName";
+            this.txtRoleName.Size = new System.Drawing.Size(939, 27);
+            this.txtRoleName.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.checkBox11);
-            this.panel1.Controls.Add(this.checkBox10);
-            this.panel1.Controls.Add(this.checkBox9);
-            this.panel1.Controls.Add(this.checkBox8);
-            this.panel1.Controls.Add(this.checkBox7);
-            this.panel1.Controls.Add(this.checkBox6);
-            this.panel1.Controls.Add(this.checkBox5);
-            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Controls.Add(this.chkDiscounts);
+            this.panel1.Controls.Add(this.chkPermissions);
+            this.panel1.Controls.Add(this.chkUsers);
+            this.panel1.Controls.Add(this.chkClients);
+            this.panel1.Controls.Add(this.chkSuppliers);
+            this.panel1.Controls.Add(this.chkUnits);
+            this.panel1.Controls.Add(this.chkCategories);
+            this.panel1.Controls.Add(this.chkProducts);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(16, 141);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(274, 243);
             this.panel1.TabIndex = 3;
             // 
-            // checkBox11
+            // chkDiscounts
             // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox11.Location = new System.Drawing.Point(160, 184);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(92, 24);
-            this.checkBox11.TabIndex = 9;
-            this.checkBox11.Text = "Discounts";
-            this.checkBox11.UseVisualStyleBackColor = true;
+            this.chkDiscounts.AutoSize = true;
+            this.chkDiscounts.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDiscounts.Location = new System.Drawing.Point(160, 184);
+            this.chkDiscounts.Name = "chkDiscounts";
+            this.chkDiscounts.Size = new System.Drawing.Size(92, 24);
+            this.chkDiscounts.TabIndex = 9;
+            this.chkDiscounts.Text = "Discounts";
+            this.chkDiscounts.UseVisualStyleBackColor = true;
             // 
-            // checkBox10
+            // chkPermissions
             // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox10.Location = new System.Drawing.Point(19, 184);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(105, 24);
-            this.checkBox10.TabIndex = 8;
-            this.checkBox10.Text = "Permissions";
-            this.checkBox10.UseVisualStyleBackColor = true;
+            this.chkPermissions.AutoSize = true;
+            this.chkPermissions.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPermissions.Location = new System.Drawing.Point(19, 184);
+            this.chkPermissions.Name = "chkPermissions";
+            this.chkPermissions.Size = new System.Drawing.Size(105, 24);
+            this.chkPermissions.TabIndex = 8;
+            this.chkPermissions.Text = "Permissions";
+            this.chkPermissions.UseVisualStyleBackColor = true;
             // 
-            // checkBox9
+            // chkUsers
             // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox9.Location = new System.Drawing.Point(160, 143);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(63, 24);
-            this.checkBox9.TabIndex = 7;
-            this.checkBox9.Text = "Users";
-            this.checkBox9.UseVisualStyleBackColor = true;
+            this.chkUsers.AutoSize = true;
+            this.chkUsers.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkUsers.Location = new System.Drawing.Point(160, 143);
+            this.chkUsers.Name = "chkUsers";
+            this.chkUsers.Size = new System.Drawing.Size(63, 24);
+            this.chkUsers.TabIndex = 7;
+            this.chkUsers.Text = "Users";
+            this.chkUsers.UseVisualStyleBackColor = true;
             // 
-            // checkBox8
+            // chkClients
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox8.Location = new System.Drawing.Point(19, 143);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(72, 24);
-            this.checkBox8.TabIndex = 6;
-            this.checkBox8.Text = "Clients";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.chkClients.AutoSize = true;
+            this.chkClients.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkClients.Location = new System.Drawing.Point(19, 143);
+            this.chkClients.Name = "chkClients";
+            this.chkClients.Size = new System.Drawing.Size(72, 24);
+            this.chkClients.TabIndex = 6;
+            this.chkClients.Text = "Clients";
+            this.chkClients.UseVisualStyleBackColor = true;
             // 
-            // checkBox7
+            // chkSuppliers
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox7.Location = new System.Drawing.Point(160, 103);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(89, 24);
-            this.checkBox7.TabIndex = 5;
-            this.checkBox7.Text = "Suppliers";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.chkSuppliers.AutoSize = true;
+            this.chkSuppliers.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSuppliers.Location = new System.Drawing.Point(160, 103);
+            this.chkSuppliers.Name = "chkSuppliers";
+            this.chkSuppliers.Size = new System.Drawing.Size(89, 24);
+            this.chkSuppliers.TabIndex = 5;
+            this.chkSuppliers.Text = "Suppliers";
+            this.chkSuppliers.UseVisualStyleBackColor = true;
             // 
-            // checkBox6
+            // chkUnits
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox6.Location = new System.Drawing.Point(19, 103);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(61, 24);
-            this.checkBox6.TabIndex = 4;
-            this.checkBox6.Text = "Units";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.chkUnits.AutoSize = true;
+            this.chkUnits.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkUnits.Location = new System.Drawing.Point(19, 103);
+            this.chkUnits.Name = "chkUnits";
+            this.chkUnits.Size = new System.Drawing.Size(61, 24);
+            this.chkUnits.TabIndex = 4;
+            this.chkUnits.Text = "Units";
+            this.chkUnits.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // chkCategories
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox5.Location = new System.Drawing.Point(160, 60);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(99, 24);
-            this.checkBox5.TabIndex = 3;
-            this.checkBox5.Text = "Categories";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.chkCategories.AutoSize = true;
+            this.chkCategories.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCategories.Location = new System.Drawing.Point(160, 60);
+            this.chkCategories.Name = "chkCategories";
+            this.chkCategories.Size = new System.Drawing.Size(99, 24);
+            this.chkCategories.TabIndex = 3;
+            this.chkCategories.Text = "Categories";
+            this.chkCategories.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // chkProducts
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(19, 60);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(85, 24);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Products";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkProducts.AutoSize = true;
+            this.chkProducts.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkProducts.Location = new System.Drawing.Point(19, 60);
+            this.chkProducts.Name = "chkProducts";
+            this.chkProducts.Size = new System.Drawing.Size(85, 24);
+            this.chkProducts.TabIndex = 2;
+            this.chkProducts.Text = "Products";
+            this.chkProducts.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -220,48 +220,59 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.checkBox19);
-            this.panel2.Controls.Add(this.checkBox13);
-            this.panel2.Controls.Add(this.checkBox12);
-            this.panel2.Controls.Add(this.checkBox2);
+            this.panel2.Controls.Add(this.chkChequeMonitoring);
+            this.panel2.Controls.Add(this.chkPurchaseOrder);
+            this.panel2.Controls.Add(this.chkInventoryMonitoring);
+            this.panel2.Controls.Add(this.chkPointOfSales);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Location = new System.Drawing.Point(346, 141);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(274, 243);
             this.panel2.TabIndex = 4;
             // 
-            // checkBox13
+            // chkChequeMonitoring
             // 
-            this.checkBox13.AutoSize = true;
-            this.checkBox13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox13.Location = new System.Drawing.Point(19, 143);
-            this.checkBox13.Name = "checkBox13";
-            this.checkBox13.Size = new System.Drawing.Size(128, 24);
-            this.checkBox13.TabIndex = 4;
-            this.checkBox13.Text = "Purchase Order";
-            this.checkBox13.UseVisualStyleBackColor = true;
+            this.chkChequeMonitoring.AutoSize = true;
+            this.chkChequeMonitoring.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkChequeMonitoring.Location = new System.Drawing.Point(19, 184);
+            this.chkChequeMonitoring.Name = "chkChequeMonitoring";
+            this.chkChequeMonitoring.Size = new System.Drawing.Size(156, 24);
+            this.chkChequeMonitoring.TabIndex = 5;
+            this.chkChequeMonitoring.Text = "Cheque Monitoring";
+            this.chkChequeMonitoring.UseVisualStyleBackColor = true;
             // 
-            // checkBox12
+            // chkPurchaseOrder
             // 
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox12.Location = new System.Drawing.Point(19, 103);
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(167, 24);
-            this.checkBox12.TabIndex = 3;
-            this.checkBox12.Text = "Inventory Monitoring";
-            this.checkBox12.UseVisualStyleBackColor = true;
+            this.chkPurchaseOrder.AutoSize = true;
+            this.chkPurchaseOrder.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPurchaseOrder.Location = new System.Drawing.Point(19, 143);
+            this.chkPurchaseOrder.Name = "chkPurchaseOrder";
+            this.chkPurchaseOrder.Size = new System.Drawing.Size(128, 24);
+            this.chkPurchaseOrder.TabIndex = 4;
+            this.chkPurchaseOrder.Text = "Purchase Order";
+            this.chkPurchaseOrder.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // chkInventoryMonitoring
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(19, 60);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(118, 24);
-            this.checkBox2.TabIndex = 2;
-            this.checkBox2.Text = "Point of Sales";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.chkInventoryMonitoring.AutoSize = true;
+            this.chkInventoryMonitoring.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkInventoryMonitoring.Location = new System.Drawing.Point(19, 103);
+            this.chkInventoryMonitoring.Name = "chkInventoryMonitoring";
+            this.chkInventoryMonitoring.Size = new System.Drawing.Size(167, 24);
+            this.chkInventoryMonitoring.TabIndex = 3;
+            this.chkInventoryMonitoring.Text = "Inventory Monitoring";
+            this.chkInventoryMonitoring.UseVisualStyleBackColor = true;
+            // 
+            // chkPointOfSales
+            // 
+            this.chkPointOfSales.AutoSize = true;
+            this.chkPointOfSales.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPointOfSales.Location = new System.Drawing.Point(19, 60);
+            this.chkPointOfSales.Name = "chkPointOfSales";
+            this.chkPointOfSales.Size = new System.Drawing.Size(118, 24);
+            this.chkPointOfSales.TabIndex = 2;
+            this.chkPointOfSales.Text = "Point of Sales";
+            this.chkPointOfSales.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -279,83 +290,83 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.checkBox17);
-            this.panel3.Controls.Add(this.checkBox18);
-            this.panel3.Controls.Add(this.checkBox16);
-            this.panel3.Controls.Add(this.checkBox15);
-            this.panel3.Controls.Add(this.checkBox14);
-            this.panel3.Controls.Add(this.checkBox3);
+            this.panel3.Controls.Add(this.chkSupplierReport);
+            this.panel3.Controls.Add(this.chkClientReport);
+            this.panel3.Controls.Add(this.chkLogsReport);
+            this.panel3.Controls.Add(this.chkUsersList);
+            this.panel3.Controls.Add(this.chkSalesReport);
+            this.panel3.Controls.Add(this.chkInventoryReport);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Location = new System.Drawing.Point(681, 141);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(274, 243);
             this.panel3.TabIndex = 5;
             // 
-            // checkBox17
+            // chkSupplierReport
             // 
-            this.checkBox17.AutoSize = true;
-            this.checkBox17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox17.Location = new System.Drawing.Point(152, 143);
-            this.checkBox17.Name = "checkBox17";
-            this.checkBox17.Size = new System.Drawing.Size(107, 17);
-            this.checkBox17.TabIndex = 7;
-            this.checkBox17.Text = "Supplier Report";
-            this.checkBox17.UseVisualStyleBackColor = true;
+            this.chkSupplierReport.AutoSize = true;
+            this.chkSupplierReport.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSupplierReport.Location = new System.Drawing.Point(152, 143);
+            this.chkSupplierReport.Name = "chkSupplierReport";
+            this.chkSupplierReport.Size = new System.Drawing.Size(107, 17);
+            this.chkSupplierReport.TabIndex = 7;
+            this.chkSupplierReport.Text = "Supplier Report";
+            this.chkSupplierReport.UseVisualStyleBackColor = true;
             // 
-            // checkBox18
+            // chkClientReport
             // 
-            this.checkBox18.AutoSize = true;
-            this.checkBox18.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox18.Location = new System.Drawing.Point(4, 143);
-            this.checkBox18.Name = "checkBox18";
-            this.checkBox18.Size = new System.Drawing.Size(115, 24);
-            this.checkBox18.TabIndex = 6;
-            this.checkBox18.Text = "Client Report";
-            this.checkBox18.UseVisualStyleBackColor = true;
+            this.chkClientReport.AutoSize = true;
+            this.chkClientReport.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkClientReport.Location = new System.Drawing.Point(4, 143);
+            this.chkClientReport.Name = "chkClientReport";
+            this.chkClientReport.Size = new System.Drawing.Size(115, 24);
+            this.chkClientReport.TabIndex = 6;
+            this.chkClientReport.Text = "Client Report";
+            this.chkClientReport.UseVisualStyleBackColor = true;
             // 
-            // checkBox16
+            // chkLogsReport
             // 
-            this.checkBox16.AutoSize = true;
-            this.checkBox16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox16.Location = new System.Drawing.Point(152, 103);
-            this.checkBox16.Name = "checkBox16";
-            this.checkBox16.Size = new System.Drawing.Size(108, 24);
-            this.checkBox16.TabIndex = 5;
-            this.checkBox16.Text = "Logs Report";
-            this.checkBox16.UseVisualStyleBackColor = true;
+            this.chkLogsReport.AutoSize = true;
+            this.chkLogsReport.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLogsReport.Location = new System.Drawing.Point(152, 103);
+            this.chkLogsReport.Name = "chkLogsReport";
+            this.chkLogsReport.Size = new System.Drawing.Size(108, 24);
+            this.chkLogsReport.TabIndex = 5;
+            this.chkLogsReport.Text = "Logs Report";
+            this.chkLogsReport.UseVisualStyleBackColor = true;
             // 
-            // checkBox15
+            // chkUsersList
             // 
-            this.checkBox15.AutoSize = true;
-            this.checkBox15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox15.Location = new System.Drawing.Point(4, 103);
-            this.checkBox15.Name = "checkBox15";
-            this.checkBox15.Size = new System.Drawing.Size(89, 24);
-            this.checkBox15.TabIndex = 4;
-            this.checkBox15.Text = "Users List";
-            this.checkBox15.UseVisualStyleBackColor = true;
+            this.chkUsersList.AutoSize = true;
+            this.chkUsersList.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkUsersList.Location = new System.Drawing.Point(4, 103);
+            this.chkUsersList.Name = "chkUsersList";
+            this.chkUsersList.Size = new System.Drawing.Size(89, 24);
+            this.chkUsersList.TabIndex = 4;
+            this.chkUsersList.Text = "Users List";
+            this.chkUsersList.UseVisualStyleBackColor = true;
             // 
-            // checkBox14
+            // chkSalesReport
             // 
-            this.checkBox14.AutoSize = true;
-            this.checkBox14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox14.Location = new System.Drawing.Point(152, 60);
-            this.checkBox14.Name = "checkBox14";
-            this.checkBox14.Size = new System.Drawing.Size(111, 24);
-            this.checkBox14.TabIndex = 3;
-            this.checkBox14.Text = "Sales Report";
-            this.checkBox14.UseVisualStyleBackColor = true;
+            this.chkSalesReport.AutoSize = true;
+            this.chkSalesReport.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSalesReport.Location = new System.Drawing.Point(152, 60);
+            this.chkSalesReport.Name = "chkSalesReport";
+            this.chkSalesReport.Size = new System.Drawing.Size(111, 24);
+            this.chkSalesReport.TabIndex = 3;
+            this.chkSalesReport.Text = "Sales Report";
+            this.chkSalesReport.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // chkInventoryReport
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.Location = new System.Drawing.Point(4, 60);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(138, 24);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "Inventory Report";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.chkInventoryReport.AutoSize = true;
+            this.chkInventoryReport.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkInventoryReport.Location = new System.Drawing.Point(4, 60);
+            this.chkInventoryReport.Name = "chkInventoryReport";
+            this.chkInventoryReport.Size = new System.Drawing.Size(138, 24);
+            this.chkInventoryReport.TabIndex = 2;
+            this.chkInventoryReport.Text = "Inventory Report";
+            this.chkInventoryReport.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -373,23 +384,23 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.checkBox4);
+            this.panel4.Controls.Add(this.chkSystemUtilities);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Location = new System.Drawing.Point(16, 390);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(274, 133);
             this.panel4.TabIndex = 6;
             // 
-            // checkBox4
+            // chkSystemUtilities
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox4.Location = new System.Drawing.Point(19, 60);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(129, 24);
-            this.checkBox4.TabIndex = 2;
-            this.checkBox4.Text = "System Utilities";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.chkSystemUtilities.AutoSize = true;
+            this.chkSystemUtilities.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSystemUtilities.Location = new System.Drawing.Point(19, 60);
+            this.chkSystemUtilities.Name = "chkSystemUtilities";
+            this.chkSystemUtilities.Size = new System.Drawing.Size(129, 24);
+            this.chkSystemUtilities.TabIndex = 2;
+            this.chkSystemUtilities.Text = "System Utilities";
+            this.chkSystemUtilities.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -404,67 +415,60 @@
             this.label6.Text = "Others";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // btnCheckAll
             // 
-            this.button1.Location = new System.Drawing.Point(604, 438);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(171, 37);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Check All";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCheckAll.Location = new System.Drawing.Point(604, 438);
+            this.btnCheckAll.Name = "btnCheckAll";
+            this.btnCheckAll.Size = new System.Drawing.Size(171, 37);
+            this.btnCheckAll.TabIndex = 7;
+            this.btnCheckAll.Text = "Check All";
+            this.btnCheckAll.UseVisualStyleBackColor = true;
+            this.btnCheckAll.Click += new System.EventHandler(this.btnCheckAll_Click);
             // 
-            // button2
+            // btnUnCheckAll
             // 
-            this.button2.Location = new System.Drawing.Point(781, 438);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(171, 37);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Un-check All";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnUnCheckAll.Location = new System.Drawing.Point(781, 438);
+            this.btnUnCheckAll.Name = "btnUnCheckAll";
+            this.btnUnCheckAll.Size = new System.Drawing.Size(171, 37);
+            this.btnUnCheckAll.TabIndex = 8;
+            this.btnUnCheckAll.Text = "Un-check All";
+            this.btnUnCheckAll.UseVisualStyleBackColor = true;
+            this.btnUnCheckAll.Click += new System.EventHandler(this.btnUnCheckAll_Click);
             // 
-            // button3
+            // btnCancel
             // 
-            this.button3.Location = new System.Drawing.Point(604, 486);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(171, 37);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnCancel.Location = new System.Drawing.Point(604, 486);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(171, 37);
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // button4
+            // btnSubmit
             // 
-            this.button4.Location = new System.Drawing.Point(781, 486);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(171, 37);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Submit";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox19
-            // 
-            this.checkBox19.AutoSize = true;
-            this.checkBox19.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox19.Location = new System.Drawing.Point(19, 184);
-            this.checkBox19.Name = "checkBox19";
-            this.checkBox19.Size = new System.Drawing.Size(156, 24);
-            this.checkBox19.TabIndex = 5;
-            this.checkBox19.Text = "Cheque Monitoring";
-            this.checkBox19.UseVisualStyleBackColor = true;
+            this.btnSubmit.Location = new System.Drawing.Point(781, 486);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(171, 37);
+            this.btnSubmit.TabIndex = 10;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
             // 
             // dlgPermission
             // 
+            this.AcceptButton = this.btnSubmit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 531);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnUnCheckAll);
+            this.Controls.Add(this.btnCheckAll);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtRoleName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -492,37 +496,37 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtRoleName;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkProducts;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox chkPointOfSales;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox chkInventoryReport;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox chkSystemUtilities;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBox11;
-        private System.Windows.Forms.CheckBox checkBox10;
-        private System.Windows.Forms.CheckBox checkBox9;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox13;
-        private System.Windows.Forms.CheckBox checkBox12;
-        private System.Windows.Forms.CheckBox checkBox17;
-        private System.Windows.Forms.CheckBox checkBox18;
-        private System.Windows.Forms.CheckBox checkBox16;
-        private System.Windows.Forms.CheckBox checkBox15;
-        private System.Windows.Forms.CheckBox checkBox14;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.CheckBox checkBox19;
+        private System.Windows.Forms.CheckBox chkDiscounts;
+        private System.Windows.Forms.CheckBox chkPermissions;
+        private System.Windows.Forms.CheckBox chkUsers;
+        private System.Windows.Forms.CheckBox chkClients;
+        private System.Windows.Forms.CheckBox chkSuppliers;
+        private System.Windows.Forms.CheckBox chkUnits;
+        private System.Windows.Forms.CheckBox chkCategories;
+        private System.Windows.Forms.CheckBox chkPurchaseOrder;
+        private System.Windows.Forms.CheckBox chkInventoryMonitoring;
+        private System.Windows.Forms.CheckBox chkSupplierReport;
+        private System.Windows.Forms.CheckBox chkClientReport;
+        private System.Windows.Forms.CheckBox chkLogsReport;
+        private System.Windows.Forms.CheckBox chkUsersList;
+        private System.Windows.Forms.CheckBox chkSalesReport;
+        private System.Windows.Forms.Button btnCheckAll;
+        private System.Windows.Forms.Button btnUnCheckAll;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.CheckBox chkChequeMonitoring;
     }
 }

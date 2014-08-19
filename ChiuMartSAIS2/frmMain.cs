@@ -61,7 +61,8 @@ namespace ChiuMartSAIS2
 
         private void btnPermissions_Click(object sender, EventArgs e)
         {
-
+            App.frmPermissions frm = new App.frmPermissions();
+            frm.ShowDialog();
         }
 
         private void btnPOS_Click(object sender, EventArgs e)

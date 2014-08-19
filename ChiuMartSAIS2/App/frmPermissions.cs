@@ -16,5 +16,14 @@ namespace ChiuMartSAIS2.App
         {
             InitializeComponent();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Dialogs.dlgPermission dlg = new Dialogs.dlgPermission();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }
