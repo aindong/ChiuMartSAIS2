@@ -39,8 +39,10 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lstProducts = new System.Windows.Forms.ListView();
+            this.lstCheques = new System.Windows.Forms.ListView();
             this.lblProcessing = new System.Windows.Forms.Label();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lblAll
@@ -58,19 +60,23 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(759, 389);
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(895, 388);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(180, 49);
             this.button3.TabIndex = 21;
             this.button3.Text = "Cancel";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(520, 8);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(520, 5);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 13);
+            this.label5.Size = new System.Drawing.Size(127, 16);
             this.label5.TabIndex = 20;
             this.label5.Text = "Search Client Name";
             // 
@@ -79,7 +85,7 @@
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(523, 24);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(416, 29);
+            this.textBox1.Size = new System.Drawing.Size(552, 29);
             this.textBox1.TabIndex = 19;
             // 
             // lblCleared
@@ -97,52 +103,54 @@
             // 
             // columnHeader6
             // 
-            this.columnHeader6.Text = "Last Updated";
-            this.columnHeader6.Width = 184;
+            this.columnHeader6.Text = "Processing Date";
+            this.columnHeader6.Width = 153;
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "Current Stocks";
-            this.columnHeader5.Width = 176;
+            this.columnHeader5.Text = "Total Amount";
+            this.columnHeader5.Width = 120;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Safety Stocks";
-            this.columnHeader4.Width = 132;
+            this.columnHeader4.Text = "Branch";
+            this.columnHeader4.Width = 150;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Unit";
-            this.columnHeader3.Width = 143;
+            this.columnHeader3.Text = "Bank";
+            this.columnHeader3.Width = 190;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Product";
-            this.columnHeader2.Width = 283;
+            this.columnHeader2.Text = "Name";
+            this.columnHeader2.Width = 185;
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "ID";
-            this.columnHeader1.Width = 0;
+            this.columnHeader1.Text = "Cheque No.";
+            this.columnHeader1.Width = 125;
             // 
-            // lstProducts
+            // lstCheques
             // 
-            this.lstProducts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstCheques.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader8,
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5,
-            this.columnHeader6});
-            this.lstProducts.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstProducts.FullRowSelect = true;
-            this.lstProducts.GridLines = true;
-            this.lstProducts.Location = new System.Drawing.Point(12, 59);
-            this.lstProducts.Name = "lstProducts";
-            this.lstProducts.Size = new System.Drawing.Size(927, 324);
-            this.lstProducts.TabIndex = 12;
-            this.lstProducts.UseCompatibleStateImageBehavior = false;
-            this.lstProducts.View = System.Windows.Forms.View.Details;
+            this.columnHeader6,
+            this.columnHeader7});
+            this.lstCheques.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstCheques.FullRowSelect = true;
+            this.lstCheques.GridLines = true;
+            this.lstCheques.Location = new System.Drawing.Point(12, 59);
+            this.lstCheques.Name = "lstCheques";
+            this.lstCheques.Size = new System.Drawing.Size(1063, 324);
+            this.lstCheques.TabIndex = 12;
+            this.lstCheques.UseCompatibleStateImageBehavior = false;
+            this.lstCheques.View = System.Windows.Forms.View.Details;
             // 
             // lblProcessing
             // 
@@ -157,18 +165,28 @@
             this.lblProcessing.TabIndex = 13;
             this.lblProcessing.Text = "Processing";
             // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Status";
+            this.columnHeader7.Width = 130;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "id";
+            this.columnHeader8.Width = 0;
+            // 
             // frmChequeMonitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(949, 457);
+            this.ClientSize = new System.Drawing.Size(1087, 449);
             this.Controls.Add(this.lblAll);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblCleared);
             this.Controls.Add(this.lblProcessing);
-            this.Controls.Add(this.lstProducts);
+            this.Controls.Add(this.lstCheques);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -176,6 +194,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cheque Monitoring";
+            this.Load += new System.EventHandler(this.frmChequeMonitoring_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,7 +213,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ListView lstProducts;
+        private System.Windows.Forms.ListView lstCheques;
         private System.Windows.Forms.Label lblProcessing;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
     }
 }

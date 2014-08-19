@@ -262,5 +262,16 @@ namespace ChiuMartSAIS2.App
 
             }
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            // Open the transaction history form
+            Dialogs.dlgTransactionHistoy frm = new Dialogs.dlgTransactionHistoy();
+            // Set the variables
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }
