@@ -22,6 +22,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         private void dlgCheckout_Load(object sender, EventArgs e)
         {
             txtAmount.Text = total;
+            txtReceivableTotal.Text = total;
 
             txtCashRendered.Focus();
             txtCashRendered.SelectAll();
@@ -41,6 +42,18 @@ namespace ChiuMartSAIS2.App.Dialogs
             catch (Exception ex)
             {
                 txtChange.Text = "0.0";
+            }
+        }
+
+        private void txtCash_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                txtBalance.Text = (Math.Abs(double.Parse(txtReceivableTotal.Text) - double.Parse(txtCash.Text))).ToString();
+            }
+            catch (Exception ex)
+            {
+                txtBalance.Text = "0.0";
             }
         }
     }

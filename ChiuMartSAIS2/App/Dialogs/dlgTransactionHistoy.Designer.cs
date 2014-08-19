@@ -33,16 +33,17 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.lstClients = new System.Windows.Forms.ListView();
-            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.btnView = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -113,6 +114,31 @@
             this.lstClients.UseCompatibleStateImageBehavior = false;
             this.lstClients.View = System.Windows.Forms.View.Details;
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "OR Number";
+            this.columnHeader1.Width = 122;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Client Name";
+            this.columnHeader2.Width = 250;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Date Processed";
+            this.columnHeader3.Width = 160;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Total Amount";
+            this.columnHeader4.Width = 150;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Payment Method";
+            this.columnHeader5.Width = 130;
+            // 
             // dtpFrom
             // 
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -166,30 +192,20 @@
             this.dtpTo.Size = new System.Drawing.Size(198, 26);
             this.dtpTo.TabIndex = 38;
             // 
-            // columnHeader1
+            // btnView
             // 
-            this.columnHeader1.Text = "OR Number";
-            this.columnHeader1.Width = 122;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Client Name";
-            this.columnHeader2.Width = 250;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Date Processed";
-            this.columnHeader3.Width = 160;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Total Amount";
-            this.columnHeader4.Width = 150;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Payment Method";
-            this.columnHeader5.Width = 130;
+            this.btnView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnView.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnView.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnView.Location = new System.Drawing.Point(459, 448);
+            this.btnView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(137, 36);
+            this.btnView.TabIndex = 39;
+            this.btnView.Text = "View";
+            this.btnView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnView.UseVisualStyleBackColor = true;
             // 
             // dlgTransactionHistoy
             // 
@@ -198,6 +214,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(898, 494);
+            this.Controls.Add(this.btnView);
             this.Controls.Add(this.dtpTo);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label3);
@@ -240,5 +257,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.Button btnView;
     }
 }
