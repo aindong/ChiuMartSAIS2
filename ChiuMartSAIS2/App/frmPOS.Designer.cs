@@ -57,6 +57,8 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtOrNo = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -135,9 +137,9 @@
             this.txtClient.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtClient.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtClient.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClient.Location = new System.Drawing.Point(12, 92);
+            this.txtClient.Location = new System.Drawing.Point(225, 92);
             this.txtClient.Name = "txtClient";
-            this.txtClient.Size = new System.Drawing.Size(612, 25);
+            this.txtClient.Size = new System.Drawing.Size(399, 25);
             this.txtClient.TabIndex = 7;
             this.txtClient.Text = "Walk-in Client";
             this.txtClient.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -147,7 +149,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 72);
+            this.label4.Location = new System.Drawing.Point(225, 72);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 17);
             this.label4.TabIndex = 8;
@@ -344,12 +346,35 @@
             this.Column6.HeaderText = "Total";
             this.Column6.Name = "Column6";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 72);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 17);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "OR Number";
+            // 
+            // txtOrNo
+            // 
+            this.txtOrNo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtOrNo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtOrNo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOrNo.Location = new System.Drawing.Point(12, 92);
+            this.txtOrNo.Name = "txtOrNo";
+            this.txtOrNo.Size = new System.Drawing.Size(207, 25);
+            this.txtOrNo.TabIndex = 22;
+            this.txtOrNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmPOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 593);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtOrNo);
             this.Controls.Add(this.dgvCart);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.statusStrip1);
@@ -411,5 +436,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtOrNo;
     }
 }
