@@ -55,6 +55,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -94,6 +95,12 @@
     </Compile>
     <Compile Include="App\Dialogs\dlgPasswordAuth.Designer.cs">
       <DependentUpon>dlgPasswordAuth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgPermission.Designer.cs">
+      <DependentUpon>dlgPermission.cs</DependentUpon>
     </Compile>
     <Compile Include="App\Dialogs\dlgProducts.cs">
       <SubType>Form</SubType>
@@ -155,6 +162,12 @@
     <Compile Include="App\frmInventoryMonitoring.Designer.cs">
       <DependentUpon>frmInventoryMonitoring.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\frmPermissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\frmPermissions.Designer.cs">
+      <DependentUpon>frmPermissions.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\frmPO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +222,12 @@
     <Compile Include="App\ReportDialog\dlgProductReport.Designer.cs">
       <DependentUpon>dlgProductReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\ReportDialog\dlgSalesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\ReportDialog\dlgSalesReport.Designer.cs">
+      <DependentUpon>dlgSalesReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\ReportDialog\dlgSupplierReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgPasswordAuth.resx">
       <DependentUpon>dlgPasswordAuth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgPermission.resx">
+      <DependentUpon>dlgPermission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgProducts.resx">
       <DependentUpon>dlgProducts.cs</DependentUpon>
@@ -269,6 +291,9 @@
     <EmbeddedResource Include="App\frmInventoryMonitoring.resx">
       <DependentUpon>frmInventoryMonitoring.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="App\frmPermissions.resx">
+      <DependentUpon>frmPermissions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App\frmPOS.resx">
       <DependentUpon>frmPOS.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\ReportDialog\dlgProductReport.resx">
       <DependentUpon>dlgProductReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\ReportDialog\dlgSalesReport.resx">
+      <DependentUpon>dlgSalesReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\ReportDialog\dlgSupplierReport.resx">
       <DependentUpon>dlgSupplierReport.cs</DependentUpon>
