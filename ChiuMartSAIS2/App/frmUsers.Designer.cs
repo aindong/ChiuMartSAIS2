@@ -32,18 +32,22 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rboInactive = new System.Windows.Forms.RadioButton();
+            this.rboActive = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView1
@@ -52,6 +56,8 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
+            this.columnHeader7,
+            this.columnHeader8,
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6});
@@ -60,32 +66,56 @@
             this.listView1.Location = new System.Drawing.Point(189, 117);
             this.listView1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(598, 246);
+            this.listView1.Size = new System.Drawing.Size(852, 246);
             this.listView1.TabIndex = 55;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.Click += new System.EventHandler(this.listView1_Click);
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "User ID";
-            this.columnHeader1.Width = 95;
+            this.columnHeader1.Width = 68;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "User Name";
-            this.columnHeader2.Width = 237;
+            this.columnHeader2.Width = 131;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Password";
-            this.columnHeader3.Width = 278;
+            this.columnHeader3.Width = 130;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Full Name";
+            this.columnHeader7.Width = 243;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Permission ID";
+            this.columnHeader8.Width = 113;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Created Date";
+            this.columnHeader4.Width = 76;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Updated Date";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Status";
             // 
             // statusStrip1
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 375);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(816, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1053, 22);
             this.statusStrip1.TabIndex = 61;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -103,18 +133,19 @@
             // btnDelete
             // 
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(28, 251);
+            this.btnDelete.Location = new System.Drawing.Point(28, 247);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(149, 51);
             this.btnDelete.TabIndex = 59;
             this.btnDelete.Text = "&Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Location = new System.Drawing.Point(28, 184);
+            this.btnEdit.Location = new System.Drawing.Point(28, 182);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(149, 51);
@@ -135,34 +166,13 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(704, 6);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(82, 24);
-            this.radioButton2.TabIndex = 65;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Inactive";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(612, 6);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(70, 24);
-            this.radioButton1.TabIndex = 64;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Active";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
             // txtSearch
             // 
             this.txtSearch.Location = new System.Drawing.Point(28, 36);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(759, 26);
+            this.txtSearch.Size = new System.Drawing.Size(1013, 26);
             this.txtSearch.TabIndex = 63;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label1
             // 
@@ -173,25 +183,46 @@
             this.label1.TabIndex = 62;
             this.label1.Text = "Search :";
             // 
-            // columnHeader4
+            // groupBox1
             // 
-            this.columnHeader4.Text = "Created Date";
+            this.groupBox1.Controls.Add(this.rboInactive);
+            this.groupBox1.Controls.Add(this.rboActive);
+            this.groupBox1.Location = new System.Drawing.Point(841, 58);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 47);
+            this.groupBox1.TabIndex = 64;
+            this.groupBox1.TabStop = false;
             // 
-            // columnHeader5
+            // rboInactive
             // 
-            this.columnHeader5.Text = "Updated Date";
+            this.rboInactive.AutoSize = true;
+            this.rboInactive.Location = new System.Drawing.Point(112, 17);
+            this.rboInactive.Name = "rboInactive";
+            this.rboInactive.Size = new System.Drawing.Size(82, 24);
+            this.rboInactive.TabIndex = 69;
+            this.rboInactive.TabStop = true;
+            this.rboInactive.Text = "Inactive";
+            this.rboInactive.UseVisualStyleBackColor = true;
+            this.rboInactive.CheckedChanged += new System.EventHandler(this.rboInactive_CheckedChanged);
             // 
-            // columnHeader6
+            // rboActive
             // 
-            this.columnHeader6.Text = "Status";
+            this.rboActive.AutoSize = true;
+            this.rboActive.Checked = true;
+            this.rboActive.Location = new System.Drawing.Point(20, 17);
+            this.rboActive.Name = "rboActive";
+            this.rboActive.Size = new System.Drawing.Size(70, 24);
+            this.rboActive.TabIndex = 68;
+            this.rboActive.TabStop = true;
+            this.rboActive.Text = "Active";
+            this.rboActive.UseVisualStyleBackColor = true;
+            this.rboActive.CheckedChanged += new System.EventHandler(this.rboActive_CheckedChanged);
             // 
             // frmUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 397);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.ClientSize = new System.Drawing.Size(1053, 397);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);
@@ -200,6 +231,7 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -209,6 +241,9 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Users Maintenance";
+            this.Load += new System.EventHandler(this.frmUsers_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,12 +260,15 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rboInactive;
+        private System.Windows.Forms.RadioButton rboActive;
     }
 }
