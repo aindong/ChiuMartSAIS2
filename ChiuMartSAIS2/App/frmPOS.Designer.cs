@@ -30,7 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnNewTransaction = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -70,7 +70,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.DimGray;
             this.panel1.Controls.Add(this.button8);
-            this.panel1.Controls.Add(this.button7);
+            this.panel1.Controls.Add(this.btnNewTransaction);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -89,15 +89,16 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // button7
+            // btnNewTransaction
             // 
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(667, 9);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(334, 42);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "New Transaction";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnNewTransaction.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewTransaction.Location = new System.Drawing.Point(667, 9);
+            this.btnNewTransaction.Name = "btnNewTransaction";
+            this.btnNewTransaction.Size = new System.Drawing.Size(334, 42);
+            this.btnNewTransaction.TabIndex = 7;
+            this.btnNewTransaction.Text = "New Transaction";
+            this.btnNewTransaction.UseVisualStyleBackColor = true;
+            this.btnNewTransaction.Click += new System.EventHandler(this.btnNewTransaction_Click);
             // 
             // label1
             // 
@@ -306,8 +307,11 @@
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.Size = new System.Drawing.Size(612, 388);
             this.dgvCart.TabIndex = 21;
+            this.dgvCart.EditModeChanged += new System.EventHandler(this.dgvCart_EditModeChanged);
             this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellValueChanged);
+            this.dgvCart.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellEndEdit);
             this.dgvCart.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellValueChanged);
+            this.dgvCart.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvCart_EditingControlShowing);
             // 
             // Column1
             // 
@@ -417,7 +421,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Button btnVoid;
         private System.Windows.Forms.Button btnCheckout;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnNewTransaction;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label9;

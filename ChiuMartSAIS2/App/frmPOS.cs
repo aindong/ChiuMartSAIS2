@@ -16,6 +16,8 @@ namespace ChiuMartSAIS2.App
     public partial class frmPOS : Form
     {
         private Classes.Configuration conf;
+        private AutoCompleteStringCollection prodSource = new AutoCompleteStringCollection();
+        private AutoCompleteStringCollection unitSource = new AutoCompleteStringCollection();
 
         public frmPOS()
         {
@@ -73,8 +75,8 @@ namespace ChiuMartSAIS2.App
 
                     while (reader.Read())
                     {
-                        string product = reader["productName"].ToString() + " - " + reader["productId"].ToString();
-                        txtAddress.AutoCompleteCustomSource.AddRange(new String[] { product });
+                        string product = reader["productName"].ToString();
+                        prodSource.AddRange(new String[] { product });
                     }
 
                 }
@@ -87,11 +89,11 @@ namespace ChiuMartSAIS2.App
         }
 
         /// <summary>
-        /// Get the product by id
+        /// Get the product by product name
         /// </summary>
-        /// <param name="id">Id of the product</param>
+        /// <param name="prodname">Name of the product</param>
         /// <returns>Product Array</returns>
-        private String[] getProductById(int id)
+        private String[] getProductByName(string prodname)
         {
             string[] result = new string[6];
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
@@ -99,17 +101,17 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.status = 'active' AND p.productId = @id";
+                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.status = 'active' AND p.productName = @prodname";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
-                    sqlCmd.Parameters.AddWithValue("id", id);
+                    sqlCmd.Parameters.AddWithValue("prodname", prodname);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
                     while (reader.Read())
                     {
                         result[0] = reader["productId"].ToString();
-                        result[1] = "";
+                        result[1] = "1";
                         result[2] = reader["productName"].ToString();
                         result[3] = reader["unitDesc"].ToString();
                         result[4] = reader["productPrice"].ToString();
@@ -167,6 +169,9 @@ namespace ChiuMartSAIS2.App
         {
             populateClientTextbox();
             populateProductTextbox();
+
+            // GENERATE NEW OR
+            txtOrNo.Text = generateOR();
         }
 
         private void txtClient_Click(object sender, EventArgs e)
@@ -181,9 +186,6 @@ namespace ChiuMartSAIS2.App
             {
                 string[] product = Regex.Split(txtAddress.Text, " - ");
                 int id = Int32.Parse(product[1]);
-
-                // Add to cart
-                dgvCart.Rows.Add(getProductById(id));
 
                 // update the full total price of items on the cart
                 updateTotalPrice();
@@ -272,6 +274,129 @@ namespace ChiuMartSAIS2.App
             {
 
             }
+        }
+
+        /// <summary>
+        /// GENERATE NEW OR NUMBER
+        /// </summary>
+        private string generateOR()
+        {
+            string lastOrNumber = "";
+            DateTime today = DateTime.Today;
+            int currentYear = today.Year;
+            int currentMonth = today.Month + 1;
+
+            string generatedOR = "";
+
+            // Get the last OR number
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "SELECT * FROM `or` ORDER BY id ASC LIMIT 1";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        lastOrNumber = reader["ornumber"].ToString();
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Can't connect to database: " + ex.Message.ToString(), errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // Check if there is no last OR number
+            if (lastOrNumber == "")
+            {
+                // Create the first one
+                generatedOR = currentYear.ToString() + currentMonth.ToString("00") + "0001";
+            }
+            else
+            {
+                // Create a new one
+                string lastYear = lastOrNumber.Substring(0, 4);
+                string lastMonth = lastOrNumber.Substring(4, 2);
+                string lastOr = lastOrNumber.Substring(6, 4);
+
+                if (currentYear.ToString() == lastYear)
+                {
+                    currentYear = Int32.Parse(lastYear);
+                }
+                else
+                {
+                    lastOr = "0000";
+                }
+
+                // convert the or number to int and increment it by 1
+                int orNum = Int32.Parse(lastOr) + 1;
+
+                generatedOR = currentYear.ToString() + currentMonth.ToString() + orNum.ToString("0000");
+            }
+
+            return generatedOR;
+        }
+
+        private void dgvCart_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            TextBox prodName = e.Control as TextBox;
+            if (dgvCart.CurrentCell.ColumnIndex == 2)
+            {
+                if (prodName != null)
+                {
+                    prodName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    prodName.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    prodName.AutoCompleteCustomSource = prodSource;
+                }
+            }
+            else
+            {
+                prodName.AutoCompleteCustomSource = null;
+            }
+        }
+
+        private void dgvCart_EditModeChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Done editing");
+        }
+
+        private void dgvCart_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvCart.CurrentCell.ColumnIndex == 2)
+            {
+                try
+                {
+                    string[] item = getProductByName(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value.ToString());
+
+                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[0].Value = item[0];
+                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[1].Value = 1;
+                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value = item[3];
+                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value = item[4];
+                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[5].Value = item[5];
+
+                    updateTotalPrice();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, "Please enter a product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+            }
+            else
+            {
+                cartUpdateTotal();
+                updateTotalPrice();
+            }
+            
+        }
+
+        private void btnNewTransaction_Click(object sender, EventArgs e)
+        {
+            dgvCart.Rows.Clear();
         }
     }
 }
