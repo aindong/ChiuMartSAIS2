@@ -202,7 +202,7 @@ namespace ChiuMartSAIS2.App
 
         private void dgvCart_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            cartUpdateTotal();
+            //cartUpdateTotal();
         }
 
         /// <summary>
