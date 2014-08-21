@@ -327,5 +327,10 @@ namespace ChiuMartSAIS2.App
             btnDelete.Text = "&Restore";
             populateSupplier();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
