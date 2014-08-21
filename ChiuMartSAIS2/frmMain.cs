@@ -122,5 +122,17 @@ namespace ChiuMartSAIS2
             App.ReportDialog.dlgSupplierReport frm = new App.ReportDialog.dlgSupplierReport();
             frm.ShowDialog();
         }
+
+        private void btnRestore_Click(object sender, EventArgs e)
+        {
+            App.Dialogs.dlgRestoreDB frm = new App.Dialogs.dlgRestoreDB();
+            frm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            App.frmChequeMonitoring frm = new App.frmChequeMonitoring();
+            frm.ShowDialog();
+        }
     }
 }

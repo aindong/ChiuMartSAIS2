@@ -56,6 +56,7 @@
             this.btnInventoryReport = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.pnlTransactions = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnPurchaseOrder = new System.Windows.Forms.Button();
             this.btnInventoryMonitoring = new System.Windows.Forms.Button();
             this.btnPOS = new System.Windows.Forms.Button();
@@ -69,7 +70,6 @@
             this.btnCategories = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlDatabaseManagement.SuspendLayout();
@@ -215,6 +215,7 @@
             this.btnRestore.Text = "Restore";
             this.btnRestore.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRestore.UseVisualStyleBackColor = false;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // btnBackup
             // 
@@ -484,6 +485,24 @@
             this.pnlTransactions.Size = new System.Drawing.Size(322, 294);
             this.pnlTransactions.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::ChiuMartSAIS2.Properties.Resources._1400994489_purchase_order;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(12, 220);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.button1.Size = new System.Drawing.Size(293, 50);
+            this.button1.TabIndex = 7;
+            this.button1.Tag = "";
+            this.button1.Text = "Cheque Monitoring";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnPurchaseOrder
             // 
             this.btnPurchaseOrder.BackColor = System.Drawing.Color.MediumVioletRed;
@@ -696,23 +715,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "System Management";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::ChiuMartSAIS2.Properties.Resources._1400994489_purchase_order;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(12, 220);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button1.Size = new System.Drawing.Size(293, 50);
-            this.button1.TabIndex = 7;
-            this.button1.Tag = "";
-            this.button1.Text = "Cheque Monitoring";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // frmMain
             // 

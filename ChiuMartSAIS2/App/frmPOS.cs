@@ -74,7 +74,7 @@ namespace ChiuMartSAIS2.App
                     while (reader.Read())
                     {
                         string product = reader["productName"].ToString() + " - " + reader["productId"].ToString();
-                        txtProduct.AutoCompleteCustomSource.AddRange(new String[] { product });
+                        txtAddress.AutoCompleteCustomSource.AddRange(new String[] { product });
                     }
 
                 }
@@ -177,9 +177,9 @@ namespace ChiuMartSAIS2.App
         private void button1_Click(object sender, EventArgs e)
         {
             // Parse the product string
-            if (txtProduct.Text != "")
+            if (txtAddress.Text != "")
             {
-                string[] product = Regex.Split(txtProduct.Text, " - ");
+                string[] product = Regex.Split(txtAddress.Text, " - ");
                 int id = Int32.Parse(product[1]);
 
                 // Add to cart
@@ -197,12 +197,12 @@ namespace ChiuMartSAIS2.App
 
         private void txtProduct_Click(object sender, EventArgs e)
         {
-            txtProduct.SelectAll();
+            txtAddress.SelectAll();
         }
 
         private void dgvCart_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            cartUpdateTotal();
+            //cartUpdateTotal();
         }
 
         /// <summary>

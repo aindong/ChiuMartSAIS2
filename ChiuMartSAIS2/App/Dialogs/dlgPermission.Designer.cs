@@ -32,7 +32,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtRoleName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.chkDiscounts = new System.Windows.Forms.CheckBox();
             this.chkPermissions = new System.Windows.Forms.CheckBox();
             this.chkUsers = new System.Windows.Forms.CheckBox();
             this.chkClients = new System.Windows.Forms.CheckBox();
@@ -102,7 +101,6 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.chkDiscounts);
             this.panel1.Controls.Add(this.chkPermissions);
             this.panel1.Controls.Add(this.chkUsers);
             this.panel1.Controls.Add(this.chkClients);
@@ -115,17 +113,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(274, 243);
             this.panel1.TabIndex = 3;
-            // 
-            // chkDiscounts
-            // 
-            this.chkDiscounts.AutoSize = true;
-            this.chkDiscounts.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDiscounts.Location = new System.Drawing.Point(160, 184);
-            this.chkDiscounts.Name = "chkDiscounts";
-            this.chkDiscounts.Size = new System.Drawing.Size(92, 24);
-            this.chkDiscounts.TabIndex = 9;
-            this.chkDiscounts.Text = "Discounts";
-            this.chkDiscounts.UseVisualStyleBackColor = true;
             // 
             // chkPermissions
             // 
@@ -386,9 +373,9 @@
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.chkSystemUtilities);
             this.panel4.Controls.Add(this.label6);
-            this.panel4.Location = new System.Drawing.Point(16, 390);
+            this.panel4.Location = new System.Drawing.Point(16, 402);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(274, 133);
+            this.panel4.Size = new System.Drawing.Size(274, 105);
             this.panel4.TabIndex = 6;
             // 
             // chkSystemUtilities
@@ -453,6 +440,7 @@
             this.btnSubmit.TabIndex = 10;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // dlgPermission
             // 
@@ -479,6 +467,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Permissions dialog";
+            this.Load += new System.EventHandler(this.dlgPermission_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -509,7 +498,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.CheckBox chkSystemUtilities;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox chkDiscounts;
         private System.Windows.Forms.CheckBox chkPermissions;
         private System.Windows.Forms.CheckBox chkUsers;
         private System.Windows.Forms.CheckBox chkClients;
