@@ -127,6 +127,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(80, 609);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panel4
             // 
@@ -733,6 +734,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chiumart Sales and Inventory System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.pnlDatabaseManagement.ResumeLayout(false);

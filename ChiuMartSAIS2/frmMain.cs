@@ -134,5 +134,16 @@ namespace ChiuMartSAIS2
             App.frmChequeMonitoring frm = new App.frmChequeMonitoring();
             frm.ShowDialog();
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            Classes.StringHash hasher = new Classes.StringHash();
+            MessageBox.Show(hasher.hashIt("HELLO"));
+        }
     }
 }
