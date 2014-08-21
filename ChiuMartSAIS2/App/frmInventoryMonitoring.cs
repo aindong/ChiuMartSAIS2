@@ -19,6 +19,7 @@ namespace ChiuMartSAIS2.App
 
         public int productId;
         public int productStocks;
+        public string adjustment;
 
         public frmInventoryMonitoring()
         {
@@ -134,7 +135,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productName = @criteria";
+                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productName LIKE @criteria";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("criteria", "%" + criteria + "%");
@@ -225,6 +226,7 @@ namespace ChiuMartSAIS2.App
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             searchProduct(textBox1.Text);
+            checkStockLevel();
         }
 
         private void lblAll_Click(object sender, EventArgs e)
@@ -269,10 +271,22 @@ namespace ChiuMartSAIS2.App
             if (frmInventoryAdjust.ShowDialog(this) == DialogResult.OK)
             {
                 // If all validations were valid, we're going to get the quantity
-                frmInventoryAdjust.getStocks(out productId, out productStocks);
-                updateStock(productStocks, productId);
-                populateProduct();
-                checkStockLevel();
+                frmInventoryAdjust.getStocks(out productId, out productStocks, out adjustment);
+                int stock = Int32.Parse(lstProducts.SelectedItems[lstProducts.SelectedItems.Count - 1].SubItems[4].Text);
+                if (adjustment == "Increase")
+                {
+                    int total = stock + productStocks;
+                    updateStock(total, productId);
+                    populateProduct();
+                    checkStockLevel();
+                }
+                else
+                {
+                    int total = stock - productStocks;
+                    updateStock(total, productId);
+                    populateProduct();
+                    checkStockLevel();
+                }
             }
         }
 
@@ -281,6 +295,11 @@ namespace ChiuMartSAIS2.App
             int id = Int32.Parse(lstProducts.SelectedItems[lstProducts.SelectedItems.Count - 1].Text);
             productId = id;
             productStocks = Int32.Parse(lstProducts.SelectedItems[lstProducts.SelectedItems.Count - 1].SubItems[4].Text);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -40,9 +40,9 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lstCheques = new System.Windows.Forms.ListView();
-            this.lblProcessing = new System.Windows.Forms.Label();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblProcessing = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblAll
@@ -57,6 +57,7 @@
             this.lblAll.Size = new System.Drawing.Size(50, 43);
             this.lblAll.TabIndex = 23;
             this.lblAll.Text = "All";
+            this.lblAll.Click += new System.EventHandler(this.lblAll_Click);
             // 
             // button3
             // 
@@ -87,6 +88,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(552, 29);
             this.textBox1.TabIndex = 19;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lblCleared
             // 
@@ -100,6 +102,7 @@
             this.lblCleared.Size = new System.Drawing.Size(85, 43);
             this.lblCleared.TabIndex = 14;
             this.lblCleared.Text = "Cleared";
+            this.lblCleared.Click += new System.EventHandler(this.lblCleared_Click);
             // 
             // columnHeader6
             // 
@@ -152,6 +155,16 @@
             this.lstCheques.UseCompatibleStateImageBehavior = false;
             this.lstCheques.View = System.Windows.Forms.View.Details;
             // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "id";
+            this.columnHeader8.Width = 0;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Status";
+            this.columnHeader7.Width = 130;
+            // 
             // lblProcessing
             // 
             this.lblProcessing.AutoSize = true;
@@ -164,16 +177,7 @@
             this.lblProcessing.Size = new System.Drawing.Size(107, 43);
             this.lblProcessing.TabIndex = 13;
             this.lblProcessing.Text = "Processing";
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Status";
-            this.columnHeader7.Width = 130;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "id";
-            this.columnHeader8.Width = 0;
+            this.lblProcessing.Click += new System.EventHandler(this.lblProcessing_Click);
             // 
             // frmChequeMonitoring
             // 
