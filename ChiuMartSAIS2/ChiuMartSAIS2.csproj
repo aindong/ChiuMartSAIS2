@@ -162,6 +162,12 @@
     <Compile Include="App\frmInventoryMonitoring.Designer.cs">
       <DependentUpon>frmInventoryMonitoring.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\frmPermissions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,7 +240,9 @@
     <Compile Include="App\ReportDialog\dlgSupplierReport.Designer.cs">
       <DependentUpon>dlgSupplierReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Authentication.cs" />
     <Compile Include="Classes\Configuration.cs" />
+    <Compile Include="Classes\StringHash.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\frmInventoryMonitoring.resx">
       <DependentUpon>frmInventoryMonitoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\frmPermissions.resx">
       <DependentUpon>frmPermissions.cs</DependentUpon>
