@@ -234,7 +234,9 @@
     <Compile Include="App\ReportDialog\dlgSupplierReport.Designer.cs">
       <DependentUpon>dlgSupplierReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Authentication.cs" />
     <Compile Include="Classes\Configuration.cs" />
+    <Compile Include="Classes\StringHash.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
