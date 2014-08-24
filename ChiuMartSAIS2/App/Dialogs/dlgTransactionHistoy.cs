@@ -14,12 +14,55 @@ namespace ChiuMartSAIS2.App.Dialogs
 {
     public partial class dlgTransactionHistoy : Form
     {
+        private List<String> qty = new List<string>();
+        private List<String> itemName = new List<string>();
+        private List<String> units = new List<string>();
+        private List<String> unitPrice = new List<string>();
+        private string orNumber;
+        private string clientName;
+        private string address;
+        private string action;
+
         private Classes.Configuration conf;
         public dlgTransactionHistoy()
         {
             InitializeComponent();
 
             conf = new Classes.Configuration();
+        }
+
+        private void getViewTransaction()
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT t.orNo, t.qty, u.unitDesc, c.clientName, c.clientAddress, p.productName, p.productPrice FROM transaction as t INNER JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId INNER JOIN units as u ON t.unitId = u.unitId WHERE t.orNo = @crit";
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("crit", lstClients.SelectedItems[lstClients.SelectedItems.Count - 1].Text);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        qty.Add(reader["qty"].ToString());
+                        itemName.Add(reader["productName"].ToString());
+                        units.Add(reader["unitDesc"].ToString());
+                        unitPrice.Add(reader["productPrice"].ToString());
+                        orNumber = reader["orNo"].ToString();
+                        clientName = reader["clientName"].ToString();
+                        address = reader["clientAddress"].ToString();
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void populateTransaction()
@@ -171,10 +214,31 @@ namespace ChiuMartSAIS2.App.Dialogs
                 }
                 catch (MySqlException ex)
                 {
-                    string errorCode = string.Format("Error Code : {0}", ex.ToString());
-                    MessageBox.Show(this, errorCode+"Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        public void getTransaction(out List<String> qty, out List<String> productName, out List<String> units, out List<String> productPrice, 
+                out string orNo, out string clientName, out string clientAddress, out string action)
+        {
+            // Set the qty
+            qty = this.qty;
+            // Set the product name
+            productName = this.itemName;
+            // Set the units
+            units = this.units;
+            // Set the product price
+            productPrice = this.unitPrice;
+            // Set the or number
+            orNo = orNumber;
+            // Set the client name
+            clientName = this.clientName;
+            // Set the client address
+            clientAddress = address;
+            // set the action
+            action = this.action;
         }
 
         private void dlgTransactionHistoy_Load(object sender, EventArgs e)
@@ -191,6 +255,27 @@ namespace ChiuMartSAIS2.App.Dialogs
         private void btnSearch_Click(object sender, EventArgs e)
         {
             searchTransaction();
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            if (lstClients.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+            action = "View";
+            getViewTransaction();
+            DialogResult = DialogResult.OK; 
+        }
+
+        private void lstClients_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            action = "Print";
         }
     }
 }
