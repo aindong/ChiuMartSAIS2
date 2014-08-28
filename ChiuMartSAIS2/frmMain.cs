@@ -142,8 +142,7 @@ namespace ChiuMartSAIS2
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            Classes.StringHash hasher = new Classes.StringHash();
-            MessageBox.Show(hasher.hashIt("HELLO"));
+            
         }
     }
 }
