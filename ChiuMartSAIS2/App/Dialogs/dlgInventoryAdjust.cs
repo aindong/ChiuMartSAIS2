@@ -26,13 +26,23 @@ namespace ChiuMartSAIS2.App.Dialogs
         /// This will give out the product stocks value to the parent form
         /// </summary>
         /// <param name="stocks">stocks variable to handle the given/setted stocks</param>
-        public void getStocks(out int productId, out int productStocks)
+        public void getStocks(out int productId, out int productStocks, out string adjustment)
         {
             // Set the product id
             productId = _crit;
 
             // Set the product quantity
             productStocks = Int32.Parse(txtQuantity.Text);
+
+            // checks if the stocks will increase or decrease
+            if (rdbIncrease.Checked == true)
+            {
+                adjustment = "Increase";
+            }
+            else
+            {
+                adjustment = "Decrease";
+            }
         }
 
         private void btnAdjust_Click(object sender, EventArgs e)

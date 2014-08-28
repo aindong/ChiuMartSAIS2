@@ -56,12 +56,8 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.txtBalance = new System.Windows.Forms.TextBox();
-            this.txtCash = new System.Windows.Forms.TextBox();
             this.txtReceivableTotal = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -336,12 +332,8 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Controls.Add(this.button5);
             this.tabPage3.Controls.Add(this.button6);
-            this.tabPage3.Controls.Add(this.txtBalance);
-            this.tabPage3.Controls.Add(this.txtCash);
             this.tabPage3.Controls.Add(this.txtReceivableTotal);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
@@ -354,7 +346,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(15, 354);
+            this.button5.Location = new System.Drawing.Point(16, 259);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(407, 52);
             this.button5.TabIndex = 13;
@@ -363,41 +355,18 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(15, 296);
+            this.button6.Location = new System.Drawing.Point(16, 201);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(407, 52);
             this.button6.TabIndex = 12;
             this.button6.Text = "Checkout";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // txtBalance
-            // 
-            this.txtBalance.BackColor = System.Drawing.Color.White;
-            this.txtBalance.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBalance.Location = new System.Drawing.Point(15, 228);
-            this.txtBalance.Name = "txtBalance";
-            this.txtBalance.ReadOnly = true;
-            this.txtBalance.Size = new System.Drawing.Size(407, 57);
-            this.txtBalance.TabIndex = 11;
-            this.txtBalance.Text = "0.0";
-            this.txtBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtCash
-            // 
-            this.txtCash.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCash.Location = new System.Drawing.Point(15, 134);
-            this.txtCash.Name = "txtCash";
-            this.txtCash.Size = new System.Drawing.Size(407, 57);
-            this.txtCash.TabIndex = 10;
-            this.txtCash.Text = "0.0";
-            this.txtCash.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtCash.TextChanged += new System.EventHandler(this.txtCash_TextChanged);
-            // 
             // txtReceivableTotal
             // 
             this.txtReceivableTotal.BackColor = System.Drawing.Color.White;
             this.txtReceivableTotal.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReceivableTotal.Location = new System.Drawing.Point(15, 36);
+            this.txtReceivableTotal.Location = new System.Drawing.Point(16, 109);
             this.txtReceivableTotal.Name = "txtReceivableTotal";
             this.txtReceivableTotal.ReadOnly = true;
             this.txtReceivableTotal.Size = new System.Drawing.Size(407, 57);
@@ -408,29 +377,11 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(11, 13);
+            this.label10.Location = new System.Drawing.Point(12, 86);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(144, 20);
             this.label10.TabIndex = 14;
             this.label10.Text = "Total amount to pay";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(11, 205);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(61, 20);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "Balance";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(11, 111);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(104, 20);
-            this.label12.TabIndex = 15;
-            this.label12.Text = "Cash rendered";
             // 
             // dlgCheckout
             // 
@@ -487,12 +438,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox txtBalance;
-        private System.Windows.Forms.TextBox txtCash;
         private System.Windows.Forms.TextBox txtReceivableTotal;
         private System.Windows.Forms.Label label10;
 

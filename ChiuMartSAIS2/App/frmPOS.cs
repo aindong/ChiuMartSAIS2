@@ -18,6 +18,14 @@ namespace ChiuMartSAIS2.App
         private Classes.Configuration conf;
         private AutoCompleteStringCollection prodSource = new AutoCompleteStringCollection();
         private AutoCompleteStringCollection unitSource = new AutoCompleteStringCollection();
+        private List<String> qty = new List<string>();
+        private List<String> productName = new List<string>();
+        private List<String> units = new List<string>();
+        private List<String> productPrice = new List<string>();
+        private string orNo;
+        private string clientName;
+        private string clientAddress;
+        private string action;
 
         public frmPOS()
         {
@@ -204,7 +212,7 @@ namespace ChiuMartSAIS2.App
 
         private void dgvCart_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            //cartUpdateTotal();
+            // cartUpdateTotal();
         }
 
         /// <summary>
@@ -256,6 +264,7 @@ namespace ChiuMartSAIS2.App
                 }
 
                 lblTotal.Text = total.ToString();
+
             }
             catch(Exception ex)
             {
@@ -289,7 +298,50 @@ namespace ChiuMartSAIS2.App
             // Set the variables
             if (frm.ShowDialog() == DialogResult.OK)
             {
-
+                frm.getTransaction(out qty, out productName, out units, out productPrice,
+                out orNo, out clientName, out clientAddress, out action);
+                if (action == "View")
+                {
+                    label1.Text = "View Transaction";
+                    txtAddress.Text = clientAddress;
+                    txtClient.Text = clientName;
+                    txtOrNo.Text = orNo;
+                    int ctr = 0;
+                    dgvCart.RowCount = qty.Count;
+                    foreach (string q in qty)
+                    {
+                        dgvCart.Rows[ctr].Cells[1].Value = q;
+                        ctr++;
+                    }
+                    ctr = 0;
+                    foreach (string item in productName)
+                    {
+                        dgvCart.Rows[ctr].Cells[2].Value = item;
+                        ctr++;
+                    }
+                    ctr = 0;
+                    foreach (string unit in units)
+                    {
+                        dgvCart.Rows[ctr].Cells[3].Value = unit;
+                        ctr++;
+                    }
+                    ctr = 0;
+                    foreach (string price in productPrice)
+                    {
+                        dgvCart.Rows[ctr].Cells[4].Value = price;
+                        ctr++;
+                    }
+                    for (int i = 0; i < (ctr); i++)
+                    {
+                        double total = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
+                        dgvCart.Rows[i].Cells[5].Value = total.ToString();
+                    }
+                    updateTotalPrice();
+                }
+                else
+                {
+                    label1.Text = "Chiumart POS";
+                }
             }
         }
 
@@ -429,6 +481,12 @@ namespace ChiuMartSAIS2.App
         private void btnNewTransaction_Click(object sender, EventArgs e)
         {
             dgvCart.Rows.Clear();
+            label1.Text = "Chiumart POS";
+            lblTotal.Text = "0.0";
+            txtAddress.Text = "";
+            txtClient.Text = "Walk-in Client";
+            // GENERATE NEW OR
+            txtOrNo.Text = generateOR();
         }
     }
 }

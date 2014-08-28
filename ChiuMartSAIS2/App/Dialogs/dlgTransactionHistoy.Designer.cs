@@ -93,6 +93,7 @@
             this.btnPrint.Text = "Print";
             this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // lstClients
             // 
@@ -113,6 +114,7 @@
             this.lstClients.TabIndex = 28;
             this.lstClients.UseCompatibleStateImageBehavior = false;
             this.lstClients.View = System.Windows.Forms.View.Details;
+            this.lstClients.Click += new System.EventHandler(this.lstClients_Click);
             // 
             // columnHeader1
             // 
@@ -206,6 +208,7 @@
             this.btnView.Text = "View";
             this.btnView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // dlgTransactionHistoy
             // 

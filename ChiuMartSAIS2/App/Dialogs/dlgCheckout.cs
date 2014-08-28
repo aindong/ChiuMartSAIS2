@@ -44,17 +44,5 @@ namespace ChiuMartSAIS2.App.Dialogs
                 txtChange.Text = "0.0";
             }
         }
-
-        private void txtCash_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                txtBalance.Text = (Math.Abs(double.Parse(txtReceivableTotal.Text) - double.Parse(txtCash.Text))).ToString();
-            }
-            catch (Exception ex)
-            {
-                txtBalance.Text = "0.0";
-            }
-        }
     }
 }
