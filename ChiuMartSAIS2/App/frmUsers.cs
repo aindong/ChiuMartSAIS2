@@ -19,7 +19,7 @@ namespace ChiuMartSAIS2.App
         private string username = "";
         private string password = "";
         private string fullname = "";
-        private int permissionId = 0;
+        private string permissionId = "";
         private string status = "active";
 
 
@@ -38,6 +38,7 @@ namespace ChiuMartSAIS2.App
             if (frmUsersAdd.ShowDialog(this) == DialogResult.OK)
             {
                 frmUsersAdd.getUser(out userId, out username, out password, out fullname, out permissionId);
+                permissionId = getPermissionId(permissionId).ToString();
                 insertUser(username, password, fullname, permissionId);
                 populateUsers();
             }
@@ -65,6 +66,39 @@ namespace ChiuMartSAIS2.App
                 frmUsersEdit.getUser(out userId, out username, out password, out fullname, out permissionId);
                 updateUser(username, password, fullname, permissionId, userId);
                 populateUsers();
+            }
+        }
+
+        /// <summary>
+        /// Retrieving data permissions from database. :) 
+        /// </summary>
+        public void populatePermission(ComboBox cbo)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT * FROM permission WHERE status = @status";
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("status", this.status);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    cbo.Items.Clear();
+
+                    while (reader.Read())
+                    {
+                        cbo.Items.Add(reader["role"].ToString());
+                    }
+
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -108,8 +142,39 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        private int getPermissionId(string role)
+        {
+            int result = 0;
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "SELECT * FROM permission WHERE role = @role";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
 
-        private void insertUser(string username, string password, string fullname, int permissionId)
+                    sqlCmd.Parameters.AddWithValue("role", role);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        result = (int)reader["permissionId"];
+                    }
+
+                    return result;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return result;
+            }
+        }
+
+
+        private void insertUser(string username, string password, string fullname, string permissionId)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
@@ -135,7 +200,7 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void updateUser(string username, string password, string fullname, int permissionId, int criteria)
+        private void updateUser(string username, string password, string fullname, string permissionId, int criteria)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
@@ -221,7 +286,7 @@ namespace ChiuMartSAIS2.App
             username = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[1].Text;
             password = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[2].Text;
             fullname = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[3].Text;
-            permissionId = Int32.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[4].Text);
+            permissionId = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[4].Text;
             createdDate = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[5].Text;
 
         }

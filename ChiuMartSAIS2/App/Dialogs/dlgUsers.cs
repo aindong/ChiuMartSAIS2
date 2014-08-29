@@ -20,7 +20,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         public string username;
         public string password;
         public string fullname;
-        public int permissionId;
+        public string permissionId;
         public string DateCreated;
         public dlgUsers(string action, int crit)
         {
@@ -36,9 +36,10 @@ namespace ChiuMartSAIS2.App.Dialogs
             txtUsername.Text = username;
             txtpWord.Text = password;
             txtFullName.Text = fullname;
-            cboPermissionId.Text = permissionId.ToString();
+            cboPermissionId.Text = permissionId;
 
-
+            frmUsers frm = new frmUsers();
+            frm.populatePermission(cboPermissionId);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -106,19 +107,17 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
         }
 
-        public void getUser(out int userId, out string UserName, out string PassWord, out string FullName, out int PermissionID)
+        public void getUser(out int userId, out string UserName, out string PassWord, out string FullName, out string PermissionID)
         {
             // Set the user id
             userId = _crit;
+            Classes.StringHash hasher = new Classes.StringHash();
 
             UserName = txtUsername.Text;
-            PassWord = txtpWord.Text;
+            PassWord = hasher.hashIt(txtpWord.Text);
             FullName = txtFullName.Text;
-            PermissionID = Int32.Parse(cboPermissionId.Text);
-
+            PermissionID = cboPermissionId.Text;
         }
-
-        
 
         public string userId { get; set; }
     }
