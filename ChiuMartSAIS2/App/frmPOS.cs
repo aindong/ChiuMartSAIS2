@@ -246,6 +246,7 @@ namespace ChiuMartSAIS2.App
         private void updateTotalPrice()
         {
             double total = 0;
+
             for (int i = 0; i < (dgvCart.Rows.Count); i++)
             {
                 total = total + double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString());

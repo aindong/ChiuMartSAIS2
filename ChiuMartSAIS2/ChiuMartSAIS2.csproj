@@ -305,6 +305,9 @@
     <EmbeddedResource Include="App\frmPermissions.resx">
       <DependentUpon>frmPermissions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="App\frmPO.resx">
+      <DependentUpon>frmPO.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App\frmPOS.resx">
       <DependentUpon>frmPOS.cs</DependentUpon>
     </EmbeddedResource>

@@ -145,5 +145,11 @@ namespace ChiuMartSAIS2
             Classes.StringHash hasher = new Classes.StringHash();
             MessageBox.Show(hasher.hashIt("HELLO"));
         }
+
+        private void btnPurchaseOrder_Click(object sender, EventArgs e)
+        {
+            App.frmPO frm = new App.frmPO();
+            frm.ShowDialog();
+        }
     }
 }

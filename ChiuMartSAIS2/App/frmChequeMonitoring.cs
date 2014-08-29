@@ -167,7 +167,7 @@ namespace ChiuMartSAIS2.App
         /// </summary>
         private void checkChequeProcessing()
         {
-            // Check the stock of current product
+            // Check the status
             foreach (ListViewItem lvw in lstCheques.Items)
             {
                 DateTime chequeDate = Convert.ToDateTime(lvw.SubItems[6].Text);

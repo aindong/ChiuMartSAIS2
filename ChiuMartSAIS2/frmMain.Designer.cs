@@ -520,6 +520,7 @@
             this.btnPurchaseOrder.Text = "Purchase Order";
             this.btnPurchaseOrder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPurchaseOrder.UseVisualStyleBackColor = false;
+            this.btnPurchaseOrder.Click += new System.EventHandler(this.btnPurchaseOrder_Click);
             // 
             // btnInventoryMonitoring
             // 
