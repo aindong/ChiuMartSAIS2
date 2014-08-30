@@ -220,39 +220,75 @@ namespace ChiuMartSAIS2.App
         /// </summary>
         private void cartUpdateTotal()
         {
-            // update for the total
-            for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
-            {
-                // Check the update on quantity if there's enough stocks
-                // if not, set it to maximum stocks
-                int id = Int32.Parse(dgvCart.Rows[i].Cells[0].Value.ToString());
-                int stock = checkProductStockById(id);
-                int updatedStock = Int32.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
-
-                if (stock < updatedStock)
+            //try
+           // {
+                // update for the total
+                for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
                 {
-                    dgvCart.Rows[i].Cells[1].Value = stock;
+                    // Check the update on quantity if there's enough stocks
+                    // if not, set it to maximum stocks
+                    if (dgvCart.Rows[i].Cells[0].Value != null) {
+                        int id = Int32.Parse(dgvCart.Rows[i].Cells[0].Value.ToString());
+                        int stock = checkProductStockById(id);
+                        int updatedStock = Int32.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
+
+                        if (stock < updatedStock)
+                        {
+                            dgvCart.Rows[i].Cells[1].Value = stock;
+                        }
+
+                        // update the total
+                        double total = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
+                        dgvCart.Rows[i].Cells[5].Value = total.ToString();
+                    }
+
                 }
 
-                // update the total
-                double total = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
-                dgvCart.Rows[i].Cells[5].Value = total.ToString();
-            }
-
-            // update the full total price of items on the cart
-            updateTotalPrice();
+                // update the full total price of items on the cart
+                updateTotalPrice();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message.ToString());
+            //}
         }
 
         private void updateTotalPrice()
         {
-            double total = 0;
-
-            for (int i = 0; i < (dgvCart.Rows.Count); i++)
+            try
             {
-                total = total + double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString());
-            }
+                double total = 0;
+                for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
+                {
+                    total += double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString());
+                }
 
-            lblTotal.Text = total.ToString();
+                lblTotal.Text = total.ToString();
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void updateTotalAmount()
+        {
+            try
+            {
+                double total = 0;
+                for (int i = 0; i < (dgvCart.Rows.Count); i++)
+                {
+                    total += double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString());
+                }
+
+                lblTotal.Text = total.ToString();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void btnCheckout_Click(object sender, EventArgs e)
@@ -319,7 +355,7 @@ namespace ChiuMartSAIS2.App
                         double total = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
                         dgvCart.Rows[i].Cells[5].Value = total.ToString();
                     }
-                    updateTotalPrice();
+                    updateTotalAmount();
                 }
                 else
                 {
@@ -425,11 +461,26 @@ namespace ChiuMartSAIS2.App
                     string[] item = getProductByName(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value.ToString());
 
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[0].Value = item[0];
-                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[1].Value = 1;
+                    //dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[1].Value = 1;
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value = item[3];
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value = item[4];
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[5].Value = item[5];
 
+                    for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
+                    {
+                        // Check the update on quantity if there's enough stocks
+                        // if not, set it to maximum stocks
+                        int id = Int32.Parse(dgvCart.Rows[i].Cells[0].Value.ToString());
+                        int stock = checkProductStockById(id);
+                        int updatedStock = Int32.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
+
+                        if (stock < updatedStock)
+                        {
+                            dgvCart.Rows[i].Cells[1].Value = stock;
+                        }
+                    }
+
+                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[1].Selected = true;
                     updateTotalPrice();
                 }
                 catch (Exception ex)

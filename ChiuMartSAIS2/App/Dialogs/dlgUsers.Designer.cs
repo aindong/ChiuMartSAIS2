@@ -116,16 +116,14 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(11, 246);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 20);
+            this.label3.Size = new System.Drawing.Size(80, 20);
             this.label3.TabIndex = 74;
-            this.label3.Text = "Permission Id *";
+            this.label3.Text = "Permission";
             // 
             // cboPermissionId
             // 
             this.cboPermissionId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPermissionId.FormattingEnabled = true;
-            this.cboPermissionId.Items.AddRange(new object[] {
-            "1"});
             this.cboPermissionId.Location = new System.Drawing.Point(15, 269);
             this.cboPermissionId.Name = "cboPermissionId";
             this.cboPermissionId.Size = new System.Drawing.Size(436, 28);
