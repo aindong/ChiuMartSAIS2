@@ -337,17 +337,18 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
         }
 
-        private void updateStocks(string qty, string crit)
+        private void updateStocks(string qty, string crit, string newPrice)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "UPDATE products SET productStock = productStock + @qty WHERE productId = @crit";
+                    string sqlQuery = "UPDATE products SET productStock = productStock + @qty, supplierPrice = @newPrice WHERE productId = @crit";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("qty", qty);
+                    sqlCmd.Parameters.AddWithValue("newPrice", newPrice);
                     sqlCmd.Parameters.AddWithValue("crit", crit);
 
                     sqlCmd.ExecuteNonQuery();
@@ -493,9 +494,11 @@ namespace ChiuMartSAIS2.App.Dialogs
                     string unitId = getUnitID(dgvCart.Rows[i].Cells[3].Value.ToString());
                     string str = txtSupplier.Text;
                     string[] supplierId = str.Split(new string[] { " - " }, StringSplitOptions.None);
-                    string qty = dgvCart.Rows[i].Cells[1].Value.ToString(); 
+                    string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
+                    string newPrice = dgvCart.Rows[i].Cells[4].Value.ToString();
+
                     insertPo(txtPoNo.Text, prodId, supplierId[1], qty, unitId);
-                    updateStocks(qty, prodId);
+                    updateStocks(qty, prodId, newPrice);
                 }
                 DialogResult = DialogResult.OK;
             }

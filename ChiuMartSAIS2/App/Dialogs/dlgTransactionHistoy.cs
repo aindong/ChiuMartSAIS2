@@ -38,7 +38,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.orNo, t.qty, u.unitDesc, c.clientName, c.clientAddress, p.productName, p.productPrice FROM transaction as t INNER JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId INNER JOIN units as u ON t.unitId = u.unitId WHERE t.orNo = @crit";
+                    string sqlQuery = "SELECT t.orNo, t.qty, u.unitDesc, c.clientName, c.clientAddress, p.productName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId INNER JOIN units as u ON t.unitId = u.unitId WHERE t.orNo = @crit";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -72,7 +72,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t INNER JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId";
+                    string sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -96,7 +96,8 @@ namespace ChiuMartSAIS2.App.Dialogs
                             else
                             {
                                 lstClients.Items.Add(reader["orNo"].ToString());
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["clientName"].ToString()); 
+
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["clientName"].ToString() != "" ? reader["clientName"].ToString() : "WALK-IN CLIENT"); 
 
                                 // converts the transdate to datetime
                                 DateTime aDate;
@@ -115,7 +116,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                         else
                         {
                             lstClients.Items.Add(reader["orNo"].ToString());
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["clientName"].ToString());
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["clientName"].ToString() != "" ? reader["clientName"].ToString() : "WALK-IN CLIENT");
 
                             // converts the transdate to datetime
                             DateTime aDate;
@@ -148,7 +149,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t INNER JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId WHERE DATE_FORMAT(t.transDate,'%Y-%m-%d') BETWEEN @from AND @to";
+                    string sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId WHERE DATE_FORMAT(t.transDate,'%Y-%m-%d') BETWEEN @from AND @to";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -175,7 +176,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                             else
                             {
                                 lstClients.Items.Add(reader["orNo"].ToString());
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["clientName"].ToString());
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["clientName"].ToString() != "" ? reader["clientName"].ToString() : "WALK-IN CLIENT");
 
                                 // converts the transdate to datetime
                                 DateTime aDate;
@@ -194,7 +195,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                         else
                         {
                             lstClients.Items.Add(reader["orNo"].ToString());
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["clientName"].ToString());
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["clientName"].ToString() != "" ? reader["clientName"].ToString() : "WALK-IN CLIENT");
 
                             // converts the transdate to datetime
                             DateTime aDate;
@@ -276,6 +277,11 @@ namespace ChiuMartSAIS2.App.Dialogs
         private void btnPrint_Click(object sender, EventArgs e)
         {
             action = "Print";
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

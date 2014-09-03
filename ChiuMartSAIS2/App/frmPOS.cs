@@ -89,7 +89,6 @@ namespace ChiuMartSAIS2.App
                     sqlCmd.Parameters.AddWithValue("paymentMethod", paymentMethod);
 
                     sqlCmd.ExecuteNonQuery();
-                    MessageBox.Show(this, "Transaction Complete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (MySqlException ex)
                 {
@@ -99,17 +98,18 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void updateStocks(string qty, string crit)
+        private void updateStocks(string qty, string crit, string newPrice)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "UPDATE products SET productStock = productStock - @qty WHERE productId = @crit";
+                    string sqlQuery = "UPDATE products SET productStock = productStock - @qty, productPrice = @newPrice WHERE productId = @crit";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("qty", qty);
+                    sqlCmd.Parameters.AddWithValue("newPrice", newPrice);
                     sqlCmd.Parameters.AddWithValue("crit", crit);
 
                     sqlCmd.ExecuteNonQuery();
@@ -487,9 +487,13 @@ namespace ChiuMartSAIS2.App
                          clientId = str.Split(new string[] { " - " }, StringSplitOptions.None);
                     }
                     string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
+                    string newPrice = dgvCart.Rows[i].Cells[4].Value.ToString();
+
                     insertTransaction(txtOrNo.Text, prodId, clientId[1], qty, unitId, paymentMethod);
-                    updateStocks(qty, prodId);
+                    updateStocks(qty, prodId, newPrice);
                 }
+                insertNewOR();
+                MessageBox.Show(this, "Transaction Complete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -570,7 +574,7 @@ namespace ChiuMartSAIS2.App
                 using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
                 {
                     con.Open();
-                    string sqlQuery = "SELECT * FROM `or` ORDER BY id ASC LIMIT 1";
+                    string sqlQuery = "SELECT * FROM `or` ORDER BY id DESC LIMIT 1";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -615,6 +619,27 @@ namespace ChiuMartSAIS2.App
             }
 
             return generatedOR;
+        }
+
+        private void insertNewOR()
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "INSERT INTO `or`(ornumber) VALUES(@ornumber)";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    sqlCmd.Parameters.AddWithValue("ornumber", txtOrNo.Text);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+            } 
+            catch(MySqlException ex) 
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Can't connect to database: " + ex.Message.ToString(), errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvCart_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
