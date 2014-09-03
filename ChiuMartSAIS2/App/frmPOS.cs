@@ -26,6 +26,12 @@ namespace ChiuMartSAIS2.App
         private string clientName;
         private string clientAddress;
         private string action;
+        private string bank = "";
+        private string branch = "";
+        private string chequeNo = "";
+        private string chequeName = "";
+        private string chequeDate = "";
+        private string total = "";
 
         public frmPOS()
         {
@@ -62,6 +68,150 @@ namespace ChiuMartSAIS2.App
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
                     MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void insertTransaction(string orNo, string productId, string clientId, string qty, string unitId, string paymentMethod)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "INSERT INTO transaction (orNo, productId, clientId, paymentMethod, qty, unitId, transStatus) VALUES (@orNo, @productId, @clientId, @paymentMethod, @qty, @unitId, 'Completed')";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("orNo", orNo);
+                    sqlCmd.Parameters.AddWithValue("productId", productId);
+                    sqlCmd.Parameters.AddWithValue("clientId", clientId);
+                    sqlCmd.Parameters.AddWithValue("qty", qty);
+                    sqlCmd.Parameters.AddWithValue("unitId", unitId);
+                    sqlCmd.Parameters.AddWithValue("paymentMethod", paymentMethod);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Transaction Complete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Transaction error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void updateStocks(string qty, string crit)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE products SET productStock = productStock - @qty WHERE productId = @crit";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("qty", qty);
+                    sqlCmd.Parameters.AddWithValue("crit", crit);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Updating stocks error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        //get unit ID
+        private string getUnitID(string crit)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT unitId FROM units WHERE unitDesc = @crit";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("crit", crit);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    string tmp = "";
+                    while (reader.Read())
+                    {
+                        tmp = reader["unitId"].ToString();
+                    }
+
+                    return tmp;
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Message);
+                    MessageBox.Show(this, "Error Retrieving unit id", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return "";
+                }
+
+            }
+        }
+
+        private void insertCheque(string bank, string branch, string chequeName, string chequeDate, string chequeNo, string amount)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "INSERT INTO cheque (chequeNo, chequeName, chequeBank, chequeBranch, chequeAmount, chequeDate, status) VALUES (@chequeNo, @chequeName, @chequeBank, @chequeBranch, @chequeAmount, @chequeDate, 'active')";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("chequeNo", chequeNo);
+                    sqlCmd.Parameters.AddWithValue("chequeName", chequeName);
+                    sqlCmd.Parameters.AddWithValue("chequeBank", bank);
+                    sqlCmd.Parameters.AddWithValue("chequeBranch", branch);
+                    sqlCmd.Parameters.AddWithValue("chequeAmount", amount);
+                    sqlCmd.Parameters.AddWithValue("chequeDate", chequeDate);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Transaction error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        //get product ID
+        private string getProductID(string crit)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT productId FROM products WHERE productName = @crit";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("crit", crit);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    string tmp = "";
+                    while (reader.Read())
+                    {
+                        tmp = reader["productId"].ToString();
+                    }
+
+                    return tmp;
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Message);
+                    MessageBox.Show(this, "Error Retrieving product id", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return "";
+                }
+
             }
         }
 
@@ -306,7 +456,30 @@ namespace ChiuMartSAIS2.App
             frm.total = lblTotal.Text;
             if (frm.ShowDialog() == DialogResult.OK)
             {
-
+                for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
+                {
+                    string paymentMethod = "";
+                    frm.getProduct(out paymentMethod, out bank, out branch, out chequeName, out chequeDate, out total, out chequeNo);
+                    if (paymentMethod == "Cheque")
+                    {
+                        insertCheque(bank, branch, chequeName, chequeDate, chequeNo, total);
+                    }
+                    string prodId = getProductID(dgvCart.Rows[i].Cells[2].Value.ToString());
+                    string unitId = getUnitID(dgvCart.Rows[i].Cells[3].Value.ToString());
+                    string str = txtClient.Text;
+                    string[] clientId = new string[2];
+                    if (str == "Walk-in Client")
+                    {
+                        clientId[1] = "0";
+                    }
+                    else
+                    {
+                         clientId = str.Split(new string[] { " - " }, StringSplitOptions.None);
+                    }
+                    string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
+                    insertTransaction(txtOrNo.Text, prodId, clientId[1], qty, unitId, paymentMethod);
+                    updateStocks(qty, prodId);
+                }
             }
         }
 
@@ -507,6 +680,11 @@ namespace ChiuMartSAIS2.App
             txtClient.Text = "Walk-in Client";
             // GENERATE NEW OR
             txtOrNo.Text = generateOR();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -110,6 +110,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Checkout";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtChange
             // 
@@ -132,6 +133,7 @@
             this.txtCashRendered.TabIndex = 2;
             this.txtCashRendered.Text = "0.0";
             this.txtCashRendered.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCashRendered.TextChanged += new System.EventHandler(this.txtCashRendered_TextChanged);
             // 
             // txtAmount
             // 
@@ -199,6 +201,7 @@
             // dtpDate
             // 
             this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDate.Location = new System.Drawing.Point(98, 208);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(317, 33);
@@ -240,7 +243,6 @@
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(98, 160);
             this.txtName.Name = "txtName";
-            this.txtName.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(317, 33);
             this.txtName.TabIndex = 9;
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -271,6 +273,7 @@
             this.button4.TabIndex = 12;
             this.button4.Text = "Checkout";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // txtChequeNumber
             // 
@@ -278,7 +281,6 @@
             this.txtChequeNumber.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtChequeNumber.Location = new System.Drawing.Point(98, 111);
             this.txtChequeNumber.Name = "txtChequeNumber";
-            this.txtChequeNumber.ReadOnly = true;
             this.txtChequeNumber.Size = new System.Drawing.Size(317, 33);
             this.txtChequeNumber.TabIndex = 8;
             this.txtChequeNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -298,7 +300,6 @@
             this.txtBank.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBank.Location = new System.Drawing.Point(98, 12);
             this.txtBank.Name = "txtBank";
-            this.txtBank.ReadOnly = true;
             this.txtBank.Size = new System.Drawing.Size(317, 33);
             this.txtBank.TabIndex = 6;
             this.txtBank.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -361,6 +362,7 @@
             this.button6.TabIndex = 12;
             this.button6.Text = "Checkout";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // txtReceivableTotal
             // 

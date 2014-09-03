@@ -41,7 +41,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, s.supplierName, pr.productPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId  WHERE p.status = @status";
+                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId  WHERE p.status = @status";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -60,7 +60,7 @@ namespace ChiuMartSAIS2.App
                             if (reader["poId"].ToString() == lstPO.Items[ctr].Text)
                             {
                                 double lstAmount = double.Parse(lstPO.Items[ctr].SubItems[2].Text);
-                                double price = double.Parse(reader["productPrice"].ToString());
+                                double price = double.Parse(reader["supplierPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
                                 lstPO.Items[ctr].SubItems[2].Text = (lstAmount + totalAmount).ToString();
@@ -70,7 +70,7 @@ namespace ChiuMartSAIS2.App
                                 lstPO.Items.Add(reader["poId"].ToString());
                                 lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["supplierName"].ToString());
 
-                                double price = double.Parse(reader["productPrice"].ToString());
+                                double price = double.Parse(reader["supplierPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
 
@@ -91,7 +91,7 @@ namespace ChiuMartSAIS2.App
                             lstPO.Items.Add(reader["poId"].ToString());
                             lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["supplierName"].ToString());
 
-                            double price = double.Parse(reader["productPrice"].ToString());
+                            double price = double.Parse(reader["supplierPrice"].ToString());
                             double qty = double.Parse(reader["qty"].ToString());
                             double totalAmount = (price * qty);
 
@@ -124,15 +124,15 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, s.supplierName, pr.productPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status";
+                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status";
                     DateTime dateNow = DateTime.Today;
                     if (poStatus == "Delivered")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.productPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = 'active' AND p.poStatus = 'Delivered'";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = 'active' AND p.poStatus = 'Delivered'";
                     }
                     else if (poStatus == "BackOrder")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.productPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = 'active' AND p.poStatus = 'Back Order'";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = 'active' AND p.poStatus = 'Back Order'";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -161,7 +161,7 @@ namespace ChiuMartSAIS2.App
                                 lstPO.Items.Add(reader["poId"].ToString());
                                 lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["supplierName"].ToString());
 
-                                double price = double.Parse(reader["productPrice"].ToString());
+                                double price = double.Parse(reader["supplierPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
 
@@ -182,7 +182,7 @@ namespace ChiuMartSAIS2.App
                             lstPO.Items.Add(reader["poId"].ToString());
                             lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["supplierName"].ToString());
 
-                            double price = double.Parse(reader["productPrice"].ToString());
+                            double price = double.Parse(reader["supplierPrice"].ToString());
                             double qty = double.Parse(reader["qty"].ToString());
                             double totalAmount = (price * qty);
 
@@ -216,13 +216,13 @@ namespace ChiuMartSAIS2.App
                 {
                     Con.Open();
 
-                    string sqlQuery = "SELECT p.*, s.supplierName, pr.productPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit";
+                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit";
                     
                     if (filter == "Supplier")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.productPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit";
                     } else if (filter == "poid") {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.productPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND poId LIKE @crit";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.suppllierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND poId LIKE @crit";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -253,7 +253,7 @@ namespace ChiuMartSAIS2.App
                                 lstPO.Items.Add(reader["poId"].ToString());
                                 lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["supplierName"].ToString());
 
-                                double price = double.Parse(reader["productPrice"].ToString());
+                                double price = double.Parse(reader["supplierPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
 
@@ -274,7 +274,7 @@ namespace ChiuMartSAIS2.App
                             lstPO.Items.Add(reader["poId"].ToString());
                             lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["supplierName"].ToString());
 
-                            double price = double.Parse(reader["productPrice"].ToString());
+                            double price = double.Parse(reader["supplierPrice"].ToString());
                             double qty = double.Parse(reader["qty"].ToString());
                             double totalAmount = (price * qty);
 
@@ -353,7 +353,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, s.supplierName, s.supplierAddress, pr.productName, u.unitDesc, pr.productPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId INNER JOIN units as u ON p.unitId = u.unitId WHERE p.poId = @crit";
+                    string sqlQuery = "SELECT p.*, s.supplierName, s.supplierAddress, pr.productName, u.unitDesc, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId INNER JOIN units as u ON p.unitId = u.unitId WHERE p.poId = @crit";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -366,7 +366,7 @@ namespace ChiuMartSAIS2.App
                         qty.Add(reader["qty"].ToString());
                         itemName.Add(reader["productName"].ToString());
                         units.Add(reader["unitDesc"].ToString());
-                        unitPrice.Add(reader["productPrice"].ToString());
+                        unitPrice.Add(reader["supplierPrice"].ToString());
                         orNumber = reader["poId"].ToString();
                         clientName = reader["supplierName"].ToString();
                         address = reader["supplierAddress"].ToString();

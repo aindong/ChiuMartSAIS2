@@ -99,7 +99,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                         result[1] = "1";
                         result[2] = reader["productName"].ToString();
                         result[3] = reader["unitDesc"].ToString();
-                        result[4] = reader["productPrice"].ToString();
+                        result[4] = reader["supplierPrice"].ToString();
 
                         double total = double.Parse(result[1]) * double.Parse(result[4]);
                         result[5] = total.ToString();
@@ -181,6 +181,18 @@ namespace ChiuMartSAIS2.App.Dialogs
             catch (Exception ex)
             {
 
+            }
+        }
+
+        private bool checkEmpty()
+        {
+            if (txtSupplier.Text == "")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
 
@@ -325,6 +337,29 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
         }
 
+        private void updateStocks(string qty, string crit)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE products SET productStock = productStock + @qty WHERE productId = @crit";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("qty", qty);
+                    sqlCmd.Parameters.AddWithValue("crit", crit);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Updating stocks error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         /// <summary>
         /// This will update the changes on the cart
         /// </summary>
@@ -440,7 +475,12 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            if (action == "Add")
+            if (checkEmpty() == false)
+            {
+                MessageBox.Show("Please fill out all the required fields", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            else
             {
                 for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
                 {
@@ -450,11 +490,9 @@ namespace ChiuMartSAIS2.App.Dialogs
                     string[] supplierId = str.Split(new string[] { " - " }, StringSplitOptions.None);
                     string qty = dgvCart.Rows[i].Cells[1].Value.ToString(); 
                     insertPo(txtPoNo.Text, prodId, supplierId[1], qty, unitId);
+                    updateStocks(qty, prodId);
                 }
-            }
-            else
-            {
-
+                DialogResult = DialogResult.OK;
             }
         }
 
@@ -463,6 +501,8 @@ namespace ChiuMartSAIS2.App.Dialogs
             dgvCart.Rows.Clear();
             label1.Text = "Chiumart PO";
             lblTotal.Text = "0.0";
+            txtSupplier.Text = "";
+            txtAddress.Text = "";
             // GENERATE NEW OR
             txtPoNo.Text = generatePO();
         }
