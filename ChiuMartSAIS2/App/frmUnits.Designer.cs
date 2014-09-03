@@ -60,7 +60,7 @@
             this.listView1.Location = new System.Drawing.Point(202, 112);
             this.listView1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(740, 246);
+            this.listView1.Size = new System.Drawing.Size(740, 320);
             this.listView1.TabIndex = 25;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -93,7 +93,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 375);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 440);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
             this.statusStrip1.Size = new System.Drawing.Size(952, 22);
@@ -203,7 +203,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 397);
+            this.ClientSize = new System.Drawing.Size(952, 462);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);

@@ -30,7 +30,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM cheque ";
+                    string sqlQuery = "SELECT * FROM cheque WHERE status = 'active'";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -74,7 +74,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM cheque WHERE chequeName LIKE @criteria";
+                    string sqlQuery = "SELECT * FROM cheque WHERE chequeName LIKE @criteria AND status = 'active'";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("criteria", "%" + criteria + "%");
@@ -119,7 +119,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM cheque";
+                    string sqlQuery = "SELECT * FROM cheque WHERE status = 'active'";
                     DateTime dateNow = DateTime.Today;
                     if (stockLevel == "Processing")
                     {
@@ -221,6 +221,41 @@ namespace ChiuMartSAIS2.App
         {
             getChequeByDateProcessing("Cleared");
             checkChequeProcessing();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            trashCheque();
+            populateCheques();
+            checkChequeProcessing();
+        }
+
+        private void trashCheque()
+        {
+            try
+            {
+                using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE cheque SET status = 'inactive' WHERE id = @crit";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("crit", crit);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Can't connect to database ", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public string crit { get; set; }
+
+        private void lstCheques_Click(object sender, EventArgs e)
+        {
+            crit = lstCheques.SelectedItems[0].Text;
         }
     }
 }

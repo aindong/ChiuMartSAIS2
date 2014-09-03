@@ -398,6 +398,11 @@ namespace ChiuMartSAIS2.App.Dialogs
 
             if (action == "Edit")
             {
+                dgvCart.Enabled = false;
+                txtAddress.ReadOnly = true;
+                txtSupplier.ReadOnly = true;
+                txtPoNo.ReadOnly = true;
+
                 btnCheckout.Visible = false;
                 txtAddress.Text = supplierAddress;
                 txtSupplier.Text = supplierName;

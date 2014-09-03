@@ -43,6 +43,11 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblProcessing = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rboInactive = new System.Windows.Forms.RadioButton();
+            this.rboActive = new System.Windows.Forms.RadioButton();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblAll
@@ -63,7 +68,7 @@
             // 
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(895, 388);
+            this.button3.Location = new System.Drawing.Point(906, 455);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(180, 49);
             this.button3.TabIndex = 21;
@@ -148,12 +153,13 @@
             this.lstCheques.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstCheques.FullRowSelect = true;
             this.lstCheques.GridLines = true;
-            this.lstCheques.Location = new System.Drawing.Point(12, 59);
+            this.lstCheques.Location = new System.Drawing.Point(17, 125);
             this.lstCheques.Name = "lstCheques";
             this.lstCheques.Size = new System.Drawing.Size(1063, 324);
             this.lstCheques.TabIndex = 12;
             this.lstCheques.UseCompatibleStateImageBehavior = false;
             this.lstCheques.View = System.Windows.Forms.View.Details;
+            this.lstCheques.Click += new System.EventHandler(this.lstCheques_Click);
             // 
             // columnHeader8
             // 
@@ -179,11 +185,57 @@
             this.lblProcessing.Text = "Processing";
             this.lblProcessing.Click += new System.EventHandler(this.lblProcessing_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rboInactive);
+            this.groupBox1.Controls.Add(this.rboActive);
+            this.groupBox1.Location = new System.Drawing.Point(889, 59);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(186, 45);
+            this.groupBox1.TabIndex = 31;
+            this.groupBox1.TabStop = false;
+            // 
+            // rboInactive
+            // 
+            this.rboInactive.AutoSize = true;
+            this.rboInactive.Location = new System.Drawing.Point(99, 15);
+            this.rboInactive.Name = "rboInactive";
+            this.rboInactive.Size = new System.Drawing.Size(63, 17);
+            this.rboInactive.TabIndex = 16;
+            this.rboInactive.Text = "Inactive";
+            this.rboInactive.UseVisualStyleBackColor = true;
+            // 
+            // rboActive
+            // 
+            this.rboActive.AutoSize = true;
+            this.rboActive.Checked = true;
+            this.rboActive.Location = new System.Drawing.Point(23, 15);
+            this.rboActive.Name = "rboActive";
+            this.rboActive.Size = new System.Drawing.Size(55, 17);
+            this.rboActive.TabIndex = 15;
+            this.rboActive.TabStop = true;
+            this.rboActive.Text = "Active";
+            this.rboActive.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(720, 455);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(180, 49);
+            this.btnDelete.TabIndex = 32;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // frmChequeMonitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1087, 449);
+            this.ClientSize = new System.Drawing.Size(1087, 516);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblAll);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label5);
@@ -199,6 +251,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cheque Monitoring";
             this.Load += new System.EventHandler(this.frmChequeMonitoring_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,5 +275,9 @@
         private System.Windows.Forms.Label lblProcessing;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rboInactive;
+        private System.Windows.Forms.RadioButton rboActive;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

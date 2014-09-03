@@ -161,6 +161,9 @@ namespace ChiuMartSAIS2.App
             {
                 try
                 {
+                    DateTime chequeDateFinal;
+                    DateTime.TryParse(chequeDate, out chequeDateFinal);
+
                     Con.Open();
                     string sqlQuery = "INSERT INTO cheque (chequeNo, chequeName, chequeBank, chequeBranch, chequeAmount, chequeDate, status) VALUES (@chequeNo, @chequeName, @chequeBank, @chequeBranch, @chequeAmount, @chequeDate, 'active')";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -170,7 +173,7 @@ namespace ChiuMartSAIS2.App
                     sqlCmd.Parameters.AddWithValue("chequeBank", bank);
                     sqlCmd.Parameters.AddWithValue("chequeBranch", branch);
                     sqlCmd.Parameters.AddWithValue("chequeAmount", amount);
-                    sqlCmd.Parameters.AddWithValue("chequeDate", chequeDate);
+                    sqlCmd.Parameters.AddWithValue("chequeDate", chequeDateFinal.ToString("yyyy-MM-dd"));
 
                     sqlCmd.ExecuteNonQuery();
                 }
@@ -464,6 +467,13 @@ namespace ChiuMartSAIS2.App
                     {
                         insertCheque(bank, branch, chequeName, chequeDate, chequeNo, total);
                     }
+
+                    // Check if the cell has a product, if not, continue the loop
+                    if (dgvCart.Rows[i].Cells[2].Value.ToString() == "")
+                    {
+                        continue;
+                    }
+
                     string prodId = getProductID(dgvCart.Rows[i].Cells[2].Value.ToString());
                     string unitId = getUnitID(dgvCart.Rows[i].Cells[3].Value.ToString());
                     string str = txtClient.Text;
@@ -494,6 +504,11 @@ namespace ChiuMartSAIS2.App
                 out orNo, out clientName, out clientAddress, out action);
                 if (action == "View")
                 {
+                    dgvCart.Enabled = false;
+                    txtAddress.ReadOnly = true;
+                    txtClient.ReadOnly = true;
+                    btnCheckout.Enabled = false;
+
                     label1.Text = "View Transaction";
                     txtAddress.Text = clientAddress;
                     txtClient.Text = clientName;
@@ -685,6 +700,27 @@ namespace ChiuMartSAIS2.App
         private void button5_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtClient_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                MessageBox.Show("You entered");
+            }
+        }
+
+        private void txtClient_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtClient_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtAddress.Focus();
+            }
         }
     }
 }

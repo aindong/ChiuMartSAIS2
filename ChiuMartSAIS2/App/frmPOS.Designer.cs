@@ -141,10 +141,13 @@
             this.txtClient.Location = new System.Drawing.Point(225, 92);
             this.txtClient.Name = "txtClient";
             this.txtClient.Size = new System.Drawing.Size(399, 25);
-            this.txtClient.TabIndex = 7;
+            this.txtClient.TabIndex = 1;
             this.txtClient.Text = "Walk-in Client";
             this.txtClient.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtClient.Click += new System.EventHandler(this.txtClient_Click);
+            this.txtClient.TextChanged += new System.EventHandler(this.txtClient_TextChanged);
+            this.txtClient.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtClient_KeyDown);
+            this.txtClient.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClient_KeyPress);
             // 
             // label4
             // 
@@ -173,7 +176,7 @@
             this.button5.Location = new System.Drawing.Point(14, 128);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(334, 52);
-            this.button5.TabIndex = 9;
+            this.button5.TabIndex = 6;
             this.button5.Text = "Cancel";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -185,7 +188,7 @@
             this.btnVoid.Location = new System.Drawing.Point(14, 70);
             this.btnVoid.Name = "btnVoid";
             this.btnVoid.Size = new System.Drawing.Size(334, 52);
-            this.btnVoid.TabIndex = 7;
+            this.btnVoid.TabIndex = 5;
             this.btnVoid.Text = "Void";
             this.btnVoid.UseVisualStyleBackColor = false;
             // 
@@ -195,7 +198,7 @@
             this.btnCheckout.Location = new System.Drawing.Point(14, 15);
             this.btnCheckout.Name = "btnCheckout";
             this.btnCheckout.Size = new System.Drawing.Size(334, 52);
-            this.btnCheckout.TabIndex = 6;
+            this.btnCheckout.TabIndex = 4;
             this.btnCheckout.Text = "Checkout";
             this.btnCheckout.UseVisualStyleBackColor = true;
             this.btnCheckout.Click += new System.EventHandler(this.btnCheckout_Click);
@@ -307,7 +310,7 @@
             this.dgvCart.Location = new System.Drawing.Point(12, 171);
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.Size = new System.Drawing.Size(612, 388);
-            this.dgvCart.TabIndex = 21;
+            this.dgvCart.TabIndex = 3;
             this.dgvCart.EditModeChanged += new System.EventHandler(this.dgvCart_EditModeChanged);
             this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellValueChanged);
             this.dgvCart.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellEndEdit);
