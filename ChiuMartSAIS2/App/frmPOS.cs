@@ -482,6 +482,7 @@ namespace ChiuMartSAIS2.App
 
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[1].Selected = true;
                     updateTotalPrice();
+                    cartUpdateTotal();
                 }
                 catch (Exception ex)
                 {

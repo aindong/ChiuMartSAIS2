@@ -102,6 +102,12 @@
     <Compile Include="App\Dialogs\dlgPermission.Designer.cs">
       <DependentUpon>dlgPermission.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\Dialogs\dlgPo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgPo.Designer.cs">
+      <DependentUpon>dlgPo.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\Dialogs\dlgProducts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -268,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgPermission.resx">
       <DependentUpon>dlgPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgPo.resx">
+      <DependentUpon>dlgPo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgProducts.resx">
       <DependentUpon>dlgProducts.cs</DependentUpon>
