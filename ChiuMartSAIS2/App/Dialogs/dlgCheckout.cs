@@ -53,6 +53,39 @@ namespace ChiuMartSAIS2.App.Dialogs
             txtCashRendered.SelectAll();
         }
 
+        private bool checkEmpty()
+        {
+            if (txtBank.Text == "")
+            {
+                return false;
+            }
+            else
+            {
+                if (txtBranch.Text == "")
+                {
+                    return false;
+                }
+                else
+                {
+                    if (txtName.Text == "")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        if (txtChequeNumber.Text == "")
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+
         private void txtCashRendered_Click(object sender, EventArgs e)
         {
             txtCashRendered.SelectAll();
@@ -79,13 +112,21 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         private void button4_Click(object sender, EventArgs e)
         {
-            method = "Cheque";
-            bank = txtBank.Text;
-            branch = txtBranch.Text;
-            cheque = txtChequeNumber.Text;
-            chequeName = txtName.Text;
-            chequeDate = dtpDate.Text;
-            DialogResult = DialogResult.OK;
+            if (checkEmpty() == false)
+            {
+                MessageBox.Show("Please fill out all the required fields", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            else
+            {
+                method = "Cheque";
+                bank = txtBank.Text;
+                branch = txtBranch.Text;
+                cheque = txtChequeNumber.Text;
+                chequeName = txtName.Text;
+                chequeDate = dtpDate.Text;
+                DialogResult = DialogResult.OK;
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
