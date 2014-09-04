@@ -54,6 +54,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         {
             txtClientName.Text = clientName;
             txtClientAddress.Text = clientAddress;
+            txtContact.Text = clientContact;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

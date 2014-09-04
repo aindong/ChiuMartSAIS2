@@ -41,7 +41,7 @@ namespace ChiuMartSAIS2.App
                     Con.Open();
                     
                     
-                     string sqlQuery = "SELECT * FROM units WHERE unitDesc LIKE @crit AND status = @status";
+                     string sqlQuery = "SELECT * FROM units WHERE unitDesc LIKE @crit AND status = @status ORDER BY unitDesc ASC";
                    
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -58,8 +58,15 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["unitId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
                 }
@@ -77,7 +84,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM units WHERE status = @status";
+                    string sqlQuery = "SELECT * FROM units WHERE status = @status ORDER BY unitDesc ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("status", this.status);
@@ -90,8 +97,15 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["unitId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 

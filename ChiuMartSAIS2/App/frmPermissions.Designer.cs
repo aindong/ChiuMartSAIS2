@@ -31,14 +31,6 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rboInactive = new System.Windows.Forms.RadioButton();
-            this.rboActive = new System.Windows.Forms.RadioButton();
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -63,6 +55,14 @@
             this.columnHeader45 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader46 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader47 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rboInactive = new System.Windows.Forms.RadioButton();
+            this.rboActive = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -121,94 +121,6 @@
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.listView1.Click += new System.EventHandler(this.listView1_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(15, 316);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(145, 57);
-            this.btnClose.TabIndex = 48;
-            this.btnClose.Text = "&Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(15, 248);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(145, 57);
-            this.btnDelete.TabIndex = 47;
-            this.btnDelete.Text = "&Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Location = new System.Drawing.Point(15, 174);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(145, 57);
-            this.btnEdit.TabIndex = 46;
-            this.btnEdit.Text = "&Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(15, 99);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(145, 57);
-            this.btnAdd.TabIndex = 45;
-            this.btnAdd.Text = "&Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 51;
-            this.label2.Text = "Search :";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rboInactive);
-            this.groupBox1.Controls.Add(this.rboActive);
-            this.groupBox1.Location = new System.Drawing.Point(880, 53);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(186, 45);
-            this.groupBox1.TabIndex = 52;
-            this.groupBox1.TabStop = false;
-            // 
-            // rboInactive
-            // 
-            this.rboInactive.AutoSize = true;
-            this.rboInactive.Location = new System.Drawing.Point(116, 15);
-            this.rboInactive.Name = "rboInactive";
-            this.rboInactive.Size = new System.Drawing.Size(64, 17);
-            this.rboInactive.TabIndex = 16;
-            this.rboInactive.Text = "Inactive";
-            this.rboInactive.UseVisualStyleBackColor = true;
-            // 
-            // rboActive
-            // 
-            this.rboActive.AutoSize = true;
-            this.rboActive.Checked = true;
-            this.rboActive.Location = new System.Drawing.Point(23, 15);
-            this.rboActive.Name = "rboActive";
-            this.rboActive.Size = new System.Drawing.Size(55, 17);
-            this.rboActive.TabIndex = 15;
-            this.rboActive.TabStop = true;
-            this.rboActive.Text = "Active";
-            this.rboActive.UseVisualStyleBackColor = true;
             // 
             // columnHeader11
             // 
@@ -301,6 +213,95 @@
             // columnHeader47
             // 
             this.columnHeader47.Text = "Status";
+            // 
+            // btnClose
+            // 
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Location = new System.Drawing.Point(15, 316);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(145, 57);
+            this.btnClose.TabIndex = 48;
+            this.btnClose.Text = "&Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Location = new System.Drawing.Point(15, 248);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(145, 57);
+            this.btnDelete.TabIndex = 47;
+            this.btnDelete.Text = "&Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Location = new System.Drawing.Point(15, 174);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(145, 57);
+            this.btnEdit.TabIndex = 46;
+            this.btnEdit.Text = "&Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Location = new System.Drawing.Point(15, 99);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(145, 57);
+            this.btnAdd.TabIndex = 45;
+            this.btnAdd.Text = "&Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 51;
+            this.label2.Text = "Search :";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rboInactive);
+            this.groupBox1.Controls.Add(this.rboActive);
+            this.groupBox1.Location = new System.Drawing.Point(880, 53);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(186, 45);
+            this.groupBox1.TabIndex = 52;
+            this.groupBox1.TabStop = false;
+            // 
+            // rboInactive
+            // 
+            this.rboInactive.AutoSize = true;
+            this.rboInactive.Location = new System.Drawing.Point(116, 15);
+            this.rboInactive.Name = "rboInactive";
+            this.rboInactive.Size = new System.Drawing.Size(64, 17);
+            this.rboInactive.TabIndex = 16;
+            this.rboInactive.Text = "Inactive";
+            this.rboInactive.UseVisualStyleBackColor = true;
+            // 
+            // rboActive
+            // 
+            this.rboActive.AutoSize = true;
+            this.rboActive.Checked = true;
+            this.rboActive.Location = new System.Drawing.Point(23, 15);
+            this.rboActive.Name = "rboActive";
+            this.rboActive.Size = new System.Drawing.Size(55, 17);
+            this.rboActive.TabIndex = 15;
+            this.rboActive.TabStop = true;
+            this.rboActive.Text = "Active";
+            this.rboActive.UseVisualStyleBackColor = true;
             // 
             // frmPermissions
             // 

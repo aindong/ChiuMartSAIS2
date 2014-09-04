@@ -30,7 +30,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM cheque WHERE status = 'active'";
+                    string sqlQuery = "SELECT * FROM cheque WHERE status = 'active' ORDER BY chequeName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -119,15 +119,15 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM cheque WHERE status = 'active'";
+                    string sqlQuery = "SELECT * FROM cheque WHERE status = 'active' ORDER BY chequeName ASC";
                     DateTime dateNow = DateTime.Today;
                     if (stockLevel == "Processing")
                     {
-                        sqlQuery = "SELECT * FROM cheque WHERE DATE_FORMAT(chequeDate,'%Y-%m-%d') > cast(now() as date)";
+                        sqlQuery = "SELECT * FROM cheque WHERE DATE_FORMAT(chequeDate,'%Y-%m-%d') > cast(now() as date) ORDER BY chequeName ASC";
                     }
                     else if (stockLevel == "Cleared")
                     {
-                        sqlQuery = "SELECT * FROM cheque WHERE DATE_FORMAT(chequeDate,'%Y-%m-%d') <= cast(now() as date)";
+                        sqlQuery = "SELECT * FROM cheque WHERE DATE_FORMAT(chequeDate,'%Y-%m-%d') <= cast(now() as date) ORDER BY chequeName ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);

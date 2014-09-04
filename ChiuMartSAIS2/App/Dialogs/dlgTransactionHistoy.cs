@@ -65,6 +65,84 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
         }
 
+        private void searchClient(string criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId  WHERE c.clientName LIKE @criteria ORDER BY clientName ASC";
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("criteria", "%" + criteria + "%");
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    lstClients.Items.Clear();
+                    int ctr = -1;
+
+                    while (reader.Read())
+                    {
+                        if (lstClients.Items.Count > 0)
+                        {
+                            if (reader["orNo"].ToString() == lstClients.Items[ctr].Text)
+                            {
+                                double lstAmount = double.Parse(lstClients.Items[ctr].SubItems[3].Text);
+                                double price = double.Parse(reader["productPrice"].ToString());
+                                double qty = double.Parse(reader["qty"].ToString());
+                                double totalAmount = (price * qty);
+                                lstClients.Items[ctr].SubItems[3].Text = (lstAmount + totalAmount).ToString();
+                            }
+                            else
+                            {
+                                lstClients.Items.Add(reader["orNo"].ToString());
+
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["clientName"].ToString() != "" ? reader["clientName"].ToString() : "WALK-IN CLIENT");
+
+                                // converts the transdate to datetime
+                                DateTime aDate;
+                                DateTime.TryParse(reader["transDate"].ToString(), out aDate);
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                                double price = double.Parse(reader["productPrice"].ToString());
+                                double qty = double.Parse(reader["qty"].ToString());
+                                double totalAmount = (price * qty);
+
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["paymentMethod"].ToString());
+                                ctr++;
+                            }
+                        }
+                        else
+                        {
+                            lstClients.Items.Add(reader["orNo"].ToString());
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["clientName"].ToString() != "" ? reader["clientName"].ToString() : "WALK-IN CLIENT");
+
+                            // converts the transdate to datetime
+                            DateTime aDate;
+                            DateTime.TryParse(reader["transDate"].ToString(), out aDate);
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                            double price = double.Parse(reader["productPrice"].ToString());
+                            double qty = double.Parse(reader["qty"].ToString());
+                            double totalAmount = (price * qty);
+
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["paymentMethod"].ToString());
+                            ctr++;
+                        }
+
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void populateTransaction()
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
@@ -72,7 +150,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId";
+                    string sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId ORDER BY clientName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -149,7 +227,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId WHERE DATE_FORMAT(t.transDate,'%Y-%m-%d') BETWEEN @from AND @to";
+                    string sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId WHERE DATE_FORMAT(t.transDate,'%Y-%m-%d') BETWEEN @from AND @to ORDER BY clientName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 

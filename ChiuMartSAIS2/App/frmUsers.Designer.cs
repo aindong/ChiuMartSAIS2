@@ -66,7 +66,7 @@
             this.listView1.Location = new System.Drawing.Point(189, 117);
             this.listView1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(852, 403);
+            this.listView1.Size = new System.Drawing.Size(1059, 403);
             this.listView1.TabIndex = 55;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -90,32 +90,34 @@
             // columnHeader7
             // 
             this.columnHeader7.Text = "Full Name";
-            this.columnHeader7.Width = 243;
+            this.columnHeader7.Width = 237;
             // 
             // columnHeader8
             // 
-            this.columnHeader8.Text = "Permission ID";
-            this.columnHeader8.Width = 113;
+            this.columnHeader8.Text = "Role";
+            this.columnHeader8.Width = 123;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Created Date";
-            this.columnHeader4.Width = 76;
+            this.columnHeader4.Width = 143;
             // 
             // columnHeader5
             // 
             this.columnHeader5.Text = "Updated Date";
+            this.columnHeader5.Width = 145;
             // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "Status";
+            this.columnHeader6.Width = 71;
             // 
             // statusStrip1
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 528);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1053, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1263, 22);
             this.statusStrip1.TabIndex = 61;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -126,9 +128,10 @@
             this.btnClose.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(149, 51);
-            this.btnClose.TabIndex = 60;
+            this.btnClose.TabIndex = 5;
             this.btnClose.Text = "&Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnDelete
             // 
@@ -137,7 +140,7 @@
             this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(149, 51);
-            this.btnDelete.TabIndex = 59;
+            this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "&Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -149,7 +152,7 @@
             this.btnEdit.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(149, 51);
-            this.btnEdit.TabIndex = 58;
+            this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -161,7 +164,7 @@
             this.btnAdd.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(149, 51);
-            this.btnAdd.TabIndex = 57;
+            this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -170,8 +173,8 @@
             // 
             this.txtSearch.Location = new System.Drawing.Point(28, 36);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(1013, 26);
-            this.txtSearch.TabIndex = 63;
+            this.txtSearch.Size = new System.Drawing.Size(1220, 26);
+            this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label1
@@ -187,7 +190,7 @@
             // 
             this.groupBox1.Controls.Add(this.rboInactive);
             this.groupBox1.Controls.Add(this.rboActive);
-            this.groupBox1.Location = new System.Drawing.Point(841, 58);
+            this.groupBox1.Location = new System.Drawing.Point(1048, 59);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 47);
             this.groupBox1.TabIndex = 64;
@@ -222,7 +225,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1053, 550);
+            this.ClientSize = new System.Drawing.Size(1263, 550);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);

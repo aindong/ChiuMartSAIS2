@@ -41,7 +41,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId  WHERE p.status = @status";
+                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId  WHERE p.status = @status ORDER BY supplierName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -124,15 +124,15 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status";
+                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status ORDER BY supplierName ASC";
                     DateTime dateNow = DateTime.Today;
                     if (poStatus == "Delivered")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = 'active' AND p.poStatus = 'Delivered'";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = 'active' AND p.poStatus = 'Delivered' ORDER BY supplierName ASC";
                     }
                     else if (poStatus == "BackOrder")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = 'active' AND p.poStatus = 'Back Order'";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = 'active' AND p.poStatus = 'Back Order' ORDER BY supplierName ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -151,7 +151,7 @@ namespace ChiuMartSAIS2.App
                             if (reader["poId"].ToString() == lstPO.Items[ctr].Text)
                             {
                                 double lstAmount = double.Parse(lstPO.Items[ctr].SubItems[2].Text);
-                                double price = double.Parse(reader["productPrice"].ToString());
+                                double price = double.Parse(reader["supplierPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
                                 lstPO.Items[ctr].SubItems[2].Text = (lstAmount + totalAmount).ToString();
@@ -216,13 +216,13 @@ namespace ChiuMartSAIS2.App
                 {
                     Con.Open();
 
-                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit";
+                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit ORDER BY supplierName ASC";
                     
                     if (filter == "Supplier")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit ORDER BY supplierName ASC";
                     } else if (filter == "poid") {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.suppllierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND poId LIKE @crit";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.suppllierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND poId LIKE @crit ORDER BY supplierName ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -243,7 +243,7 @@ namespace ChiuMartSAIS2.App
                             if (reader["poId"].ToString() == lstPO.Items[ctr].Text)
                             {
                                 double lstAmount = double.Parse(lstPO.Items[ctr].SubItems[2].Text);
-                                double price = double.Parse(reader["productPrice"].ToString());
+                                double price = double.Parse(reader["supplierPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
                                 lstPO.Items[ctr].SubItems[2].Text = (lstAmount + totalAmount).ToString();

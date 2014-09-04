@@ -82,7 +82,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Product ID";
-            this.columnHeader1.Width = 95;
+            this.columnHeader1.Width = 91;
             // 
             // columnHeader4
             // 

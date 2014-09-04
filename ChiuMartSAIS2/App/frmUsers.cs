@@ -79,7 +79,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM permission WHERE status = @status";
+                    string sqlQuery = "SELECT * FROM permission WHERE status = @status ORDER BY role ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("status", this.status);
@@ -112,7 +112,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM user WHERE status = @status";
+                    string sqlQuery = "SELECT u.*, p.role FROM user as u INNER JOIN permission as p ON u.permissionId = p.permissionId WHERE u.status = @status ORDER BY u.username ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("status", this.status);
@@ -127,9 +127,17 @@ namespace ChiuMartSAIS2.App
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["username"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["password"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["fullname"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["permissionId"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["role"].ToString());
+
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -300,7 +308,7 @@ namespace ChiuMartSAIS2.App
 
             if (btnDelete.Text == "&Delete")
             {
-                if (MessageBox.Show(this, "Do you want to delete this supplier?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(this, "Do you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     deleteUser(userId);
                     populateUsers();
@@ -308,7 +316,7 @@ namespace ChiuMartSAIS2.App
             }
             else
             {
-                if (MessageBox.Show(this, "Do you want to restore this supplier?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(this, "Do you want to restore this user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     restoreUser(userId);
                     populateUsers();
@@ -328,8 +336,8 @@ namespace ChiuMartSAIS2.App
                 {
                     Con.Open();
                     string sqlQuery = "";
-                   
-                        sqlQuery = "SELECT * FROM user WHERE username LIKE @crit AND status = @status";
+
+                    sqlQuery = "SELECT u.*, p.role FROM user as u INNER JOIN permission as p ON u.permissionId = p.permissionId WHERE u.username LIKE @crit AND u.status = @status ORDER BY u.username ASC";
                    
                     
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -348,9 +356,17 @@ namespace ChiuMartSAIS2.App
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["username"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["password"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["fullname"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["permissionId"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["role"].ToString());
+
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -380,6 +396,11 @@ namespace ChiuMartSAIS2.App
             status = "inactive";
             btnDelete.Text = "&Restore";
             populateUsers();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
        

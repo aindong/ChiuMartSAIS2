@@ -53,7 +53,7 @@ namespace ChiuMartSAIS2.App
                 using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
                 {
                     con.Open();
-                    string sqlQuery = "SELECT * FROM permission WHERE status = 'active'";
+                    string sqlQuery = "SELECT * FROM permission WHERE status = 'active' ORDER BY role ASC";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -81,8 +81,15 @@ namespace ChiuMartSAIS2.App
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientreport"].ToString() == "1" ? "True" : "False");
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierreport"].ToString() == "1" ? "True" : "False");
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["systemutilities"].ToString() == "1" ? "True" : "False");
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -323,6 +330,11 @@ namespace ChiuMartSAIS2.App
                     populatePermission();
                 }
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

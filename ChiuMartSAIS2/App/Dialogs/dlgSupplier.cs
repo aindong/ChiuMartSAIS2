@@ -36,7 +36,9 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         private void dlgSupplier_Load(object sender, EventArgs e)
         {
-            txtSupplierAddress.Text = supplierContact;
+            txtSupplierAddress.Text = supplierAddress;
+            txtSupplierContact.Text = supplierContact;
+            txtSupplierContactPerson.Text = supplierContactPerson;
             txtSupplierName.Text = supplierName;
         }
 

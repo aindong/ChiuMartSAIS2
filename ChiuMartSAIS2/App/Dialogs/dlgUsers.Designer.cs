@@ -60,8 +60,8 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(436, 42);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "&Add";
+            this.btnSave.TabIndex = 5;
+            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -108,7 +108,7 @@
             this.txtFullName.Location = new System.Drawing.Point(15, 200);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(436, 33);
-            this.txtFullName.TabIndex = 72;
+            this.txtFullName.TabIndex = 3;
             // 
             // label3
             // 
@@ -127,7 +127,7 @@
             this.cboPermissionId.Location = new System.Drawing.Point(15, 269);
             this.cboPermissionId.Name = "cboPermissionId";
             this.cboPermissionId.Size = new System.Drawing.Size(436, 28);
-            this.cboPermissionId.TabIndex = 75;
+            this.cboPermissionId.TabIndex = 4;
             // 
             // label4
             // 

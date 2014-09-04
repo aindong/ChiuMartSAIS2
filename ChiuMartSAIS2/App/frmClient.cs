@@ -37,7 +37,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM client WHERE status = @status";
+                    string sqlQuery = "SELECT * FROM client WHERE status = @status ORDER BY clientName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("status", this.status);
@@ -52,8 +52,15 @@ namespace ChiuMartSAIS2.App
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientName"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientContact"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientAddress"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -62,6 +69,52 @@ namespace ChiuMartSAIS2.App
                 {
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
                     MessageBox.Show(this,"Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void searchClient(string critera)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT * FROM client WHERE clientName LIKE @crit AND status = @status ORDER BY clientName ASC";
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    // SQL Query Parameters
+                    sqlCmd.Parameters.AddWithValue("crit", "%" + critera + "%");
+                    sqlCmd.Parameters.AddWithValue("status", this.status);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    listView1.Items.Clear();
+
+                    while (reader.Read())
+                    {
+                        listView1.Items.Add(reader["clientId"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientContact"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientAddress"].ToString());
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
+                    }
+
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -185,6 +238,7 @@ namespace ChiuMartSAIS2.App
             Dialogs.dlgClient frmClientEdit = new Dialogs.dlgClient("edit", id);
             frmClientEdit.clientName = this.clientName;
             frmClientEdit.clientAddress = this.clientAddress;
+            frmClientEdit.clientContact = this.clientContact;
             if (frmClientEdit.ShowDialog(this) == DialogResult.OK)
             {
                 // If all validations were valid, we're going to get the category
@@ -229,7 +283,8 @@ namespace ChiuMartSAIS2.App
             int id = Int32.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
             clientId = id;
             clientName = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[1].Text;
-            clientAddress = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[2].Text;
+            clientContact = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[2].Text;
+            clientAddress = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[3].Text;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -239,7 +294,7 @@ namespace ChiuMartSAIS2.App
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-
+            searchClient(txtSearch.Text);
         }
 
         private void rboActive_CheckedChanged(object sender, EventArgs e)

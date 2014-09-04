@@ -38,7 +38,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM supplier WHERE status = @status";
+                    string sqlQuery = "SELECT * FROM supplier WHERE status = @status ORDER BY supplierName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("status", this.status);
@@ -54,8 +54,15 @@ namespace ChiuMartSAIS2.App
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierAddress"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContact"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContactPerson"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -190,6 +197,8 @@ namespace ChiuMartSAIS2.App
             Dialogs.dlgSupplier frmSupplierEdit = new Dialogs.dlgSupplier("edit", supplierId);
             frmSupplierEdit.supplierName = this.supplierName;
             frmSupplierEdit.supplierContact = this.supplierContact;
+            frmSupplierEdit.supplierContactPerson = this.supplierContactPerson;
+            frmSupplierEdit.supplierAddress = this.supplierAddress;
             if (frmSupplierEdit.ShowDialog(this) == DialogResult.OK)
             {
                 // If all validations were valid, we're going to get the supplier
@@ -209,7 +218,9 @@ namespace ChiuMartSAIS2.App
             int id = Int32.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
             supplierId = id;
             supplierName = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[1].Text;
-            supplierContact = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[2].Text;
+            supplierAddress = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[2].Text;
+            supplierContact = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[3].Text;
+            supplierContactPerson = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[4].Text;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -252,11 +263,11 @@ namespace ChiuMartSAIS2.App
                     string sqlQuery = "";
                     if (filter == "supName")
                     {
-                        sqlQuery = "SELECT * FROM supplier WHERE supplierName LIKE @crit AND status = @status";
+                        sqlQuery = "SELECT * FROM supplier WHERE supplierName LIKE @crit AND status = @status ORDER BY supplierName ASC";
                     }
                     else if (filter == "supConPerson")
                     {
-                        sqlQuery = "SELECT * FROM supplier WHERE supplierContactPerson LIKE @crit AND status = @status";
+                        sqlQuery = "SELECT * FROM supplier WHERE supplierContactPerson LIKE @crit AND status = @status ORDER BY supplierName ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -276,8 +287,15 @@ namespace ChiuMartSAIS2.App
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierAddress"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContact"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContactPerson"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -330,7 +348,7 @@ namespace ChiuMartSAIS2.App
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }
