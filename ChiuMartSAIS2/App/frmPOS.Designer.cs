@@ -122,6 +122,7 @@
             this.txtAddress.TabIndex = 2;
             this.txtAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress.Click += new System.EventHandler(this.txtProduct_Click);
+            this.txtAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAddress_KeyDown);
             // 
             // label2
             // 

@@ -95,7 +95,7 @@ namespace ChiuMartSAIS2.App
                     }
                     else if (stockLevel == "Critical")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock < p.productSafetyStock AND p.status = 'active' ORDER BY p.productName ASC";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock < p.productSafetyStock AND p.productStock != 0 AND p.status = 'active' ORDER BY p.productName ASC";
                     }
                     else if (stockLevel == "Out of Stock")
                     {

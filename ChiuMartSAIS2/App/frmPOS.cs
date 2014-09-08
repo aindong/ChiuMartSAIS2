@@ -291,6 +291,96 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        private String getProductSupplierPrice(string prodname)
+        {
+            string result = "";
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT supplierPrice FROM products WHERE productName = @prodname";
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("prodname", prodname);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        result = reader["supplierPrice"].ToString();
+                    }
+                    return result;
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return result;
+                }
+            }
+        }
+
+        private String getProductProductPrice(string prodname)
+        {
+            string result = "";
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT productPrice FROM products WHERE productName = @prodname";
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("prodname", prodname);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        result = reader["productPrice"].ToString();
+                    }
+                    return result;
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return result;
+                }
+            }
+        }
+
+        private String getClientAddress(string id)
+        {
+            string result = "";
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT clientAddress FROM client WHERE clientId = @clientId";
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("clientId", id);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        result = reader["clientAddress"].ToString();
+                    }
+                    return result;
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return result;
+                }
+            }
+        }
+
         /// <summary>
         /// Check the product stock
         /// </summary>
@@ -385,8 +475,13 @@ namespace ChiuMartSAIS2.App
                         int stock = checkProductStockById(id);
                         int updatedStock = Int32.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
 
-                        if (stock < updatedStock)
+                        if (stock < updatedStock && stock != 0)
                         {
+                            MessageBox.Show(this, "Insufficient Stocks", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            dgvCart.Rows[i].Cells[1].Value = stock;
+                        }else if (stock == 0)
+                        {
+                            MessageBox.Show(this, "You do not have stocks for this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             dgvCart.Rows[i].Cells[1].Value = stock;
                         }
 
@@ -687,8 +782,13 @@ namespace ChiuMartSAIS2.App
                         int stock = checkProductStockById(id);
                         int updatedStock = Int32.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
 
-                        if (stock < updatedStock)
+                        if (stock < updatedStock && stock != 0)
                         {
+                            MessageBox.Show(this, "Insufficient Stocks", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            dgvCart.Rows[i].Cells[1].Value = stock;
+                        }else if (stock == 0)
+                        {
+                            MessageBox.Show(this, "You do not have stocks for this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             dgvCart.Rows[i].Cells[1].Value = stock;
                         }
                     }
@@ -702,6 +802,25 @@ namespace ChiuMartSAIS2.App
                     MessageBox.Show(this, "Please enter a product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
+            }
+            else if (dgvCart.CurrentCell.ColumnIndex == 4)
+            {
+                string currentPrice = getProductProductPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value.ToString());
+                int supplierPrice = Int32.Parse(getProductSupplierPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value.ToString()));
+                int updatedPrice = Int32.Parse(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value.ToString());
+
+                if (updatedPrice < supplierPrice)
+                {
+                    MessageBox.Show(this, "The price is less than the supplier price", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value = currentPrice;
+                }
+                else if (updatedPrice == supplierPrice)
+                {
+                    MessageBox.Show(this, "The price is equal to the supplier price", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                cartUpdateTotal();
+                updateTotalPrice();
             }
             else
             {
@@ -737,14 +856,36 @@ namespace ChiuMartSAIS2.App
 
         private void txtClient_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void txtClient_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                txtAddress.Focus();
+                txtAddress.Focus(); 
+                string str = txtClient.Text;
+                string[] clientId = new string[2];
+                if (str == "Walk-in Client")
+                {
+                    clientId[1] = "0";
+                }
+                else
+                {
+                    clientId = str.Split(new string[] { " - " }, StringSplitOptions.None);
+                }
+
+                string address = getClientAddress(clientId[1]);
+
+                txtAddress.Text = address;
+            }
+        }
+
+        private void txtAddress_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dgvCart.Focus();
             }
         }
     }
