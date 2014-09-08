@@ -22,6 +22,8 @@ namespace ChiuMartSAIS2.App
         private List<String> itemName = new List<string>();
         private List<String> units = new List<string>();
         private List<String> unitPrice = new List<string>();
+        private List<String> prodId = new List<string>();
+        private List<String> prodQty = new List<string>();
         private string orNumber;
         private string clientName;
         private string address;
@@ -346,6 +348,61 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        private void updateStocks(string qty, string crit)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE products SET productStock = productStock - @qty WHERE productId = @crit";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("qty", qty);
+                    sqlCmd.Parameters.AddWithValue("crit", crit);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Updating stocks error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void getProductID(string crit)
+        {
+            prodQty.Clear();
+            prodId.Clear();
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT productId, qty FROM po WHERE poId = @crit";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("crit", crit);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        prodId.Add(reader["productId"].ToString());
+                        prodQty.Add(reader["qty"].ToString());
+                    }
+
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Message);
+                    MessageBox.Show(this, "Error Retrieving product id", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
         private void getEditPo()
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
@@ -458,10 +515,21 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
+            if (lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].SubItems[4].Text == "Back Order")
+            {
+                MessageBox.Show(this, "This purchase order is already a back order", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             int id = Int32.Parse(lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text);
 
             if (MessageBox.Show(this, "Do you want to back order this po?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                getProductID(lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text);
+                for (int i = 0; i < (prodId.Count()); i++)
+                {
+                    updateStocks(prodQty[i], prodId[i]);
+                }
                 backPo(id);
                 populatePo();
                 checkPo();
@@ -530,13 +598,29 @@ namespace ChiuMartSAIS2.App
                 populatePo();
                 checkPo();
             }
-
         }
 
         private void lstPO_Click(object sender, EventArgs e)
         {
             clearVars();
             getEditPo();
+        }
+
+        private void lstPO_DoubleClick(object sender, EventArgs e)
+        {
+            if (lstPO.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            action = "Edit";
+            Dialogs.dlgPo frm = new Dialogs.dlgPo(this.qty, this.itemName, this.units, this.unitPrice, this.orNumber, this.clientName, this.address, this.action);
+
+            if (frm.ShowDialog(this) == DialogResult.OK)
+            {
+                populatePo();
+                checkPo();
+            }
         }
     }
 }

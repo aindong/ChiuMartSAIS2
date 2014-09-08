@@ -361,5 +361,16 @@ namespace ChiuMartSAIS2.App.Dialogs
         {
 
         }
+
+        private void lstClients_DoubleClick(object sender, EventArgs e)
+        {
+            if (lstClients.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+            action = "View";
+            getViewTransaction();
+            DialogResult = DialogResult.OK; 
+        }
     }
 }

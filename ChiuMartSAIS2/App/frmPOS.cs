@@ -609,8 +609,12 @@ namespace ChiuMartSAIS2.App
                     btnCheckout.Enabled = false;
 
                     label1.Text = "View Transaction";
-                    txtAddress.Text = clientAddress;
+                    txtAddress.Text = clientAddress; 
                     txtClient.Text = clientName;
+                    if (clientName == "")
+                    {
+                        txtClient.Text = "Walk-in Client";
+                    }
                     txtOrNo.Text = orNo;
                     int ctr = 0;
                     dgvCart.RowCount = qty.Count;
@@ -837,6 +841,10 @@ namespace ChiuMartSAIS2.App
             lblTotal.Text = "0.0";
             txtAddress.Text = "";
             txtClient.Text = "Walk-in Client";
+            dgvCart.Enabled = true;
+            txtAddress.ReadOnly = false;
+            txtClient.ReadOnly = false;
+            btnCheckout.Enabled = true;
             // GENERATE NEW OR
             txtOrNo.Text = generateOR();
         }

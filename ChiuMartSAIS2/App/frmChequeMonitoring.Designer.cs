@@ -56,7 +56,7 @@
             this.lblAll.BackColor = System.Drawing.Color.White;
             this.lblAll.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAll.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAll.Location = new System.Drawing.Point(17, 13);
+            this.lblAll.Location = new System.Drawing.Point(17, 66);
             this.lblAll.Name = "lblAll";
             this.lblAll.Padding = new System.Windows.Forms.Padding(10);
             this.lblAll.Size = new System.Drawing.Size(50, 43);
@@ -80,7 +80,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(520, 5);
+            this.label5.Location = new System.Drawing.Point(14, 10);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 16);
             this.label5.TabIndex = 20;
@@ -89,9 +89,9 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(523, 24);
+            this.textBox1.Location = new System.Drawing.Point(17, 29);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(552, 29);
+            this.textBox1.Size = new System.Drawing.Size(1058, 29);
             this.textBox1.TabIndex = 19;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -101,7 +101,7 @@
             this.lblCleared.BackColor = System.Drawing.Color.LimeGreen;
             this.lblCleared.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCleared.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCleared.Location = new System.Drawing.Point(186, 13);
+            this.lblCleared.Location = new System.Drawing.Point(186, 66);
             this.lblCleared.Name = "lblCleared";
             this.lblCleared.Padding = new System.Windows.Forms.Padding(10);
             this.lblCleared.Size = new System.Drawing.Size(85, 43);
@@ -153,9 +153,9 @@
             this.lstCheques.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstCheques.FullRowSelect = true;
             this.lstCheques.GridLines = true;
-            this.lstCheques.Location = new System.Drawing.Point(17, 125);
+            this.lstCheques.Location = new System.Drawing.Point(17, 115);
             this.lstCheques.Name = "lstCheques";
-            this.lstCheques.Size = new System.Drawing.Size(1063, 324);
+            this.lstCheques.Size = new System.Drawing.Size(1063, 334);
             this.lstCheques.TabIndex = 12;
             this.lstCheques.UseCompatibleStateImageBehavior = false;
             this.lstCheques.View = System.Windows.Forms.View.Details;
@@ -177,7 +177,7 @@
             this.lblProcessing.BackColor = System.Drawing.Color.White;
             this.lblProcessing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblProcessing.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProcessing.Location = new System.Drawing.Point(73, 13);
+            this.lblProcessing.Location = new System.Drawing.Point(73, 66);
             this.lblProcessing.Name = "lblProcessing";
             this.lblProcessing.Padding = new System.Windows.Forms.Padding(10);
             this.lblProcessing.Size = new System.Drawing.Size(107, 43);
@@ -189,7 +189,7 @@
             // 
             this.groupBox1.Controls.Add(this.rboInactive);
             this.groupBox1.Controls.Add(this.rboActive);
-            this.groupBox1.Location = new System.Drawing.Point(889, 59);
+            this.groupBox1.Location = new System.Drawing.Point(889, 64);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(186, 45);
             this.groupBox1.TabIndex = 31;
@@ -198,9 +198,10 @@
             // rboInactive
             // 
             this.rboInactive.AutoSize = true;
+            this.rboInactive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rboInactive.Location = new System.Drawing.Point(99, 15);
             this.rboInactive.Name = "rboInactive";
-            this.rboInactive.Size = new System.Drawing.Size(63, 17);
+            this.rboInactive.Size = new System.Drawing.Size(72, 20);
             this.rboInactive.TabIndex = 16;
             this.rboInactive.Text = "Inactive";
             this.rboInactive.UseVisualStyleBackColor = true;
@@ -209,9 +210,10 @@
             // 
             this.rboActive.AutoSize = true;
             this.rboActive.Checked = true;
+            this.rboActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rboActive.Location = new System.Drawing.Point(23, 15);
             this.rboActive.Name = "rboActive";
-            this.rboActive.Size = new System.Drawing.Size(55, 17);
+            this.rboActive.Size = new System.Drawing.Size(63, 20);
             this.rboActive.TabIndex = 15;
             this.rboActive.TabStop = true;
             this.rboActive.Text = "Active";

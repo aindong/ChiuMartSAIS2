@@ -542,5 +542,21 @@ namespace ChiuMartSAIS2.App.Dialogs
         {
             this.Close();
         }
+
+        private void txtSupplier_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtAddress.Focus();
+            }
+        }
+
+        private void txtAddress_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dgvCart.Focus();
+            }
+        }
     }
 }

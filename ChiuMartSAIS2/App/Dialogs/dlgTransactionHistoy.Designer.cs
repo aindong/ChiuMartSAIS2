@@ -116,6 +116,7 @@
             this.lstClients.UseCompatibleStateImageBehavior = false;
             this.lstClients.View = System.Windows.Forms.View.Details;
             this.lstClients.Click += new System.EventHandler(this.lstClients_Click);
+            this.lstClients.DoubleClick += new System.EventHandler(this.lstClients_DoubleClick);
             // 
             // columnHeader1
             // 

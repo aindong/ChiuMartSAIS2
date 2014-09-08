@@ -75,6 +75,7 @@
             this.lstPO.UseCompatibleStateImageBehavior = false;
             this.lstPO.View = System.Windows.Forms.View.Details;
             this.lstPO.Click += new System.EventHandler(this.lstPO_Click);
+            this.lstPO.DoubleClick += new System.EventHandler(this.lstPO_DoubleClick);
             // 
             // columnHeader2
             // 
@@ -184,6 +185,7 @@
             // 
             this.lblBackOrder.BackColor = System.Drawing.Color.IndianRed;
             this.lblBackOrder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblBackOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblBackOrder.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBackOrder.Location = new System.Drawing.Point(270, 75);
             this.lblBackOrder.Name = "lblBackOrder";

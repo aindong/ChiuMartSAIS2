@@ -276,6 +276,7 @@
             this.txtSupplier.Size = new System.Drawing.Size(399, 25);
             this.txtSupplier.TabIndex = 2;
             this.txtSupplier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSupplier_KeyDown);
             // 
             // label2
             // 
@@ -297,6 +298,7 @@
             this.txtAddress.Size = new System.Drawing.Size(612, 25);
             this.txtAddress.TabIndex = 3;
             this.txtAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAddress_KeyDown);
             // 
             // label1
             // 
