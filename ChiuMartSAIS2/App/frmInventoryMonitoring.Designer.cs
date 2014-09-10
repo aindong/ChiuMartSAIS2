@@ -32,8 +32,8 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblGood = new System.Windows.Forms.Label();
             this.lblSafety = new System.Windows.Forms.Label();
@@ -83,15 +83,15 @@
             this.columnHeader3.Text = "Unit";
             this.columnHeader3.Width = 143;
             // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Safety Stocks";
-            this.columnHeader4.Width = 132;
-            // 
             // columnHeader5
             // 
             this.columnHeader5.Text = "Current Stocks";
             this.columnHeader5.Width = 176;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Safety Stocks";
+            this.columnHeader4.Width = 132;
             // 
             // columnHeader6
             // 

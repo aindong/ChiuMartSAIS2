@@ -47,6 +47,9 @@
             this.rboInactive = new System.Windows.Forms.RadioButton();
             this.rboActive = new System.Windows.Forms.RadioButton();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.lblVerify = new System.Windows.Forms.Label();
+            this.btnVerify = new System.Windows.Forms.Button();
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,7 +152,8 @@
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6,
-            this.columnHeader7});
+            this.columnHeader7,
+            this.columnHeader9});
             this.lstCheques.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstCheques.FullRowSelect = true;
             this.lstCheques.GridLines = true;
@@ -205,6 +209,7 @@
             this.rboInactive.TabIndex = 16;
             this.rboInactive.Text = "Inactive";
             this.rboInactive.UseVisualStyleBackColor = true;
+            this.rboInactive.CheckedChanged += new System.EventHandler(this.rboInactive_CheckedChanged);
             // 
             // rboActive
             // 
@@ -218,6 +223,7 @@
             this.rboActive.TabStop = true;
             this.rboActive.Text = "Active";
             this.rboActive.UseVisualStyleBackColor = true;
+            this.rboActive.CheckedChanged += new System.EventHandler(this.rboActive_CheckedChanged);
             // 
             // btnDelete
             // 
@@ -231,11 +237,44 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // lblVerify
+            // 
+            this.lblVerify.AutoSize = true;
+            this.lblVerify.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.lblVerify.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblVerify.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVerify.Location = new System.Drawing.Point(277, 66);
+            this.lblVerify.Name = "lblVerify";
+            this.lblVerify.Padding = new System.Windows.Forms.Padding(10);
+            this.lblVerify.Size = new System.Drawing.Size(86, 43);
+            this.lblVerify.TabIndex = 33;
+            this.lblVerify.Text = "Verified";
+            this.lblVerify.Click += new System.EventHandler(this.lblVerify_Click);
+            // 
+            // btnVerify
+            // 
+            this.btnVerify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerify.Location = new System.Drawing.Point(534, 455);
+            this.btnVerify.Name = "btnVerify";
+            this.btnVerify.Size = new System.Drawing.Size(180, 49);
+            this.btnVerify.TabIndex = 34;
+            this.btnVerify.Text = "Verify";
+            this.btnVerify.UseVisualStyleBackColor = true;
+            this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Cheque Status";
+            this.columnHeader9.Width = 200;
+            // 
             // frmChequeMonitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1087, 516);
+            this.Controls.Add(this.btnVerify);
+            this.Controls.Add(this.lblVerify);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblAll);
@@ -281,5 +320,8 @@
         private System.Windows.Forms.RadioButton rboInactive;
         private System.Windows.Forms.RadioButton rboActive;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Label lblVerify;
+        private System.Windows.Forms.Button btnVerify;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
     }
 }

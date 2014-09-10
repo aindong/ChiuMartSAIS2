@@ -130,15 +130,15 @@ namespace ChiuMartSAIS2.App
                     DateTime dateNow = DateTime.Today;
                     if (poStatus == "Delivered")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = 'active' AND p.poStatus = 'Delivered' ORDER BY supplierName ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus = 'Delivered' AND p.poStatus != 'Verified' ORDER BY supplierName ASC";
                     }
                     else if (poStatus == "BackOrder")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = 'active' AND p.poStatus = 'Back Order' ORDER BY supplierName ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus = 'Back Order' AND p.poStatus != 'Verified' ORDER BY supplierName ASC";
                     }
                     else if (poStatus == "Verified")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = 'active' AND p.poStatus = 'Verified' ORDER BY supplierName ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus = 'Verified' ORDER BY supplierName ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -222,13 +222,13 @@ namespace ChiuMartSAIS2.App
                 {
                     Con.Open();
 
-                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus != 'Verified' AND supplierName LIKE @crit ORDER BY supplierName ASC";
+                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit ORDER BY supplierName ASC";
                     
                     if (filter == "Supplier")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus != 'Verified' AND supplierName LIKE @crit ORDER BY supplierName ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit ORDER BY supplierName ASC";
                     } else if (filter == "poid") {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.suppllierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus != 'Verified' AND poId LIKE @crit ORDER BY supplierName ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.suppllierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND poId LIKE @crit ORDER BY supplierName ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -348,6 +348,29 @@ namespace ChiuMartSAIS2.App
                 {
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
                     MessageBox.Show(this, "Deleting po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void restorePo(string criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE po SET status='active' WHERE poId=@criteria";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Po successfully restored", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Restoring po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -484,7 +507,7 @@ namespace ChiuMartSAIS2.App
                 // Check for verify
                 if (lvw.SubItems[4].Text == "Verified")
                 {
-                    lvw.BackColor = Color.Lime;
+                    lvw.BackColor = Color.DeepSkyBlue;
                 }
             }
         }
@@ -578,13 +601,25 @@ namespace ChiuMartSAIS2.App
             }
 
             string id = lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text;
-
-            if (MessageBox.Show(this, "Do you want to delete this po?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnDelete.Text == "&Delete")
             {
-                deletePo(id);
-                populatePo();
-                checkPo();
+                if (MessageBox.Show(this, "Do you want to delete this po?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    deletePo(id);
+                    populatePo();
+                    checkPo();
+                }
             }
+            else
+            {
+                if (MessageBox.Show(this, "Do you want to restore this po?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    restorePo(id);
+                    populatePo();
+                    checkPo();
+                }
+            }
+            
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
@@ -602,6 +637,7 @@ namespace ChiuMartSAIS2.App
             status = "inactive";
             btnDelete.Text = "&Restore";
             populatePo();
+            checkPo();
         }
 
         private void rboActicve_CheckedChanged(object sender, EventArgs e)
@@ -609,6 +645,7 @@ namespace ChiuMartSAIS2.App
             status = "active";
             btnDelete.Text = "&Delete";
             populatePo();
+            checkPo();
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -676,7 +713,6 @@ namespace ChiuMartSAIS2.App
             {
                 verifyPo(id);
                 populatePo();
-                checkPo();
                 checkPo();
             }
         }

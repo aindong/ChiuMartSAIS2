@@ -310,7 +310,7 @@
             // 
             // lblVerified
             // 
-            this.lblVerified.BackColor = System.Drawing.Color.Lime;
+            this.lblVerified.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.lblVerified.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblVerified.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblVerified.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
