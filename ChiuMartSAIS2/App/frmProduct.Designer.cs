@@ -59,12 +59,12 @@
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader4,
-            this.columnHeader5,
             this.columnHeader2,
-            this.columnHeader3,
+            this.columnHeader5,
             this.columnHeader6,
+            this.columnHeader4,
             this.columnHeader7,
+            this.columnHeader3,
             this.columnHeader8,
             this.columnHeader9,
             this.columnHeader10});
@@ -123,6 +123,7 @@
             // columnHeader9
             // 
             this.columnHeader9.Text = "Updated Date";
+            this.columnHeader9.Width = 138;
             // 
             // columnHeader10
             // 

@@ -114,12 +114,12 @@ namespace ChiuMartSAIS2.App
                     while (reader.Read())
                     {
                         listView1.Items.Add(reader["productId"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productPrice"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
                         
                         // converts the transdate to datetime
                         DateTime aDate;
@@ -180,12 +180,12 @@ namespace ChiuMartSAIS2.App
                     while (reader.Read())
                     {
                         listView1.Items.Add(reader["productId"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productPrice"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
 
                         // converts the transdate to datetime
                         DateTime aDate;
@@ -448,17 +448,17 @@ namespace ChiuMartSAIS2.App
         private void listView1_Click(object sender, EventArgs e)
         {
             double id = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
-            double stock = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[1].Text);
-            double price = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[5].Text);
-            double safety = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[6].Text);
+            double stock = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[4].Text);
+            double price = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[3].Text);
+            double safety = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[5].Text);
 
             productId = id;
             productStocks = stock;
             productPrice = price;
             productSafetyStock = safety;
             productUnit = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[2].Text;
-            productName = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[3].Text;
-            productCategory = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[4].Text;
+            productName = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[1].Text;
+            productCategory = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[6].Text;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
