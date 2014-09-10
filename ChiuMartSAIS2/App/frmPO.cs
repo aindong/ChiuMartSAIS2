@@ -43,7 +43,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId  WHERE p.status = @status ORDER BY supplierName ASC";
+                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId  WHERE p.status = @status  AND p.poStatus != 'Verified' ORDER BY supplierName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -126,7 +126,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status ORDER BY supplierName ASC";
+                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus != 'Verified' ORDER BY supplierName ASC";
                     DateTime dateNow = DateTime.Today;
                     if (poStatus == "Delivered")
                     {
@@ -135,6 +135,10 @@ namespace ChiuMartSAIS2.App
                     else if (poStatus == "BackOrder")
                     {
                         sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = 'active' AND p.poStatus = 'Back Order' ORDER BY supplierName ASC";
+                    }
+                    else if (poStatus == "Verified")
+                    {
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = 'active' AND p.poStatus = 'Verified' ORDER BY supplierName ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -218,13 +222,13 @@ namespace ChiuMartSAIS2.App
                 {
                     Con.Open();
 
-                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit ORDER BY supplierName ASC";
+                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus != 'Verified' AND supplierName LIKE @crit ORDER BY supplierName ASC";
                     
                     if (filter == "Supplier")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit ORDER BY supplierName ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus != 'Verified' AND supplierName LIKE @crit ORDER BY supplierName ASC";
                     } else if (filter == "poid") {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.suppllierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND poId LIKE @crit ORDER BY supplierName ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.suppllierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus != 'Verified' AND poId LIKE @crit ORDER BY supplierName ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -302,14 +306,14 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void backPo(int criteria)
+        private void backPo(string criteria)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "UPDATE po SET poStatus='Back Order' WHERE id=@criteria";
+                    string sqlQuery = "UPDATE po SET poStatus='Back Order' WHERE poId=@criteria";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("criteria", criteria);
@@ -325,14 +329,14 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void deletePo(int criteria)
+        private void deletePo(string criteria)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "UPDATE po SET status='inactive' WHERE id=@criteria";
+                    string sqlQuery = "UPDATE po SET status='inactive' WHERE poId=@criteria";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("criteria", criteria);
@@ -344,6 +348,29 @@ namespace ChiuMartSAIS2.App
                 {
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
                     MessageBox.Show(this, "Deleting po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void verifyPo(string criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE po SET poStatus='Verified' WHERE poId=@criteria";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Po successfully verified", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Verifiying po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -453,6 +480,12 @@ namespace ChiuMartSAIS2.App
                 {
                     lvw.BackColor = Color.IndianRed;
                 }
+
+                // Check for verify
+                if (lvw.SubItems[4].Text == "Verified")
+                {
+                    lvw.BackColor = Color.Lime;
+                }
             }
         }
 
@@ -521,13 +554,14 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
-            int id = Int32.Parse(lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text);
+            string id = lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text;
 
             if (MessageBox.Show(this, "Do you want to back order this po?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 getProductID(lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text);
                 for (int i = 0; i < (prodId.Count()); i++)
                 {
+                    int crit = Int32.Parse(prodId[i]);
                     updateStocks(prodQty[i], prodId[i]);
                 }
                 backPo(id);
@@ -543,7 +577,7 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
-            int id = Int32.Parse(lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text);
+            string id = lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text;
 
             if (MessageBox.Show(this, "Do you want to delete this po?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -619,6 +653,30 @@ namespace ChiuMartSAIS2.App
             if (frm.ShowDialog(this) == DialogResult.OK)
             {
                 populatePo();
+                checkPo();
+            }
+        }
+
+        private void lblVerified_Click(object sender, EventArgs e)
+        {
+            getPoByStatus("Verified");
+            checkPo();
+        }
+
+        private void btnVerify_Click(object sender, EventArgs e)
+        {
+            if (lstPO.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            string id = lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text;
+
+            if (MessageBox.Show(this, "Do you want to verify this po?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                verifyPo(id);
+                populatePo();
+                checkPo();
                 checkPo();
             }
         }

@@ -336,5 +336,50 @@ namespace ChiuMartSAIS2.App
         {
             this.Close();
         }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                Dialogs.dlgPermission dlg = new Dialogs.dlgPermission();
+
+                // Set the fields
+                dlg.permissionId = this.permissionId;
+                dlg.role = this.role;
+                dlg.products = this.products;
+                dlg.categories = this.categories;
+                dlg.units = this.units;
+                dlg.suppliers = this.suppliers;
+                dlg.clients = this.clients;
+                dlg.users = this.users;
+                dlg.permissions = this.permissions;
+                dlg.pos = this.pos;
+                dlg.inventoryMonitoring = this.inventoryMonitoring;
+                dlg.purchaseOrder = this.purchaseOrder;
+                dlg.chequemonitoring = this.chequemonitoring;
+                dlg.inventoryReport = this.inventoryReport;
+                dlg.salesReport = this.salesReport;
+                dlg.usersReport = this.usersReport;
+                dlg.logsreport = this.logsreport;
+                dlg.clientReport = this.clientReport;
+                dlg.supplierReport = this.supplierReport;
+                dlg.systemUtilities = this.systemUtilities;
+
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+
+                    // Get the data on the dialog
+                    dlg.GetData(out permissionId, out role, out products, out categories, out units, out suppliers,
+                        out clients, out users, out permissions, out pos, out inventoryMonitoring, out purchaseOrder, out chequemonitoring, out inventoryReport,
+                        out salesReport, out usersReport, out logsreport, out clientReport, out supplierReport, out systemUtilities);
+
+                    // Insert the new permission to the database
+                    updatePermission();
+
+                    // Populate the list again
+                    populatePermission();
+                }
+            }
+        }
     }
 }

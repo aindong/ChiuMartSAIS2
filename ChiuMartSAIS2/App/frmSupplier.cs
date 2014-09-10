@@ -350,5 +350,26 @@ namespace ChiuMartSAIS2.App
         {
             this.Close();
         }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            Dialogs.dlgSupplier frmSupplierEdit = new Dialogs.dlgSupplier("edit", supplierId);
+            frmSupplierEdit.supplierName = this.supplierName;
+            frmSupplierEdit.supplierContact = this.supplierContact;
+            frmSupplierEdit.supplierContactPerson = this.supplierContactPerson;
+            frmSupplierEdit.supplierAddress = this.supplierAddress;
+            if (frmSupplierEdit.ShowDialog(this) == DialogResult.OK)
+            {
+                // If all validations were valid, we're going to get the supplier
+                frmSupplierEdit.getSupplier(out supplierId, out supplierName, out supplierAddress, out supplierContact, out supplierContactPerson);
+                updateSupplier(supplierName, supplierAddress, supplierContact, supplierContactPerson, supplierId);
+                populateSupplier();
+            }
+        }
     }
 }

@@ -526,5 +526,38 @@ namespace ChiuMartSAIS2.App
             btnDelete.Text = "&Restore";
             populateProduct();
         }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            Dialogs.dlgProducts frmProductsEdit = new Dialogs.dlgProducts("edit", productId);
+
+            frmProductsEdit.productName = this.productName;
+            frmProductsEdit.productUnit = this.productUnit;
+            frmProductsEdit.productPrice = this.productPrice;
+            frmProductsEdit.productStocks = this.productStocks;
+            frmProductsEdit.productSafetyStock = this.productSafetyStock;
+            frmProductsEdit.productCategory = this.productCategory;
+
+            populateUnits();
+            populateCategory();
+            frmProductsEdit.units = this.units;
+            frmProductsEdit.category = this.category;
+            if (frmProductsEdit.ShowDialog(this) == DialogResult.OK)
+            {
+                // If all validations were valid, we're going to get the category
+                frmProductsEdit.getProduct(out productId, out productPrice, out productSafetyStock, out productStocks,
+                    out productName, out productCategory, out productUnit);
+                double unitId = getUnitID(productUnit);
+                double categoryId = getCategoryID(productCategory);
+                updateProduct(productPrice, productStocks, productSafetyStock,
+                     productName, unitId, categoryId, productId);
+                populateProduct();
+            }
+        }
     }
 }

@@ -336,5 +336,23 @@ namespace ChiuMartSAIS2.App
             btnDelete.Text = "&Restore";
             populateCategory();
         }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            Dialogs.dlgCategory frmCategoryEdit = new Dialogs.dlgCategory("edit", categoryId);
+            frmCategoryEdit.categoryName = this.categoryName;
+            if (frmCategoryEdit.ShowDialog(this) == DialogResult.OK)
+            {
+                // If all validations were valid, we're going to get the category
+                frmCategoryEdit.getCategory(out categoryId, out categoryName);
+                updateCategory(categoryName, categoryId);
+                populateCategory();
+            }
+        }
     }
 }

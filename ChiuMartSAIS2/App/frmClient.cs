@@ -310,5 +310,25 @@ namespace ChiuMartSAIS2.App
             btnDelete.Text = "&Restore";
             populateClient();
         }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+            int id = Int32.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
+            Dialogs.dlgClient frmClientEdit = new Dialogs.dlgClient("edit", id);
+            frmClientEdit.clientName = this.clientName;
+            frmClientEdit.clientAddress = this.clientAddress;
+            frmClientEdit.clientContact = this.clientContact;
+            if (frmClientEdit.ShowDialog(this) == DialogResult.OK)
+            {
+                // If all validations were valid, we're going to get the category
+                frmClientEdit.getClient(out clientId, out clientName, out clientAddress, out clientContact);
+                updateClient(clientName, clientAddress, clientContact, clientId);
+                populateClient();
+            }
+        }
     }
 }

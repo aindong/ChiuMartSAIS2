@@ -52,6 +52,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dtpDateArrival = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
+            this.lblVerified = new System.Windows.Forms.Label();
+            this.btnVerify = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -306,11 +308,39 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lblVerified
+            // 
+            this.lblVerified.BackColor = System.Drawing.Color.Lime;
+            this.lblVerified.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblVerified.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblVerified.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVerified.Location = new System.Drawing.Point(411, 75);
+            this.lblVerified.Name = "lblVerified";
+            this.lblVerified.Size = new System.Drawing.Size(135, 40);
+            this.lblVerified.TabIndex = 16;
+            this.lblVerified.Text = "Verified";
+            this.lblVerified.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVerified.Click += new System.EventHandler(this.lblVerified_Click);
+            // 
+            // btnVerify
+            // 
+            this.btnVerify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerify.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerify.Location = new System.Drawing.Point(404, 546);
+            this.btnVerify.Name = "btnVerify";
+            this.btnVerify.Size = new System.Drawing.Size(124, 51);
+            this.btnVerify.TabIndex = 17;
+            this.btnVerify.Text = "Verify";
+            this.btnVerify.UseVisualStyleBackColor = true;
+            this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
+            // 
             // frmPO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(981, 607);
+            this.Controls.Add(this.btnVerify);
+            this.Controls.Add(this.lblVerified);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dtpDateArrival);
             this.Controls.Add(this.label3);
@@ -369,5 +399,7 @@
         private System.Windows.Forms.DateTimePicker dtpDateArrival;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Label lblVerified;
+        private System.Windows.Forms.Button btnVerify;
     }
 }

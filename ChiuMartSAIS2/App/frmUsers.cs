@@ -50,10 +50,6 @@ namespace ChiuMartSAIS2.App
             {
                 return;
             }
-            if (listView1.SelectedItems.Count <= 0)
-            {
-                return;
-            }
 
             Dialogs.dlgUsers frmUsersEdit = new Dialogs.dlgUsers("edit", userId);
             frmUsersEdit.username = this.username;
@@ -403,7 +399,25 @@ namespace ChiuMartSAIS2.App
             this.Close();
         }
 
-       
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count <= 0)
+            {
+                return;
+            }
 
+            Dialogs.dlgUsers frmUsersEdit = new Dialogs.dlgUsers("edit", userId);
+            frmUsersEdit.username = this.username;
+            frmUsersEdit.password = this.password;
+            frmUsersEdit.fullname = this.fullname;
+            frmUsersEdit.permissionId = this.permissionId;
+            if (frmUsersEdit.ShowDialog(this) == DialogResult.OK)
+            {
+                // If all validations were valid, we're going to get the user
+                frmUsersEdit.getUser(out userId, out username, out password, out fullname, out permissionId);
+                updateUser(username, password, fullname, permissionId, userId);
+                populateUsers();
+            }
+        }
     }
 }
