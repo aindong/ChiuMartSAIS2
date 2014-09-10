@@ -48,9 +48,9 @@ namespace ChiuMartSAIS2.App.Dialogs
             txtAmount.Text = total;
             txtReceivableTotal.Text = total;
             txtTotal.Text = total;
+            txtCashRendered.Text = total;
 
-            txtCashRendered.Focus();
-            txtCashRendered.SelectAll();
+            button1.Focus();
         }
 
         private bool checkEmpty()
