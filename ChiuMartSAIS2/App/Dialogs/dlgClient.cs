@@ -18,6 +18,8 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         public string clientName;
         public string clientAddress;
+        public string clientContact;
+
         public dlgClient(string action, int crit)
         {
             InitializeComponent();
@@ -30,7 +32,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         /// This will give out the client value to the parent form
         /// </summary>
         /// <param name="client">client variable to handle the given/setted client</param>
-        public void getClient(out int clientId, out string clientName, out string clientAddress)
+        public void getClient(out int clientId, out string clientName, out string clientAddress, out string clientContact)
         {
             // Set the client id
             clientId = _crit;
@@ -39,6 +41,8 @@ namespace ChiuMartSAIS2.App.Dialogs
             clientName = txtClientName.Text;
             // Set the client address
             clientAddress = txtClientAddress.Text;
+            // set the client contact
+            clientContact = txtContact.Text;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -50,6 +54,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         {
             txtClientName.Text = clientName;
             txtClientAddress.Text = clientAddress;
+            txtContact.Text = clientContact;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -92,14 +97,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
             else
             {
-                if (txtClientAddress.Text == "")
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
         }
     }

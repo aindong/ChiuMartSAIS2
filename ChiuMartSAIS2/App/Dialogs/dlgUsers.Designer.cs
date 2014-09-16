@@ -32,8 +32,12 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtpWord = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtFullName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboPermissionId = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label5
@@ -52,12 +56,12 @@
             // btnSave
             // 
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(15, 177);
+            this.btnSave.Location = new System.Drawing.Point(15, 317);
             this.btnSave.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(436, 42);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "&Add";
+            this.btnSave.TabIndex = 5;
+            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -79,32 +83,74 @@
             this.txtUsername.Size = new System.Drawing.Size(436, 33);
             this.txtUsername.TabIndex = 1;
             // 
-            // txtPassword
+            // txtpWord
             // 
-            this.txtPassword.AutoSize = true;
-            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(11, 109);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(81, 20);
-            this.txtPassword.TabIndex = 71;
-            this.txtPassword.Text = "Password *";
+            this.txtpWord.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpWord.Location = new System.Drawing.Point(15, 135);
+            this.txtpWord.Name = "txtpWord";
+            this.txtpWord.PasswordChar = '*';
+            this.txtpWord.Size = new System.Drawing.Size(436, 33);
+            this.txtpWord.TabIndex = 2;
             // 
-            // textBox1
+            // label2
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(15, 132);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(436, 33);
-            this.textBox1.TabIndex = 2;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(11, 177);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 20);
+            this.label2.TabIndex = 73;
+            this.label2.Text = "Full Name *";
+            // 
+            // txtFullName
+            // 
+            this.txtFullName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFullName.Location = new System.Drawing.Point(15, 200);
+            this.txtFullName.Name = "txtFullName";
+            this.txtFullName.Size = new System.Drawing.Size(436, 33);
+            this.txtFullName.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(11, 246);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 20);
+            this.label3.TabIndex = 74;
+            this.label3.Text = "Permission";
+            // 
+            // cboPermissionId
+            // 
+            this.cboPermissionId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPermissionId.FormattingEnabled = true;
+            this.cboPermissionId.Location = new System.Drawing.Point(15, 269);
+            this.cboPermissionId.Name = "cboPermissionId";
+            this.cboPermissionId.Size = new System.Drawing.Size(436, 28);
+            this.cboPermissionId.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 112);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 20);
+            this.label4.TabIndex = 76;
+            this.label4.Text = "Password *";
             // 
             // dlgUsers
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 232);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(465, 382);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cboPermissionId);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtFullName);
+            this.Controls.Add(this.txtpWord);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label1);
@@ -130,7 +176,11 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.Label txtPassword;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtpWord;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtFullName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboPermissionId;
+        private System.Windows.Forms.Label label4;
     }
 }

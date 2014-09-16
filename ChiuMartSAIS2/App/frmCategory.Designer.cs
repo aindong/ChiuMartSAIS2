@@ -62,11 +62,12 @@
             this.listView1.Location = new System.Drawing.Point(188, 114);
             this.listView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(598, 246);
+            this.listView1.Size = new System.Drawing.Size(947, 366);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.Click += new System.EventHandler(this.listView1_Click);
+            this.listView1.DoubleClick += new System.EventHandler(this.listView1_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -152,9 +153,9 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 374);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 485);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(799, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1149, 22);
             this.statusStrip1.TabIndex = 11;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -162,7 +163,7 @@
             // 
             this.txtSearch.Location = new System.Drawing.Point(13, 35);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(774, 26);
+            this.txtSearch.Size = new System.Drawing.Size(1122, 26);
             this.txtSearch.TabIndex = 12;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -194,7 +195,7 @@
             // 
             this.groupBox1.Controls.Add(this.rboInactive);
             this.groupBox1.Controls.Add(this.rboActive);
-            this.groupBox1.Location = new System.Drawing.Point(601, 61);
+            this.groupBox1.Location = new System.Drawing.Point(949, 61);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(186, 45);
             this.groupBox1.TabIndex = 30;
@@ -228,7 +229,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 396);
+            this.ClientSize = new System.Drawing.Size(1149, 507);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rboCategoryName);
             this.Controls.Add(this.rboCategoryId);

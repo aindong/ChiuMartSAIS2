@@ -18,7 +18,9 @@ namespace ChiuMartSAIS2.App
         // fields declaration
         private int supplierId = 0;
         private string supplierName = "";
+        private string supplierAddress = "";
         private string supplierContact = "";
+        private string supplierContactPerson = "";
         private string status = "active";
 
         private Classes.Configuration conf;
@@ -36,7 +38,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM supplier WHERE status = @status";
+                    string sqlQuery = "SELECT * FROM supplier WHERE status = @status ORDER BY supplierName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("status", this.status);
@@ -49,9 +51,18 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["supplierId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierAddress"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContact"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContactPerson"].ToString());
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -64,18 +75,20 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void insertSupplier(string supplierName, string supplierContact)
+        private void insertSupplier(string supplierName, string supplierAddress, string supplierContact, string supplierContactPerson)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "INSERT INTO supplier (supplierName, supplierContact, status) VALUES (@supplierName, @supplierContact, 'active')";
+                    string sqlQuery = "INSERT INTO supplier (supplierName, supplierAddress, supplierContact, supplierContactPerson, status) VALUES (@supplierName, @supplierAddress, @supplierContact, @supplierContactPerson, 'active')";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("supplierName", supplierName);
+                    sqlCmd.Parameters.AddWithValue("supplierAddress", supplierAddress);
                     sqlCmd.Parameters.AddWithValue("supplierContact", supplierContact);
+                    sqlCmd.Parameters.AddWithValue("supplierContactPerson", supplierContactPerson);
 
                     sqlCmd.ExecuteNonQuery();
                     MessageBox.Show(this, "Supplier successfully added", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -88,18 +101,20 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void updateSupplier(string supplierName, string supplierContact, int criteria)
+        private void updateSupplier(string supplierName, string supplierAddress, string supplierContact, string supplierContactPerson, int criteria)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "UPDATE supplier SET supplierName=@supplierName, supplierContact=@supplierContact WHERE supplierId=@criteria";
+                    string sqlQuery = "UPDATE supplier SET supplierName=@supplierName, supplierAddress=@supplierAddress, supplierContact=@supplierContact, supplierContactPerson=@supplierContactPerson WHERE supplierId=@criteria";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("supplierName", supplierName);
+                    sqlCmd.Parameters.AddWithValue("supplierAddress", supplierAddress);
                     sqlCmd.Parameters.AddWithValue("supplierContact", supplierContact);
+                    sqlCmd.Parameters.AddWithValue("supplierContactPerson", supplierContactPerson);
                     sqlCmd.Parameters.AddWithValue("criteria", criteria);
 
                     sqlCmd.ExecuteNonQuery();
@@ -131,7 +146,30 @@ namespace ChiuMartSAIS2.App
                 catch (MySqlException ex)
                 {
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
-                    MessageBox.Show(this, "Delete Supplier error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Deleting Supplier error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void restoreSupplier(int criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE supplier SET status='active' WHERE supplierId=@criteria";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Supplier successfully restored", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Restoring Supplier error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -143,8 +181,8 @@ namespace ChiuMartSAIS2.App
             if (frmSupplierAdd.ShowDialog(this) == DialogResult.OK)
             {
                 // If all validations were valid, we're going to get the supplier
-                frmSupplierAdd.getSupplier(out supplierId, out supplierName, out supplierContact);
-                insertSupplier(supplierName, supplierContact);
+                frmSupplierAdd.getSupplier(out supplierId, out supplierName, out supplierAddress, out supplierContact, out supplierContactPerson);
+                insertSupplier(supplierName, supplierAddress, supplierContact, supplierContactPerson);
                 populateSupplier();
             }
         }
@@ -159,11 +197,13 @@ namespace ChiuMartSAIS2.App
             Dialogs.dlgSupplier frmSupplierEdit = new Dialogs.dlgSupplier("edit", supplierId);
             frmSupplierEdit.supplierName = this.supplierName;
             frmSupplierEdit.supplierContact = this.supplierContact;
+            frmSupplierEdit.supplierContactPerson = this.supplierContactPerson;
+            frmSupplierEdit.supplierAddress = this.supplierAddress;
             if (frmSupplierEdit.ShowDialog(this) == DialogResult.OK)
             {
                 // If all validations were valid, we're going to get the supplier
-                frmSupplierEdit.getSupplier(out supplierId, out supplierName, out supplierContact);
-                updateSupplier(supplierName, supplierContact, supplierId);
+                frmSupplierEdit.getSupplier(out supplierId, out supplierName, out supplierAddress, out supplierContact, out supplierContactPerson);
+                updateSupplier(supplierName, supplierAddress, supplierContact, supplierContactPerson, supplierId);
                 populateSupplier();
             }
         }
@@ -178,7 +218,9 @@ namespace ChiuMartSAIS2.App
             int id = Int32.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
             supplierId = id;
             supplierName = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[1].Text;
-            supplierContact = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[2].Text;
+            supplierAddress = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[2].Text;
+            supplierContact = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[3].Text;
+            supplierContactPerson = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[4].Text;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -188,10 +230,21 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
-            if (MessageBox.Show(this, "Do you want to delete this supplier?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnDelete.Text == "&Delete")
             {
-                deleteSupplier(supplierId);
-                populateSupplier();
+                if (MessageBox.Show(this, "Do you want to delete this supplier?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    deleteSupplier(supplierId);
+                    populateSupplier();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show(this, "Do you want to restore this supplier?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    restoreSupplier(supplierId);
+                    populateSupplier();
+                }
             }
         }
 
@@ -210,11 +263,11 @@ namespace ChiuMartSAIS2.App
                     string sqlQuery = "";
                     if (filter == "supName")
                     {
-                        sqlQuery = "SELECT * FROM supplier WHERE supplierName LIKE @crit AND status = @status";
+                        sqlQuery = "SELECT * FROM supplier WHERE supplierName LIKE @crit AND status = @status ORDER BY supplierName ASC";
                     }
                     else if (filter == "supConPerson")
                     {
-                        sqlQuery = "SELECT * FROM supplier WHERE supplierContactPerson LIKE @crit AND status = @status";
+                        sqlQuery = "SELECT * FROM supplier WHERE supplierContactPerson LIKE @crit AND status = @status ORDER BY supplierName ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -231,10 +284,18 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["supplierId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierAddress"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContact"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierContactPerson"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -274,13 +335,41 @@ namespace ChiuMartSAIS2.App
         private void rboActive_CheckedChanged(object sender, EventArgs e)
         {
             status = "active";
+            btnDelete.Text = "&Delete";
             populateSupplier();
         }
 
         private void rboInactive_CheckedChanged(object sender, EventArgs e)
         {
             status = "inactive";
+            btnDelete.Text = "&Restore";
             populateSupplier();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            Dialogs.dlgSupplier frmSupplierEdit = new Dialogs.dlgSupplier("edit", supplierId);
+            frmSupplierEdit.supplierName = this.supplierName;
+            frmSupplierEdit.supplierContact = this.supplierContact;
+            frmSupplierEdit.supplierContactPerson = this.supplierContactPerson;
+            frmSupplierEdit.supplierAddress = this.supplierAddress;
+            if (frmSupplierEdit.ShowDialog(this) == DialogResult.OK)
+            {
+                // If all validations were valid, we're going to get the supplier
+                frmSupplierEdit.getSupplier(out supplierId, out supplierName, out supplierAddress, out supplierContact, out supplierContactPerson);
+                updateSupplier(supplierName, supplierAddress, supplierContact, supplierContactPerson, supplierId);
+                populateSupplier();
+            }
         }
     }
 }

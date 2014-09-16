@@ -19,6 +19,7 @@ namespace ChiuMartSAIS2.App
 
         public int productId;
         public int productStocks;
+        public string adjustment;
 
         public frmInventoryMonitoring()
         {
@@ -47,7 +48,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.status = 'active'";
+                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.status = 'active' ORDER BY p.productName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
@@ -59,8 +60,8 @@ namespace ChiuMartSAIS2.App
                         lstProducts.Items.Add(reader["productId"].ToString());
                         lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
                         lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
-                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
                         lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
                         lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -83,22 +84,22 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.status = 'active'";
+                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.status = 'active' ORDER BY p.productName ASC";
                     if (stockLevel == "Good")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock > p.productSafetyStock AND p.status = 'active'";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock > p.productSafetyStock AND p.status = 'active' ORDER BY p.productName ASC";
                     }
                     else if (stockLevel == "Safety")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock = p.productSafetyStock AND p.status = 'active'";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock = p.productSafetyStock AND p.status = 'active' ORDER BY p.productName ASC";
                     }
                     else if (stockLevel == "Critical")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock < p.productSafetyStock AND p.status = 'active'";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock < p.productSafetyStock AND p.productStock != 0 AND p.status = 'active' ORDER BY p.productName ASC";
                     }
                     else if (stockLevel == "Out of Stock")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock <= 0 AND p.status = 'active'";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productStock <= 0 AND p.status = 'active' ORDER BY p.productName ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -111,8 +112,8 @@ namespace ChiuMartSAIS2.App
                         lstProducts.Items.Add(reader["productId"].ToString());
                         lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
                         lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
-                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
                         lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
+                        lstProducts.Items[lstProducts.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
                     }
 
                 }
@@ -134,7 +135,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productName = @criteria";
+                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productName LIKE @criteria ORDER BY p.productName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("criteria", "%" + criteria + "%");
@@ -199,8 +200,8 @@ namespace ChiuMartSAIS2.App
             // Check the stock of current product
             foreach (ListViewItem lvw in lstProducts.Items)
             {
-                int currentStock = Int32.Parse(lvw.SubItems[4].Text);
-                int safetyStock = Int32.Parse(lvw.SubItems[3].Text);
+                int currentStock = Int32.Parse(lvw.SubItems[3].Text);
+                int safetyStock = Int32.Parse(lvw.SubItems[4].Text);
 
                 // Check for safety stocks
                 if (currentStock == safetyStock)
@@ -225,6 +226,7 @@ namespace ChiuMartSAIS2.App
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             searchProduct(textBox1.Text);
+            checkStockLevel();
         }
 
         private void lblAll_Click(object sender, EventArgs e)
@@ -269,10 +271,22 @@ namespace ChiuMartSAIS2.App
             if (frmInventoryAdjust.ShowDialog(this) == DialogResult.OK)
             {
                 // If all validations were valid, we're going to get the quantity
-                frmInventoryAdjust.getStocks(out productId, out productStocks);
-                updateStock(productStocks, productId);
-                populateProduct();
-                checkStockLevel();
+                frmInventoryAdjust.getStocks(out productId, out productStocks, out adjustment);
+                int stock = Int32.Parse(lstProducts.SelectedItems[lstProducts.SelectedItems.Count - 1].SubItems[3].Text);
+                if (adjustment == "Increase")
+                {
+                    int total = stock + productStocks;
+                    updateStock(total, productId);
+                    populateProduct();
+                    checkStockLevel();
+                }
+                else
+                {
+                    int total = stock - productStocks;
+                    updateStock(total, productId);
+                    populateProduct();
+                    checkStockLevel();
+                }
             }
         }
 
@@ -280,7 +294,12 @@ namespace ChiuMartSAIS2.App
         {
             int id = Int32.Parse(lstProducts.SelectedItems[lstProducts.SelectedItems.Count - 1].Text);
             productId = id;
-            productStocks = Int32.Parse(lstProducts.SelectedItems[lstProducts.SelectedItems.Count - 1].SubItems[4].Text);
+            productStocks = Int32.Parse(lstProducts.SelectedItems[lstProducts.SelectedItems.Count - 1].SubItems[3].Text);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

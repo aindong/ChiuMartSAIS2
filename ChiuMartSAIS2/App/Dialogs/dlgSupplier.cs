@@ -17,7 +17,10 @@ namespace ChiuMartSAIS2.App.Dialogs
         private int _crit;
 
         public string supplierName;
+        public string supplierAddress;
         public string supplierContact;
+        public string supplierContactPerson;
+
         public dlgSupplier(string action, int crit)
         {
             InitializeComponent();
@@ -33,7 +36,9 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         private void dlgSupplier_Load(object sender, EventArgs e)
         {
-            txtSupplierAddress.Text = supplierContact;
+            txtSupplierAddress.Text = supplierAddress;
+            txtSupplierContact.Text = supplierContact;
+            txtSupplierContactPerson.Text = supplierContactPerson;
             txtSupplierName.Text = supplierName;
         }
 
@@ -77,14 +82,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
             else
             {
-                if (txtSupplierAddress.Text == "")
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
         }
 
@@ -92,15 +90,17 @@ namespace ChiuMartSAIS2.App.Dialogs
         /// This will give out the supplier value to the parent form
         /// </summary>
         /// <param name="supplier">supplier variable to handle the given/setted supplier</param>
-        public void getSupplier(out int supplierId, out string supplierName, out string supplierContact)
+        public void getSupplier(out int supplierId, out string supplierName, out string supplierAddress, out string supplierContact, out string supplierContactPerson)
         {
             // Set the supplier id
             supplierId = _crit;
 
             // Set the supplier name
             supplierName = txtSupplierName.Text;
+            supplierAddress = txtSupplierAddress.Text;
             // Set the supplier contact
-            supplierContact = txtSupplierAddress.Text;
+            supplierContact = txtSupplierContact.Text;
+            supplierContactPerson = txtSupplierContactPerson.Text;
         }
 
     }

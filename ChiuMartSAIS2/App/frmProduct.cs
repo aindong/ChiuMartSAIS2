@@ -42,7 +42,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM units WHERE status = 'active'";
+                    string sqlQuery = "SELECT * FROM units WHERE status = 'active'  ORDER BY unitDesc ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
@@ -70,7 +70,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM category WHERE status = 'active'";
+                    string sqlQuery = "SELECT * FROM category WHERE status = 'active'  ORDER BY categoryName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
@@ -102,7 +102,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.status = @status";
+                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.status = @status ORDER BY p.productName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("status", this.status);
@@ -114,14 +114,23 @@ namespace ChiuMartSAIS2.App
                     while (reader.Read())
                     {
                         listView1.Items.Add(reader["productId"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productPrice"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
+                        
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
+
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -147,15 +156,15 @@ namespace ChiuMartSAIS2.App
                     string sqlQuery = "";
                     if (filter == "productName")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productName LIKE @crit AND p.status = @status";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productName LIKE @crit AND p.status = @status  ORDER BY p.productName ASC";
                     }
                     else if (filter == "categoryName")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE c.categoryName LIKE @crit AND p.status = @status";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE c.categoryName LIKE @crit AND p.status = @status  ORDER BY p.productName ASC";
                     }
                     else if (filter == "productId")
                     {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productId LIKE @crit AND p.status = @status";
+                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productId LIKE @crit AND p.status = @status  ORDER BY p.productName ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -171,14 +180,23 @@ namespace ChiuMartSAIS2.App
                     while (reader.Read())
                     {
                         listView1.Items.Add(reader["productId"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productPrice"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
+
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
+
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -341,6 +359,28 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        private void restoreProduct(double criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE products SET status='active' WHERE productId=@criteria";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Product successfully restored", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Restoring Product error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -357,7 +397,7 @@ namespace ChiuMartSAIS2.App
             if (frmProductsAdd.ShowDialog(this) == DialogResult.OK)
             {
                 // If all validations were valid, we're going to get the category
-                frmProductsAdd.getProduct(out productId, out productPrice, out productStocks, out productSafetyStock,
+                frmProductsAdd.getProduct(out productId, out productPrice, out productSafetyStock, out productStocks,
                     out productName, out productCategory, out productUnit);
                 double unitId = getUnitID(productUnit);
                 double categoryId = getCategoryID(productCategory);
@@ -390,7 +430,7 @@ namespace ChiuMartSAIS2.App
             if (frmProductsEdit.ShowDialog(this) == DialogResult.OK)
             {
                 // If all validations were valid, we're going to get the category
-                frmProductsEdit.getProduct(out productId, out productPrice, out productStocks, out productSafetyStock,
+                frmProductsEdit.getProduct(out productId, out productPrice, out productSafetyStock, out productStocks,
                     out productName, out productCategory, out productUnit);
                 double unitId = getUnitID(productUnit);
                 double categoryId = getCategoryID(productCategory);
@@ -408,18 +448,17 @@ namespace ChiuMartSAIS2.App
         private void listView1_Click(object sender, EventArgs e)
         {
             double id = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].Text);
-            double stock = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[1].Text);
-            double price = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[5].Text);
-            double safety = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[6].Text);
+            double stock = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[4].Text);
+            double price = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[3].Text);
+            double safety = double.Parse(listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[5].Text);
 
             productId = id;
             productStocks = stock;
             productPrice = price;
-            productSafetyStock = stock;
-            productStocks = safety;
+            productSafetyStock = safety;
             productUnit = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[2].Text;
-            productName = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[3].Text;
-            productCategory = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[4].Text;
+            productName = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[1].Text;
+            productCategory = listView1.SelectedItems[listView1.SelectedItems.Count - 1].SubItems[6].Text;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -429,10 +468,21 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
-            if (MessageBox.Show(this, "Do you want to delete this product?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnDelete.Text == "&Delete")
             {
-                deleteProduct(productId);
-                populateProduct();
+                if (MessageBox.Show(this, "Do you want to delete this product?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    deleteProduct(productId);
+                    populateProduct();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show(this, "Do you want to restore this product?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    restoreProduct(productId);
+                    populateProduct();
+                }
             }
 
         }
@@ -466,13 +516,48 @@ namespace ChiuMartSAIS2.App
         private void rboActive_CheckedChanged(object sender, EventArgs e)
         {
             status = "active";
+            btnDelete.Text = "&Delete";
             populateProduct();
         }
 
         private void rboInactive_CheckedChanged(object sender, EventArgs e)
         {
             status = "inactive";
+            btnDelete.Text = "&Restore";
             populateProduct();
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            Dialogs.dlgProducts frmProductsEdit = new Dialogs.dlgProducts("edit", productId);
+
+            frmProductsEdit.productName = this.productName;
+            frmProductsEdit.productUnit = this.productUnit;
+            frmProductsEdit.productPrice = this.productPrice;
+            frmProductsEdit.productStocks = this.productStocks;
+            frmProductsEdit.productSafetyStock = this.productSafetyStock;
+            frmProductsEdit.productCategory = this.productCategory;
+
+            populateUnits();
+            populateCategory();
+            frmProductsEdit.units = this.units;
+            frmProductsEdit.category = this.category;
+            if (frmProductsEdit.ShowDialog(this) == DialogResult.OK)
+            {
+                // If all validations were valid, we're going to get the category
+                frmProductsEdit.getProduct(out productId, out productPrice, out productSafetyStock, out productStocks,
+                    out productName, out productCategory, out productUnit);
+                double unitId = getUnitID(productUnit);
+                double categoryId = getCategoryID(productCategory);
+                updateProduct(productPrice, productStocks, productSafetyStock,
+                     productName, unitId, categoryId, productId);
+                populateProduct();
+            }
         }
     }
 }

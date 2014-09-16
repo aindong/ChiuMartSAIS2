@@ -16,5 +16,10 @@ namespace ChiuMartSAIS2.App.ReportDialog
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

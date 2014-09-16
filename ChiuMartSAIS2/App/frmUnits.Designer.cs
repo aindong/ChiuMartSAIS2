@@ -60,11 +60,12 @@
             this.listView1.Location = new System.Drawing.Point(202, 112);
             this.listView1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(598, 246);
+            this.listView1.Size = new System.Drawing.Size(740, 320);
             this.listView1.TabIndex = 25;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.Click += new System.EventHandler(this.listView1_Click);
+            this.listView1.DoubleClick += new System.EventHandler(this.listView1_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -93,10 +94,10 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 375);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 440);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(816, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(952, 22);
             this.statusStrip1.TabIndex = 31;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -152,7 +153,7 @@
             // 
             this.txtSearch.Location = new System.Drawing.Point(27, 32);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(774, 26);
+            this.txtSearch.Size = new System.Drawing.Size(915, 26);
             this.txtSearch.TabIndex = 33;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -169,7 +170,7 @@
             // 
             this.groupBox1.Controls.Add(this.rboInactive);
             this.groupBox1.Controls.Add(this.rboActive);
-            this.groupBox1.Location = new System.Drawing.Point(614, 62);
+            this.groupBox1.Location = new System.Drawing.Point(756, 64);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(186, 45);
             this.groupBox1.TabIndex = 34;
@@ -203,7 +204,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 397);
+            this.ClientSize = new System.Drawing.Size(952, 462);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);

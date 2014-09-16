@@ -43,11 +43,11 @@ namespace ChiuMartSAIS2.App
                     string sqlQuery = "";
                     if (filter == "categoryId")
                     {
-                        sqlQuery = "SELECT * FROM category WHERE categoryId LIKE @crit AND status = @status";
+                        sqlQuery = "SELECT * FROM category WHERE categoryId LIKE @crit AND status = @status ORDER BY categoryName ASC";
                     }
                     else if (filter == "categoryName")
                     {
-                        sqlQuery = "SELECT * FROM category WHERE categoryName LIKE @crit AND status = @status";
+                        sqlQuery = "SELECT * FROM category WHERE categoryName LIKE @crit AND status = @status ORDER BY categoryName ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -64,8 +64,15 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["categoryId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -85,7 +92,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM category WHERE status = @status";
+                    string sqlQuery = "SELECT * FROM category WHERE status = @status ORDER BY categoryName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("status", status);
@@ -98,8 +105,15 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["categoryId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -182,6 +196,29 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        private void restoreCategory(int criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE category SET status='active' WHERE categoryId=@criteria";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Category successfully restored", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Restoring Category error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Dialogs.dlgCategory frmCategoryAdd = new Dialogs.dlgCategory("add", 0);
@@ -232,10 +269,21 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
-            if (MessageBox.Show(this, "Do you want to delete this category?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnDelete.Text == "&Delete")
             {
-                deleteCategory(categoryId);
-                populateCategory();
+                if (MessageBox.Show(this, "Do you want to delete this category?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    deleteCategory(categoryId);
+                    populateCategory();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show(this, "Do you want to restore this category?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    restoreCategory(categoryId);
+                    populateCategory();
+                }
             }
         }
 
@@ -277,6 +325,7 @@ namespace ChiuMartSAIS2.App
 
         private void rboActive_CheckedChanged(object sender, EventArgs e)
         {
+            btnDelete.Text = "&Delete";
             status = "active";
             populateCategory();
         }
@@ -284,7 +333,26 @@ namespace ChiuMartSAIS2.App
         private void rboInactive_CheckedChanged(object sender, EventArgs e)
         {
             status = "inactive";
+            btnDelete.Text = "&Restore";
             populateCategory();
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            Dialogs.dlgCategory frmCategoryEdit = new Dialogs.dlgCategory("edit", categoryId);
+            frmCategoryEdit.categoryName = this.categoryName;
+            if (frmCategoryEdit.ShowDialog(this) == DialogResult.OK)
+            {
+                // If all validations were valid, we're going to get the category
+                frmCategoryEdit.getCategory(out categoryId, out categoryName);
+                updateCategory(categoryName, categoryId);
+                populateCategory();
+            }
         }
     }
 }

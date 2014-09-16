@@ -61,7 +61,8 @@ namespace ChiuMartSAIS2
 
         private void btnPermissions_Click(object sender, EventArgs e)
         {
-
+            App.frmPermissions frm = new App.frmPermissions();
+            frm.ShowDialog();
         }
 
         private void btnPOS_Click(object sender, EventArgs e)
@@ -119,6 +120,34 @@ namespace ChiuMartSAIS2
         private void btnSupplier_Click(object sender, EventArgs e)
         {
             App.ReportDialog.dlgSupplierReport frm = new App.ReportDialog.dlgSupplierReport();
+            frm.ShowDialog();
+        }
+
+        private void btnRestore_Click(object sender, EventArgs e)
+        {
+            App.Dialogs.dlgRestoreDB frm = new App.Dialogs.dlgRestoreDB();
+            frm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            App.frmChequeMonitoring frm = new App.frmChequeMonitoring();
+            frm.ShowDialog();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnPurchaseOrder_Click(object sender, EventArgs e)
+        {
+            App.frmPO frm = new App.frmPO();
             frm.ShowDialog();
         }
     }

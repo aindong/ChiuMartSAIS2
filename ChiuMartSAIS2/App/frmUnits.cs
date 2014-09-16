@@ -41,7 +41,7 @@ namespace ChiuMartSAIS2.App
                     Con.Open();
                     
                     
-                     string sqlQuery = "SELECT * FROM units WHERE unitDesc LIKE @crit AND status = @status";
+                     string sqlQuery = "SELECT * FROM units WHERE unitDesc LIKE @crit AND status = @status ORDER BY unitDesc ASC";
                    
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -58,8 +58,15 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["unitId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
                 }
@@ -77,7 +84,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT * FROM units WHERE status = @status";
+                    string sqlQuery = "SELECT * FROM units WHERE status = @status ORDER BY unitDesc ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("status", this.status);
@@ -90,8 +97,15 @@ namespace ChiuMartSAIS2.App
                     {
                         listView1.Items.Add(reader["unitId"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["updated_date"].ToString());
+                        // converts the transdate to datetime
+                        DateTime aDate;
+                        DateTime.TryParse(reader["created_date"].ToString(), out aDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+
+                        // converts the transdate to datetime
+                        DateTime uDate;
+                        DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -174,6 +188,28 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        private void restoreUnit(int criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE units SET status='active' WHERE unitId=@criteria";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Unit successfully restored", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Restored Unit error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -222,10 +258,21 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
-            if (MessageBox.Show(this, "Do you want to delete this category?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnDelete.Text == "&Delete")
             {
-                deleteUnit(unitId);
-                populateUnits();
+                if (MessageBox.Show(this, "Do you want to delete this Unit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    deleteUnit(unitId);
+                    populateUnits();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show(this, "Do you want to restore this Unit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    restoreUnit(unitId);
+                    populateUnits();
+                }
             }
         }
 
@@ -246,13 +293,33 @@ namespace ChiuMartSAIS2.App
         private void rboActive_CheckedChanged(object sender, EventArgs e)
         {
             status = "active";
+            btnDelete.Text = "&Delete";
             populateUnits();
         }
 
         private void rboInactive_CheckedChanged(object sender, EventArgs e)
         {
             status = "inactive";
+            btnDelete.Text = "&Restore";
             populateUnits();
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            Dialogs.dlgUnits frmUnitsEdit = new Dialogs.dlgUnits("edit", unitId);
+            frmUnitsEdit.unitDesc = this.unitDesc;
+            if (frmUnitsEdit.ShowDialog(this) == DialogResult.OK)
+            {
+                // If all validations were valid, we're going to get the category
+                frmUnitsEdit.getUnit(out unitId, out unitDesc);
+                updateUnit(unitDesc, unitId);
+                populateUnits();
+            }
         }
     }
 }

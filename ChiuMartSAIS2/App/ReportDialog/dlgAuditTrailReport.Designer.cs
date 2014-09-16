@@ -60,6 +60,7 @@
             this.btnClose.TabIndex = 37;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnPrint
             // 
@@ -92,13 +93,13 @@
             this.rboInactive.Name = "rboInactive";
             this.rboInactive.Size = new System.Drawing.Size(112, 25);
             this.rboInactive.TabIndex = 39;
-            this.rboInactive.TabStop = true;
             this.rboInactive.Text = "System logs";
             this.rboInactive.UseVisualStyleBackColor = true;
             // 
             // rboActive
             // 
             this.rboActive.AutoSize = true;
+            this.rboActive.Checked = true;
             this.rboActive.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rboActive.Location = new System.Drawing.Point(32, 79);
             this.rboActive.Name = "rboActive";
@@ -116,7 +117,6 @@
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(93, 25);
             this.radioButton1.TabIndex = 40;
-            this.radioButton1.TabStop = true;
             this.radioButton1.Text = "User logs";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
@@ -132,25 +132,23 @@
             // 
             // dtpFrom
             // 
-            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFrom.Location = new System.Drawing.Point(84, 49);
+            this.dtpFrom.Location = new System.Drawing.Point(84, 50);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(88, 20);
+            this.dtpFrom.Size = new System.Drawing.Size(394, 20);
             this.dtpFrom.TabIndex = 42;
             // 
             // dtpTo
             // 
-            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTo.Location = new System.Drawing.Point(220, 49);
+            this.dtpTo.Location = new System.Drawing.Point(519, 50);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(88, 20);
+            this.dtpTo.Size = new System.Drawing.Size(394, 20);
             this.dtpTo.TabIndex = 44;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(184, 48);
+            this.label3.Location = new System.Drawing.Point(484, 50);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(30, 21);
             this.label3.TabIndex = 43;
@@ -158,6 +156,7 @@
             // 
             // dlgAuditTrailReport
             // 
+            this.AcceptButton = this.btnPrint;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(925, 493);

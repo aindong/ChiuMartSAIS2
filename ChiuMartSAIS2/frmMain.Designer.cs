@@ -48,18 +48,20 @@
             this.btnTime = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlReports = new System.Windows.Forms.Panel();
+            this.btnSupplier = new System.Windows.Forms.Button();
+            this.btnClient = new System.Windows.Forms.Button();
             this.btnLogs = new System.Windows.Forms.Button();
             this.btnUsersList = new System.Windows.Forms.Button();
             this.btnSalesReport = new System.Windows.Forms.Button();
             this.btnInventoryReport = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.pnlTransactions = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnPurchaseOrder = new System.Windows.Forms.Button();
             this.btnInventoryMonitoring = new System.Windows.Forms.Button();
             this.btnPOS = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlSystemManagement = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnPermissions = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
             this.btnClients = new System.Windows.Forms.Button();
@@ -68,8 +70,6 @@
             this.btnCategories = new System.Windows.Forms.Button();
             this.btnProducts = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnClient = new System.Windows.Forms.Button();
-            this.btnSupplier = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlDatabaseManagement.SuspendLayout();
@@ -127,6 +127,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(80, 609);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panel4
             // 
@@ -215,6 +216,7 @@
             this.btnRestore.Text = "Restore";
             this.btnRestore.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRestore.UseVisualStyleBackColor = false;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // btnBackup
             // 
@@ -356,6 +358,40 @@
             this.pnlReports.Size = new System.Drawing.Size(318, 294);
             this.pnlReports.TabIndex = 2;
             // 
+            // btnSupplier
+            // 
+            this.btnSupplier.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSupplier.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSupplier.Image = global::ChiuMartSAIS2.Properties.Resources._1400994707_gnome_mime_application_vnd_lotus_1_2_3;
+            this.btnSupplier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSupplier.Location = new System.Drawing.Point(160, 162);
+            this.btnSupplier.Name = "btnSupplier";
+            this.btnSupplier.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnSupplier.Size = new System.Drawing.Size(147, 50);
+            this.btnSupplier.TabIndex = 9;
+            this.btnSupplier.Text = "Supplier";
+            this.btnSupplier.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSupplier.UseVisualStyleBackColor = false;
+            this.btnSupplier.Click += new System.EventHandler(this.btnSupplier_Click);
+            // 
+            // btnClient
+            // 
+            this.btnClient.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClient.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClient.Image = global::ChiuMartSAIS2.Properties.Resources._1400994707_gnome_mime_application_vnd_lotus_1_2_3;
+            this.btnClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClient.Location = new System.Drawing.Point(10, 162);
+            this.btnClient.Name = "btnClient";
+            this.btnClient.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnClient.Size = new System.Drawing.Size(147, 50);
+            this.btnClient.TabIndex = 8;
+            this.btnClient.Text = "Client";
+            this.btnClient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClient.UseVisualStyleBackColor = false;
+            this.btnClient.Click += new System.EventHandler(this.btnClient_Click);
+            // 
             // btnLogs
             // 
             this.btnLogs.BackColor = System.Drawing.Color.MediumVioletRed;
@@ -440,6 +476,7 @@
             // 
             this.pnlTransactions.BackColor = System.Drawing.Color.LemonChiffon;
             this.pnlTransactions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTransactions.Controls.Add(this.button1);
             this.pnlTransactions.Controls.Add(this.btnPurchaseOrder);
             this.pnlTransactions.Controls.Add(this.btnInventoryMonitoring);
             this.pnlTransactions.Controls.Add(this.btnPOS);
@@ -448,6 +485,24 @@
             this.pnlTransactions.Name = "pnlTransactions";
             this.pnlTransactions.Size = new System.Drawing.Size(322, 294);
             this.pnlTransactions.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::ChiuMartSAIS2.Properties.Resources._1400994489_purchase_order;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(12, 220);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.button1.Size = new System.Drawing.Size(293, 50);
+            this.button1.TabIndex = 7;
+            this.button1.Tag = "";
+            this.button1.Text = "Cheque Monitoring";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnPurchaseOrder
             // 
@@ -465,6 +520,7 @@
             this.btnPurchaseOrder.Text = "Purchase Order";
             this.btnPurchaseOrder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPurchaseOrder.UseVisualStyleBackColor = false;
+            this.btnPurchaseOrder.Click += new System.EventHandler(this.btnPurchaseOrder_Click);
             // 
             // btnInventoryMonitoring
             // 
@@ -517,7 +573,6 @@
             // 
             this.pnlSystemManagement.BackColor = System.Drawing.Color.LemonChiffon;
             this.pnlSystemManagement.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlSystemManagement.Controls.Add(this.button1);
             this.pnlSystemManagement.Controls.Add(this.btnPermissions);
             this.pnlSystemManagement.Controls.Add(this.btnUsers);
             this.pnlSystemManagement.Controls.Add(this.btnClients);
@@ -530,22 +585,6 @@
             this.pnlSystemManagement.Name = "pnlSystemManagement";
             this.pnlSystemManagement.Size = new System.Drawing.Size(331, 294);
             this.pnlSystemManagement.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::ChiuMartSAIS2.Properties.Resources._1400994674_Usercard_01;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(168, 220);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button1.Size = new System.Drawing.Size(150, 50);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Discounts";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // btnPermissions
             // 
@@ -679,40 +718,6 @@
             this.label2.Text = "System Management";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnClient
-            // 
-            this.btnClient.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.btnClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClient.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClient.Image = global::ChiuMartSAIS2.Properties.Resources._1400994707_gnome_mime_application_vnd_lotus_1_2_3;
-            this.btnClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClient.Location = new System.Drawing.Point(10, 162);
-            this.btnClient.Name = "btnClient";
-            this.btnClient.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.btnClient.Size = new System.Drawing.Size(147, 50);
-            this.btnClient.TabIndex = 8;
-            this.btnClient.Text = "Client";
-            this.btnClient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClient.UseVisualStyleBackColor = false;
-            this.btnClient.Click += new System.EventHandler(this.btnClient_Click);
-            // 
-            // btnSupplier
-            // 
-            this.btnSupplier.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.btnSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSupplier.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSupplier.Image = global::ChiuMartSAIS2.Properties.Resources._1400994707_gnome_mime_application_vnd_lotus_1_2_3;
-            this.btnSupplier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSupplier.Location = new System.Drawing.Point(160, 162);
-            this.btnSupplier.Name = "btnSupplier";
-            this.btnSupplier.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.btnSupplier.Size = new System.Drawing.Size(147, 50);
-            this.btnSupplier.TabIndex = 9;
-            this.btnSupplier.Text = "Supplier";
-            this.btnSupplier.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSupplier.UseVisualStyleBackColor = false;
-            this.btnSupplier.Click += new System.EventHandler(this.btnSupplier_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -730,6 +735,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chiumart Sales and Inventory System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.pnlDatabaseManagement.ResumeLayout(false);
@@ -781,9 +787,9 @@
         private System.Windows.Forms.Button btnBackup;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button btnConnection;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnSupplier;
         private System.Windows.Forms.Button btnClient;
+        private System.Windows.Forms.Button button1;
     }
 }
 
