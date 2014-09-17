@@ -477,12 +477,14 @@ namespace ChiuMartSAIS2.App
 
                         if (stock < updatedStock && stock != 0)
                         {
-                            MessageBox.Show(this, "Insufficient Stocks", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            dgvCart.Rows[i].Cells[1].Value = stock;
-                        }else if (stock == 0)
+                            MessageBox.Show(this, "Insufficient Stocks\nYou only have " + stock + " left for this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            dgvCart.Rows[i].Cells[1].Value = 0;
+                        } 
+                        else if (stock == 0)
                         {
                             MessageBox.Show(this, "You do not have stocks for this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            dgvCart.Rows[i].Cells[1].Value = stock;
+                            dgvCart.Rows[i].Cells[1].Value = 0;
+                            dgvCart.Rows.Remove(dgvCart.Rows[i]);
                         }
 
                         // update the total
@@ -788,12 +790,14 @@ namespace ChiuMartSAIS2.App
 
                         if (stock < updatedStock && stock != 0)
                         {
-                            MessageBox.Show(this, "Insufficient Stocks", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            dgvCart.Rows[i].Cells[1].Value = stock;
+                            MessageBox.Show(this, "Insufficient Stocks\nYou only have " + stock + " left for this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            dgvCart.Rows[i].Cells[1].Value = 0;
+
                         }else if (stock == 0)
                         {
                             MessageBox.Show(this, "You do not have stocks for this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            dgvCart.Rows[i].Cells[1].Value = stock;
+                            dgvCart.Rows[i].Cells[1].Value = 0;
+                            dgvCart.Rows.Remove(dgvCart.Rows[i]);
                         }
                     }
 
