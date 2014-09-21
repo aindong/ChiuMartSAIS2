@@ -252,6 +252,12 @@
     <Compile Include="App\ReportDialog\dlgSupplierReport.Designer.cs">
       <DependentUpon>dlgSupplierReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\ReportDialog\dlgUserReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\ReportDialog\dlgUserReport.Designer.cs">
+      <DependentUpon>dlgUserReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\ReportMenuDialogs\dlgSalesReportMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -361,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\ReportDialog\dlgSupplierReport.resx">
       <DependentUpon>dlgSupplierReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\ReportDialog\dlgUserReport.resx">
+      <DependentUpon>dlgUserReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\ReportMenuDialogs\dlgSalesReportMenu.resx">
       <DependentUpon>dlgSalesReportMenu.cs</DependentUpon>

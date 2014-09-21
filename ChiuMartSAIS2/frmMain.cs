@@ -151,5 +151,11 @@ namespace ChiuMartSAIS2
             App.frmPO frm = new App.frmPO();
             frm.ShowDialog();
         }
+
+        private void btnUsersList_Click(object sender, EventArgs e)
+        {
+            App.ReportDialog.dlgUserReport frm = new App.ReportDialog.dlgUserReport();
+            frm.ShowDialog();
+        }
     }
 }

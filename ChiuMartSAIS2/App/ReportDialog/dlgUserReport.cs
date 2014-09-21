@@ -12,27 +12,27 @@ using MySql.Data.MySqlClient;
 
 namespace ChiuMartSAIS2.App.ReportDialog
 {
-    public partial class dlgProductReport : Form
+    public partial class dlgUserReport : Form
     {
         private string status = "active";
 
         private Classes.Configuration conf;
 
-        public dlgProductReport()
+        public dlgUserReport()
         {
             InitializeComponent();
 
             conf = new Classes.Configuration();
         }
 
-        private void populateProduct()
+        private void populateUsers()
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.status = @status ORDER BY p.productName ASC";
+                    string sqlQuery = "SELECT u.*, p.role FROM user as u INNER JOIN permission as p ON u.permissionId = p.permissionId WHERE u.status = @status ORDER BY u.username ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("status", this.status);
@@ -43,13 +43,11 @@ namespace ChiuMartSAIS2.App.ReportDialog
 
                     while (reader.Read())
                     {
-                        listView1.Items.Add(reader["productId"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productPrice"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
+                        listView1.Items.Add(reader["userId"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["username"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["password"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["fullname"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["role"].ToString());
 
                         // converts the transdate to datetime
                         DateTime aDate;
@@ -60,7 +58,6 @@ namespace ChiuMartSAIS2.App.ReportDialog
                         DateTime uDate;
                         DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
-
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -73,10 +70,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
             }
         }
 
-        /// <summary>
-        /// This function will search a specific product using a filter and a criteria
-        /// </summary>
-        private void searchProduct(string filter, string critera)
+        private void searchUser(string critera)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
@@ -84,18 +78,9 @@ namespace ChiuMartSAIS2.App.ReportDialog
                 {
                     Con.Open();
                     string sqlQuery = "";
-                    if (filter == "productName")
-                    {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productName LIKE @crit AND p.status = @status  ORDER BY p.productName ASC";
-                    }
-                    else if (filter == "categoryName")
-                    {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE c.categoryName LIKE @crit AND p.status = @status  ORDER BY p.productName ASC";
-                    }
-                    else if (filter == "productId")
-                    {
-                        sqlQuery = "SELECT p.*, u.*, c.* FROM products as p INNER JOIN units as u ON p.unitId = u.unitId INNER JOIN category as c ON p.categoryId = c.categoryId WHERE p.productId LIKE @crit AND p.status = @status  ORDER BY p.productName ASC";
-                    }
+
+                    sqlQuery = "SELECT u.*, p.role FROM user as u INNER JOIN permission as p ON u.permissionId = p.permissionId WHERE u.username LIKE @crit AND u.status = @status ORDER BY u.username ASC";
+
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -109,13 +94,11 @@ namespace ChiuMartSAIS2.App.ReportDialog
 
                     while (reader.Read())
                     {
-                        listView1.Items.Add(reader["productId"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productPrice"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productStock"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productSafetyStock"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["categoryName"].ToString());
+                        listView1.Items.Add(reader["userId"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["username"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["password"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["fullname"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["role"].ToString());
 
                         // converts the transdate to datetime
                         DateTime aDate;
@@ -126,7 +109,6 @@ namespace ChiuMartSAIS2.App.ReportDialog
                         DateTime uDate;
                         DateTime.TryParse(reader["updated_date"].ToString(), out uDate);
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(uDate.ToString("MMMM dd, yyyy"));
-
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                     }
 
@@ -144,41 +126,26 @@ namespace ChiuMartSAIS2.App.ReportDialog
             this.Close();
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            string filter = "";
-
-            if (rboProductName.Checked)
-            {
-                filter = "productName";
-            }
-            else if (rboCategory.Checked)
-            {
-                filter = "categoryName";
-            }
-            else if (rboProductId.Checked)
-            {
-                filter = "productId";
-            }
-
-            searchProduct(filter, txtSearch.Text);
-        }
-
         private void rboActive_CheckedChanged(object sender, EventArgs e)
         {
             status = "active";
-            populateProduct();
+            populateUsers();
         }
 
         private void rboInactive_CheckedChanged(object sender, EventArgs e)
         {
             status = "inactive";
-            populateProduct();
+            populateUsers();
         }
 
-        private void dlgProductReport_Load(object sender, EventArgs e)
+        private void dlgUserReport_Load(object sender, EventArgs e)
         {
-            populateProduct();
+            populateUsers();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            searchUser(txtSearch.Text);
         }
     }
 }

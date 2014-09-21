@@ -424,6 +424,7 @@
             this.btnUsersList.Text = "Users List";
             this.btnUsersList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUsersList.UseVisualStyleBackColor = false;
+            this.btnUsersList.Click += new System.EventHandler(this.btnUsersList_Click);
             // 
             // btnSalesReport
             // 
