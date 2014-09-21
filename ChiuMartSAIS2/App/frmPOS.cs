@@ -910,5 +910,19 @@ namespace ChiuMartSAIS2.App
                 dgvCart.Focus();
             }
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (Classes.GetLastUserInput.formStatusIdle == false)
+            {
+                if (Classes.GetLastUserInput.GetIdleTickCount() >= 300000)
+                {
+                    Classes.GetLastUserInput.formStatusIdle = true;
+                    Dialogs.dlgIdleStatus idle = new Dialogs.dlgIdleStatus();
+                    idle.ShowDialog();
+                }
+            }
+            
+        }
     }
 }
