@@ -102,7 +102,8 @@ namespace ChiuMartSAIS2
 
         private void btnSalesReport_Click(object sender, EventArgs e)
         {
-
+            App.ReportMenuDialogs.dlgSalesReportMenu menu = new App.ReportMenuDialogs.dlgSalesReportMenu();
+            menu.ShowDialog();
         }
 
         private void btnLogs_Click(object sender, EventArgs e)

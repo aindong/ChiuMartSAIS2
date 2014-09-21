@@ -511,6 +511,8 @@ namespace ChiuMartSAIS2.App.Dialogs
             lblTotal.Text = "0.0";
             txtSupplier.Text = "";
             txtAddress.Text = "";
+            dgvCart.Enabled = true;
+
             // GENERATE NEW OR
             txtPoNo.Text = generatePO();
         }
