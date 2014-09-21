@@ -21,5 +21,11 @@ namespace ChiuMartSAIS2.App.ReportMenuDialogs
         {
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ReportDialog.dlgSalesEndofDay rpt = new ReportDialog.dlgSalesEndofDay();
+            rpt.ShowDialog();
+        }
     }
 }

@@ -301,5 +301,13 @@ namespace ChiuMartSAIS2.App
         {
             this.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ReportDialog.dlgIndividualLog frm = new ReportDialog.dlgIndividualLog();
+            frm.logType = "transaction";
+            frm.relationId = lstProducts.SelectedItems[0].Text;
+            frm.ShowDialog();
+        }
     }
 }

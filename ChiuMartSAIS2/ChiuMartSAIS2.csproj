@@ -84,6 +84,12 @@
     <Compile Include="App\Dialogs\dlgClient.Designer.cs">
       <DependentUpon>dlgClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\Dialogs\dlgIdleStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgIdleStatus.Designer.cs">
+      <DependentUpon>dlgIdleStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\Dialogs\dlgInventoryAdjust.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +234,12 @@
     <Compile Include="App\ReportDialog\dlgClientListReport.Designer.cs">
       <DependentUpon>dlgClientListReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\ReportDialog\dlgIndividualLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\ReportDialog\dlgIndividualLog.Designer.cs">
+      <DependentUpon>dlgIndividualLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\ReportDialog\dlgProductReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,8 +276,10 @@
     <Compile Include="App\ReportMenuDialogs\dlgSalesReportMenu.Designer.cs">
       <DependentUpon>dlgSalesReportMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\ActionLogger.cs" />
     <Compile Include="Classes\Authentication.cs" />
     <Compile Include="Classes\Configuration.cs" />
+    <Compile Include="Classes\GetLastUserInput.cs" />
     <Compile Include="Classes\StringHash.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -283,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgClient.resx">
       <DependentUpon>dlgClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgIdleStatus.resx">
+      <DependentUpon>dlgIdleStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgInventoryAdjust.resx">
       <DependentUpon>dlgInventoryAdjust.cs</DependentUpon>
@@ -355,6 +372,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\ReportDialog\dlgClientListReport.resx">
       <DependentUpon>dlgClientListReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\ReportDialog\dlgIndividualLog.resx">
+      <DependentUpon>dlgIndividualLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\ReportDialog\dlgProductReport.resx">
       <DependentUpon>dlgProductReport.cs</DependentUpon>

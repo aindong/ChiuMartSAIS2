@@ -420,6 +420,12 @@ namespace ChiuMartSAIS2.App
         {
             populateClientTextbox();
             populateProductTextbox();
+            
+            // Set status bar labels
+            txtCashier.Text = Classes.Authentication.Instance.userFullName;
+            lblUsername.Text = Classes.Authentication.Instance.username;
+            lblDate.Text = DateTime.Today.ToLongDateString().ToString();
+            //lblTime.Text = DateTime.Today.ToLocalTime().ToString();
 
             // GENERATE NEW OR
             txtOrNo.Text = generateOR();
@@ -588,6 +594,10 @@ namespace ChiuMartSAIS2.App
 
                     insertTransaction(txtOrNo.Text, prodId, clientId[1], qty, unitId, paymentMethod);
                     updateStocks(qty, prodId, newPrice);
+
+                    // LOGS
+                    string message = string.Format("Client {0} has purchased {1} {2} of {3} SOLD by cashier {4}", txtClient.Text, qty, dgvCart.Rows[i].Cells[3].Value.ToString(), dgvCart.Rows[i].Cells[2].Value.ToString(), txtCashier.Text);
+                    Classes.ActionLogger.LogAction(message, "transaction", prodId.ToString(), clientId[1]);
                 }
                 insertNewOR();
                 MessageBox.Show(this, "Transaction Complete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -899,6 +909,20 @@ namespace ChiuMartSAIS2.App
             {
                 dgvCart.Focus();
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (Classes.GetLastUserInput.formStatusIdle == false)
+            {
+                if (Classes.GetLastUserInput.GetIdleTickCount() >= 300000)
+                {
+                    Classes.GetLastUserInput.formStatusIdle = true;
+                    Dialogs.dlgIdleStatus idle = new Dialogs.dlgIdleStatus();
+                    idle.ShowDialog();
+                }
+            }
+            
         }
     }
 }
