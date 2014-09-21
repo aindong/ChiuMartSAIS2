@@ -67,14 +67,14 @@ namespace ChiuMartSAIS2.Classes
         /// <summary>
         /// User login/authentication function
         /// </summary>
-        public void userLogin(string username, string password)
+        public void userLogin(string password)
         {
             try
             {
                 using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
                 {
                     con.Open();
-                    string sqlQuery = "SELECT u.*, p.* FROM users as u INNER JOIN permission as p ON u.permissionId = p.permissionId WHERE u.status = 'active' AND u.username = @username AND u.password = @password";
+                    string sqlQuery = "SELECT u.*, p.* FROM user as u INNER JOIN permission as p ON u.permissionId = p.permissionId WHERE u.status = 'active' AND u.password = @password";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
 
                     sqlCmd.Parameters.AddWithValue("username", username);
@@ -118,6 +118,8 @@ namespace ChiuMartSAIS2.Classes
                 string errorCode = string.Format("Error Code : {0}", ex.Number);
                 MessageBox.Show("User authentication error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            pointOfSale = 1;
         }
 
         public void userLogout()

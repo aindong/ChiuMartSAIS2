@@ -420,6 +420,12 @@ namespace ChiuMartSAIS2.App
         {
             populateClientTextbox();
             populateProductTextbox();
+            
+            // Set status bar labels
+            txtCashier.Text = Classes.Authentication.Instance.userFullName;
+            lblUsername.Text = Classes.Authentication.Instance.username;
+            lblDate.Text = DateTime.Today.ToLongDateString().ToString();
+            //lblTime.Text = DateTime.Today.ToLocalTime().ToString();
 
             // GENERATE NEW OR
             txtOrNo.Text = generateOR();
