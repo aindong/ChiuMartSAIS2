@@ -63,6 +63,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtOrNo = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.txtTransBasyo = new System.Windows.Forms.TextBox();
+            this.txtYellowBasyo = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -403,12 +407,62 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(12, 544);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(189, 25);
+            this.checkBox1.TabIndex = 24;
+            this.checkBox1.Text = "Add Transparent Basyo";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.Location = new System.Drawing.Point(207, 544);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(152, 25);
+            this.checkBox2.TabIndex = 25;
+            this.checkBox2.Text = "Add Yellow Basyo";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // txtTransBasyo
+            // 
+            this.txtTransBasyo.Enabled = false;
+            this.txtTransBasyo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTransBasyo.Location = new System.Drawing.Point(12, 571);
+            this.txtTransBasyo.Name = "txtTransBasyo";
+            this.txtTransBasyo.Size = new System.Drawing.Size(135, 29);
+            this.txtTransBasyo.TabIndex = 26;
+            this.txtTransBasyo.Text = "0";
+            this.txtTransBasyo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtYellowBasyo
+            // 
+            this.txtYellowBasyo.Enabled = false;
+            this.txtYellowBasyo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtYellowBasyo.Location = new System.Drawing.Point(207, 571);
+            this.txtYellowBasyo.Name = "txtYellowBasyo";
+            this.txtYellowBasyo.Size = new System.Drawing.Size(135, 29);
+            this.txtYellowBasyo.TabIndex = 27;
+            this.txtYellowBasyo.Text = "0";
+            this.txtYellowBasyo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmPOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 631);
+            this.Controls.Add(this.txtYellowBasyo);
+            this.Controls.Add(this.txtTransBasyo);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtOrNo);
             this.Controls.Add(this.dgvCart);
@@ -477,5 +531,9 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel lblUsername;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.TextBox txtTransBasyo;
+        private System.Windows.Forms.TextBox txtYellowBasyo;
     }
 }

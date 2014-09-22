@@ -925,5 +925,33 @@ namespace ChiuMartSAIS2.App
             }*/
             
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                txtTransBasyo.Enabled = true;
+                txtTransBasyo.Focus();
+                txtTransBasyo.SelectAll();
+            }
+            else
+            {
+                txtTransBasyo.Enabled = false;
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked == true)
+            {
+                txtYellowBasyo.Enabled = true;
+                txtYellowBasyo.Focus();
+                txtYellowBasyo.SelectAll();
+            }
+            else
+            {
+                txtYellowBasyo.Enabled = false;
+            }
+        }
     }
 }

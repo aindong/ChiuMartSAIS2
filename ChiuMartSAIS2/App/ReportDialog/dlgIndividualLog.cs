@@ -33,7 +33,17 @@ namespace ChiuMartSAIS2.App.ReportDialog
                 using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
                 {
                     con.Open();
-                    string sql = "SELECT * FROM logs WHERE log_type = @logType AND relationId = @relationId";
+                    string sql = "";
+
+                    if (logType == "transaction")
+                    {
+                        sql = "SELECT * FROM logs WHERE log_type = 'transaction' AND relationId = @relationId";
+                    }
+                    else if (logType == "client")
+                    {
+                        sql = "SELECT * FROM logs WHERE log_type = 'transaction' AND clientId = @relationId";
+                    }
+
                     MySqlCommand sqlCmd = new MySqlCommand(sql, con);
                     sqlCmd.Parameters.AddWithValue("logType", logType);
                     sqlCmd.Parameters.AddWithValue("relationId", relationId);

@@ -145,6 +145,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
             dlgIndividualLog log = new dlgIndividualLog();
             log.logType = "client";
             log.relationId = listView1.SelectedItems[0].Text;
+            log.ShowDialog();
         }
     }
 }

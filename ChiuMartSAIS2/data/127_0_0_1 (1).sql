@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.6
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2014 at 07:24 AM
+-- Generation Time: Sep 22, 2014 at 07:35 AM
 -- Server version: 5.6.16
--- PHP Version: 5.5.9
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `chuisais`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `basyo`
+--
+
+CREATE TABLE IF NOT EXISTS `basyo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `transId` int(11) NOT NULL,
+  `clientId` int(11) NOT NULL,
+  `basyoTransCount` int(11) NOT NULL,
+  `basyoYellowCount` int(11) NOT NULL,
+  `basyoTransReturned` int(11) NOT NULL,
+  `basyoYellowReturned` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `basyo`
+--
+
+INSERT INTO `basyo` (`id`, `transId`, `clientId`, `basyoTransCount`, `basyoYellowCount`, `basyoTransReturned`, `basyoYellowReturned`) VALUES
+(1, 2014100009, 1, 10, 1, 0, 0),
+(2, 2014100010, 0, 5, 2, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -77,17 +102,22 @@ CREATE TABLE IF NOT EXISTS `cheque` (
   `chequeBank` varchar(50) NOT NULL,
   `chequeBranch` varchar(50) NOT NULL,
   `chequeAmount` double NOT NULL,
-  `chequeDate` date NOT NULL,
+  `chequeDate` datetime NOT NULL,
   `status` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `cheque`
 --
 
 INSERT INTO `cheque` (`id`, `chequeNo`, `chequeName`, `chequeBank`, `chequeBranch`, `chequeAmount`, `chequeDate`, `status`) VALUES
-(1, '123-123-123', 'Test Test', 'BPI', 'Tarlac', 5000, '0000-00-00', 'active');
+(1, '123-123-123', 'Test Test', 'BPI', 'Tarlac', 5000, '2014-09-09 00:00:00', 'active'),
+(3, '123125123123', 'ALLEO INDONG', 'BDO', 'TARLAC', 4600, '2014-09-03 00:00:00', 'inactive'),
+(4, '123125123123', 'ALLEO INDONG', 'BDO', 'TARLAC', 4600, '2014-09-03 00:00:00', 'inactive'),
+(5, '12312314123', 'ALLEO INDONG', 'BDO', 'TARLAC', 4600, '2014-09-03 00:00:00', 'inactive'),
+(6, '', '', '', '', 150, '2014-09-03 00:00:00', 'inactive'),
+(7, '123', 'aaa', 'aa', 'aa', 1900, '2014-09-11 00:00:00', 'active');
 
 -- --------------------------------------------------------
 
@@ -111,10 +141,35 @@ CREATE TABLE IF NOT EXISTS `client` (
 --
 
 INSERT INTO `client` (`clientId`, `clientName`, `clientContact`, `created_date`, `updated_date`, `status`, `clientAddress`) VALUES
-(1, 'Alma Corpuz', '', '2014-08-14 13:43:48', '2014-08-14 13:43:48', 'active', 'Rosales'),
+(1, 'Alma Corpuz', '2222', '2014-08-14 13:43:48', '2014-08-14 13:43:48', 'active', 'villasis'),
 (2, 'Analie Pineda', '', '2014-08-14 13:44:56', '2014-08-14 13:44:56', 'active', 'Pangasinan'),
 (3, 'Cueva''s Bakery', '', '2014-08-14 13:46:16', '2014-08-14 13:46:16', 'active', 'Villasis'),
 (4, 'test', '123456', '2014-08-16 02:25:22', '2014-08-16 02:25:22', 'active', 'awww');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `logs`
+--
+
+CREATE TABLE IF NOT EXISTS `logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `relationId` int(11) NOT NULL,
+  `clientId` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `log_type` varchar(50) NOT NULL,
+  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `logs`
+--
+
+INSERT INTO `logs` (`id`, `relationId`, `clientId`, `username`, `message`, `log_type`, `created_date`) VALUES
+(1, 11, 0, '', 'Client Walk-in Client has purchased 5 Sack of angel Wh Flour SOLD by cashier toolStripStatusLabel2', 'transaction', '2014-09-19 07:27:25'),
+(2, 21, 1, '', 'Client Walk-in Client has purchased 2 Piece of Flavocol-Choco SOLD by cashier toolStripStatusLabel2', 'transaction', '2014-09-19 07:27:26');
 
 -- --------------------------------------------------------
 
@@ -126,14 +181,24 @@ CREATE TABLE IF NOT EXISTS `or` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ornumber` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `or`
 --
 
 INSERT INTO `or` (`id`, `ornumber`) VALUES
-(1, 2014090001);
+(1, 2014090001),
+(2, 2014100003),
+(3, 2014100004),
+(4, 2014100005),
+(5, 2014100006),
+(6, 2014100007),
+(7, 2014100008),
+(8, 2014100009),
+(9, 2014100009),
+(10, 2014100010),
+(11, 2014100011);
 
 -- --------------------------------------------------------
 
@@ -166,7 +231,7 @@ CREATE TABLE IF NOT EXISTS `permission` (
   `updated_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` varchar(20) NOT NULL,
   PRIMARY KEY (`permissionId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `permission`
@@ -174,7 +239,8 @@ CREATE TABLE IF NOT EXISTS `permission` (
 
 INSERT INTO `permission` (`permissionId`, `role`, `products`, `categories`, `units`, `suppliers`, `permission`, `clients`, `users`, `pos`, `inventorymonitoring`, `purchaseorder`, `chequemonitoring`, `inventoryreport`, `salesreport`, `usersreport`, `logsreport`, `clientreport`, `supplierreport`, `systemutilities`, `created_date`, `updated_date`, `status`) VALUES
 (1, 'Administrator', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2014-08-20 00:12:58', '2014-08-20 00:12:58', 'active'),
-(2, 'test', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2014-08-20 06:51:49', '2014-08-20 06:51:49', 'inactive');
+(2, 'test', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2014-08-20 06:51:49', '2014-08-20 06:51:49', 'inactive'),
+(3, 'Manager', 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, '2014-09-03 15:23:53', '2014-09-03 15:23:53', 'active');
 
 -- --------------------------------------------------------
 
@@ -193,17 +259,21 @@ CREATE TABLE IF NOT EXISTS `po` (
   `poStatus` varchar(20) NOT NULL,
   `status` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `po`
 --
 
 INSERT INTO `po` (`id`, `poId`, `productId`, `supplierId`, `poDate`, `qty`, `unitId`, `poStatus`, `status`) VALUES
-(1, '0001', 28, 2, '2014-09-03 01:24:09', 100, 8, 'Delivered', 'active'),
-(2, '0002', 27, 3, '2014-09-03 01:24:54', 10, 8, 'Delivered', 'active'),
-(3, '0002', 11, 3, '2014-09-03 01:25:01', 10, 7, 'Delivered', 'active'),
-(4, '0002', 19, 3, '2014-09-03 01:25:07', 10, 10, 'Delivered', 'active');
+(1, '0001', 28, 2, '2014-09-03 01:24:09', 100, 8, 'Verified', 'active'),
+(2, '0002', 27, 3, '2014-09-03 01:24:54', 10, 8, 'Verified', 'active'),
+(3, '0002', 11, 3, '2014-09-03 01:25:01', 10, 7, 'Verified', 'active'),
+(4, '0002', 19, 3, '2014-09-03 01:25:07', 10, 10, 'Verified', 'active'),
+(5, '0003', 11, 3, '2014-09-03 14:27:30', 2, 7, 'Delivered', 'active'),
+(6, '0004', 11, 3, '2014-09-03 14:28:02', 2, 7, 'Back Order', 'active'),
+(7, '0005', 31, 1, '2014-09-03 15:32:13', 15, 11, 'Delivered', 'active'),
+(8, '0006', 19, 1, '2014-09-11 16:02:02', 100, 10, 'Delivered', 'active');
 
 -- --------------------------------------------------------
 
@@ -224,7 +294,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `updated_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` varchar(10) NOT NULL,
   PRIMARY KEY (`productId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `products`
@@ -232,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `products` (
 
 INSERT INTO `products` (`productId`, `productName`, `categoryId`, `productPrice`, `unitId`, `supplierPrice`, `productStock`, `productSafetyStock`, `created_time`, `updated_time`, `status`) VALUES
 (1, '4 x 9 - 02 swan', 2, 10, 11, 8, 210, 20, '2014-08-14 11:36:56', '2014-08-14 11:36:56', 'active'),
-(2, 'Bihon 10 kg.', 4, 150, 1, 120, 20, 20, '2014-08-14 11:37:37', '2014-08-14 11:37:37', 'active'),
+(2, 'Bihon 10 kg.', 4, 150, 1, 120, 17, 20, '2014-08-14 11:37:37', '2014-08-14 11:37:37', 'active'),
 (3, 'Bihon 12 kg.', 4, 200, 1, 175, 50, 30, '2014-08-14 11:38:11', '2014-08-14 11:38:11', 'active'),
 (4, '1st Farmers Wash', 3, 1000, 7, 900, 105, 30, '2014-08-14 11:38:58', '2014-08-14 11:38:58', 'active'),
 (5, '20x30 Gold Medal', 2, 300, 10, 270, 105, 30, '2014-08-14 11:39:48', '2014-08-14 11:39:48', 'active'),
@@ -241,17 +311,17 @@ INSERT INTO `products` (`productId`, `productName`, `categoryId`, `productPrice`
 (8, '3rd Class', 1, 2000, 7, 1700, 20, 10, '2014-08-14 11:42:25', '2014-08-14 11:42:25', 'active'),
 (9, '3rd Class', 1, 40, 1, 30, 125, 50, '2014-08-14 11:42:52', '2014-08-14 11:42:52', 'active'),
 (10, 'Cup 7 oz.', 5, 5, 11, 3, 1050, 120, '2014-08-14 11:43:39', '2014-08-14 11:43:39', 'active'),
-(11, 'Angel Wh Flour', 1, 2300, 7, 2200, 1003, 20, '2014-08-14 11:44:16', '2014-08-14 11:44:16', 'active'),
+(11, 'Angel Wh Flour', 1, 1900, 7, 1900, 982, 20, '2014-08-14 11:44:16', '2014-08-14 11:44:16', 'active'),
 (12, 'Angel Yeast', 23, 30, 11, 25, 1005, 30, '2014-08-14 11:45:57', '2014-08-14 11:45:57', 'active'),
 (13, 'Calumet', 6, 20, 3, 15, 20, 50, '2014-08-14 11:48:06', '2014-08-14 11:48:06', 'active'),
 (14, 'Cake Flour', 1, 3000, 1, 2800, 20, 100, '2014-08-14 11:49:03', '2014-08-14 11:49:03', 'active'),
-(15, 'Cake Wash', 3, 50, 1, 40, 1015, 30, '2014-08-14 11:50:47', '2014-08-14 11:50:47', 'active'),
+(15, 'Cake Wash', 3, 50, 1, 40, 1014, 30, '2014-08-14 11:50:47', '2014-08-14 11:50:47', 'active'),
 (16, 'Coco Dry', 8, 50, 1, 40, 30, 50, '2014-08-14 11:51:10', '2014-08-14 11:51:10', 'active'),
 (17, 'Cowbell', 9, 500, 10, 400, 1020, 50, '2014-08-14 11:51:53', '2014-08-14 11:51:53', 'active'),
-(18, 'Dobrim', 10, 500, 1, 400, 1000, 30, '2014-08-14 11:52:30', '2014-08-14 11:52:30', 'active'),
-(19, 'Eden', 11, 50, 10, 40, 3, 10, '2014-08-14 11:53:23', '2014-08-14 11:53:23', 'active'),
-(20, 'Farm Land', 12, 30, 3, 25, 10, 30, '2014-08-14 11:54:37', '2014-08-14 11:54:37', 'active'),
-(21, 'Flavocol-Choco', 13, 60, 11, 50, 3, 10, '2014-08-14 11:55:27', '2014-08-14 11:55:27', 'active'),
+(18, 'Dobrim', 10, 500, 1, 400, 995, 30, '2014-08-14 11:52:30', '2014-08-14 11:52:30', 'active'),
+(19, 'Eden', 11, 60, 10, 40, 53, 10, '2014-08-14 11:53:23', '2014-08-14 11:53:23', 'active'),
+(20, 'Farm Land', 12, 30, 3, 25, 0, 30, '2014-08-14 11:54:37', '2014-08-14 11:54:37', 'active'),
+(21, 'Flavocol-Choco', 13, 60, 11, 50, 1, 10, '2014-08-14 11:55:27', '2014-08-14 11:55:27', 'active'),
 (22, 'Flavocol-Ube', 13, 60, 11, 50, 1006, 30, '2014-08-14 11:56:13', '2014-08-14 11:56:13', 'active'),
 (23, 'Flavocol-Pandan', 13, 60, 11, 50, 5, 30, '2014-08-14 11:57:08', '2014-08-14 11:57:08', 'active'),
 (24, 'G. Leaves (Brown Liquid)', 13, 100, 11, 90, 10, 50, '2014-08-14 11:58:09', '2014-08-14 11:58:09', 'active'),
@@ -260,7 +330,8 @@ INSERT INTO `products` (`productId`, `productName`, `categoryId`, `productPrice`
 (27, 'Palm', 19, 130, 8, 120, 1010, 30, '2014-08-14 12:00:05', '2014-08-14 12:00:05', 'active'),
 (28, 'Spring Lard', 20, 200, 8, 180, 10, 30, '2014-08-14 12:00:41', '2014-08-14 12:00:41', 'active'),
 (29, 'Star Margarine', 21, 6, 4, 4, 10000, 100, '2014-08-14 12:01:12', '2014-08-14 12:01:12', 'active'),
-(30, 'Sweet Crystal', 3, 50, 1, 40, 100000, 55, '2014-08-14 12:01:39', '2014-08-14 12:01:39', 'active');
+(30, 'Sweet Crystal', 3, 50, 1, 40, 100000, 55, '2014-08-14 12:01:39', '2014-08-14 12:01:39', 'active'),
+(31, 'saf', 23, 125, 11, 50, 35, 20, '2014-09-03 14:59:25', '2014-09-03 14:59:25', 'active');
 
 -- --------------------------------------------------------
 
@@ -301,7 +372,7 @@ CREATE TABLE IF NOT EXISTS `supplier` (
 --
 
 INSERT INTO `supplier` (`supplierId`, `supplierName`, `supplierContact`, `supplierContactPerson`, `created_date`, `updated_date`, `status`, `supplierAddress`) VALUES
-(1, 'Randerson Marketing', 'Tarlac City', '', '2014-08-14 13:34:43', '2014-08-14 13:34:43', 'active', ''),
+(1, 'Randerson Marketing', '22222', 'Racquel', '2014-08-14 13:34:43', '2014-08-14 13:34:43', 'active', 'TARLAC CITY'),
 (2, 'JRP Trading', 'Pangasinan', '', '2014-08-14 13:35:09', '2014-08-14 13:35:09', 'active', ''),
 (3, 'test', 'test', 'test', '2014-08-16 02:50:32', '2014-08-16 02:50:32', 'active', 'test');
 
@@ -322,7 +393,7 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `qty` int(11) NOT NULL,
   `unitId` int(11) NOT NULL,
   PRIMARY KEY (`transId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `transaction`
@@ -330,7 +401,23 @@ CREATE TABLE IF NOT EXISTS `transaction` (
 
 INSERT INTO `transaction` (`transId`, `orNo`, `productId`, `clientId`, `paymentMethod`, `transDate`, `transStatus`, `qty`, `unitId`) VALUES
 (1, 2014100002, '30', 0, 'Cash', '2014-09-03 12:55:19', 'Completed', 10, 1),
-(2, 2014100002, '18', 0, 'Cheque', '2014-09-03 13:23:42', 'Completed', 10, 1);
+(2, 2014100002, '18', 0, 'Cheque', '2014-09-03 13:23:42', 'Completed', 10, 1),
+(3, 2014100002, '20', 0, 'Cheque', '2014-09-03 13:49:44', 'Completed', 10, 3),
+(4, 2014100002, '11', 0, 'Cheque', '2014-09-03 13:54:42', 'Completed', 2, 7),
+(5, 2014100002, '11', 0, 'Cheque', '2014-09-03 13:57:00', 'Completed', 2, 7),
+(6, 2014100002, '11', 0, 'Cash', '2014-09-03 14:14:36', 'Completed', 10, 7),
+(7, 2014100002, '18', 0, 'Cash', '2014-09-03 14:14:37', 'Completed', 2, 1),
+(8, 2014100004, '15', 0, 'Cash', '2014-09-03 14:16:33', 'Completed', 1, 1),
+(9, 2014100004, '2', 0, 'Cash', '2014-09-03 14:16:34', 'Completed', 2, 1),
+(10, 2014100005, '18', 0, 'Cash', '2014-09-03 14:18:17', 'Completed', 3, 1),
+(11, 2014100006, '11', 0, 'Cash', '2014-09-03 14:24:38', 'Completed', 2, 7),
+(12, 2014100007, '31', 0, 'Cash', '2014-09-03 15:07:37', 'Completed', 10, 11),
+(13, 2014100008, '2', 0, 'Cheque', '2014-09-03 15:10:37', 'Completed', 1, 1),
+(14, 2014100009, '11', 1, 'Cheque', '2014-09-19 15:58:39', 'Verified', 1, 7),
+(15, 2014100009, '11', 1, 'Cheque', '2014-09-19 15:59:12', 'Verified', 1, 7),
+(16, 2014100010, '19', 2, 'Balance', '2014-09-19 16:19:17', 'Completed', 50, 10),
+(17, 2014100011, '11', 0, 'Cash', '2014-09-19 07:27:25', 'Completed', 5, 7),
+(18, 2014100011, '21', 0, 'Cash', '2014-09-19 07:27:25', 'Completed', 2, 11);
 
 -- --------------------------------------------------------
 
@@ -379,15 +466,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` varchar(10) NOT NULL,
-  PRIMARY KEY (`userId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  PRIMARY KEY (`userId`),
+  UNIQUE KEY `password` (`password`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`userId`, `username`, `password`, `fullname`, `permissionId`, `created_date`, `updated_date`, `status`) VALUES
-(1, 'test', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'test', 1, '2014-08-29 00:37:49', '2014-08-29 00:37:49', 'active');
+(1, 'test', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'test', 1, '2014-08-29 00:37:49', '2014-08-29 00:37:49', 'active'),
+(2, 'carol', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'caroline chiu', 1, '2014-09-03 14:50:24', '2014-09-03 14:50:24', 'active');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
