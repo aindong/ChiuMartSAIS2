@@ -139,5 +139,12 @@ namespace ChiuMartSAIS2.App.ReportDialog
         {
             searchClient(txtSearch.Text);
         }
+
+        private void btnOverview_Click(object sender, EventArgs e)
+        {
+            dlgIndividualLog log = new dlgIndividualLog();
+            log.logType = "client";
+            log.relationId = listView1.SelectedItems[0].Text;
+        }
     }
 }
