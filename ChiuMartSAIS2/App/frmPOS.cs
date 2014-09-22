@@ -913,6 +913,7 @@ namespace ChiuMartSAIS2.App
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            /*
             if (Classes.GetLastUserInput.formStatusIdle == false)
             {
                 if (Classes.GetLastUserInput.GetIdleTickCount() >= 300000)
@@ -921,7 +922,7 @@ namespace ChiuMartSAIS2.App
                     Dialogs.dlgIdleStatus idle = new Dialogs.dlgIdleStatus();
                     idle.ShowDialog();
                 }
-            }
+            }*/
             
         }
     }

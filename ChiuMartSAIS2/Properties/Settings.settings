@@ -10,5 +10,11 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">server=localhost;user id=root;database=chuisais</Value>
     </Setting>
+    <Setting Name="idleInterval" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">300000</Value>
+    </Setting>
+    <Setting Name="idleMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

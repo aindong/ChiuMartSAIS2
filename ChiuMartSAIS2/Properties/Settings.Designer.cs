@@ -32,5 +32,29 @@ namespace ChiuMartSAIS2.Properties {
                 return ((string)(this["chuisaisConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("300000")]
+        public int idleInterval {
+            get {
+                return ((int)(this["idleInterval"]));
+            }
+            set {
+                this["idleInterval"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool idleMode {
+            get {
+                return ((bool)(this["idleMode"]));
+            }
+            set {
+                this["idleMode"] = value;
+            }
+        }
     }
 }

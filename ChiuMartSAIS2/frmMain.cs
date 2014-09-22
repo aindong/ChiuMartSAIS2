@@ -157,5 +157,32 @@ namespace ChiuMartSAIS2
             App.ReportDialog.dlgUserReport frm = new App.ReportDialog.dlgUserReport();
             frm.ShowDialog();
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // Idle Mode Logic
+            if (Properties.Settings.Default.idleMode == true)
+            {
+                if (Classes.GetLastUserInput.formStatusIdle == false)
+                {
+                    if (Classes.GetLastUserInput.GetIdleTickCount() >= ChiuMartSAIS2.Properties.Settings.Default.idleInterval)
+                    {
+                        Classes.GetLastUserInput.formStatusIdle = true;
+                        App.Dialogs.dlgIdleStatus idle = new App.Dialogs.dlgIdleStatus();
+                        idle.ShowDialog();
+                    }
+                }
+            }
+            
+        }
+
+        private void btnIntervalSettings_Click(object sender, EventArgs e)
+        {
+            App.Dialogs.dlgIntervalSettings idleSettings = new App.Dialogs.dlgIntervalSettings();
+            if (idleSettings.ShowDialog() == DialogResult.OK)
+            {
+                // DO NOTHING
+            }
+        }
     }
 }

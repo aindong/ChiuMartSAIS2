@@ -19,6 +19,9 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         private void btnActivate_Click(object sender, EventArgs e)
         {
+            Classes.GetLastUserInput.formStatusIdle = false;
+            this.Close();
+
             dlgPasswordAuth auth = new dlgPasswordAuth();
             if (auth.ShowDialog() == DialogResult.OK)
             {
