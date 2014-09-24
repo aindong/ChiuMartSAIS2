@@ -71,14 +71,14 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void insertTransaction(string orNo, string productId, string clientId, string qty, string unitId, string paymentMethod)
+        private void insertTransaction(string orNo, string productId, string clientId, string qty, string unitId, string paymentMethod, string supplierPrice, string unitPrice)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "INSERT INTO transaction (orNo, productId, clientId, paymentMethod, qty, unitId, transStatus) VALUES (@orNo, @productId, @clientId, @paymentMethod, @qty, @unitId, 'Completed')";
+                    string sqlQuery = "INSERT INTO transaction (orNo, productId, clientId, paymentMethod, qty, unitId, transStatus, supplierPrice, unitPrice) VALUES (@orNo, @productId, @clientId, @paymentMethod, @qty, @unitId, 'Completed', @supplierPrice, @unitPrice)";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("orNo", orNo);
@@ -87,6 +87,8 @@ namespace ChiuMartSAIS2.App
                     sqlCmd.Parameters.AddWithValue("qty", qty);
                     sqlCmd.Parameters.AddWithValue("unitId", unitId);
                     sqlCmd.Parameters.AddWithValue("paymentMethod", paymentMethod);
+                    sqlCmd.Parameters.AddWithValue("supplierPrice", supplierPrice);
+                    sqlCmd.Parameters.AddWithValue("unitPrice", unitPrice);
 
                     sqlCmd.ExecuteNonQuery();
                 }
@@ -181,6 +183,36 @@ namespace ChiuMartSAIS2.App
                 {
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
                     MessageBox.Show(this, "Transaction error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void insertBasyo(string transId, string clientId, string basyoTransCount, string basyoYellowCount, string basyoTransReturned, string basyoYellowReturned)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    DateTime chequeDateFinal;
+                    DateTime.TryParse(chequeDate, out chequeDateFinal);
+
+                    Con.Open();
+                    string sqlQuery = "INSERT INTO basyo (transId, clientId, basyoTransCount, basyoYellowCount, basyoTransReturned, basyoYellowReturned) VALUES (@transId, @clientId, @basyoTransCount, @basyoYellowCount, @basyoTransReturned, @basyoYellowReturned)";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("transId", transId);
+                    sqlCmd.Parameters.AddWithValue("clientId", clientId);
+                    sqlCmd.Parameters.AddWithValue("basyoTransCount", basyoTransCount);
+                    sqlCmd.Parameters.AddWithValue("basyoYellowCount", basyoYellowCount);
+                    sqlCmd.Parameters.AddWithValue("basyoTransReturned", basyoTransReturned);
+                    sqlCmd.Parameters.AddWithValue("basyoYellowReturned", basyoYellowReturned);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Basyo error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -579,6 +611,9 @@ namespace ChiuMartSAIS2.App
 
                     string prodId = getProductID(dgvCart.Rows[i].Cells[2].Value.ToString());
                     string unitId = getUnitID(dgvCart.Rows[i].Cells[3].Value.ToString());
+                    string currentPrice = getProductProductPrice(dgvCart.Rows[i].Cells[2].Value.ToString());
+                    string supplierPrice = getProductSupplierPrice(dgvCart.Rows[i].Cells[2].Value.ToString());
+                
                     string str = txtClient.Text;
                     string[] clientId = new string[2];
                     if (str == "Walk-in Client")
@@ -591,9 +626,10 @@ namespace ChiuMartSAIS2.App
                     }
                     string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
                     string newPrice = dgvCart.Rows[i].Cells[4].Value.ToString();
-
-                    insertTransaction(txtOrNo.Text, prodId, clientId[1], qty, unitId, paymentMethod);
+                    
+                    insertTransaction(txtOrNo.Text, prodId, clientId[1], qty, unitId, paymentMethod, supplierPrice, currentPrice);
                     updateStocks(qty, prodId, newPrice);
+                    insertBasyo(txtOrNo.Text, clientId[1], txtTransBasyo.Text, txtYellowBasyo.Text, "0", "0");
 
                     // LOGS
                     string message = string.Format("Client {0} has purchased {1} {2} of {3} SOLD by cashier {4}", txtClient.Text, qty, dgvCart.Rows[i].Cells[3].Value.ToString(), dgvCart.Rows[i].Cells[2].Value.ToString(), txtCashier.Text);

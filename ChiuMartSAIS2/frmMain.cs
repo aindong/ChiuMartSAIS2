@@ -184,5 +184,11 @@ namespace ChiuMartSAIS2
                 // DO NOTHING
             }
         }
+
+        private void btnManual_Click(object sender, EventArgs e)
+        {
+            App.ReportDialog.dlgManualInventory frm = new App.ReportDialog.dlgManualInventory();
+            frm.ShowDialog();
+        }
     }
 }

@@ -67,6 +67,7 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.txtTransBasyo = new System.Windows.Forms.TextBox();
             this.txtYellowBasyo = new System.Windows.Forms.TextBox();
+            this.btnBasyo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -171,6 +172,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGray;
+            this.panel2.Controls.Add(this.btnBasyo);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.btnVoid);
             this.panel2.Controls.Add(this.btnCheckout);
@@ -453,6 +455,16 @@
             this.txtYellowBasyo.Text = "0";
             this.txtYellowBasyo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // btnBasyo
+            // 
+            this.btnBasyo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBasyo.Location = new System.Drawing.Point(14, 186);
+            this.btnBasyo.Name = "btnBasyo";
+            this.btnBasyo.Size = new System.Drawing.Size(334, 52);
+            this.btnBasyo.TabIndex = 7;
+            this.btnBasyo.Text = "Basyo";
+            this.btnBasyo.UseVisualStyleBackColor = true;
+            // 
             // frmPOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -535,5 +547,6 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.TextBox txtTransBasyo;
         private System.Windows.Forms.TextBox txtYellowBasyo;
+        private System.Windows.Forms.Button btnBasyo;
     }
 }

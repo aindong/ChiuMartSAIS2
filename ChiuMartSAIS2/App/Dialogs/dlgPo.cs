@@ -310,14 +310,14 @@ namespace ChiuMartSAIS2.App.Dialogs
             return generatedPO;
         }
 
-        private void insertPo(string poId, string productId, string supplierId, string qty, string unitId)
+        private void insertPo(string poId, string productId, string supplierId, string qty, string unitId, string oldPrice)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "INSERT INTO po (poId, productId, supplierId, status, qty, unitId, poStatus) VALUES (@poId, @productId, @supplierId, 'active', @qty, @unitId, 'Delivered')";
+                    string sqlQuery = "INSERT INTO po (poId, productId, supplierId, status, qty, unitId, poStatus, oldPrice) VALUES (@poId, @productId, @supplierId, 'active', @qty, @unitId, 'Delivered', @oldPrice)";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("poId", poId);
@@ -325,6 +325,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                     sqlCmd.Parameters.AddWithValue("supplierId", supplierId);
                     sqlCmd.Parameters.AddWithValue("qty", qty);
                     sqlCmd.Parameters.AddWithValue("unitId", unitId);
+                    sqlCmd.Parameters.AddWithValue("oldPrice", oldPrice);
 
                     sqlCmd.ExecuteNonQuery();
                     MessageBox.Show(this, "PO successfully added", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -497,7 +498,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                     string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
                     string newPrice = dgvCart.Rows[i].Cells[4].Value.ToString();
 
-                    insertPo(txtPoNo.Text, prodId, supplierId[1], qty, unitId);
+                    insertPo(txtPoNo.Text, prodId, supplierId[1], qty, unitId, newPrice);
                     updateStocks(qty, prodId, newPrice);
                 }
                 DialogResult = DialogResult.OK;
