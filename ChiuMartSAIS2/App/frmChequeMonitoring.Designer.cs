@@ -42,6 +42,7 @@
             this.lstCheques = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblProcessing = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rboInactive = new System.Windows.Forms.RadioButton();
@@ -49,7 +50,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.lblVerify = new System.Windows.Forms.Label();
             this.btnVerify = new System.Windows.Forms.Button();
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -175,6 +175,11 @@
             this.columnHeader7.Text = "Status";
             this.columnHeader7.Width = 130;
             // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Cheque Status";
+            this.columnHeader9.Width = 200;
+            // 
             // lblProcessing
             // 
             this.lblProcessing.AutoSize = true;
@@ -263,11 +268,6 @@
             this.btnVerify.UseVisualStyleBackColor = true;
             this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
             // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Cheque Status";
-            this.columnHeader9.Width = 200;
-            // 
             // frmChequeMonitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,6 +291,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cheque Monitoring";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmChequeMonitoring_FormClosing);
             this.Load += new System.EventHandler(this.frmChequeMonitoring_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

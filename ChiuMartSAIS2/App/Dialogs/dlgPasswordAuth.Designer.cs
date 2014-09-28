@@ -109,6 +109,8 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Authentication";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.dlgPasswordAuth_FormClosing);
+            this.Load += new System.EventHandler(this.dlgPasswordAuth_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

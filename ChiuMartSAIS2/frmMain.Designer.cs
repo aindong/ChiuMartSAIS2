@@ -50,6 +50,7 @@
             this.btnTime = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlReports = new System.Windows.Forms.Panel();
+            this.btnManual = new System.Windows.Forms.Button();
             this.btnSupplier = new System.Windows.Forms.Button();
             this.btnClient = new System.Windows.Forms.Button();
             this.btnLogs = new System.Windows.Forms.Button();
@@ -75,7 +76,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnManual = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlDatabaseManagement.SuspendLayout();
@@ -175,6 +175,7 @@
             this.pnlDatabaseManagement.Name = "pnlDatabaseManagement";
             this.pnlDatabaseManagement.Size = new System.Drawing.Size(322, 269);
             this.pnlDatabaseManagement.TabIndex = 4;
+            this.pnlDatabaseManagement.Visible = false;
             // 
             // btnConnection
             // 
@@ -383,6 +384,23 @@
             this.pnlReports.Name = "pnlReports";
             this.pnlReports.Size = new System.Drawing.Size(318, 294);
             this.pnlReports.TabIndex = 2;
+            // 
+            // btnManual
+            // 
+            this.btnManual.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.btnManual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManual.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManual.Image = global::ChiuMartSAIS2.Properties.Resources._1400994707_gnome_mime_application_vnd_lotus_1_2_3;
+            this.btnManual.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnManual.Location = new System.Drawing.Point(10, 220);
+            this.btnManual.Name = "btnManual";
+            this.btnManual.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnManual.Size = new System.Drawing.Size(147, 50);
+            this.btnManual.TabIndex = 10;
+            this.btnManual.Text = "Manual";
+            this.btnManual.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnManual.UseVisualStyleBackColor = false;
+            this.btnManual.Click += new System.EventHandler(this.btnManual_Click);
             // 
             // btnSupplier
             // 
@@ -766,23 +784,6 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
-            // 
-            // btnManual
-            // 
-            this.btnManual.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.btnManual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManual.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManual.Image = global::ChiuMartSAIS2.Properties.Resources._1400994707_gnome_mime_application_vnd_lotus_1_2_3;
-            this.btnManual.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManual.Location = new System.Drawing.Point(10, 220);
-            this.btnManual.Name = "btnManual";
-            this.btnManual.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.btnManual.Size = new System.Drawing.Size(147, 50);
-            this.btnManual.TabIndex = 10;
-            this.btnManual.Text = "Manual";
-            this.btnManual.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnManual.UseVisualStyleBackColor = false;
-            this.btnManual.Click += new System.EventHandler(this.btnManual_Click);
             // 
             // frmMain
             // 

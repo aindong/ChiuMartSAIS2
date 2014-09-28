@@ -381,5 +381,10 @@ namespace ChiuMartSAIS2.App
             populateCheques();
             checkChequeProcessing();
         }
+
+        private void frmChequeMonitoring_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
     }
 }

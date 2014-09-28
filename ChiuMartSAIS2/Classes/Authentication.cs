@@ -39,6 +39,7 @@ namespace ChiuMartSAIS2.Classes
         public int logsReport { get; set; }
         public int clientReport { get; set; }
         public int supplierReport { get; set; }
+        public int manualInventoryReport { get; set; }
 
         // Others Authentication
         public int systemUtilities { get; set; }
@@ -95,7 +96,7 @@ namespace ChiuMartSAIS2.Classes
                             categories = (int)reader["categories"];
                             units = (int)reader["units"];
                             suppliers = (int)reader["suppliers"];
-                            permissions = (int)reader["permissions"];
+                            permissions = (int)reader["permission"];
                             clients = (int)reader["clients"];
                             users = (int)reader["users"];
                             pointOfSale = (int)reader["pos"];
@@ -108,6 +109,7 @@ namespace ChiuMartSAIS2.Classes
                             logsReport = (int)reader["logsreport"];
                             clientReport = (int)reader["clientreport"];
                             supplierReport = (int)reader["supplierreport"];
+                            manualInventoryReport = (int)reader["manualInventoryReport"];
                             systemUtilities = (int)reader["systemutilities"];
                         }
                     }
@@ -119,7 +121,30 @@ namespace ChiuMartSAIS2.Classes
                 MessageBox.Show("User authentication error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            //pointOfSale = 1;
+        }
+
+        public void fullPermission()
+        {
+            products = 1;
+            categories = 1;
+            units = 1;
+            suppliers = 1;
+            permissions = 1;
+            clients = 1;
+            users = 1;
             pointOfSale = 1;
+            inventoryMonitoring = 1;
+            purchaseOrder = 1;
+            chequeMonitoring = 1;
+            inventoryReport = 1;
+            salesReport = 1;
+            usersReport = 1;
+            logsReport = 1;
+            clientReport = 1;
+            supplierReport = 1;
+            manualInventoryReport = 1;
+            systemUtilities = 1;
         }
 
         public void userLogout()

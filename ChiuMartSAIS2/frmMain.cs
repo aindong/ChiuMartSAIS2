@@ -25,55 +25,64 @@ namespace ChiuMartSAIS2
 
         private void btnProducts_Click(object sender, EventArgs e)
         {
-            App.frmProduct frm = new App.frmProduct();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.productMaintenance;
             frm.ShowDialog();
         }
 
         private void btnUnits_Click(object sender, EventArgs e)
         {
-            App.frmUnits frm = new App.frmUnits();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.unitsMaintenance;
             frm.ShowDialog();
         }
 
         private void btnCategories_Click(object sender, EventArgs e)
         {
-            App.frmCategory frm = new App.frmCategory();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.categoryMaintenance;
             frm.ShowDialog();
         }
 
         private void btnSuppliers_Click(object sender, EventArgs e)
         {
-            App.frmSupplier frm = new App.frmSupplier();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.suppliersMaintenance;
             frm.ShowDialog();
         }
 
         private void btnClients_Click(object sender, EventArgs e)
         {
-            App.frmClient frm = new App.frmClient();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.clientsMaintenance;
             frm.ShowDialog();
         }
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            App.frmUsers frm = new App.frmUsers();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.usersMaintenance;
             frm.ShowDialog();
         }
 
         private void btnPermissions_Click(object sender, EventArgs e)
         {
-            App.frmPermissions frm = new App.frmPermissions();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.permissionsMaintenance;
             frm.ShowDialog();
         }
 
         private void btnPOS_Click(object sender, EventArgs e)
         {
-            App.Dialogs.dlgPasswordAuth dlg = new App.Dialogs.dlgPasswordAuth();
-            dlg.ShowDialog();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.pointOfSales;
+            frm.ShowDialog();
         }
 
         private void btnInventoryMonitoring_Click(object sender, EventArgs e)
         {
-            App.frmInventoryMonitoring frm = new App.frmInventoryMonitoring();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.inventoryMonitoring;
             frm.ShowDialog();
         }
 
@@ -96,31 +105,36 @@ namespace ChiuMartSAIS2
 
         private void btnInventoryReport_Click(object sender, EventArgs e)
         {
-            App.ReportDialog.dlgProductReport frm = new App.ReportDialog.dlgProductReport();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.inventoryReport;
             frm.ShowDialog();
         }
 
         private void btnSalesReport_Click(object sender, EventArgs e)
         {
-            App.ReportMenuDialogs.dlgSalesReportMenu menu = new App.ReportMenuDialogs.dlgSalesReportMenu();
-            menu.ShowDialog();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.salesReport;
+            frm.ShowDialog();
         }
 
         private void btnLogs_Click(object sender, EventArgs e)
         {
-            App.ReportDialog.dlgAuditTrailReport frm = new App.ReportDialog.dlgAuditTrailReport();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.logsReport;
             frm.ShowDialog();
         }
 
         private void btnClient_Click(object sender, EventArgs e)
         {
-            App.ReportDialog.dlgClientListReport frm = new App.ReportDialog.dlgClientListReport();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.clientReport;
             frm.ShowDialog();
         }
 
         private void btnSupplier_Click(object sender, EventArgs e)
         {
-            App.ReportDialog.dlgSupplierReport frm = new App.ReportDialog.dlgSupplierReport();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.supplierReport;
             frm.ShowDialog();
         }
 
@@ -132,7 +146,8 @@ namespace ChiuMartSAIS2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            App.frmChequeMonitoring frm = new App.frmChequeMonitoring();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.chequeMonitoring;
             frm.ShowDialog();
         }
 
@@ -148,13 +163,15 @@ namespace ChiuMartSAIS2
 
         private void btnPurchaseOrder_Click(object sender, EventArgs e)
         {
-            App.frmPO frm = new App.frmPO();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.purchaseOrder;
             frm.ShowDialog();
         }
 
         private void btnUsersList_Click(object sender, EventArgs e)
         {
-            App.ReportDialog.dlgUserReport frm = new App.ReportDialog.dlgUserReport();
+            App.Dialogs.dlgPasswordAuth frm = new App.Dialogs.dlgPasswordAuth();
+            frm.formToOpen = App.Dialogs.FormType.userReport;
             frm.ShowDialog();
         }
 

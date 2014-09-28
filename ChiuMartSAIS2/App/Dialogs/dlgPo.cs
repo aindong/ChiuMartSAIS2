@@ -501,7 +501,10 @@ namespace ChiuMartSAIS2.App.Dialogs
                     insertPo(txtPoNo.Text, prodId, supplierId[1], qty, unitId, newPrice);
                     updateStocks(qty, prodId, newPrice);
                 }
-                DialogResult = DialogResult.OK;
+                dgvCart.Enabled = false;
+                btnCheckout.Enabled = false;
+
+                //DialogResult = DialogResult.OK;
             }
         }
 

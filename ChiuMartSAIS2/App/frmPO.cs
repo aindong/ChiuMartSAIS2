@@ -579,7 +579,7 @@ namespace ChiuMartSAIS2.App
 
             string id = lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text;
 
-            if (MessageBox.Show(this, "Do you want to back order this po?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(this, "Do you want to back order this purchase order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 getProductID(lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text);
                 for (int i = 0; i < (prodId.Count()); i++)
@@ -603,7 +603,7 @@ namespace ChiuMartSAIS2.App
             string id = lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text;
             if (btnDelete.Text == "&Delete")
             {
-                if (MessageBox.Show(this, "Do you want to delete this po?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(this, "Do you want to delete this purchase order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     deletePo(id);
                     populatePo();
@@ -612,7 +612,7 @@ namespace ChiuMartSAIS2.App
             }
             else
             {
-                if (MessageBox.Show(this, "Do you want to restore this po?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(this, "Do you want to restore this purchase order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     restorePo(id);
                     populatePo();
@@ -709,12 +709,17 @@ namespace ChiuMartSAIS2.App
 
             string id = lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text;
 
-            if (MessageBox.Show(this, "Do you want to verify this po?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(this, "Do you want to verify this purchase order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 verifyPo(id);
                 populatePo();
                 checkPo();
             }
+        }
+
+        private void frmPO_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult = DialogResult.OK;
         }
     }
 }

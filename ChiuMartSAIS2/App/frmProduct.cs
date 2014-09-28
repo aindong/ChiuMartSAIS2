@@ -559,5 +559,10 @@ namespace ChiuMartSAIS2.App
                 populateProduct();
             }
         }
+
+        private void frmProduct_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
     }
 }

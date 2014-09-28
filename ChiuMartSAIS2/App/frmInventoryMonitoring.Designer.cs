@@ -250,6 +250,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory Monitoring";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmInventoryMonitoring_FormClosing);
             this.Load += new System.EventHandler(this.frmInventoryMonitoring_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

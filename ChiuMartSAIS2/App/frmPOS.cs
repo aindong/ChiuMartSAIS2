@@ -989,5 +989,10 @@ namespace ChiuMartSAIS2.App
                 txtYellowBasyo.Enabled = false;
             }
         }
+
+        private void frmPOS_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
     }
 }

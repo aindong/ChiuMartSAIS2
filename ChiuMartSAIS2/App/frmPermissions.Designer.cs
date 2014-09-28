@@ -326,6 +326,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Permissions";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPermissions_FormClosing);
             this.Load += new System.EventHandler(this.frmPermissions_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

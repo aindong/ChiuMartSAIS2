@@ -365,6 +365,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Purchase Order";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPO_FormClosing);
             this.Load += new System.EventHandler(this.frmPO_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

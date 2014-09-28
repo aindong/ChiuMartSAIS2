@@ -250,6 +250,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Category Maintenance";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCategory_FormClosing);
             this.Load += new System.EventHandler(this.frmCategory_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

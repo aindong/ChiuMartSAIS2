@@ -381,5 +381,10 @@ namespace ChiuMartSAIS2.App
                 }
             }
         }
+
+        private void frmPermissions_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
     }
 }

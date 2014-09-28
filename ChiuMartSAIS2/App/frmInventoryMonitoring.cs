@@ -309,5 +309,10 @@ namespace ChiuMartSAIS2.App
             frm.relationId = lstProducts.SelectedItems[0].Text;
             frm.ShowDialog();
         }
+
+        private void frmInventoryMonitoring_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
     }
 }

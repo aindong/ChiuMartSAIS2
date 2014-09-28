@@ -272,6 +272,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supplier Maintenance";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSupplier_FormClosing);
             this.Load += new System.EventHandler(this.frmSupplier_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
