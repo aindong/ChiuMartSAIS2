@@ -34,6 +34,8 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +50,7 @@
             this.Column5,
             this.Column6,
             this.Column3});
-            this.dgvProduct.Location = new System.Drawing.Point(12, 12);
+            this.dgvProduct.Location = new System.Drawing.Point(12, 44);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.Size = new System.Drawing.Size(645, 311);
             this.dgvProduct.TabIndex = 5;
@@ -87,11 +89,32 @@
             this.Column3.Name = "Column3";
             this.Column3.Width = 140;
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(398, 367);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(259, 48);
+            this.btnClose.TabIndex = 41;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(133, 367);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(259, 48);
+            this.btnPrint.TabIndex = 40;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            // 
             // dlgManualInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(669, 395);
+            this.ClientSize = new System.Drawing.Size(669, 422);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.dgvProduct);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -99,7 +122,7 @@
             this.Name = "dlgManualInventory";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Manual Inventory Report";
+            this.Text = "Physical Inventory";
             this.Load += new System.EventHandler(this.dlgManualInventory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
             this.ResumeLayout(false);
@@ -114,5 +137,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

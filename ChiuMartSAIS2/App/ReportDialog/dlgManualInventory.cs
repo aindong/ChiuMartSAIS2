@@ -131,5 +131,10 @@ namespace ChiuMartSAIS2.App.ReportDialog
                 e.Cancel = true;
             }
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

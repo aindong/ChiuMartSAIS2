@@ -397,7 +397,7 @@
             this.btnManual.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnManual.Size = new System.Drawing.Size(147, 50);
             this.btnManual.TabIndex = 10;
-            this.btnManual.Text = "Manual";
+            this.btnManual.Text = "Physical Inventory";
             this.btnManual.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnManual.UseVisualStyleBackColor = false;
             this.btnManual.Click += new System.EventHandler(this.btnManual_Click);

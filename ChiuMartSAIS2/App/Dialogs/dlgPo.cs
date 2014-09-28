@@ -515,7 +515,10 @@ namespace ChiuMartSAIS2.App.Dialogs
             lblTotal.Text = "0.0";
             txtSupplier.Text = "";
             txtAddress.Text = "";
+            txtSupplier.ReadOnly = false;
+            txtAddress.ReadOnly = false;
             dgvCart.Enabled = true;
+            btnCheckout.Visible = true;
 
             // GENERATE NEW OR
             txtPoNo.Text = generatePO();
