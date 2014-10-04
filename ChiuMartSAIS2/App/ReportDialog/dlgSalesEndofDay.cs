@@ -138,5 +138,17 @@ namespace ChiuMartSAIS2.App.ReportDialog
 
             lblTotalSales.Text = (cashCount + chequeCount + accountsReceivableCount).ToString();
         }
+
+        private void btnChequeView_Click(object sender, EventArgs e)
+        {
+            App.frmChequeMonitoring frm = new App.frmChequeMonitoring();
+            frm.ShowDialog();
+        }
+
+        private void btnAccountsReceivables_Click(object sender, EventArgs e)
+        {
+            App.Dialogs.dlgTransactionHistoy frm = new App.Dialogs.dlgTransactionHistoy();
+            frm.ShowDialog();
+        }
     }
 }

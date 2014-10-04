@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,7 +50,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.lblTotalSales = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAccountsReceivables = new System.Windows.Forms.Button();
+            this.btnChequeView = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +69,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(961, 88);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(534, 29);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(149, 50);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "&Filter Record";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -283,21 +295,33 @@
             this.lblTotalSales.Text = "Total Sales";
             this.lblTotalSales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button1
+            // btnAccountsReceivables
             // 
-            this.button1.Location = new System.Drawing.Point(534, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 50);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "&Filter Record";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAccountsReceivables.Location = new System.Drawing.Point(771, 235);
+            this.btnAccountsReceivables.Name = "btnAccountsReceivables";
+            this.btnAccountsReceivables.Size = new System.Drawing.Size(149, 48);
+            this.btnAccountsReceivables.TabIndex = 18;
+            this.btnAccountsReceivables.Text = "View";
+            this.btnAccountsReceivables.UseVisualStyleBackColor = true;
+            this.btnAccountsReceivables.Click += new System.EventHandler(this.btnAccountsReceivables_Click);
+            // 
+            // btnChequeView
+            // 
+            this.btnChequeView.Location = new System.Drawing.Point(771, 167);
+            this.btnChequeView.Name = "btnChequeView";
+            this.btnChequeView.Size = new System.Drawing.Size(149, 48);
+            this.btnChequeView.TabIndex = 19;
+            this.btnChequeView.Text = "View";
+            this.btnChequeView.UseVisualStyleBackColor = true;
+            this.btnChequeView.Click += new System.EventHandler(this.btnChequeView_Click);
             // 
             // dlgSalesEndofDay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(961, 546);
+            this.Controls.Add(this.btnChequeView);
+            this.Controls.Add(this.btnAccountsReceivables);
             this.Controls.Add(this.lblTotalSales);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnCancel);
@@ -354,6 +378,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblTotalSales;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAccountsReceivables;
+        private System.Windows.Forms.Button btnChequeView;
 
     }
 }

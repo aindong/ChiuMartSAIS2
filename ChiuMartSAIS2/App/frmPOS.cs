@@ -632,8 +632,7 @@ namespace ChiuMartSAIS2.App
                     insertBasyo(txtOrNo.Text, clientId[1], txtTransBasyo.Text, txtYellowBasyo.Text, "0", "0");
 
                     // LOGS
-                    string message = string.Format("Client {0} has purchased {1} {2} of {3} SOLD by cashier {4}", txtClient.Text, qty, dgvCart.Rows[i].Cells[3].Value.ToString(), dgvCart.Rows[i].Cells[2].Value.ToString(), txtCashier.Text);
-                    Classes.ActionLogger.LogAction(message, "transaction", prodId.ToString(), clientId[1]);
+                    Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), clientId[1]);
                 }
                 insertNewOR();
                 MessageBox.Show(this, "Transaction Complete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);

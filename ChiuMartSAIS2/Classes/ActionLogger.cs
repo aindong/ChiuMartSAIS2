@@ -12,7 +12,7 @@ namespace ChiuMartSAIS2.Classes
     class ActionLogger
     {
 
-        public static void LogAction(string message, string log_type, string relationId, string clientId)
+        public static void LogAction(string quantity, string unit_id, string product_id, string log_type, string relationId, string clientId)
         {
             Classes.Configuration conf = new Classes.Configuration();
 
@@ -21,10 +21,12 @@ namespace ChiuMartSAIS2.Classes
                 using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
                 {
                     con.Open();
-                    string sql = "INSERT INTO logs(message, log_type, relationId, username, clientId) VALUES(@message, @log_type, @relationId, @username, @clientId)";
+                    string sql = "INSERT INTO logs(quantity, unit_id, product_id, log_type, relationId, username, clientId) VALUES(@quantity, @unit_id, @product_id, @log_type, @relationId, @username, @clientId)";
                     MySqlCommand sqlCmd = new MySqlCommand(sql, con);
 
-                    sqlCmd.Parameters.AddWithValue("message", message);
+                    sqlCmd.Parameters.AddWithValue("quantity", quantity);
+                    sqlCmd.Parameters.AddWithValue("unit_id", unit_id);
+                    sqlCmd.Parameters.AddWithValue("product_id", product_id);
                     sqlCmd.Parameters.AddWithValue("log_type", log_type);
                     sqlCmd.Parameters.AddWithValue("relationId", relationId);
                     sqlCmd.Parameters.AddWithValue("username", Classes.Authentication.Instance.username);
