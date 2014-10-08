@@ -32,6 +32,8 @@ namespace ChiuMartSAIS2.App
         private string chequeName = "";
         private string chequeDate = "";
         private string total = "";
+        private string yellowBasyoReturned;
+        private string transparentBasyoReturned;
 
         public frmPOS()
         {
@@ -71,14 +73,14 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void insertTransaction(string orNo, string productId, string clientId, string qty, string unitId, string paymentMethod, string supplierPrice, string unitPrice)
+        private void insertTransaction(string orNo, string productId, string clientId, string qty, string unitId, string paymentMethod, string supplierPrice, string unitPrice, string yellowBasyoReturned, string transparentBasyoReturned)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "INSERT INTO transaction (orNo, productId, clientId, paymentMethod, qty, unitId, transStatus, supplierPrice, unitPrice) VALUES (@orNo, @productId, @clientId, @paymentMethod, @qty, @unitId, 'Completed', @supplierPrice, @unitPrice)";
+                    string sqlQuery = "INSERT INTO transaction (orNo, productId, clientId, paymentMethod, qty, unitId, transStatus, supplierPrice, unitPrice, yellowBasyoReturned, transparentBasyoReturned) VALUES (@orNo, @productId, @clientId, @paymentMethod, @qty, @unitId, 'Completed', @supplierPrice, @unitPrice, @yellowBasyoReturned, @transparentBasyoReturned)";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("orNo", orNo);
@@ -89,6 +91,8 @@ namespace ChiuMartSAIS2.App
                     sqlCmd.Parameters.AddWithValue("paymentMethod", paymentMethod);
                     sqlCmd.Parameters.AddWithValue("supplierPrice", supplierPrice);
                     sqlCmd.Parameters.AddWithValue("unitPrice", unitPrice);
+                    sqlCmd.Parameters.AddWithValue("yellowBasyoReturned", yellowBasyoReturned);
+                    sqlCmd.Parameters.AddWithValue("transparentBasyoReturned", transparentBasyoReturned);
 
                     sqlCmd.ExecuteNonQuery();
                 }
@@ -637,7 +641,7 @@ namespace ChiuMartSAIS2.App
                     string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
                     string newPrice = dgvCart.Rows[i].Cells[4].Value.ToString();
                     
-                    insertTransaction(txtOrNo.Text, prodId, clientId[1], qty, unitId, paymentMethod, supplierPrice, currentPrice);
+                    insertTransaction(txtOrNo.Text, prodId, clientId[1], qty, unitId, paymentMethod, supplierPrice, currentPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
                     updateStocks(qty, prodId, newPrice);
                     insertBasyo(txtOrNo.Text, clientId[1], txtTransBasyo.Text, txtYellowBasyo.Text, "0", "0");
 
@@ -657,13 +661,15 @@ namespace ChiuMartSAIS2.App
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 frm.getTransaction(out qty, out productName, out units, out productPrice,
-                out orNo, out clientName, out clientAddress, out action);
+                out orNo, out clientName, out clientAddress, out action, out yellowBasyoReturned, out transparentBasyoReturned);
                 if (action == "View")
                 {
                     dgvCart.Enabled = false;
                     txtAddress.ReadOnly = true;
                     txtClient.ReadOnly = true;
                     btnCheckout.Enabled = false;
+                    txtTransBasyo.Text = transparentBasyoReturned;
+                    txtYellowBasyo.Text = yellowBasyoReturned;
 
                     label1.Text = "View Transaction";
                     txtAddress.Text = clientAddress; 
@@ -902,6 +908,8 @@ namespace ChiuMartSAIS2.App
             txtClient.Text = "Walk-in Client";
             dgvCart.Enabled = true;
             txtAddress.ReadOnly = false;
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
             txtClient.ReadOnly = false;
             btnCheckout.Enabled = true;
             // GENERATE NEW OR
