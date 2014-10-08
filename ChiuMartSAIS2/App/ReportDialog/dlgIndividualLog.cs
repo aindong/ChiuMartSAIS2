@@ -44,6 +44,10 @@ namespace ChiuMartSAIS2.App.ReportDialog
                     {
                         sql = "SELECT l.id, l.username, l.quantity, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND c.clientId = @relationId";
                     }
+                    else if (logType == "supplier")
+                    {
+                        sql = "SELECT l.id, l.username, l.quantity, l.created_date, l.log_type, u.unitDesc, p.productName, s.supplierName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN supplier as s ON l.supplierId = s.supplierId WHERE l.log_type = 'transaction' c.clientId = @relationId";
+                    }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sql, con);
                     sqlCmd.Parameters.AddWithValue("logType", logType);
@@ -59,7 +63,15 @@ namespace ChiuMartSAIS2.App.ReportDialog
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["quantity"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitDesc"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["productName"].ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientName"].ToString());
+                        if (logType == "supplier")
+                        {
+                            listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierName"].ToString());
+                        }
+                        else
+                        {
+                            listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientName"].ToString());
+                        }
+                        
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["log_type"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["created_date"].ToString());
                         quantity += double.Parse(reader["quantity"].ToString());

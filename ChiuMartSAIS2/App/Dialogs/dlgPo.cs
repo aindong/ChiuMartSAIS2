@@ -328,7 +328,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                     sqlCmd.Parameters.AddWithValue("oldPrice", oldPrice);
 
                     sqlCmd.ExecuteNonQuery();
-                    MessageBox.Show(this, "PO successfully added", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   
                 }
                 catch (MySqlException ex)
                 {
@@ -500,9 +500,15 @@ namespace ChiuMartSAIS2.App.Dialogs
 
                     insertPo(txtPoNo.Text, prodId, supplierId[1], qty, unitId, newPrice);
                     updateStocks(qty, prodId, newPrice);
+
+                    // LOGS
+                    Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), supplierId[1]);
                 }
+
+                MessageBox.Show(this, "PO successfully added", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgvCart.Enabled = false;
                 btnCheckout.Enabled = false;
+
 
                 //DialogResult = DialogResult.OK;
             }
@@ -519,6 +525,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             txtAddress.ReadOnly = false;
             dgvCart.Enabled = true;
             btnCheckout.Visible = true;
+            btnCheckout.Enabled = true;
 
             // GENERATE NEW OR
             txtPoNo.Text = generatePO();

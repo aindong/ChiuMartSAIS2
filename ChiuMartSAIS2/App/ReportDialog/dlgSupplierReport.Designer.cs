@@ -190,6 +190,7 @@
             this.btnOverview.TabIndex = 5;
             this.btnOverview.Text = "Overview";
             this.btnOverview.UseVisualStyleBackColor = true;
+            this.btnOverview.Click += new System.EventHandler(this.btnOverview_Click);
             // 
             // dlgSupplierReport
             // 

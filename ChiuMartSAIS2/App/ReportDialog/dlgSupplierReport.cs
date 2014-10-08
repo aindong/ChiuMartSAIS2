@@ -142,5 +142,13 @@ namespace ChiuMartSAIS2.App.ReportDialog
         {
             populateSupplier();
         }
+
+        private void btnOverview_Click(object sender, EventArgs e)
+        {
+            dlgIndividualLog log = new dlgIndividualLog();
+            log.logType = "supplier";
+            log.relationId = listView1.SelectedItems[0].Text;
+            log.ShowDialog();
+        }
     }
 }
