@@ -280,6 +280,11 @@ namespace ChiuMartSAIS2.App
 
         private void frmUsers_Load(object sender, EventArgs e)
         {
+            if (Classes.Authentication.Instance.role != "Administrator")
+            {
+                btnEdit.Visible = false;
+                btnDelete.Visible = false;
+            }
             populateUsers();
         }
 

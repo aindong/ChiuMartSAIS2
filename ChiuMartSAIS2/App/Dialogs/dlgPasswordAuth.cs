@@ -281,7 +281,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 // Give full permission
                 Classes.Authentication.Instance.fullPermission();
             }
-
+            
             openForm();
         }
 
