@@ -562,6 +562,8 @@ namespace ChiuMartSAIS2.App
                 populatePo();
                 checkPo();
             }
+            populatePo();
+            checkPo();
         }
 
         private void btnBackOrdder_Click(object sender, EventArgs e)
