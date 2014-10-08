@@ -480,6 +480,10 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         private void dlgTransactionHistoy_Load(object sender, EventArgs e)
         {
+            if (Classes.Authentication.Instance.role != "Administrator")
+            {
+                btnVerify.Visible = false;
+            }
             populateTransaction();
             checkTransaction();
         }

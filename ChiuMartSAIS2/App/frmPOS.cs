@@ -551,6 +551,16 @@ namespace ChiuMartSAIS2.App
                     total += double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString());
                 }
 
+                if (checkBox1.Checked == true)
+                {
+                    total -= double.Parse(txtTransBasyo.Text) * 100;
+                }
+
+                if (checkBox1.Checked == true)
+                {
+                    total -= double.Parse(txtYellowBasyo.Text) * 130;
+                }
+
                 lblTotal.Text = total.ToString();
 
             }
@@ -992,6 +1002,22 @@ namespace ChiuMartSAIS2.App
         private void frmPOS_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult = DialogResult.OK;
+        }
+
+        private void txtTransBasyo_TextChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                updateTotalPrice();
+            }
+        }
+
+        private void txtYellowBasyo_TextChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                updateTotalPrice();
+            }
         }
     }
 }

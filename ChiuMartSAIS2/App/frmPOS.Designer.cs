@@ -425,9 +425,9 @@
             this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.Location = new System.Drawing.Point(12, 544);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(189, 25);
+            this.checkBox1.Size = new System.Drawing.Size(208, 25);
             this.checkBox1.TabIndex = 24;
-            this.checkBox1.Text = "Add Transparent Basyo";
+            this.checkBox1.Text = "Return Transparent Basyo";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -435,11 +435,11 @@
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(207, 544);
+            this.checkBox2.Location = new System.Drawing.Point(228, 544);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(152, 25);
+            this.checkBox2.Size = new System.Drawing.Size(171, 25);
             this.checkBox2.TabIndex = 25;
-            this.checkBox2.Text = "Add Yellow Basyo";
+            this.checkBox2.Text = "Return Yellow Basyo";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
@@ -453,17 +453,19 @@
             this.txtTransBasyo.TabIndex = 26;
             this.txtTransBasyo.Text = "0";
             this.txtTransBasyo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTransBasyo.TextChanged += new System.EventHandler(this.txtTransBasyo_TextChanged);
             // 
             // txtYellowBasyo
             // 
             this.txtYellowBasyo.Enabled = false;
             this.txtYellowBasyo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtYellowBasyo.Location = new System.Drawing.Point(207, 571);
+            this.txtYellowBasyo.Location = new System.Drawing.Point(228, 571);
             this.txtYellowBasyo.Name = "txtYellowBasyo";
             this.txtYellowBasyo.Size = new System.Drawing.Size(135, 29);
             this.txtYellowBasyo.TabIndex = 27;
             this.txtYellowBasyo.Text = "0";
             this.txtYellowBasyo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtYellowBasyo.TextChanged += new System.EventHandler(this.txtYellowBasyo_TextChanged);
             // 
             // frmPOS
             // 

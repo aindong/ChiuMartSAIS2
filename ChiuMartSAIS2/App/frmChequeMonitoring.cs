@@ -209,6 +209,11 @@ namespace ChiuMartSAIS2.App
 
         private void frmChequeMonitoring_Load(object sender, EventArgs e)
         {
+            if (Classes.Authentication.Instance.role != "Administrator")
+            {
+                btnVerify.Visible = false;
+            }
+
             populateCheques();
             checkChequeProcessing();
         }
