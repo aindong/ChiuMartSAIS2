@@ -207,5 +207,11 @@ namespace ChiuMartSAIS2
             App.ReportDialog.dlgManualInventory frm = new App.ReportDialog.dlgManualInventory();
             frm.ShowDialog();
         }
+
+        private void btnSalesGeneration_Click(object sender, EventArgs e)
+        {
+            App.frmSalesGeneration frm = new App.frmSalesGeneration();
+            frm.ShowDialog();
+        }
     }
 }
