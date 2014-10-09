@@ -51,6 +51,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnPayBalance = new System.Windows.Forms.Button();
+            this.btnOverview = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -311,6 +313,38 @@
             this.label6.Text = "Accounts Receivables";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
+            // btnPayBalance
+            // 
+            this.btnPayBalance.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnPayBalance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPayBalance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayBalance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPayBalance.Location = new System.Drawing.Point(11, 448);
+            this.btnPayBalance.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnPayBalance.Name = "btnPayBalance";
+            this.btnPayBalance.Size = new System.Drawing.Size(137, 36);
+            this.btnPayBalance.TabIndex = 46;
+            this.btnPayBalance.Text = "Pay Balance";
+            this.btnPayBalance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPayBalance.UseVisualStyleBackColor = true;
+            this.btnPayBalance.Click += new System.EventHandler(this.btnPayBalance_Click);
+            // 
+            // btnOverview
+            // 
+            this.btnOverview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnOverview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOverview.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOverview.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOverview.Location = new System.Drawing.Point(156, 448);
+            this.btnOverview.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnOverview.Name = "btnOverview";
+            this.btnOverview.Size = new System.Drawing.Size(137, 36);
+            this.btnOverview.TabIndex = 47;
+            this.btnOverview.Text = "Overview";
+            this.btnOverview.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnOverview.UseVisualStyleBackColor = true;
+            this.btnOverview.Click += new System.EventHandler(this.btnOverview_Click);
+            // 
             // dlgTransactionHistoy
             // 
             this.AcceptButton = this.btnSearch;
@@ -318,6 +352,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(967, 494);
+            this.Controls.Add(this.btnOverview);
+            this.Controls.Add(this.btnPayBalance);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -375,5 +411,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.Button btnPayBalance;
+        private System.Windows.Forms.Button btnOverview;
     }
 }

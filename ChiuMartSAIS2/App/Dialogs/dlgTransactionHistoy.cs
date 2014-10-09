@@ -22,6 +22,13 @@ namespace ChiuMartSAIS2.App.Dialogs
         private string clientName;
         private string address;
         private string action;
+        private string bank = "";
+        private string branch = "";
+        private string chequeNo = "";
+        private string chequeName = "";
+        private string chequeDate = "";
+        private string total = "";
+        private string balance = "";
         private string yellowBasyoReturned;
         private string transparentBasyoReturned;
 
@@ -70,6 +77,39 @@ namespace ChiuMartSAIS2.App.Dialogs
                 }
             }
         }
+        private double getClientID(string crit)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT clientId FROM client WHERE clientName = @crit";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("crit", crit);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+
+
+                    double tmp = 0;
+                    while (reader.Read())
+                    {
+                        tmp = Convert.ToDouble(reader["clientId"]);
+                    }
+
+                    return tmp;
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Message);
+                    MessageBox.Show(this, "Error Retrieving client id", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 0;
+                }
+
+            }
+        }
 
         private void searchClient(string criteria)
         {
@@ -114,10 +154,19 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 double price = double.Parse(reader["productPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
+                                double balancePayment = double.Parse(reader["paidBalance"].ToString());
+                                string method = (reader["paymentMethod"].ToString());
 
                                 lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["paymentMethod"].ToString());
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
+                                if (totalAmount != balancePayment && method == "Balance")
+                                {
+                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                                }
+                                else
+                                {
+                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                                }
                                 ctr++;
                             }
                         }
@@ -134,10 +183,19 @@ namespace ChiuMartSAIS2.App.Dialogs
                             double price = double.Parse(reader["productPrice"].ToString());
                             double qty = double.Parse(reader["qty"].ToString());
                             double totalAmount = (price * qty);
+                            double balancePayment = double.Parse(reader["paidBalance"].ToString());
+                            string method = (reader["paymentMethod"].ToString());
 
                             lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["paymentMethod"].ToString());
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
+                            if (totalAmount != balancePayment && method == "Balance")
+                            {
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                            }
+                            else
+                            {
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                            }
                             ctr++;
                         }
 
@@ -193,10 +251,19 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 double price = double.Parse(reader["productPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
+                                double balancePayment = double.Parse(reader["paidBalance"].ToString());
+                                string method = (reader["paymentMethod"].ToString());
 
                                 lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["paymentMethod"].ToString());
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
+                                if (totalAmount != balancePayment && method == "Balance")
+                                {
+                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                                }
+                                else
+                                {
+                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                                }
                                 ctr++;
                             }
                         }
@@ -213,10 +280,19 @@ namespace ChiuMartSAIS2.App.Dialogs
                             double price = double.Parse(reader["productPrice"].ToString());
                             double qty = double.Parse(reader["qty"].ToString());
                             double totalAmount = (price * qty);
+                            double balancePayment = double.Parse(reader["paidBalance"].ToString());
+                            string method = (reader["paymentMethod"].ToString());
 
                             lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["paymentMethod"].ToString());
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
+                            if (totalAmount != balancePayment && method == "Balance")
+                            {
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                            }
+                            else
+                            {
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                            }
                             ctr++;
                         }
                         
@@ -274,10 +350,19 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 double price = double.Parse(reader["productPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
+                                double balancePayment = double.Parse(reader["paidBalance"].ToString());
+                                string method = (reader["paymentMethod"].ToString());
 
                                 lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["paymentMethod"].ToString());
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
+                                if (totalAmount != balancePayment && method == "Balance")
+                                {
+                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                                }
+                                else
+                                {
+                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                                }
                                 ctr++;
                             }
                         }
@@ -294,10 +379,19 @@ namespace ChiuMartSAIS2.App.Dialogs
                             double price = double.Parse(reader["productPrice"].ToString());
                             double qty = double.Parse(reader["qty"].ToString());
                             double totalAmount = (price * qty);
+                            double balancePayment = double.Parse(reader["paidBalance"].ToString());
+                            string method = (reader["paymentMethod"].ToString());
 
                             lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["paymentMethod"].ToString());
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
+                            if (totalAmount != balancePayment && method == "Balance")
+                            {
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                            }
+                            else
+                            {
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                            }
                             ctr++;
                         }
 
@@ -369,10 +463,19 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 double price = double.Parse(reader["productPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
+                                double balancePayment = double.Parse(reader["paidBalance"].ToString());
+                                string method = (reader["paymentMethod"].ToString());
 
                                 lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["paymentMethod"].ToString());
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
+                                if (totalAmount != balancePayment && method == "Balance")
+                                {
+                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                                }
+                                else
+                                {
+                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                                }
                                 ctr++;
                             }
                         }
@@ -389,10 +492,19 @@ namespace ChiuMartSAIS2.App.Dialogs
                             double price = double.Parse(reader["productPrice"].ToString());
                             double qty = double.Parse(reader["qty"].ToString());
                             double totalAmount = (price * qty);
+                            double balancePayment = double.Parse(reader["paidBalance"].ToString());
+                            string method = (reader["paymentMethod"].ToString());
 
                             lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["paymentMethod"].ToString());
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
+                            if (totalAmount != balancePayment && method == "Balance")
+                            {
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                            }
+                            else
+                            {
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transStatus"].ToString());
+                            }
                             ctr++;
                         }
 
@@ -427,6 +539,61 @@ namespace ChiuMartSAIS2.App.Dialogs
                 MessageBox.Show(this, "Can't connect to database ", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void insertCheque(string bank, string branch, string chequeName, string chequeDate, string chequeNo, string amount)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    DateTime chequeDateFinal;
+                    DateTime.TryParse(chequeDate, out chequeDateFinal);
+
+                    Con.Open();
+                    string sqlQuery = "INSERT INTO cheque (chequeNo, chequeName, chequeBank, chequeBranch, chequeAmount, chequeDate, status) VALUES (@chequeNo, @chequeName, @chequeBank, @chequeBranch, @chequeAmount, @chequeDate, 'active')";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("chequeNo", chequeNo);
+                    sqlCmd.Parameters.AddWithValue("chequeName", chequeName);
+                    sqlCmd.Parameters.AddWithValue("chequeBank", bank);
+                    sqlCmd.Parameters.AddWithValue("chequeBranch", branch);
+                    sqlCmd.Parameters.AddWithValue("chequeAmount", amount);
+                    sqlCmd.Parameters.AddWithValue("chequeDate", chequeDateFinal.ToString("yyyy-MM-dd"));
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Transaction error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void updateTransaction(string paidBalance, string criteria)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE transaction SET paidBalance = paidBalance + @paidBalance WHERE orNo = @criteria";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("paidBalance", paidBalance);
+                    sqlCmd.Parameters.AddWithValue("criteria", criteria);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Accounts Receivables updated", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Updating Accounts Receivables error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
 
         public void getTransaction(out List<String> qty, out List<String> productName, out List<String> units, out List<String> productPrice,
                 out string orNo, out string clientName, out string clientAddress, out string action, out string yellowBasyoReturned, out string transparentBasyoReturned)
@@ -494,6 +661,9 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
             populateTransaction();
             checkTransaction();
+
+            btnOverview.Visible = false;
+            btnPayBalance.Visible = false;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -550,30 +720,40 @@ namespace ChiuMartSAIS2.App.Dialogs
         {
             getTransactionByPayment("All");
             checkTransaction();
+            btnOverview.Visible = false;
+            btnPayBalance.Visible = false;
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
             getTransactionByPayment("Cash");
             checkTransaction();
+            btnOverview.Visible = false;
+            btnPayBalance.Visible = false;
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
             getTransactionByPayment("Cheque");
             checkTransaction();
+            btnOverview.Visible = false;
+            btnPayBalance.Visible = false;
         }
 
         private void label6_Click(object sender, EventArgs e)
         {
             getTransactionByPayment("Balance");
             checkTransaction();
+            btnOverview.Visible = true;
+            btnPayBalance.Visible = true;
         }
 
         private void lblVerify_Click(object sender, EventArgs e)
         {
             getTransactionByPayment("Verified");
             checkTransaction();
+            btnOverview.Visible = false;
+            btnPayBalance.Visible = false;
         }
 
         private void btnVerify_Click(object sender, EventArgs e)
@@ -591,6 +771,42 @@ namespace ChiuMartSAIS2.App.Dialogs
                 populateTransaction();
                 checkTransaction();
             }
+        }
+
+        private void btnPayBalance_Click(object sender, EventArgs e)
+        {
+            dlgCheckout frm = new dlgCheckout("balance");
+            frm.total = lstClients.SelectedItems[lstClients.SelectedItems.Count - 1].SubItems[5].Text;
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                string paymentMethod = "";
+                frm.getProduct(out paymentMethod, out bank, out branch, out chequeName, out chequeDate, out total, out chequeNo);
+                if (paymentMethod == "Cheque")
+                {
+                    insertCheque(bank, branch, chequeName, chequeDate, chequeNo, total);
+                }
+
+                frm.getTotalPaid(out balance);
+                updateTransaction(balance, lstClients.SelectedItems[0].Text);
+
+                string clientName = lstClients.SelectedItems[lstClients.SelectedItems.Count - 1].SubItems[1].Text;
+
+                double clientId = getClientID(clientName);
+
+                // LOGS
+                Classes.ActionLogger.LogAction("", "", "", "Balance", lstClients.SelectedItems[0].Text, clientId.ToString(), paymentMethod, balance);
+
+                getTransactionByPayment("Balance");
+                checkTransaction();
+            }
+        }
+
+        private void btnOverview_Click(object sender, EventArgs e)
+        {
+            ReportDialog.dlgIndividualLog log = new ReportDialog.dlgIndividualLog();
+            log.logType = "balance";
+            log.relationId = lstClients.SelectedItems[0].Text;
+            log.ShowDialog();
         }
     }
 }

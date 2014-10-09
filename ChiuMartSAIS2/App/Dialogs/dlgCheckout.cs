@@ -19,10 +19,14 @@ namespace ChiuMartSAIS2.App.Dialogs
         private string cheque = "";
         private string chequeName = "";
         private string chequeDate = "";
+        private string balance = "";
+        private string _action;
 
-        public dlgCheckout()
+        public dlgCheckout(string action)
         {
             InitializeComponent();
+
+            _action = action;
         }
 
         public void getProduct(out string method, out string bank, out string branch, out string chequeName, out string chequeDate, out string total, out string chequeNo)
@@ -43,12 +47,35 @@ namespace ChiuMartSAIS2.App.Dialogs
             total = this.total;
         }
 
+        public void getTotalPaid(out string balance)
+        {
+            // Set the payment method
+            balance = this.balance;
+        }
+
         private void dlgCheckout_Load(object sender, EventArgs e)
         {
-            txtAmount.Text = total;
-            txtReceivableTotal.Text = total;
-            txtTotal.Text = total;
-            txtCashRendered.Text = total;
+            if (_action == "POS")
+            {
+                txtAmount.Text = total;
+                txtReceivableTotal.Text = total;
+                txtTotal.Text = total;
+                txtCashRendered.Text = total;
+            }
+            else
+            {
+                if (total == "Completed")
+                {
+                    txtAmount.Text = "0.0";
+                    txtTotal.Text = "0.0";
+                }
+                else
+                {
+                    txtAmount.Text = total;
+                    txtTotal.Text = total;
+                }
+                tabControl1.TabPages.Remove(tabPage3);
+            }
 
             button1.Focus();
         }
@@ -107,6 +134,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         private void button1_Click(object sender, EventArgs e)
         {
             method = "Cash";
+            balance = txtCashRendered.Text;
             DialogResult = DialogResult.OK;
         }
 
@@ -138,6 +166,21 @@ namespace ChiuMartSAIS2.App.Dialogs
         private void txtCashRendered_TextChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

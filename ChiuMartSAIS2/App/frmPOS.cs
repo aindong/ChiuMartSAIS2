@@ -603,7 +603,7 @@ namespace ChiuMartSAIS2.App
             }
 
             // Open the checkout form
-            Dialogs.dlgCheckout frm = new Dialogs.dlgCheckout();
+            Dialogs.dlgCheckout frm = new Dialogs.dlgCheckout("POS");
             // Set the variables
             frm.total = lblTotal.Text;
             if (frm.ShowDialog() == DialogResult.OK)
@@ -646,7 +646,7 @@ namespace ChiuMartSAIS2.App
                     insertBasyo(txtOrNo.Text, clientId[1], txtTransBasyo.Text, txtYellowBasyo.Text, "0", "0");
 
                     // LOGS
-                    Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), clientId[1]);
+                    Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), clientId[1], "", "");
                 }
                 insertNewOR();
                 MessageBox.Show(this, "Transaction Complete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);

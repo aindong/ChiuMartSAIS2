@@ -502,7 +502,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                     updateStocks(qty, prodId, newPrice);
 
                     // LOGS
-                    Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), supplierId[1]);
+                    Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), supplierId[1], "", "");
                 }
 
                 MessageBox.Show(this, "PO successfully added", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);

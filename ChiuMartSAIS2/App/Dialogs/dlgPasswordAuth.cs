@@ -252,6 +252,49 @@ namespace ChiuMartSAIS2.App.Dialogs
                         MessageBox.Show("Sorry but you don't have a permission to open this feature", "Permission Denied", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                     break;
+
+                case FormType.supplierReport:
+                    if (Classes.Authentication.Instance.supplierReport == 1)
+                    {
+                        App.ReportDialog.dlgSupplierReport frm = new App.ReportDialog.dlgSupplierReport();
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sorry but you don't have a permission to open this feature", "Permission Denied", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    break;
+                case FormType.logsReport:
+                    if (Classes.Authentication.Instance.logsReport == 1)
+                    {
+                        App.ReportDialog.dlgAuditTrailReport frm = new App.ReportDialog.dlgAuditTrailReport();
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sorry but you don't have a permission to open this feature", "Permission Denied", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    break;
+                case FormType.salesReport:
+                    if (Classes.Authentication.Instance.salesReport == 1)
+                    {
+                        App.ReportMenuDialogs.dlgSalesReportMenu frm = new App.ReportMenuDialogs.dlgSalesReportMenu();
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sorry but you don't have a permission to open this feature", "Permission Denied", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    break;
                 case FormType.manualInventoryCheck:
                     if (Classes.Authentication.Instance.manualInventoryReport == 1)
                     {
