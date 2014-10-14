@@ -210,8 +210,8 @@ namespace ChiuMartSAIS2
 
         private void btnSalesGeneration_Click(object sender, EventArgs e)
         {
-           // App.frmSalesGeneration frm = new App.frmSalesGeneration();
-            // frm.ShowDialog();
+           App.frmSalesGeneration frm = new App.frmSalesGeneration();
+            frm.ShowDialog();
         }
     }
 }
