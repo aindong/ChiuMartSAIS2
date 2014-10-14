@@ -421,6 +421,35 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        /// <summary>
+        /// This function will reduce a product stock on queue
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="price"></param>
+        /// <param name="stock"></param>
+        private void updateProductQueue(string productId, string price, string stock)
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "UPDATE po_queue SET stock = stock - @stock WHERE product_id = @productId AND supplier_price = @price";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    sqlCmd.Parameters.AddWithValue("stock", stock);
+                    sqlCmd.Parameters.AddWithValue("productId", productId);
+                    sqlCmd.Parameters.AddWithValue("price", price);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Adding new po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void getProductID(string crit)
         {
             prodQty.Clear();
@@ -430,7 +459,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT productId, qty FROM po WHERE poId = @crit";
+                    string sqlQuery = "SELECT productId, qty, oldPrice FROM po WHERE poId = @crit";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("crit", crit);
@@ -441,6 +470,8 @@ namespace ChiuMartSAIS2.App
                     {
                         prodId.Add(reader["productId"].ToString());
                         prodQty.Add(reader["qty"].ToString());
+
+                        updateProductQueue(reader["productId"].ToString(), reader["oldPrice"].ToString(), reader["qty"].ToString());
                     }
 
                 }
@@ -588,6 +619,7 @@ namespace ChiuMartSAIS2.App
                 {
                     int crit = Int32.Parse(prodId[i]);
                     updateStocks(prodQty[i], prodId[i]);
+
                 }
                 backPo(id);
                 populatePo();

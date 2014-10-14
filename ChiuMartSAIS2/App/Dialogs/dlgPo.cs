@@ -338,6 +338,107 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
         }
 
+        /// <summary>
+        /// Check the product queue table if the item does exist
+        /// </summary>
+        /// <param name="productId">Product Id of the product to search</param>
+        /// <param name="price">The product price from supplier</param>
+        /// <returns>Boolean</returns>
+        private Boolean checkProductQueue(string productId, string price)
+        {
+            bool result = false;
+
+            try
+            {
+                using(MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "SELECT * FROM po_queue WHERE product_id = @productId AND supplier_price = @price";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    sqlCmd.Parameters.AddWithValue("productId", productId);
+                    sqlCmd.Parameters.AddWithValue("price", price);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+                    reader.Read();
+
+                    if(reader.HasRows)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        result = false;
+                    }
+                }
+            }
+            catch(MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Adding new po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                result = false;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// This fuctio will update the product queue
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="price"></param>
+        /// <param name="stock"></param>
+        private void updateProductQueue(string productId, string price, string stock)
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "UPDATE po_queue SET stock = stock + @stock WHERE product_id = @productId AND supplier_price = @price";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    sqlCmd.Parameters.AddWithValue("stock", stock);
+                    sqlCmd.Parameters.AddWithValue("productId", productId);
+                    sqlCmd.Parameters.AddWithValue("price", price);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Adding new po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Insert a new product on the queue
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="price"></param>
+        /// <param name="stock"></param>
+        private void insertProductQueue(string productId, string price, string stock)
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "INSERT INTO po_queue(product_id, supplier_price, stock) VALUES(@productId, @price, @stock)";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    sqlCmd.Parameters.AddWithValue("productId", productId);
+                    sqlCmd.Parameters.AddWithValue("price", price);
+                    sqlCmd.Parameters.AddWithValue("stock", stock);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Adding new po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void updateStocks(string qty, string crit, string newPrice)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
@@ -500,6 +601,16 @@ namespace ChiuMartSAIS2.App.Dialogs
 
                     insertPo(txtPoNo.Text, prodId, supplierId[1], qty, unitId, newPrice);
                     updateStocks(qty, prodId, newPrice);
+
+                    //Update queue as well
+                    if(checkProductQueue(prodId, newPrice) == true)
+                    {
+                        updateProductQueue(prodId, newPrice, qty);
+                    }
+                    else
+                    {
+                        insertProductQueue(prodId, newPrice, qty);
+                    }
 
                     // LOGS
                     Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), supplierId[1], "", "");
