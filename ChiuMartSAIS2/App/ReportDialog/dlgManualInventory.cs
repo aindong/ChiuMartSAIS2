@@ -70,7 +70,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
             }
             else
             {
-                result = "OK";
+                result = "TALLY";
                 return result;
             }
         }

@@ -294,6 +294,11 @@
     <Compile Include="App\ReportMenuDialogs\dlgSalesReportMenu.Designer.cs">
       <DependentUpon>dlgSalesReportMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="chiumart_data.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>chiumart_data.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Classes\ActionLogger.cs" />
     <Compile Include="Classes\Authentication.cs" />
     <Compile Include="Classes\Configuration.cs" />
@@ -434,6 +439,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="chiumart_data.xsc">
+      <DependentUpon>chiumart_data.xsd</DependentUpon>
+    </None>
+    <None Include="chiumart_data.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>chiumart_data.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="chiumart_data.xss">
+      <DependentUpon>chiumart_data.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
