@@ -30,7 +30,6 @@
         {
             this.listView1 = new System.Windows.Forms.ListView();
             this.ColumnHeader0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -52,7 +51,6 @@
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ColumnHeader0,
-            this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
@@ -74,11 +72,6 @@
             // 
             this.ColumnHeader0.Text = "id";
             this.ColumnHeader0.Width = 0;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Operator";
-            this.columnHeader1.Width = 138;
             // 
             // columnHeader2
             // 
@@ -113,18 +106,19 @@
             // btnFilter
             // 
             this.btnFilter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.Location = new System.Drawing.Point(687, 14);
+            this.btnFilter.Location = new System.Drawing.Point(409, 18);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(149, 29);
             this.btnFilter.TabIndex = 21;
             this.btnFilter.Text = "&Filter Record";
             this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(360, 18);
+            this.label3.Location = new System.Drawing.Point(209, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 21);
             this.label3.TabIndex = 20;
@@ -133,16 +127,17 @@
             // dtpEnd
             // 
             this.dtpEnd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpEnd.Location = new System.Drawing.Point(393, 14);
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEnd.Location = new System.Drawing.Point(242, 16);
             this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Size = new System.Drawing.Size(279, 29);
+            this.dtpEnd.Size = new System.Drawing.Size(141, 29);
             this.dtpEnd.TabIndex = 19;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 16);
+            this.label2.Location = new System.Drawing.Point(8, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 21);
             this.label2.TabIndex = 18;
@@ -151,9 +146,10 @@
             // dtpStart
             // 
             this.dtpStart.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpStart.Location = new System.Drawing.Point(58, 14);
             this.dtpStart.Name = "dtpStart";
-            this.dtpStart.Size = new System.Drawing.Size(265, 29);
+            this.dtpStart.Size = new System.Drawing.Size(134, 29);
             this.dtpStart.TabIndex = 17;
             // 
             // btnPrint
@@ -238,7 +234,6 @@
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ColumnHeader ColumnHeader0;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;

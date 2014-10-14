@@ -12,7 +12,7 @@ namespace ChiuMartSAIS2.Classes
     class ActionLogger
     {
 
-        public static void LogAction(string quantity, string unit_id, string product_id, string log_type, string relationId, string clientId, string paymentMethod, string price)
+        public static void LogAction(string quantity, string unit_id, string product_id, string log_type, string relationId, string clientId, string paymentMethod, string price, string supplierPrice)
         {
             Classes.Configuration conf = new Classes.Configuration();
 
@@ -21,7 +21,7 @@ namespace ChiuMartSAIS2.Classes
                 using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
                 {
                     con.Open();
-                    string sql = "INSERT INTO logs(quantity, unit_id, product_id, log_type, relationId, username, clientId, paymentMethod, price) VALUES(@quantity, @unit_id, @product_id, @log_type, @relationId, @username, @clientId, @paymentMethod, @price)";
+                    string sql = "INSERT INTO logs(quantity, unit_id, product_id, log_type, relationId, username, clientId, paymentMethod, price, supplierPrice) VALUES(@quantity, @unit_id, @product_id, @log_type, @relationId, @username, @clientId, @paymentMethod, @price, @supplierPrice)";
                     MySqlCommand sqlCmd = new MySqlCommand(sql, con);
 
                     sqlCmd.Parameters.AddWithValue("quantity", quantity);
@@ -33,6 +33,7 @@ namespace ChiuMartSAIS2.Classes
                     sqlCmd.Parameters.AddWithValue("clientId", clientId);
                     sqlCmd.Parameters.AddWithValue("paymentMethod", paymentMethod);
                     sqlCmd.Parameters.AddWithValue("price", price);
+                    sqlCmd.Parameters.AddWithValue("supplierPrice", supplierPrice);
 
                     sqlCmd.ExecuteNonQuery();
                 }

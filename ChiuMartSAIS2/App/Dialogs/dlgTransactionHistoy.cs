@@ -794,7 +794,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 double clientId = getClientID(clientName);
 
                 // LOGS
-                Classes.ActionLogger.LogAction("", "", "", "Balance", lstClients.SelectedItems[0].Text, clientId.ToString(), paymentMethod, balance);
+                Classes.ActionLogger.LogAction("", "", "", "Balance", lstClients.SelectedItems[0].Text, clientId.ToString(), paymentMethod, balance, "");
 
                 getTransactionByPayment("Balance");
                 checkTransaction();
