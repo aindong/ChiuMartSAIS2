@@ -613,7 +613,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                     }
 
                     // LOGS
-                    Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), supplierId[1], "", "", newPrice);
+                    Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), "", "", "", newPrice, supplierId[1]);
                 }
 
                 MessageBox.Show(this, "PO successfully added", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);

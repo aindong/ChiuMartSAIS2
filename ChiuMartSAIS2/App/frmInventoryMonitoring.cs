@@ -314,5 +314,11 @@ namespace ChiuMartSAIS2.App
         {
             DialogResult = DialogResult.OK;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            App.frmPO frm = new App.frmPO();
+            frm.ShowDialog();
+        }
     }
 }

@@ -22,6 +22,8 @@ namespace ChiuMartSAIS2.App
         private List<String> productName = new List<string>();
         private List<String> units = new List<string>();
         private List<String> productPrice = new List<string>();
+        private List<int> poStock = new List<int>();
+        private List<String> poSupplierPrice = new List<string>();
         private string orNo;
         private string clientName;
         private string clientAddress;
@@ -161,6 +163,39 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        private void getPoQueue(string crit)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT * FROM po_queue WHERE product_id = @crit";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("crit", crit);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    poStock.Clear();
+                    poSupplierPrice.Clear();
+
+                    while (reader.Read())
+                    {
+                        poStock.Add(Int32.Parse(reader["stock"].ToString()));
+                        poSupplierPrice.Add(reader["supplier_price"].ToString());
+                    }
+
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Message);
+                    MessageBox.Show(this, "Error Retrieving queue stocks", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
         private void insertCheque(string bank, string branch, string chequeName, string chequeDate, string chequeNo, string amount)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
@@ -282,6 +317,29 @@ namespace ChiuMartSAIS2.App
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
                     MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void updateProductQueue(string productId, string price, string stock)
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "UPDATE po_queue SET stock = stock - @stock WHERE product_id = @productId AND supplier_price = @price";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    sqlCmd.Parameters.AddWithValue("stock", stock);
+                    sqlCmd.Parameters.AddWithValue("productId", productId);
+                    sqlCmd.Parameters.AddWithValue("price", price);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Adding new po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -640,13 +698,32 @@ namespace ChiuMartSAIS2.App
                     }
                     string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
                     string newPrice = dgvCart.Rows[i].Cells[4].Value.ToString();
-                    
-                    insertTransaction(txtOrNo.Text, prodId, clientId[1], qty, unitId, paymentMethod, supplierPrice, currentPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
+                    int prodqty = Int32.Parse(qty);
+
+                    getPoQueue(prodId);
+                    for (int j = 0; j < poStock.Count; j++) {
+                        if (poStock[j] >= prodqty)
+                        {
+                            updateProductQueue(prodId, poSupplierPrice[j], prodqty.ToString());
+                            insertTransaction(txtOrNo.Text, prodId, clientId[1], prodqty.ToString(), unitId, paymentMethod, poSupplierPrice[j], currentPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
+                            break;
+                        }
+                        else 
+                        {
+                            updateProductQueue(prodId, poSupplierPrice[j], poStock[j].ToString());
+                            if (poStock[j] != 0)
+                            {
+                                insertTransaction(txtOrNo.Text, prodId, clientId[1], poStock[j].ToString(), unitId, paymentMethod, poSupplierPrice[j], currentPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
+                            }
+                            prodqty = prodqty - poStock[j];
+                        }
+                    }
                     updateStocks(qty, prodId, newPrice);
                     insertBasyo(txtOrNo.Text, clientId[1], txtTransBasyo.Text, txtYellowBasyo.Text, "0", "0");
+                    // updateProductQueue(prodId, supplierPrice, qty);
 
                     // LOGS
-                    Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), clientId[1], "", "", "");
+                    Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), clientId[1], "", "", "", "");
                 }
                 insertNewOR();
                 MessageBox.Show(this, "Transaction Complete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);

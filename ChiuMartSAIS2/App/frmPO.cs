@@ -43,7 +43,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId  WHERE p.status = @status  AND p.poStatus != 'Verified' ORDER BY supplierName ASC";
+                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId  WHERE p.status = @status  AND p.poStatus != 'Verified' ORDER BY poId ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -126,19 +126,19 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus != 'Verified' ORDER BY supplierName ASC";
+                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus != 'Verified' ORDER BY poId ASC";
                     DateTime dateNow = DateTime.Today;
                     if (poStatus == "Delivered")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus = 'Delivered' AND p.poStatus != 'Verified' ORDER BY supplierName ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus = 'Delivered' AND p.poStatus != 'Verified' ORDER BY poId ASC";
                     }
                     else if (poStatus == "BackOrder")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus = 'Back Order' AND p.poStatus != 'Verified' ORDER BY supplierName ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus = 'Back Order' AND p.poStatus != 'Verified' ORDER BY poId ASC";
                     }
                     else if (poStatus == "Verified")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus = 'Verified' ORDER BY supplierName ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND p.poStatus = 'Verified' ORDER BY poId ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -222,13 +222,13 @@ namespace ChiuMartSAIS2.App
                 {
                     Con.Open();
 
-                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit ORDER BY supplierName ASC";
+                    string sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit ORDER BY poId ASC";
                     
                     if (filter == "Supplier")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit ORDER BY supplierName ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.supplierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND supplierName LIKE @crit ORDER BY poId ASC";
                     } else if (filter == "poid") {
-                        sqlQuery = "SELECT p.*, s.supplierName, pr.suppllierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND poId LIKE @crit ORDER BY supplierName ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, pr.suppllierPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId INNER JOIN products as pr ON p.productId = pr.productId WHERE p.status = @status AND poId LIKE @crit ORDER BY poId ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
