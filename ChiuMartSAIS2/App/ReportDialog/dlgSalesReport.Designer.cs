@@ -28,37 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.button2 = new System.Windows.Forms.Button();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblGross = new System.Windows.Forms.Label();
+            this.lblProfit = new System.Windows.Forms.Label();
+            this.columnHeader0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblOverallCost = new System.Windows.Forms.Label();
+            this.Cost = new System.Windows.Forms.Label();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
-            // button1
+            // btnFilter
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(595, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 32);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Filter";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnFilter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.Location = new System.Drawing.Point(595, 30);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(100, 32);
+            this.btnFilter.TabIndex = 0;
+            this.btnFilter.Text = "Filter";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
-            // dateTimePicker1
+            // dtpFrom
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(19, 33);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(282, 29);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dtpFrom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFrom.Location = new System.Drawing.Point(19, 33);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(282, 29);
+            this.dtpFrom.TabIndex = 1;
             // 
             // label1
             // 
@@ -72,12 +82,21 @@
             // 
             // listView1
             // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader0,
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.listView1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(19, 144);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(941, 422);
+            this.listView1.Size = new System.Drawing.Size(941, 410);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -100,23 +119,23 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "TO";
             // 
-            // dateTimePicker2
+            // dtpTo
             // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(307, 33);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(282, 29);
-            this.dateTimePicker2.TabIndex = 5;
+            this.dtpTo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpTo.Location = new System.Drawing.Point(307, 33);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(282, 29);
+            this.dtpTo.TabIndex = 5;
             // 
-            // button2
+            // btnPrint
             // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(805, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 50);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "PRINT";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Location = new System.Drawing.Point(805, 12);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(145, 50);
+            this.btnPrint.TabIndex = 7;
+            this.btnPrint.Text = "PRINT";
+            this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -132,51 +151,108 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(288, 74);
+            this.label4.Location = new System.Drawing.Point(561, 74);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 21);
             this.label4.TabIndex = 9;
             this.label4.Text = "PROFIT";
             // 
-            // label5
+            // lblGross
             // 
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(20, 95);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(250, 46);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "GROSS SALES";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblGross.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblGross.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGross.Location = new System.Drawing.Point(20, 95);
+            this.lblGross.Name = "lblGross";
+            this.lblGross.Size = new System.Drawing.Size(250, 46);
+            this.lblGross.TabIndex = 10;
+            this.lblGross.Text = "GROSS SALES";
+            this.lblGross.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label6
+            // lblProfit
             // 
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(292, 95);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(250, 46);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "GROSS SALES";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblProfit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblProfit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProfit.Location = new System.Drawing.Point(565, 95);
+            this.lblProfit.Name = "lblProfit";
+            this.lblProfit.Size = new System.Drawing.Size(250, 46);
+            this.lblProfit.TabIndex = 11;
+            this.lblProfit.Text = "Profit";
+            this.lblProfit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // columnHeader0
+            // 
+            this.columnHeader0.Text = "ID";
+            this.columnHeader0.Width = 0;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "QTY";
+            this.columnHeader1.Width = 117;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Product Name";
+            this.columnHeader2.Width = 316;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Sold Price";
+            this.columnHeader3.Width = 151;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Total Sold Price";
+            this.columnHeader4.Width = 181;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Cost Total";
+            this.columnHeader5.Width = 170;
+            // 
+            // lblOverallCost
+            // 
+            this.lblOverallCost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblOverallCost.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOverallCost.Location = new System.Drawing.Point(295, 95);
+            this.lblOverallCost.Name = "lblOverallCost";
+            this.lblOverallCost.Size = new System.Drawing.Size(250, 46);
+            this.lblOverallCost.TabIndex = 13;
+            this.lblOverallCost.Text = "Overall Cost";
+            this.lblOverallCost.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Cost
+            // 
+            this.Cost.AutoSize = true;
+            this.Cost.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cost.Location = new System.Drawing.Point(291, 74);
+            this.Cost.Name = "Cost";
+            this.Cost.Size = new System.Drawing.Size(119, 21);
+            this.Cost.TabIndex = 12;
+            this.Cost.Text = "OVERALL COST";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Transaction Date";
             // 
             // dlgSalesReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 591);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblOverallCost);
+            this.Controls.Add(this.Cost);
+            this.Controls.Add(this.lblProfit);
+            this.Controls.Add(this.lblGross);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dtpTo);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dtpFrom);
+            this.Controls.Add(this.btnFilter);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -185,6 +261,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales Report";
+            this.Load += new System.EventHandler(this.dlgSalesReport_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,18 +269,27 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DateTimePicker dtpTo;
+        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblGross;
+        private System.Windows.Forms.Label lblProfit;
+        private System.Windows.Forms.ColumnHeader columnHeader0;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.Label lblOverallCost;
+        private System.Windows.Forms.Label Cost;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
 
     }
 }
