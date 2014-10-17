@@ -262,6 +262,36 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
         }
 
+        private String getSupplierAddress(string id)
+        {
+            string result = "";
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT supplierAddress FROM supplier WHERE supplierId = @supplierId";
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("supplierId", id);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        result = reader["supplierAddress"].ToString();
+                    }
+                    return result;
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return result;
+                }
+            }
+        }
+
         /// <summary>
         /// GENERATE NEW PO NUMBER
         /// </summary>
@@ -675,6 +705,13 @@ namespace ChiuMartSAIS2.App.Dialogs
             if (e.KeyCode == Keys.Enter)
             {
                 txtAddress.Focus();
+                string str = txtSupplier.Text;
+                string[] supplierId = new string[2];
+                supplierId = str.Split(new string[] { " - " }, StringSplitOptions.None);
+
+                string address = getSupplierAddress(supplierId[1]);
+
+                txtAddress.Text = address;
             }
         }
 
