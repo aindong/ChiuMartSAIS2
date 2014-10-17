@@ -723,7 +723,7 @@ namespace ChiuMartSAIS2.App
                     // updateProductQueue(prodId, supplierPrice, qty);
 
                     // LOGS
-                    Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), clientId[1], "", "", "", "");
+                    Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), clientId[1], "", newPrice, "", "");
                 }
                 insertNewOR();
                 MessageBox.Show(this, "Transaction Complete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
