@@ -309,6 +309,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
         private void btnFilter_Click(object sender, EventArgs e)
         {
             filterDate();
+            lblQuantity.Text = quantity.ToString();
         }
     }
 }

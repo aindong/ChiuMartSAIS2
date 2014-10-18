@@ -333,7 +333,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 catch (MySqlException ex)
                 {
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
-                    MessageBox.Show(this, "Adding new po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Adding new purchase order error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -374,7 +374,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             catch(MySqlException ex)
             {
                 string errorCode = string.Format("Error Code : {0}", ex.Number);
-                MessageBox.Show(this, "Adding new po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Adding new purchase order error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 result = false;
             }
 
@@ -406,7 +406,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             catch (MySqlException ex)
             {
                 string errorCode = string.Format("Error Code : {0}", ex.Number);
-                MessageBox.Show(this, "Adding new po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Adding new purchase order error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -435,7 +435,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             catch (MySqlException ex)
             {
                 string errorCode = string.Format("Error Code : {0}", ex.Number);
-                MessageBox.Show(this, "Adding new po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Adding new purchase order error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

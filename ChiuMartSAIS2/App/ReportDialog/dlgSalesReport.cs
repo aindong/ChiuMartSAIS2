@@ -35,7 +35,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
                 using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
                 {
                     con.Open();
-                    string sqlQuery = "SELECT t.`transdate`, t.`productId`, t.`unitPrice`, SUM(t.`qty`) as totalSold, SUM(t.`supplierPrice`) as totalCost, p.productName FROM `transaction` t LEFT JOIN `products` p ON p.productId = t.productId WHERE (t.`paymentMethod` = 'Cash' OR t.`paymentMethod` = 'Cheque') AND (t.`transDate` BETWEEN @from AND @to) GROUP BY t.`unitPrice`, t.`productId`";
+                    string sqlQuery = "SELECT t.`transdate`, t.`productId`, t.`unitPrice`, SUM(t.`qty`) as totalSold, t.`supplierPrice`, p.productName FROM `transaction` t LEFT JOIN `products` p ON p.productId = t.productId WHERE (t.`paymentMethod` = 'Cash' OR t.`paymentMethod` = 'Cheque') AND (t.`transDate` BETWEEN @from AND @to) GROUP BY t.`unitPrice`, t.`productId`, t.`supplierPrice`";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
 
                     sqlCmd.Parameters.AddWithValue("from", dtpFrom.Value.AddDays(-1));
@@ -54,8 +54,11 @@ namespace ChiuMartSAIS2.App.ReportDialog
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["unitPrice"].ToString());
 
                         double totalSold = Double.Parse(reader["totalSold"].ToString()) * Double.Parse(reader["unitPrice"].ToString());
+                        double cost = Double.Parse(reader["supplierPrice"].ToString()) * Double.Parse(reader["totalSold"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(totalSold.ToString());
-                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["totalCost"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["supplierPrice"].ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(cost.ToString());
+                        listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["transDate"].ToString());
                     }
                 }
             }
@@ -83,7 +86,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
             totalCost = 0;
             for (int i = 0; i < listView1.Items.Count; i++)
             {
-                totalCost += Double.Parse(listView1.Items[i].SubItems[5].Text);
+                totalCost += Double.Parse(listView1.Items[i].SubItems[6].Text);
             }
             lblOverallCost.Text = totalCost.ToString();
         }

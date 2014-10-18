@@ -61,6 +61,39 @@ namespace ChiuMartSAIS2.App.ReportDialog
             }
         }
 
+        private int getLogCount(string paymentMethod)
+        {
+            int count = 0;
+
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "SELECT COUNT(`id`) as totalCount FROM logs WHERE `created_date` BETWEEN @start AND @end AND `log_type` = 'Balance' AND `paymentMethod` = @paymentMethod";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    sqlCmd.Parameters.AddWithValue("start", dtpStart.Value.AddDays(-1));
+                    sqlCmd.Parameters.AddWithValue("end", dtpEnd.Value.AddDays(1));
+                    sqlCmd.Parameters.AddWithValue("paymentMethod", paymentMethod);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        count = Int32.Parse(reader["totalCount"].ToString());
+                    }
+
+                    return count;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
         private void getBasyo(string start, string end)
         {
             try
@@ -104,10 +137,10 @@ namespace ChiuMartSAIS2.App.ReportDialog
         private void dlgSalesEndofDay_Load(object sender, EventArgs e)
         {
 
-            lblCash.Text = getTransactionCount(DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd"), DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"), "Cash").ToString();
-            lblCheque.Text = getTransactionCount(DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd"), DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"), "Cheque").ToString();
+            lblCash.Text = (getTransactionCount(DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd"), DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"), "Cash") + getLogCount("Cash")).ToString();
+            lblCheque.Text = (getTransactionCount(DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd"), DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"), "Cheque") +  + getLogCount("Cheque")).ToString();
             lblAccountsReceivables.Text = getTransactionCount(DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd"), DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"), "Balance").ToString();
-            
+
             cashCount = Int32.Parse(lblCash.Text);
             chequeCount = Int32.Parse(lblCheque.Text);
             accountsReceivableCount = Int32.Parse(lblAccountsReceivables.Text);
@@ -121,8 +154,8 @@ namespace ChiuMartSAIS2.App.ReportDialog
 
         private void button1_Click(object sender, EventArgs e)
         {
-            lblCash.Text = getTransactionCount(dtpStart.Value.AddDays(-1).ToString("yyyy-MM-dd"), dtpEnd.Value.AddDays(1).ToString("yyyy-MM-dd"), "Cash").ToString();
-            lblCheque.Text = getTransactionCount(dtpStart.Value.AddDays(-1).ToString("yyyy-MM-dd"), dtpEnd.Value.AddDays(1).ToString("yyyy-MM-dd"), "Cheque").ToString();
+            lblCash.Text = (getTransactionCount(dtpStart.Value.AddDays(-1).ToString("yyyy-MM-dd"), dtpEnd.Value.AddDays(1).ToString("yyyy-MM-dd"), "Cash") + getLogCount("Cash")).ToString();
+            lblCheque.Text = (getTransactionCount(dtpStart.Value.AddDays(-1).ToString("yyyy-MM-dd"), dtpEnd.Value.AddDays(1).ToString("yyyy-MM-dd"), "Cheque")  + getLogCount("Cheque")).ToString();
             lblAccountsReceivables.Text = getTransactionCount(dtpStart.Value.AddDays(-1).ToString("yyyy-MM-dd"), dtpEnd.Value.AddDays(1).ToString("yyyy-MM-dd"), "Balance").ToString();
 
             cashCount = Int32.Parse(lblCash.Text);

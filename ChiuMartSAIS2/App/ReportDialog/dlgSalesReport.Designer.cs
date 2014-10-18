@@ -31,7 +31,6 @@
             this.btnFilter = new System.Windows.Forms.Button();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
@@ -40,15 +39,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblGross = new System.Windows.Forms.Label();
             this.lblProfit = new System.Windows.Forms.Label();
+            this.lblOverallCost = new System.Windows.Forms.Label();
+            this.Cost = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lblOverallCost = new System.Windows.Forms.Label();
-            this.Cost = new System.Windows.Forms.Label();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnFilter
@@ -79,27 +80,6 @@
             this.label1.Size = new System.Drawing.Size(54, 21);
             this.label1.TabIndex = 2;
             this.label1.Text = "FROM";
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader0,
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
-            this.listView1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(19, 144);
-            this.listView1.MultiSelect = false;
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(941, 410);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // statusStrip1
             // 
@@ -179,36 +159,6 @@
             this.lblProfit.Text = "Profit";
             this.lblProfit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // columnHeader0
-            // 
-            this.columnHeader0.Text = "ID";
-            this.columnHeader0.Width = 0;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "QTY";
-            this.columnHeader1.Width = 117;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Product Name";
-            this.columnHeader2.Width = 316;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Sold Price";
-            this.columnHeader3.Width = 151;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Total Sold Price";
-            this.columnHeader4.Width = 181;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Cost Total";
-            this.columnHeader5.Width = 170;
-            // 
             // lblOverallCost
             // 
             this.lblOverallCost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -230,15 +180,74 @@
             this.Cost.TabIndex = 12;
             this.Cost.Text = "OVERALL COST";
             // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader0,
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7});
+            this.listView1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
+            this.listView1.Location = new System.Drawing.Point(19, 144);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(941, 410);
+            this.listView1.TabIndex = 14;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader0
+            // 
+            this.columnHeader0.Text = "ID";
+            this.columnHeader0.Width = 0;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "QTY";
+            this.columnHeader1.Width = 89;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Product Name";
+            this.columnHeader2.Width = 247;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Sold Price";
+            this.columnHeader3.Width = 116;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Total Sold Price";
+            this.columnHeader4.Width = 157;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Unit Cost";
+            this.columnHeader5.Width = 118;
+            // 
             // columnHeader6
             // 
-            this.columnHeader6.Text = "Transaction Date";
+            this.columnHeader6.Text = "Cost Total";
+            this.columnHeader6.Width = 164;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Transaction Date";
+            this.columnHeader7.Width = 175;
             // 
             // dlgSalesReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 591);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.lblOverallCost);
             this.Controls.Add(this.Cost);
             this.Controls.Add(this.lblProfit);
@@ -249,7 +258,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtpTo);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtpFrom);
             this.Controls.Add(this.btnFilter);
@@ -272,7 +280,6 @@
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.DateTimePicker dtpFrom;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpTo;
@@ -281,15 +288,17 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblGross;
         private System.Windows.Forms.Label lblProfit;
+        private System.Windows.Forms.Label lblOverallCost;
+        private System.Windows.Forms.Label Cost;
+        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader0;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.Label lblOverallCost;
-        private System.Windows.Forms.Label Cost;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
 
     }
 }
