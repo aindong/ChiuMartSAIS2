@@ -393,7 +393,7 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT supplierPrice FROM products WHERE productName = @prodname";
+                    string sqlQuery = "SELECT supplier_price FROM products INNER JOIN po_queue ON products.productId = po_queue.product_id WHERE products.productName = @prodname AND stock > 0 ORDER BY po_queue.id ASC LIMIT 1";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("prodname", prodname);
@@ -402,7 +402,7 @@ namespace ChiuMartSAIS2.App
 
                     while (reader.Read())
                     {
-                        result = reader["supplierPrice"].ToString();
+                        result = reader["supplier_price"].ToString();
                     }
                     return result;
                 }
