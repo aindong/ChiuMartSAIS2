@@ -276,6 +276,7 @@
             this.txtSupplier.Size = new System.Drawing.Size(399, 25);
             this.txtSupplier.TabIndex = 2;
             this.txtSupplier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSupplier.TextChanged += new System.EventHandler(this.txtSupplier_TextChanged);
             this.txtSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSupplier_KeyDown);
             // 
             // label2

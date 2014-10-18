@@ -709,9 +709,17 @@ namespace ChiuMartSAIS2.App.Dialogs
                 string[] supplierId = new string[2];
                 supplierId = str.Split(new string[] { " - " }, StringSplitOptions.None);
 
-                string address = getSupplierAddress(supplierId[1]);
+                try
+                {
+                    string address = getSupplierAddress(supplierId[1]);
 
-                txtAddress.Text = address;
+                    txtAddress.Text = address;
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    MessageBox.Show(this, "Supplier doesn't exists, please choose from the suggestions", "System error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtSupplier.Text = "";
+                }   
             }
         }
 
@@ -721,6 +729,11 @@ namespace ChiuMartSAIS2.App.Dialogs
             {
                 dgvCart.Focus();
             }
+        }
+
+        private void txtSupplier_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
