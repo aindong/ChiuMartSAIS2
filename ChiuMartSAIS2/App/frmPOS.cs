@@ -1027,7 +1027,17 @@ namespace ChiuMartSAIS2.App
                     clientId = str.Split(new string[] { " - " }, StringSplitOptions.None);
                 }
 
-                string address = getClientAddress(clientId[1]);
+                string address = "";
+                
+                try
+                {
+                    address = getClientAddress(clientId[1]);
+                }
+                catch(IndexOutOfRangeException ex)
+                {
+                    MessageBox.Show(this, "Client doesn't exists. Reverting to walk-in client", "System error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClient.Text = "Walk-in Client";
+                }
 
                 txtAddress.Text = address;
             }
