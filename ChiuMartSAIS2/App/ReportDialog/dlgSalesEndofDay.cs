@@ -61,26 +61,26 @@ namespace ChiuMartSAIS2.App.ReportDialog
             }
         }
 
-        private int getLogCount(string paymentMethod)
+        private double getLogCount(string paymentMethod)
         {
-            int count = 0;
+            double count = 0;
 
             try
             {
                 using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
                 {
                     con.Open();
-                    string sqlQuery = "SELECT COUNT(`id`) as totalCount FROM logs WHERE `created_date` BETWEEN @start AND @end AND `log_type` = 'Balance' AND `paymentMethod` = @paymentMethod";
+                    string sqlQuery = "SELECT `price` as totalCount FROM logs WHERE `created_date` BETWEEN @start AND @end AND `log_type` = 'Balance' AND `paymentMethod` = @paymentMethod";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
                     sqlCmd.Parameters.AddWithValue("start", dtpStart.Value.AddDays(-1));
-                    sqlCmd.Parameters.AddWithValue("end", dtpEnd.Value.AddDays(1));
+                    sqlCmd.Parameters.AddWithValue("end", dtpEnd.Value);
                     sqlCmd.Parameters.AddWithValue("paymentMethod", paymentMethod);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        count = Int32.Parse(reader["totalCount"].ToString());
+                        count += Double.Parse(reader["totalCount"].ToString());
                     }
 
                     return count;
