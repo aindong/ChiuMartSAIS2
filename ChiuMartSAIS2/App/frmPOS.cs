@@ -705,7 +705,7 @@ namespace ChiuMartSAIS2.App
                         if (poStock[j] >= prodqty)
                         {
                             updateProductQueue(prodId, poSupplierPrice[j], prodqty.ToString());
-                            insertTransaction(txtOrNo.Text, prodId, clientId[1], prodqty.ToString(), unitId, paymentMethod, poSupplierPrice[j], currentPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
+                            insertTransaction(txtOrNo.Text, prodId, clientId[1], prodqty.ToString(), unitId, paymentMethod, poSupplierPrice[j], newPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
                             break;
                         }
                         else 
@@ -713,7 +713,7 @@ namespace ChiuMartSAIS2.App
                             updateProductQueue(prodId, poSupplierPrice[j], poStock[j].ToString());
                             if (poStock[j] != 0)
                             {
-                                insertTransaction(txtOrNo.Text, prodId, clientId[1], poStock[j].ToString(), unitId, paymentMethod, poSupplierPrice[j], currentPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
+                                insertTransaction(txtOrNo.Text, prodId, clientId[1], poStock[j].ToString(), unitId, paymentMethod, poSupplierPrice[j], newPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
                             }
                             prodqty = prodqty - poStock[j];
                         }

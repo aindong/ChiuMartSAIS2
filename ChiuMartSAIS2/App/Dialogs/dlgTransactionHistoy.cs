@@ -49,7 +49,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.orNo, t.qty, t.yellowBasyoReturned, t.transparentBasyoReturned, u.unitDesc, c.clientName, c.clientAddress, p.productName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId INNER JOIN units as u ON t.unitId = u.unitId WHERE t.orNo = @crit";
+                    string sqlQuery = "SELECT t.unitPrice, t.orNo, t.qty, t.yellowBasyoReturned, t.transparentBasyoReturned, u.unitDesc, c.clientName, c.clientAddress, p.productName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId INNER JOIN units as u ON t.unitId = u.unitId WHERE t.orNo = @crit";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -62,7 +62,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                         qty.Add(reader["qty"].ToString());
                         itemName.Add(reader["productName"].ToString());
                         units.Add(reader["unitDesc"].ToString());
-                        unitPrice.Add(reader["productPrice"].ToString());
+                        unitPrice.Add(reader["unitPrice"].ToString());
                         orNumber = reader["orNo"].ToString();
                         clientName = reader["clientName"].ToString();
                         address = reader["clientAddress"].ToString();
@@ -216,7 +216,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId WHERE transStatus != 'Verified' ORDER BY clientName ASC";
+                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus != 'Verified' ORDER BY clientName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -232,7 +232,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                             if (reader["orNo"].ToString() == lstClients.Items[ctr].Text)
                             {
                                 double lstAmount = double.Parse(lstClients.Items[ctr].SubItems[3].Text);
-                                double price = double.Parse(reader["productPrice"].ToString());
+                                double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
                                 lstClients.Items[ctr].SubItems[3].Text = (lstAmount + totalAmount).ToString();
@@ -248,7 +248,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 DateTime.TryParse(reader["transDate"].ToString(), out aDate);
                                 lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
 
-                                double price = double.Parse(reader["productPrice"].ToString());
+                                double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
                                 double balancePayment = double.Parse(reader["paidBalance"].ToString());
@@ -277,7 +277,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                             DateTime.TryParse(reader["transDate"].ToString(), out aDate);
                             lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
 
-                            double price = double.Parse(reader["productPrice"].ToString());
+                            double price = double.Parse(reader["unitPrice"].ToString());
                             double qty = double.Parse(reader["qty"].ToString());
                             double totalAmount = (price * qty);
                             double balancePayment = double.Parse(reader["paidBalance"].ToString());
@@ -313,7 +313,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId WHERE DATE_FORMAT(t.transDate,'%Y-%m-%d') BETWEEN @from AND @to ORDER BY clientName ASC";
+                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE DATE_FORMAT(t.transDate,'%Y-%m-%d') BETWEEN @from AND @to ORDER BY clientName ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -332,7 +332,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                             if (reader["orNo"].ToString() == lstClients.Items[ctr].Text)
                             {
                                 double lstAmount = double.Parse(lstClients.Items[ctr].SubItems[3].Text);
-                                double price = double.Parse(reader["productPrice"].ToString());
+                                double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
                                 lstClients.Items[ctr].SubItems[3].Text = (lstAmount + totalAmount).ToString();
@@ -347,7 +347,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 DateTime.TryParse(reader["transDate"].ToString(), out aDate);
                                 lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
 
-                                double price = double.Parse(reader["productPrice"].ToString());
+                                double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
                                 double balancePayment = double.Parse(reader["paidBalance"].ToString());
@@ -376,7 +376,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                             DateTime.TryParse(reader["transDate"].ToString(), out aDate);
                             lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
 
-                            double price = double.Parse(reader["productPrice"].ToString());
+                            double price = double.Parse(reader["unitPrice"].ToString());
                             double qty = double.Parse(reader["qty"].ToString());
                             double totalAmount = (price * qty);
                             double balancePayment = double.Parse(reader["paidBalance"].ToString());
@@ -412,23 +412,23 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId WHERE transStatus != 'Verified' ORDER BY clientName ASC";
+                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus != 'Verified' ORDER BY clientName ASC";
                     DateTime dateNow = DateTime.Today;
                     if (status == "Cash")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId WHERE paymentMethod = 'Cash' AND transStatus != 'Verified' ORDER BY clientName ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Cash' AND transStatus != 'Verified' ORDER BY clientName ASC";
                     }
                     else if (status == "Cheque")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId WHERE paymentMethod = 'Cheque' AND transStatus != 'Verified' ORDER BY clientName ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Cheque' AND transStatus != 'Verified' ORDER BY clientName ASC";
                     }
                     else if (status == "Balance")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId WHERE paymentMethod = 'Balance' AND transStatus != 'Verified' ORDER BY clientName ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Balance' AND transStatus != 'Verified' ORDER BY clientName ASC";
                     }
                     else if (status == "Verified")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId WHERE transStatus = 'Verified' ORDER BY clientName ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus = 'Verified' ORDER BY clientName ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -445,7 +445,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                             if (reader["orNo"].ToString() == lstClients.Items[ctr].Text)
                             {
                                 double lstAmount = double.Parse(lstClients.Items[ctr].SubItems[3].Text);
-                                double price = double.Parse(reader["productPrice"].ToString());
+                                double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
                                 lstClients.Items[ctr].SubItems[3].Text = (lstAmount + totalAmount).ToString();
@@ -460,7 +460,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 DateTime.TryParse(reader["transDate"].ToString(), out aDate);
                                 lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
 
-                                double price = double.Parse(reader["productPrice"].ToString());
+                                double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
                                 double balancePayment = double.Parse(reader["paidBalance"].ToString());
@@ -489,7 +489,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                             DateTime.TryParse(reader["transDate"].ToString(), out aDate);
                             lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
 
-                            double price = double.Parse(reader["productPrice"].ToString());
+                            double price = double.Parse(reader["unitPrice"].ToString());
                             double qty = double.Parse(reader["qty"].ToString());
                             double totalAmount = (price * qty);
                             double balancePayment = double.Parse(reader["paidBalance"].ToString());
