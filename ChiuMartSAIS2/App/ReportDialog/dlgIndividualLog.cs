@@ -38,11 +38,11 @@ namespace ChiuMartSAIS2.App.ReportDialog
 
                     if (logType == "transaction")
                     {
-                        sql = "SELECT l.id, l.username, l.quantity, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND l.relationId = @relationId ORDER BY l.created_date ASC";
+                        sql = "SELECT l.id, l.username, l.quantity, l.price, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND l.relationId = @relationId ORDER BY l.created_date ASC";
                     }
                     else if (logType == "client")
                     {
-                        sql = "SELECT l.id, l.username, l.quantity, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND c.clientId = @relationId ORDER BY l.created_date ASC";
+                        sql = "SELECT l.id, l.username, l.quantity, l.price, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND c.clientId = @relationId ORDER BY l.created_date ASC";
                     }
                     else if (logType == "supplier")
                     {
@@ -85,6 +85,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
                             }
                             else
                             {
+                                listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["price"].ToString());
                                 listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientName"].ToString());
                             }
 
@@ -113,11 +114,11 @@ namespace ChiuMartSAIS2.App.ReportDialog
 
                     if (logType == "transaction")
                     {
-                        sql = "SELECT l.id, l.username, l.quantity, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND l.relationId = @relationId AND DATE_FORMAT(l.created_date,'%Y-%m-%d') BETWEEN @from AND @to ORDER BY l.created_date ASC";
+                        sql = "SELECT l.id, l.username, l.quantity, l.price, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND l.relationId = @relationId AND DATE_FORMAT(l.created_date,'%Y-%m-%d') BETWEEN @from AND @to ORDER BY l.created_date ASC";
                     }
                     else if (logType == "client")
                     {
-                        sql = "SELECT l.id, l.username, l.quantity, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND c.clientId = @relationId AND DATE_FORMAT(l.created_date,'%Y-%m-%d') BETWEEN @from AND @to ORDER BY l.created_date ASC";
+                        sql = "SELECT l.id, l.username, l.quantity, l.price, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND c.clientId = @relationId AND DATE_FORMAT(l.created_date,'%Y-%m-%d') BETWEEN @from AND @to ORDER BY l.created_date ASC";
                     }
                     else if (logType == "supplier")
                     {
@@ -163,6 +164,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
                             }
                             else
                             {
+                                listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["price"].ToString());
                                 listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["clientName"].ToString());
                             }
 

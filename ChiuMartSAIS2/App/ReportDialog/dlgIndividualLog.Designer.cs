@@ -45,6 +45,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listView1
@@ -54,6 +55,7 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
+            this.columnHeader1,
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7});
@@ -76,12 +78,12 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Quantity";
-            this.columnHeader2.Width = 77;
+            this.columnHeader2.Width = 82;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Unit";
-            this.columnHeader3.Width = 90;
+            this.columnHeader3.Width = 93;
             // 
             // columnHeader4
             // 
@@ -194,6 +196,11 @@
             this.label4.TabIndex = 25;
             this.label4.Text = "Total: ";
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Unit Price";
+            this.columnHeader1.Width = 105;
+            // 
             // dlgIndividualLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,5 +249,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.Label lblQuantity;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }
