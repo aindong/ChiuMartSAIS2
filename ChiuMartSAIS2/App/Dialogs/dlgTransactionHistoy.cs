@@ -803,6 +803,10 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         private void btnOverview_Click(object sender, EventArgs e)
         {
+            if (lstClients.SelectedItems.Count <= 0)
+            {
+                return;
+            }
             ReportDialog.dlgIndividualLog log = new ReportDialog.dlgIndividualLog();
             log.logType = "balance";
             log.relationId = lstClients.SelectedItems[0].Text;
