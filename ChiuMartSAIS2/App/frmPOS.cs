@@ -37,9 +37,17 @@ namespace ChiuMartSAIS2.App
         private string yellowBasyoReturned;
         private string transparentBasyoReturned;
 
-        public frmPOS()
+        public frmPOS(List<String> _qty, List<String> _productName, List<String> _units, List<String> _productPrice, string _poId, string _clientName, string _clientAddress, string _action)
         {
             InitializeComponent();
+            action = _action;
+            qty = _qty;
+            productName = _productName;
+            units = _units;
+            productPrice = _productPrice;
+            orNo = _poId;
+            clientName = _clientName;
+            clientAddress = _clientAddress;
 
             conf = new Classes.Configuration();
         }
@@ -520,9 +528,21 @@ namespace ChiuMartSAIS2.App
             lblUsername.Text = Classes.Authentication.Instance.username;
             lblDate.Text = DateTime.Today.ToLongDateString().ToString();
             //lblTime.Text = DateTime.Today.ToLocalTime().ToString();
+            if (action == "birReport")
+            {
+                button8.Visible = false;
+                btnNewTransaction.Visible = false;
+                btnBasyo.Visible = false;
+                btnCheckout.Text = "Print";
+                btnVoid.Text = "Remove";
+                populatePosUi();
 
-            // GENERATE NEW OR
-            txtOrNo.Text = generateOR();
+            }
+            else
+            {
+                // GENERATE NEW OR
+                txtOrNo.Text = generateOR();
+            }            
         }
 
         private void txtClient_Click(object sender, EventArgs e)
@@ -568,30 +588,44 @@ namespace ChiuMartSAIS2.App
                 // update for the total
                 for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
                 {
-                    // Check the update on quantity if there's enough stocks
-                    // if not, set it to maximum stocks
-                    if (dgvCart.Rows[i].Cells[0].Value != null) {
-                        int id = Int32.Parse(dgvCart.Rows[i].Cells[0].Value.ToString());
-                        int stock = checkProductStockById(id);
-                        int updatedStock = Int32.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
-
-                        if (stock < updatedStock && stock != 0)
+                    if (action == "birReport")
+                    {
+                        if (dgvCart.Rows[i].Cells[4].Value != null)
                         {
-                            MessageBox.Show(this, "Insufficient Stocks\nYou only have " + stock + " left for this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            dgvCart.Rows[i].Cells[1].Value = 0;
-                        } 
-                        else if (stock == 0)
-                        {
-                            MessageBox.Show(this, "You do not have stocks for this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            dgvCart.Rows[i].Cells[1].Value = 0;
-                            dgvCart.Rows.Remove(dgvCart.Rows[i]);
+                            double totalBIR = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
+                            dgvCart.Rows[i].Cells[5].Value = totalBIR.ToString();
                         }
 
-                        // update the total
-                        double total = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
-                        dgvCart.Rows[i].Cells[5].Value = total.ToString();
                     }
+                    else
+                    {
+                        // Check the update on quantity if there's enough stocks
+                        // if not, set it to maximum stocks
+                        if (dgvCart.Rows[i].Cells[0].Value != null)
+                        {
 
+                            int id = Int32.Parse(dgvCart.Rows[i].Cells[0].Value.ToString());
+                            int stock = checkProductStockById(id);
+                            int updatedStock = Int32.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
+
+                            if (stock < updatedStock && stock != 0)
+                            {
+                                MessageBox.Show(this, "Insufficient Stocks\nYou only have " + stock + " left for this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                dgvCart.Rows[i].Cells[1].Value = 0;
+                            }
+                            else if (stock == 0)
+                            {
+                                MessageBox.Show(this, "You do not have stocks for this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                dgvCart.Rows[i].Cells[1].Value = 0;
+                                dgvCart.Rows.Remove(dgvCart.Rows[i]);
+                            }
+
+                            // update the total
+                            double total = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
+                            dgvCart.Rows[i].Cells[5].Value = total.ToString();
+
+                        }
+                    }
                 }
 
                 // update the full total price of items on the cart
@@ -653,80 +687,92 @@ namespace ChiuMartSAIS2.App
 
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            // Check if ability to checkout
-            if (dgvCart.Rows.Count <= 1)
+            if (action == "birReport")
             {
-                MessageBox.Show("There's no item available for checkout because the cart is empty or the total is zero", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Open the checkout form
-            Dialogs.dlgCheckout frm = new Dialogs.dlgCheckout("POS");
-            // Set the variables
-            frm.total = lblTotal.Text;
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
+                if (dgvCart.Rows.Count <= 1)
                 {
-                    string paymentMethod = "";
-                    frm.getProduct(out paymentMethod, out bank, out branch, out chequeName, out chequeDate, out total, out chequeNo);
-                    if (paymentMethod == "Cheque")
-                    {
-                        insertCheque(bank, branch, chequeName, chequeDate, chequeNo, total);
-                    }
-
-                    // Check if the cell has a product, if not, continue the loop
-                    if (dgvCart.Rows[i].Cells[2].Value.ToString() == "")
-                    {
-                        continue;
-                    }
-
-                    string prodId = getProductID(dgvCart.Rows[i].Cells[2].Value.ToString());
-                    string unitId = getUnitID(dgvCart.Rows[i].Cells[3].Value.ToString());
-                    string currentPrice = getProductProductPrice(dgvCart.Rows[i].Cells[2].Value.ToString());
-                    string supplierPrice = getProductSupplierPrice(dgvCart.Rows[i].Cells[2].Value.ToString());
-                
-                    string str = txtClient.Text;
-                    string[] clientId = new string[2];
-                    if (str == "Walk-in Client")
-                    {
-                        clientId[1] = "0";
-                    }
-                    else
-                    {
-                         clientId = str.Split(new string[] { " - " }, StringSplitOptions.None);
-                    }
-                    string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
-                    string newPrice = dgvCart.Rows[i].Cells[4].Value.ToString();
-                    int prodqty = Int32.Parse(qty);
-
-                    getPoQueue(prodId);
-                    for (int j = 0; j < poStock.Count; j++) {
-                        if (poStock[j] >= prodqty)
-                        {
-                            updateProductQueue(prodId, poSupplierPrice[j], prodqty.ToString());
-                            insertTransaction(txtOrNo.Text, prodId, clientId[1], prodqty.ToString(), unitId, paymentMethod, poSupplierPrice[j], newPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
-                            break;
-                        }
-                        else 
-                        {
-                            updateProductQueue(prodId, poSupplierPrice[j], poStock[j].ToString());
-                            if (poStock[j] != 0)
-                            {
-                                insertTransaction(txtOrNo.Text, prodId, clientId[1], poStock[j].ToString(), unitId, paymentMethod, poSupplierPrice[j], newPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
-                            }
-                            prodqty = prodqty - poStock[j];
-                        }
-                    }
-                    updateStocks(qty, prodId, newPrice);
-                    insertBasyo(txtOrNo.Text, clientId[1], txtTransBasyo.Text, txtYellowBasyo.Text, "0", "0");
-                    // updateProductQueue(prodId, supplierPrice, qty);
-
-                    // LOGS
-                    Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), clientId[1], "", newPrice, "", "");
+                    MessageBox.Show("There's no item to print", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
-                insertNewOR();
-                MessageBox.Show(this, "Transaction Complete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // Check if ability to checkout
+                if (dgvCart.Rows.Count <= 1)
+                {
+                    MessageBox.Show("There's no item available for checkout because the cart is empty or the total is zero", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Open the checkout form
+                Dialogs.dlgCheckout frm = new Dialogs.dlgCheckout("POS");
+                // Set the variables
+                frm.total = lblTotal.Text;
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
+                    {
+                        string paymentMethod = "";
+                        frm.getProduct(out paymentMethod, out bank, out branch, out chequeName, out chequeDate, out total, out chequeNo);
+                        if (paymentMethod == "Cheque")
+                        {
+                            insertCheque(bank, branch, chequeName, chequeDate, chequeNo, total);
+                        }
+
+                        // Check if the cell has a product, if not, continue the loop
+                        if (dgvCart.Rows[i].Cells[2].Value.ToString() == "")
+                        {
+                            continue;
+                        }
+
+                        string prodId = getProductID(dgvCart.Rows[i].Cells[2].Value.ToString());
+                        string unitId = getUnitID(dgvCart.Rows[i].Cells[3].Value.ToString());
+                        string currentPrice = getProductProductPrice(dgvCart.Rows[i].Cells[2].Value.ToString());
+                        string supplierPrice = getProductSupplierPrice(dgvCart.Rows[i].Cells[2].Value.ToString());
+
+                        string str = txtClient.Text;
+                        string[] clientId = new string[2];
+                        if (str == "Walk-in Client")
+                        {
+                            clientId[1] = "0";
+                        }
+                        else
+                        {
+                            clientId = str.Split(new string[] { " - " }, StringSplitOptions.None);
+                        }
+                        string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
+                        string newPrice = dgvCart.Rows[i].Cells[4].Value.ToString();
+                        int prodqty = Int32.Parse(qty);
+
+                        getPoQueue(prodId);
+                        for (int j = 0; j < poStock.Count; j++)
+                        {
+                            if (poStock[j] >= prodqty)
+                            {
+                                updateProductQueue(prodId, poSupplierPrice[j], prodqty.ToString());
+                                insertTransaction(txtOrNo.Text, prodId, clientId[1], prodqty.ToString(), unitId, paymentMethod, poSupplierPrice[j], newPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
+                                break;
+                            }
+                            else
+                            {
+                                updateProductQueue(prodId, poSupplierPrice[j], poStock[j].ToString());
+                                if (poStock[j] != 0)
+                                {
+                                    insertTransaction(txtOrNo.Text, prodId, clientId[1], poStock[j].ToString(), unitId, paymentMethod, poSupplierPrice[j], newPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
+                                }
+                                prodqty = prodqty - poStock[j];
+                            }
+                        }
+                        updateStocks(qty, prodId, newPrice);
+                        insertBasyo(txtOrNo.Text, clientId[1], txtTransBasyo.Text, txtYellowBasyo.Text, "0", "0");
+                        // updateProductQueue(prodId, supplierPrice, qty);
+
+                        // LOGS
+                        Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), clientId[1], "", newPrice, "", "");
+                    }
+                    insertNewOR();
+                    MessageBox.Show(this, "Transaction Complete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -741,6 +787,7 @@ namespace ChiuMartSAIS2.App
                 out orNo, out clientName, out clientAddress, out action, out yellowBasyoReturned, out transparentBasyoReturned);
                 if (action == "View")
                 {
+
                     dgvCart.Enabled = false;
                     txtAddress.ReadOnly = true;
                     txtClient.ReadOnly = true;
@@ -749,50 +796,63 @@ namespace ChiuMartSAIS2.App
                     txtYellowBasyo.Text = yellowBasyoReturned;
 
                     label1.Text = "View Transaction";
-                    txtAddress.Text = clientAddress; 
-                    txtClient.Text = clientName;
-                    if (clientName == "")
-                    {
-                        txtClient.Text = "Walk-in Client";
-                    }
-                    txtOrNo.Text = orNo;
-                    int ctr = 0;
-                    dgvCart.RowCount = qty.Count;
-                    foreach (string q in qty)
-                    {
-                        dgvCart.Rows[ctr].Cells[1].Value = q;
-                        ctr++;
-                    }
-                    ctr = 0;
-                    foreach (string item in productName)
-                    {
-                        dgvCart.Rows[ctr].Cells[2].Value = item;
-                        ctr++;
-                    }
-                    ctr = 0;
-                    foreach (string unit in units)
-                    {
-                        dgvCart.Rows[ctr].Cells[3].Value = unit;
-                        ctr++;
-                    }
-                    ctr = 0;
-                    foreach (string price in productPrice)
-                    {
-                        dgvCart.Rows[ctr].Cells[4].Value = price;
-                        ctr++;
-                    }
-                    for (int i = 0; i < (ctr); i++)
-                    {
-                        double total = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
-                        dgvCart.Rows[i].Cells[5].Value = total.ToString();
-                    }
-                    updateTotalAmount();
+
+                    populatePosUi();
                 }
                 else
                 {
                     label1.Text = "Chiumart POS";
                 }
             }
+        }
+
+        private void populatePosUi()
+        {
+            txtAddress.Text = clientAddress;
+            txtClient.Text = clientName;
+            if (clientName == "")
+            {
+                txtClient.Text = "Walk-in Client";
+            }
+            txtOrNo.Text = orNo;
+            int ctr = 0;
+            if (action == "birReport")
+            {
+                dgvCart.RowCount = qty.Count + 1;
+            }
+            else
+            {
+                dgvCart.RowCount = qty.Count;
+            }
+            foreach (string q in qty)
+            {
+                dgvCart.Rows[ctr].Cells[1].Value = q;
+                ctr++;
+            }
+            ctr = 0;
+            foreach (string item in productName)
+            {
+                dgvCart.Rows[ctr].Cells[2].Value = item;
+                ctr++;
+            }
+            ctr = 0;
+            foreach (string unit in units)
+            {
+                dgvCart.Rows[ctr].Cells[3].Value = unit;
+                ctr++;
+            }
+            ctr = 0;
+            foreach (string price in productPrice)
+            {
+                dgvCart.Rows[ctr].Cells[4].Value = price;
+                ctr++;
+            }
+            for (int i = 0; i < (ctr); i++)
+            {
+                double total = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
+                dgvCart.Rows[i].Cells[5].Value = total.ToString();
+            }
+            updateTotalAmount();
         }
 
         /// <summary>
@@ -918,27 +978,30 @@ namespace ChiuMartSAIS2.App
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value = item[4];
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[5].Value = item[5];
 
-                    for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
+                    if (action != "birReport")
                     {
-                        // Check the update on quantity if there's enough stocks
-                        // if not, set it to maximum stocks
-                        int id = Int32.Parse(dgvCart.Rows[i].Cells[0].Value.ToString());
-                        int stock = checkProductStockById(id);
-                        int updatedStock = Int32.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
-
-                        if (stock < updatedStock && stock != 0)
+                        for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
                         {
-                            MessageBox.Show(this, "Insufficient Stocks\nYou only have " + stock + " left for this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            dgvCart.Rows[i].Cells[1].Value = 0;
+                            // Check the update on quantity if there's enough stocks
+                            // if not, set it to maximum stocks
+                            int id = Int32.Parse(dgvCart.Rows[i].Cells[0].Value.ToString());
+                            int stock = checkProductStockById(id);
+                            int updatedStock = Int32.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
 
-                        }else if (stock == 0)
-                        {
-                            MessageBox.Show(this, "You do not have stocks for this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            dgvCart.Rows[i].Cells[1].Value = 0;
-                            dgvCart.Rows.Remove(dgvCart.Rows[i]);
+                            if (stock < updatedStock && stock != 0)
+                            {
+                                MessageBox.Show(this, "Insufficient Stocks\nYou only have " + stock + " left for this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                dgvCart.Rows[i].Cells[1].Value = 0;
+
+                            }
+                            else if (stock == 0)
+                            {
+                                MessageBox.Show(this, "You do not have stocks for this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                dgvCart.Rows[i].Cells[1].Value = 0;
+                                dgvCart.Rows.Remove(dgvCart.Rows[i]);
+                            }
                         }
                     }
-
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[1].Selected = true;
                     updateTotalPrice();
                     cartUpdateTotal();
@@ -951,18 +1014,21 @@ namespace ChiuMartSAIS2.App
             }
             else if (dgvCart.CurrentCell.ColumnIndex == 4)
             {
-                string currentPrice = getProductProductPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value.ToString());
-                int supplierPrice = Int32.Parse(getProductSupplierPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value.ToString()));
-                int updatedPrice = Int32.Parse(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value.ToString());
+                if (action != "birReport")
+                {
+                    string currentPrice = getProductProductPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value.ToString());
+                    int supplierPrice = Int32.Parse(getProductSupplierPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value.ToString()));
+                    int updatedPrice = Int32.Parse(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value.ToString());
 
-                if (updatedPrice < supplierPrice)
-                {
-                    MessageBox.Show(this, "The price is less than the supplier price", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value = currentPrice;
-                }
-                else if (updatedPrice == supplierPrice)
-                {
-                    MessageBox.Show(this, "The price is equal to the supplier price", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (updatedPrice < supplierPrice)
+                    {
+                        MessageBox.Show(this, "The price is less than the supplier price", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value = currentPrice;
+                    }
+                    else if (updatedPrice == supplierPrice)
+                    {
+                        MessageBox.Show(this, "The price is equal to the supplier price", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
 
                 cartUpdateTotal();
@@ -1112,6 +1178,27 @@ namespace ChiuMartSAIS2.App
             if (checkBox1.Checked == true)
             {
                 updateTotalPrice();
+            }
+        }
+
+        private void btnVoid_Click(object sender, EventArgs e)
+        {
+            if (action == "birReport")
+            {
+                if (dgvCart.SelectedRows.Count != 0)
+                {
+                    int selectedIndex = dgvCart.CurrentCell.RowIndex;
+                    if (selectedIndex > -1)
+                    {
+                        dgvCart.Rows.RemoveAt(selectedIndex);
+                        dgvCart.Refresh(); // if needed
+                        updateTotalAmount();
+                    }
+                }
+            }
+            else
+            {
+
             }
         }
     }

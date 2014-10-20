@@ -157,7 +157,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 case FormType.pointOfSales:
                     if (Classes.Authentication.Instance.pointOfSale == 1)
                     {
-                        App.frmPOS frm = new App.frmPOS();
+                        App.frmPOS frm = new App.frmPOS(null , null, null, null, "", "", "", "");
                         if (frm.ShowDialog() == DialogResult.OK)
                         {
                             this.Close();

@@ -212,6 +212,7 @@
             this.btnVoid.TabIndex = 5;
             this.btnVoid.Text = "Void";
             this.btnVoid.UseVisualStyleBackColor = false;
+            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // btnCheckout
             // 
