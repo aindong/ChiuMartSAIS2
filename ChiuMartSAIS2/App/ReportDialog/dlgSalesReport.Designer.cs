@@ -219,7 +219,7 @@
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Unit Price";
+            this.columnHeader3.Text = "Selling Price";
             this.columnHeader3.Width = 116;
             // 
             // columnHeader4
@@ -229,12 +229,12 @@
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "Unit Cost";
+            this.columnHeader5.Text = "Supplier Price";
             this.columnHeader5.Width = 118;
             // 
             // columnHeader6
             // 
-            this.columnHeader6.Text = "Total Cost";
+            this.columnHeader6.Text = "Total Amount";
             this.columnHeader6.Width = 164;
             // 
             // columnHeader7
