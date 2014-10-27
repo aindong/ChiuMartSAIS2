@@ -138,7 +138,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 double price = double.Parse(reader["productPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
-                                lstClients.Items[ctr].SubItems[3].Text = (lstAmount + totalAmount).ToString();
+                                lstClients.Items[ctr].SubItems[3].Text = string.Format("{0:C}", (lstAmount + totalAmount));
                             }
                             else
                             {
@@ -157,11 +157,11 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 double balancePayment = double.Parse(reader["paidBalance"].ToString());
                                 string method = (reader["paymentMethod"].ToString());
 
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
                                 lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
                                 if (totalAmount != balancePayment && method == "Balance")
                                 {
-                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", (totalAmount - balancePayment)));
                                 }
                                 else
                                 {
@@ -186,11 +186,11 @@ namespace ChiuMartSAIS2.App.Dialogs
                             double balancePayment = double.Parse(reader["paidBalance"].ToString());
                             string method = (reader["paymentMethod"].ToString());
 
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
                             lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
                             if (totalAmount != balancePayment && method == "Balance")
                             {
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", (totalAmount - balancePayment)));
                             }
                             else
                             {
@@ -216,7 +216,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus != 'Verified' ORDER BY clientName ASC";
+                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus != 'Verified' ORDER BY orNo ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -231,11 +231,11 @@ namespace ChiuMartSAIS2.App.Dialogs
                         {
                             if (reader["orNo"].ToString() == lstClients.Items[ctr].Text)
                             {
-                                double lstAmount = double.Parse(lstClients.Items[ctr].SubItems[3].Text);
+                                double lstAmount = double.Parse(lstClients.Items[ctr].SubItems[3].Text, System.Globalization.NumberStyles.Currency);
                                 double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
-                                lstClients.Items[ctr].SubItems[3].Text = (lstAmount + totalAmount).ToString();
+                                lstClients.Items[ctr].SubItems[3].Text = string.Format("{0:C}", (lstAmount + totalAmount));
                             }
                             else
                             {
@@ -254,11 +254,11 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 double balancePayment = double.Parse(reader["paidBalance"].ToString());
                                 string method = (reader["paymentMethod"].ToString());
 
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
                                 lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
                                 if (totalAmount != balancePayment && method == "Balance")
                                 {
-                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", (totalAmount - balancePayment)));
                                 }
                                 else
                                 {
@@ -283,7 +283,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                             double balancePayment = double.Parse(reader["paidBalance"].ToString());
                             string method = (reader["paymentMethod"].ToString());
 
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
                             lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
                             if (totalAmount != balancePayment && method == "Balance")
                             {
@@ -335,7 +335,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
-                                lstClients.Items[ctr].SubItems[3].Text = (lstAmount + totalAmount).ToString();
+                                lstClients.Items[ctr].SubItems[3].Text = string.Format("{0:C}", (lstAmount + totalAmount));
                             }
                             else
                             {
@@ -353,11 +353,11 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 double balancePayment = double.Parse(reader["paidBalance"].ToString());
                                 string method = (reader["paymentMethod"].ToString());
 
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
                                 lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
                                 if (totalAmount != balancePayment && method == "Balance")
                                 {
-                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", (totalAmount - balancePayment)));
                                 }
                                 else
                                 {
@@ -382,11 +382,11 @@ namespace ChiuMartSAIS2.App.Dialogs
                             double balancePayment = double.Parse(reader["paidBalance"].ToString());
                             string method = (reader["paymentMethod"].ToString());
 
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
                             lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
                             if (totalAmount != balancePayment && method == "Balance")
                             {
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", (totalAmount - balancePayment)));
                             }
                             else
                             {
@@ -448,7 +448,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
-                                lstClients.Items[ctr].SubItems[3].Text = (lstAmount + totalAmount).ToString();
+                                lstClients.Items[ctr].SubItems[3].Text = string.Format("{0:C}", (lstAmount + totalAmount));
                             }
                             else
                             {
@@ -466,11 +466,11 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 double balancePayment = double.Parse(reader["paidBalance"].ToString());
                                 string method = (reader["paymentMethod"].ToString());
 
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
                                 lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
                                 if (totalAmount != balancePayment && method == "Balance")
                                 {
-                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                                    lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", (totalAmount - balancePayment)));
                                 }
                                 else
                                 {
@@ -495,11 +495,11 @@ namespace ChiuMartSAIS2.App.Dialogs
                             double balancePayment = double.Parse(reader["paidBalance"].ToString());
                             string method = (reader["paymentMethod"].ToString());
 
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
                             lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
                             if (totalAmount != balancePayment && method == "Balance")
                             {
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", (totalAmount - balancePayment)));
                             }
                             else
                             {

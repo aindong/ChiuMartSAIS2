@@ -739,15 +739,15 @@ namespace ChiuMartSAIS2.App
                         }
 
                         // Check if the cell has a product, if not, continue the loop
-                        if (dgvCart.Rows[i].Cells[2].Value.ToString() == "")
+                        if (dgvCart.Rows[i].Cells[3].Value.ToString() == "")
                         {
                             continue;
                         }
 
-                        string prodId = getProductID(dgvCart.Rows[i].Cells[2].Value.ToString());
-                        string unitId = getUnitID(dgvCart.Rows[i].Cells[3].Value.ToString());
-                        string currentPrice = getProductProductPrice(dgvCart.Rows[i].Cells[2].Value.ToString());
-                        string supplierPrice = getProductSupplierPrice(dgvCart.Rows[i].Cells[2].Value.ToString());
+                        string prodId = getProductID(dgvCart.Rows[i].Cells[3].Value.ToString());
+                        string unitId = getUnitID(dgvCart.Rows[i].Cells[2].Value.ToString());
+                        string currentPrice = getProductProductPrice(dgvCart.Rows[i].Cells[3].Value.ToString());
+                        string supplierPrice = getProductSupplierPrice(dgvCart.Rows[i].Cells[3].Value.ToString());
 
                         string str = txtClient.Text;
                         string[] clientId = new string[2];
@@ -851,7 +851,7 @@ namespace ChiuMartSAIS2.App
             ctr = 0;
             foreach (string item in productName)
             {
-                dgvCart.Rows[ctr].Cells[2].Value = item;
+                dgvCart.Rows[ctr].Cells[3].Value = item;
                 ctr++;
             }
             ctr = 0;
@@ -963,7 +963,7 @@ namespace ChiuMartSAIS2.App
         private void dgvCart_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             TextBox prodName = e.Control as TextBox;
-            if (dgvCart.CurrentCell.ColumnIndex == 2)
+            if (dgvCart.CurrentCell.ColumnIndex == 3)
             {
                 if (prodName != null)
                 {
@@ -985,18 +985,19 @@ namespace ChiuMartSAIS2.App
 
         private void dgvCart_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvCart.CurrentCell.ColumnIndex == 2)
+            if (dgvCart.CurrentCell.ColumnIndex == 3)
             {
                 try
                 {
-                    string[] item = getProductByName(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value.ToString());
+                    string[] item = getProductByName(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value.ToString());
 
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[0].Value = item[0];
                     //dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[1].Value = 1;
-                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value = item[3];
+                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value = item[2];
 
-                    string price = getProductProductPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value.ToString());
-                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value = price;
+                    string price = getProductProductPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value.ToString());
+
+                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value = price == "" ? "0" : price;
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[5].Value = item[5];
 
                     if (action != "birReport")
@@ -1038,9 +1039,9 @@ namespace ChiuMartSAIS2.App
             {
                 if (action != "birReport")
                 {
-                    string currentPrice = getProductProductPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value.ToString());
-                    int supplierPrice = Int32.Parse(getProductSupplierPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value.ToString()));
-                    int updatedPrice = Int32.Parse(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value.ToString());
+                    string currentPrice = getProductProductPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value.ToString());
+                    int supplierPrice = Int32.Parse(getProductSupplierPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value.ToString()));
+                    double updatedPrice = double.Parse(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value.ToString());
 
                     if (updatedPrice < supplierPrice)
                     {

@@ -379,7 +379,7 @@
             this.Name = "dlgTransactionHistoy";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Transaction Histoy";
+            this.Text = "Transaction History";
             this.Load += new System.EventHandler(this.dlgTransactionHistoy_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
