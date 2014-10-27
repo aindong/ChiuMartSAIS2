@@ -140,7 +140,8 @@
             // 
             // cboUnits
             // 
-            this.cboUnits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboUnits.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboUnits.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboUnits.FormattingEnabled = true;
             this.cboUnits.Location = new System.Drawing.Point(19, 79);
             this.cboUnits.Name = "cboUnits";
@@ -149,7 +150,8 @@
             // 
             // cboCategory
             // 
-            this.cboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboCategory.FormattingEnabled = true;
             this.cboCategory.Location = new System.Drawing.Point(19, 198);
             this.cboCategory.Name = "cboCategory";

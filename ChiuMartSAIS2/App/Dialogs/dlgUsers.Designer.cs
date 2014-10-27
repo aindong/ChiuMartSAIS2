@@ -122,7 +122,8 @@
             // 
             // cboPermissionId
             // 
-            this.cboPermissionId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPermissionId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboPermissionId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboPermissionId.FormattingEnabled = true;
             this.cboPermissionId.Location = new System.Drawing.Point(15, 269);
             this.cboPermissionId.Name = "cboPermissionId";
