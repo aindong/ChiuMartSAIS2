@@ -150,6 +150,7 @@
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.Location = new System.Drawing.Point(14, 57);
             this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Padding = new System.Windows.Forms.Padding(0, 0, 0, 30);
             this.lblTotal.Size = new System.Drawing.Size(334, 126);
             this.lblTotal.TabIndex = 12;
             this.lblTotal.Text = "0.0";
