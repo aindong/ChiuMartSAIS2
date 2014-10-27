@@ -135,6 +135,7 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Cash: ";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 

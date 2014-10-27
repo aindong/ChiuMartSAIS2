@@ -77,7 +77,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
             {
                 totalGross += Double.Parse(listView1.Items[i].SubItems[4].Text);
             }
-            lblGross.Text = totalGross.ToString();
+            lblGross.Text = string.Format("{0:C}", totalGross);
         }
 
         // Calculate total cost
@@ -88,7 +88,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
             {
                 totalCost += Double.Parse(listView1.Items[i].SubItems[6].Text);
             }
-            lblOverallCost.Text = totalCost.ToString();
+            lblOverallCost.Text = string.Format("{0:C}", totalCost);
         }
 
         // Calculate profit
@@ -98,7 +98,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
             calculateTotalGross();
 
             totalProfit = totalGross - totalCost;
-            lblProfit.Text = totalProfit.ToString();
+            lblProfit.Text = string.Format("{0:C}", totalProfit);
         }
 
         private void dlgSalesReport_Load(object sender, EventArgs e)

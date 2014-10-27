@@ -15,7 +15,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
     public partial class dlgSalesEndofDay : Form
     {
         private Classes.Configuration conf;
-        private int cashCount, 
+        private double cashCount, 
             chequeCount, 
             accountsReceivableCount, 
             transparentBasyo, 
@@ -137,30 +137,30 @@ namespace ChiuMartSAIS2.App.ReportDialog
         private void dlgSalesEndofDay_Load(object sender, EventArgs e)
         {
 
-            lblCash.Text = (getTransactionCount(DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1), "Cash") + getLogCount("Cash")).ToString();
-            lblCheque.Text = (getTransactionCount(DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1), "Cheque") + +getLogCount("Cheque")).ToString();
-            lblAccountsReceivables.Text = getTransactionCount(DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1), "Balance").ToString();
+            lblCash.Text = string.Format("{0:C}", (getTransactionCount(DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1), "Cash") + getLogCount("Cash")));
+            lblCheque.Text = string.Format("{0:C}", (getTransactionCount(DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1), "Cheque") + +getLogCount("Cheque")));
+            lblAccountsReceivables.Text = string.Format("{0:C}", getTransactionCount(DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1), "Balance"));
 
-            cashCount = Int32.Parse(lblCash.Text);
-            chequeCount = Int32.Parse(lblCheque.Text);
-            accountsReceivableCount = Int32.Parse(lblAccountsReceivables.Text);
+            cashCount = double.Parse(lblCash.Text, System.Globalization.NumberStyles.Currency);
+            chequeCount = double.Parse(lblCheque.Text, System.Globalization.NumberStyles.Currency);
+            accountsReceivableCount = double.Parse(lblAccountsReceivables.Text, System.Globalization.NumberStyles.Currency);
 
             getBasyo(DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd"), DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"));
 
             //MessageBox.Show(DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd") + " : " + DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"));
 
-            lblTotalSales.Text = (cashCount + chequeCount + accountsReceivableCount).ToString();
+            lblTotalSales.Text = string.Format("{0:C}", (cashCount + chequeCount + accountsReceivableCount));
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            lblCash.Text = (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cash") + getLogCount("Cash")).ToString();
-            lblCheque.Text = (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque")  + getLogCount("Cheque")).ToString();
-            lblAccountsReceivables.Text = getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Balance").ToString();
+            lblCash.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cash") + getLogCount("Cash")));
+            lblCheque.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque")  + getLogCount("Cheque")));
+            lblAccountsReceivables.Text = string.Format("{0:C}", getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Balance"));
 
-            cashCount = Int32.Parse(lblCash.Text);
-            chequeCount = Int32.Parse(lblCheque.Text);
-            accountsReceivableCount = Int32.Parse(lblAccountsReceivables.Text);
+            cashCount = double.Parse(lblCash.Text, System.Globalization.NumberStyles.Currency);
+            chequeCount = double.Parse(lblCheque.Text, System.Globalization.NumberStyles.Currency);
+            accountsReceivableCount = double.Parse(lblAccountsReceivables.Text, System.Globalization.NumberStyles.Currency);
 
             getBasyo(dtpStart.Value.AddDays(-1).ToString("yyyy-MM-dd"), dtpStart.Value.AddDays(1).ToString("yyyy-MM-dd"));
             lblTransparentBasyo.Text = transparentBasyo.ToString();
@@ -169,7 +169,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
 
             //MessageBox.Show(DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd") + " : " + DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"));
 
-            lblTotalSales.Text = (cashCount + chequeCount + accountsReceivableCount).ToString();
+            lblTotalSales.Text = string.Format("{0:C}", (cashCount + chequeCount + accountsReceivableCount));
         }
 
         private void btnChequeView_Click(object sender, EventArgs e)
@@ -182,6 +182,11 @@ namespace ChiuMartSAIS2.App.ReportDialog
         {
             App.Dialogs.dlgTransactionHistoy frm = new App.Dialogs.dlgTransactionHistoy();
             frm.ShowDialog();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
