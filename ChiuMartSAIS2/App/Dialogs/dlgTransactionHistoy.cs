@@ -134,7 +134,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                         {
                             if (reader["orNo"].ToString() == lstClients.Items[ctr].Text)
                             {
-                                double lstAmount = double.Parse(lstClients.Items[ctr].SubItems[3].Text);
+                                double lstAmount = double.Parse(lstClients.Items[ctr].SubItems[3].Text, System.Globalization.NumberStyles.Currency);
                                 double price = double.Parse(reader["productPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
