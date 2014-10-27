@@ -426,21 +426,40 @@ namespace ChiuMartSAIS2.App
         private String getProductProductPrice(string prodname)
         {
             string result = "";
+            string client = "0";
+
+            if (txtClient.Text == "")
+            {
+                return "0";
+            }
+
+            if (txtClient.Text == "Walk-in Client")
+            {
+                client = "0";
+            }
+            else
+            {
+                string[] clientId = txtClient.Text.Split(new string[] { " - " }, StringSplitOptions.None);
+                client = clientId[1];
+            }
+
+
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT productPrice FROM products WHERE productName = @prodname";
+                    string sqlQuery = "SELECT t.unitPrice FROM products p INNER JOIN transaction t  ON p.productId = t.productId WHERE p.productName = @prodname AND t.clientId = @clientId";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("prodname", prodname);
+                    sqlCmd.Parameters.AddWithValue("clientId", client);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        result = reader["productPrice"].ToString();
+                        result = reader["unitPrice"].ToString();
                     }
                     return result;
                 }
@@ -975,7 +994,9 @@ namespace ChiuMartSAIS2.App
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[0].Value = item[0];
                     //dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[1].Value = 1;
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value = item[3];
-                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value = item[4];
+
+                    string price = getProductProductPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value.ToString());
+                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value = price;
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[5].Value = item[5];
 
                     if (action != "birReport")
@@ -1009,6 +1030,7 @@ namespace ChiuMartSAIS2.App
                 catch (Exception ex)
                 {
                     MessageBox.Show(this, "Please enter a product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(ex.Message.ToString());
                 }
 
             }
@@ -1106,6 +1128,16 @@ namespace ChiuMartSAIS2.App
                 }
 
                 txtAddress.Text = address;
+
+                int rowCount = dgvCart.Rows.Count;
+                for (int i = 0; i < rowCount; i++)
+                {
+                    dgvCart.Rows.RemoveAt(i);
+                    --rowCount;
+
+                }
+
+                cartUpdateTotal();
             }
         }
 
