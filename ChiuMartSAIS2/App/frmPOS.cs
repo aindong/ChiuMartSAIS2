@@ -1077,7 +1077,7 @@ namespace ChiuMartSAIS2.App
                 if (action != "birReport")
                 {
                     string currentPrice = getProductProductPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value.ToString());
-                    int supplierPrice = Int32.Parse(getProductSupplierPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value.ToString()));
+                    double supplierPrice = double.Parse(getProductSupplierPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value.ToString()));
                     double updatedPrice = double.Parse(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value.ToString());
 
                     if (updatedPrice < supplierPrice)

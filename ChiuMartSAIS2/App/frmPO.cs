@@ -61,7 +61,7 @@ namespace ChiuMartSAIS2.App
                         {
                             if (reader["poId"].ToString() == lstPO.Items[ctr].Text)
                             {
-                                double lstAmount = double.Parse(lstPO.Items[ctr].SubItems[2].Text);
+                                double lstAmount = double.Parse(lstPO.Items[ctr].SubItems[2].Text, System.Globalization.NumberStyles.Currency);
                                 double price = double.Parse(reader["oldPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);

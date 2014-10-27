@@ -448,6 +448,7 @@ namespace ChiuMartSAIS2.App
                 btnDelete.Visible = false;
             }
             populateProduct();
+            
         }
 
         private void listView1_Click(object sender, EventArgs e)
