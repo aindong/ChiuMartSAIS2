@@ -983,17 +983,48 @@ namespace ChiuMartSAIS2.App
             //MessageBox.Show("Done editing");
         }
 
+        private Boolean checkProduct(string productName)
+        {
+            bool result = false;
+            int count = 0;
+
+            for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
+            {
+                if (dgvCart.Rows[i].Cells[3].Value.ToString() == productName)
+                {
+                    count++;
+                }
+
+                if (count > 1)
+                {
+                    result = true;
+                }
+            }
+
+            return result;
+        }
+
         private void dgvCart_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            
             if (dgvCart.CurrentCell.ColumnIndex == 3)
             {
+
+                // Check if the product is already on the cart
+                if (checkProduct(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value.ToString()))
+                {
+                    MessageBox.Show("This product is already entered/inputted on the CART.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    dgvCart.Rows.Remove(dgvCart.Rows[dgvCart.CurrentRow.Index]);
+                    return;
+                }
+
                 try
                 {
                     string[] item = getProductByName(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value.ToString());
 
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[0].Value = item[0];
                     //dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[1].Value = 1;
-                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value = item[2];
+                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value = item[3];
 
                     string price = getProductProductPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value.ToString());
 
@@ -1131,13 +1162,20 @@ namespace ChiuMartSAIS2.App
                 txtAddress.Text = address;
 
                 int rowCount = dgvCart.Rows.Count;
-                for (int i = 0; i < rowCount; i++)
+
+                try
                 {
-                    dgvCart.Rows.RemoveAt(i);
-                    --rowCount;
+                    for (int i = 0; i < rowCount; i++)
+                    {
+                        dgvCart.Rows.RemoveAt(i);
+                        --rowCount;
+                    }
+                }
+                catch(Exception ex) 
+                {
 
                 }
-
+                  
                 cartUpdateTotal();
             }
         }

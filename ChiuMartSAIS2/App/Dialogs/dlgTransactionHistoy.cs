@@ -444,11 +444,23 @@ namespace ChiuMartSAIS2.App.Dialogs
                         {
                             if (reader["orNo"].ToString() == lstClients.Items[ctr].Text)
                             {
-                                double lstAmount = double.Parse(lstClients.Items[ctr].SubItems[3].Text);
+                                double lstAmount = double.Parse(lstClients.Items[ctr].SubItems[3].Text, System.Globalization.NumberStyles.Currency);
                                 double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
-                                lstClients.Items[ctr].SubItems[3].Text = string.Format("{0:C}", (lstAmount + totalAmount));
+                                double grandTotal = lstAmount + totalAmount;
+                                lstClients.Items[ctr].SubItems[3].Text = string.Format("{0:C}", (grandTotal));
+
+                                double balancePayment = double.Parse(reader["paidBalance"].ToString());
+                                string method = (reader["paymentMethod"].ToString());
+                                if (grandTotal != balancePayment && method == "Balance")
+                                {
+                                    lstClients.Items[ctr].SubItems[5].Text = (string.Format("{0:C}", (grandTotal - balancePayment)));
+                                }
+                                else
+                                {
+                                    lstClients.Items[ctr].SubItems[5].Text = (reader["transStatus"].ToString());
+                                }
                             }
                             else
                             {
