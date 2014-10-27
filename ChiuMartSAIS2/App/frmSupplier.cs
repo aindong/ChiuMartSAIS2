@@ -184,6 +184,7 @@ namespace ChiuMartSAIS2.App
                 frmSupplierAdd.getSupplier(out supplierId, out supplierName, out supplierAddress, out supplierContact, out supplierContactPerson);
                 insertSupplier(supplierName, supplierAddress, supplierContact, supplierContactPerson);
                 populateSupplier();
+                listView1.Items[listView1.Items.Count - 1].EnsureVisible();
             }
         }
 

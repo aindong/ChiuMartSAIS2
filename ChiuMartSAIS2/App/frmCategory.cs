@@ -228,6 +228,7 @@ namespace ChiuMartSAIS2.App
                 frmCategoryAdd.getCategory(out categoryId, out categoryName);
                 insertCategory(categoryName);
                 populateCategory();
+                listView1.Items[listView1.Items.Count - 1].EnsureVisible();
             }
         }
 
