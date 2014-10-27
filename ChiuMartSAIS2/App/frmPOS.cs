@@ -857,7 +857,7 @@ namespace ChiuMartSAIS2.App
             ctr = 0;
             foreach (string unit in units)
             {
-                dgvCart.Rows[ctr].Cells[3].Value = unit;
+                dgvCart.Rows[ctr].Cells[2].Value = unit;
                 ctr++;
             }
             ctr = 0;

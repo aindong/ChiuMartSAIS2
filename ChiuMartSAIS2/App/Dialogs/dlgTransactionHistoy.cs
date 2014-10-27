@@ -812,5 +812,10 @@ namespace ChiuMartSAIS2.App.Dialogs
             log.relationId = lstClients.SelectedItems[0].Text;
             log.ShowDialog();
         }
+
+        private void lstClients_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
