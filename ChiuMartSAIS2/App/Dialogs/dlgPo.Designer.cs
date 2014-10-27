@@ -29,13 +29,7 @@
         private void InitializeComponent()
         {
             this.txtPoNo = new System.Windows.Forms.TextBox();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvCart = new System.Windows.Forms.DataGridView();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -57,6 +51,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnNewTransaction = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.panel3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -74,38 +74,6 @@
             this.txtPoNo.Size = new System.Drawing.Size(207, 25);
             this.txtPoNo.TabIndex = 1;
             this.txtPoNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Unit Price";
-            this.Column5.Name = "Column5";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Unit";
-            this.Column4.Name = "Column4";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Item";
-            this.Column3.Name = "Column3";
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column2.HeaderText = "QTY";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 50;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
             // 
             // dgvCart
             // 
@@ -125,11 +93,6 @@
             this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellContentClick);
             this.dgvCart.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellEndEdit);
             this.dgvCart.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvCart_EditingControlShowing);
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Total";
-            this.Column6.Name = "Column6";
             // 
             // label9
             // 
@@ -344,6 +307,43 @@
             this.label3.TabIndex = 34;
             this.label3.Text = "Po Number";
             // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "id";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column2.HeaderText = "QTY";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 50;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Item";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Unit";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Unit Cost";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Total";
+            this.Column6.Name = "Column6";
+            // 
             // dlgPo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,13 +383,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtPoNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridView dgvCart;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Panel panel3;
@@ -411,6 +405,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnNewTransaction;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
 
     }
 }

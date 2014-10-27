@@ -23,6 +23,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             this.Close();
 
             dlgPasswordAuth auth = new dlgPasswordAuth();
+            auth.idleMode = true;
             if (auth.ShowDialog() == DialogResult.OK)
             {
                 this.Close();

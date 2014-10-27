@@ -147,6 +147,28 @@ namespace ChiuMartSAIS2.Classes
             systemUtilities = 1;
         }
 
+        public void resetPermission()
+        {
+            products = 0;
+            categories = 0;
+            units = 0;
+            suppliers = 0;
+            permissions = 0;
+            clients = 0;
+            users = 0;
+            pointOfSale = 0;
+            inventoryMonitoring = 0;
+            purchaseOrder = 0;
+            chequeMonitoring = 0;
+            inventoryReport = 0;
+            salesReport = 0;
+            usersReport = 0;
+            logsReport = 0;
+            clientReport = 0;
+            supplierReport = 0;
+            manualInventoryReport = 0;
+            systemUtilities = 0;
+        }
         public void userLogout()
         {
             userFullName = "";

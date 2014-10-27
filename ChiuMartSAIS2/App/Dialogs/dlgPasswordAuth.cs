@@ -42,6 +42,8 @@ namespace ChiuMartSAIS2.App.Dialogs
         private Classes.Configuration conf;
         private Classes.StringHash stringHash;
 
+        public bool idleMode = false;
+
         public FormType formToOpen;
 
         public dlgPasswordAuth()
@@ -324,7 +326,13 @@ namespace ChiuMartSAIS2.App.Dialogs
                 // Give full permission
                 Classes.Authentication.Instance.fullPermission();
             }
-            
+
+            if (this.idleMode)
+            {
+                DialogResult = DialogResult.OK;
+                return;
+            }
+
             openForm();
         }
 
@@ -335,7 +343,7 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         private void dlgPasswordAuth_Load(object sender, EventArgs e)
         {
-
+            Classes.Authentication.Instance.resetPermission();
         }
 
         private void dlgPasswordAuth_FormClosing(object sender, FormClosingEventArgs e)

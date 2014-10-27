@@ -48,7 +48,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 172);
+            this.label2.Location = new System.Drawing.Point(15, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 20);
             this.label2.TabIndex = 48;
@@ -57,7 +57,7 @@
             // txtProductName
             // 
             this.txtProductName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductName.Location = new System.Drawing.Point(17, 195);
+            this.txtProductName.Location = new System.Drawing.Point(19, 138);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(436, 33);
             this.txtProductName.TabIndex = 3;
@@ -65,7 +65,7 @@
             // btnSave
             // 
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(17, 415);
+            this.btnSave.Location = new System.Drawing.Point(19, 358);
             this.btnSave.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(436, 42);
@@ -78,7 +78,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 53);
+            this.label1.Location = new System.Drawing.Point(488, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 20);
             this.label1.TabIndex = 45;
@@ -87,7 +87,7 @@
             // txtStocks
             // 
             this.txtStocks.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStocks.Location = new System.Drawing.Point(17, 76);
+            this.txtStocks.Location = new System.Drawing.Point(492, 99);
             this.txtStocks.Name = "txtStocks";
             this.txtStocks.Size = new System.Drawing.Size(436, 33);
             this.txtStocks.TabIndex = 1;
@@ -96,7 +96,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 347);
+            this.label3.Location = new System.Drawing.Point(15, 290);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 20);
             this.label3.TabIndex = 52;
@@ -105,7 +105,7 @@
             // txtSafetyStocks
             // 
             this.txtSafetyStocks.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSafetyStocks.Location = new System.Drawing.Point(17, 370);
+            this.txtSafetyStocks.Location = new System.Drawing.Point(19, 313);
             this.txtSafetyStocks.Name = "txtSafetyStocks";
             this.txtSafetyStocks.Size = new System.Drawing.Size(436, 33);
             this.txtSafetyStocks.TabIndex = 6;
@@ -114,7 +114,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 287);
+            this.label4.Location = new System.Drawing.Point(15, 230);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 20);
             this.label4.TabIndex = 50;
@@ -123,7 +123,7 @@
             // txtPrice
             // 
             this.txtPrice.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrice.Location = new System.Drawing.Point(17, 310);
+            this.txtPrice.Location = new System.Drawing.Point(19, 253);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(436, 33);
             this.txtPrice.TabIndex = 5;
@@ -132,7 +132,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(13, 112);
+            this.label6.Location = new System.Drawing.Point(15, 55);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 20);
             this.label6.TabIndex = 55;
@@ -142,7 +142,7 @@
             // 
             this.cboUnits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUnits.FormattingEnabled = true;
-            this.cboUnits.Location = new System.Drawing.Point(17, 136);
+            this.cboUnits.Location = new System.Drawing.Point(19, 79);
             this.cboUnits.Name = "cboUnits";
             this.cboUnits.Size = new System.Drawing.Size(436, 28);
             this.cboUnits.TabIndex = 2;
@@ -151,7 +151,7 @@
             // 
             this.cboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Location = new System.Drawing.Point(17, 255);
+            this.cboCategory.Location = new System.Drawing.Point(19, 198);
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(436, 28);
             this.cboCategory.TabIndex = 4;
@@ -160,7 +160,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(13, 231);
+            this.label7.Location = new System.Drawing.Point(15, 174);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 20);
             this.label7.TabIndex = 57;
@@ -184,7 +184,7 @@
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 470);
+            this.ClientSize = new System.Drawing.Size(471, 413);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cboCategory);
             this.Controls.Add(this.label7);
