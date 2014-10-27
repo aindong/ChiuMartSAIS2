@@ -612,7 +612,7 @@ namespace ChiuMartSAIS2.App
                         if (dgvCart.Rows[i].Cells[4].Value != null)
                         {
                             double totalBIR = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
-                            dgvCart.Rows[i].Cells[5].Value = totalBIR.ToString();
+                            dgvCart.Rows[i].Cells[5].Value = string.Format("{0:C}", totalBIR);
                         }
 
                     }
@@ -641,7 +641,7 @@ namespace ChiuMartSAIS2.App
 
                             // update the total
                             double total = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
-                            dgvCart.Rows[i].Cells[5].Value = total.ToString();
+                            dgvCart.Rows[i].Cells[5].Value = string.Format("{0:C}", total);
 
                         }
                     }
@@ -663,7 +663,7 @@ namespace ChiuMartSAIS2.App
                 double total = 0;
                 for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
                 {
-                    total += double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString());
+                    total += double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString(), System.Globalization.NumberStyles.Currency);
                 }
 
                 if (checkBox1.Checked == true)
@@ -676,7 +676,7 @@ namespace ChiuMartSAIS2.App
                     total -= double.Parse(txtYellowBasyo.Text) * 130;
                 }
 
-                lblTotal.Text = total.ToString();
+                lblTotal.Text = string.Format("{0:C}", total);
 
             }
             catch(Exception ex)
@@ -692,7 +692,7 @@ namespace ChiuMartSAIS2.App
                 double total = 0;
                 for (int i = 0; i < (dgvCart.Rows.Count); i++)
                 {
-                    total += double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString());
+                    total += double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString(), System.Globalization.NumberStyles.Currency);
                 }
 
                 lblTotal.Text = total.ToString();
@@ -869,7 +869,7 @@ namespace ChiuMartSAIS2.App
             for (int i = 0; i < (ctr); i++)
             {
                 double total = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
-                dgvCart.Rows[i].Cells[5].Value = total.ToString();
+                dgvCart.Rows[i].Cells[5].Value = string.Format("{0:C}", total);
             }
             updateTotalAmount();
         }
@@ -998,7 +998,7 @@ namespace ChiuMartSAIS2.App
                     string price = getProductProductPrice(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value.ToString());
 
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value = price == "" ? "0" : price;
-                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[5].Value = item[5];
+                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[5].Value = string.Format("{0:C}", item[5]);
 
                     if (action != "birReport")
                     {
