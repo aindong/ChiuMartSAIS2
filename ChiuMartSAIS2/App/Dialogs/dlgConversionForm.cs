@@ -13,14 +13,19 @@ namespace ChiuMartSAIS2.App.Dialogs
 {
     public partial class dlgConversionForm : Form
     {
+
+        private Classes.Configuration conf;
+
         public dlgConversionForm()
         {
             InitializeComponent();
+
+            conf = new Classes.Configuration();
         }
 
         private void dlgConversionForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
