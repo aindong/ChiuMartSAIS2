@@ -640,7 +640,8 @@ namespace ChiuMartSAIS2.App
                             }
 
                             // update the total
-                            double total = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
+                            string tmpQty = dgvCart.Rows[i].Cells[4].Value.ToString() == null || dgvCart.Rows[i].Cells[4].Value.ToString() == "" ? "0" : dgvCart.Rows[i].Cells[4].Value.ToString();
+                            double total = double.Parse(tmpQty) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
                             dgvCart.Rows[i].Cells[5].Value = string.Format("{0:C}", total);
 
                         }
@@ -789,6 +790,11 @@ namespace ChiuMartSAIS2.App
                         // LOGS
                         Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), clientId[1], "", newPrice, "", "");
                     }
+                   
+                    Reports.frmOrReport rpt = new Reports.frmOrReport();
+                    rpt.orno = txtOrNo.Text;
+                    rpt.ShowDialog();
+                    btnCheckout.Enabled = false;
                     insertNewOR();
                     MessageBox.Show(this, "Transaction Complete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

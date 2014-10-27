@@ -236,6 +236,18 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
                                 lstClients.Items[ctr].SubItems[3].Text = string.Format("{0:C}", (lstAmount + totalAmount));
+                                double grandTotal = lstAmount + totalAmount;
+                                double balancePayment = double.Parse(reader["paidBalance"].ToString());
+                                string method = (reader["paymentMethod"].ToString());
+
+                                if (grandTotal != balancePayment && method == "Balance")
+                                {
+                                    lstClients.Items[ctr].SubItems[5].Text = string.Format("{0:C}", (grandTotal - balancePayment));
+                                }
+                                else
+                                {
+                                    lstClients.Items[ctr].SubItems[5].Text = reader["transStatus"].ToString();
+                                }
                             }
                             else
                             {
@@ -412,23 +424,23 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus != 'Verified' ORDER BY clientName ASC";
+                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus != 'Verified' ORDER BY orNo ASC";
                     DateTime dateNow = DateTime.Today;
                     if (status == "Cash")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Cash' AND transStatus != 'Verified' ORDER BY clientName ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Cash' AND transStatus != 'Verified' ORDER BY orNo ASC";
                     }
                     else if (status == "Cheque")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Cheque' AND transStatus != 'Verified' ORDER BY clientName ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Cheque' AND transStatus != 'Verified' ORDER BY orNo ASC";
                     }
                     else if (status == "Balance")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Balance' AND transStatus != 'Verified' ORDER BY clientName ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Balance' AND transStatus != 'Verified' ORDER BY orNo ASC";
                     }
                     else if (status == "Verified")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus = 'Verified' ORDER BY clientName ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus = 'Verified' ORDER BY orNo ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
