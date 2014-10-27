@@ -102,7 +102,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                         result[4] = reader["supplierPrice"].ToString();
 
                         double total = double.Parse(result[1]) * double.Parse(result[4]);
-                        result[5] = total.ToString();
+                        result[5] = string.Format("{0:C}", total);
                     }
                     return result;
                 }
@@ -153,10 +153,10 @@ namespace ChiuMartSAIS2.App.Dialogs
                 double total = 0;
                 for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
                 {
-                    total += double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString());
+                    total += double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString(), System.Globalization.NumberStyles.Currency);
                 }
 
-                lblTotal.Text = total.ToString();
+                lblTotal.Text = string.Format("{0:C}", total);
 
             }
             catch (Exception ex)
@@ -172,10 +172,10 @@ namespace ChiuMartSAIS2.App.Dialogs
                 double total = 0;
                 for (int i = 0; i < (dgvCart.Rows.Count); i++)
                 {
-                    total += double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString());
+                    total += double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString(), System.Globalization.NumberStyles.Currency);
                 }
 
-                lblTotal.Text = total.ToString();
+                lblTotal.Text = string.Format("{0:C}", total);
 
             }
             catch (Exception ex)
@@ -507,7 +507,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 {
                     // update the total
                     double total = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
-                    dgvCart.Rows[i].Cells[5].Value = total.ToString();
+                    dgvCart.Rows[i].Cells[5].Value = string.Format("{0:C}", total);
                 }
             }
 
@@ -568,7 +568,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 for (int i = 0; i < (ctr); i++)
                 {
                     double total = double.Parse(dgvCart.Rows[i].Cells[4].Value.ToString()) * double.Parse(dgvCart.Rows[i].Cells[1].Value.ToString());
-                    dgvCart.Rows[i].Cells[5].Value = total.ToString();
+                    dgvCart.Rows[i].Cells[5].Value = string.Format("{0:C}", total);
                 }
                 updateTotalAmount();
             }
@@ -732,6 +732,11 @@ namespace ChiuMartSAIS2.App.Dialogs
         }
 
         private void txtSupplier_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTotal_Click(object sender, EventArgs e)
         {
 
         }

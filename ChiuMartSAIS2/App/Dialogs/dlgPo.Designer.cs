@@ -30,6 +30,12 @@
         {
             this.txtPoNo = new System.Windows.Forms.TextBox();
             this.dgvCart = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -51,12 +57,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnNewTransaction = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.panel3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -94,6 +94,43 @@
             this.dgvCart.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellEndEdit);
             this.dgvCart.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvCart_EditingControlShowing);
             // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "id";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column2.HeaderText = "QTY";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 50;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Item";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Unit";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Unit Cost";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Total";
+            this.Column6.Name = "Column6";
+            // 
             // label9
             // 
             this.label9.BackColor = System.Drawing.Color.White;
@@ -110,13 +147,14 @@
             // 
             this.lblTotal.BackColor = System.Drawing.Color.White;
             this.lblTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.Location = new System.Drawing.Point(14, 57);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(334, 126);
             this.lblTotal.TabIndex = 12;
             this.lblTotal.Text = "0.0";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lblTotal.Click += new System.EventHandler(this.lblTotal_Click);
             // 
             // panel3
             // 
@@ -306,43 +344,6 @@
             this.label3.Size = new System.Drawing.Size(75, 17);
             this.label3.TabIndex = 34;
             this.label3.Text = "Po Number";
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column2.HeaderText = "QTY";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 50;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Item";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Unit";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Unit Cost";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Total";
-            this.Column6.Name = "Column6";
             // 
             // dlgPo
             // 

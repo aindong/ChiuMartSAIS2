@@ -65,7 +65,7 @@ namespace ChiuMartSAIS2.App
                                 double price = double.Parse(reader["oldPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
-                                lstPO.Items[ctr].SubItems[2].Text = (lstAmount + totalAmount).ToString();
+                                lstPO.Items[ctr].SubItems[2].Text = string.Format("{0:C}", (lstAmount + totalAmount));
                             }
                             else
                             {
@@ -76,7 +76,7 @@ namespace ChiuMartSAIS2.App
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
 
-                                lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                                lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
 
                                 // converts the poDate to datetime
                                 DateTime aDate;
@@ -97,7 +97,7 @@ namespace ChiuMartSAIS2.App
                             double qty = double.Parse(reader["qty"].ToString());
                             double totalAmount = (price * qty);
 
-                            lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                            lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
 
                             // converts the transdate to datetime
                             DateTime aDate;
@@ -171,7 +171,7 @@ namespace ChiuMartSAIS2.App
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
 
-                                lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                                lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
 
                                 // converts the poDate to datetime
                                 DateTime aDate;
@@ -192,7 +192,7 @@ namespace ChiuMartSAIS2.App
                             double qty = double.Parse(reader["qty"].ToString());
                             double totalAmount = (price * qty);
 
-                            lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                            lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
 
                             // converts the transdate to datetime
                             DateTime aDate;
@@ -252,7 +252,7 @@ namespace ChiuMartSAIS2.App
                                 double price = double.Parse(reader["oldPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
-                                lstPO.Items[ctr].SubItems[2].Text = (lstAmount + totalAmount).ToString();
+                                lstPO.Items[ctr].SubItems[2].Text = string.Format("{0:C}", (lstAmount + totalAmount));
                             }
                             else
                             {
@@ -263,7 +263,7 @@ namespace ChiuMartSAIS2.App
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
 
-                                lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                                lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
 
                                 // converts the poDate to datetime
                                 DateTime aDate;
@@ -284,7 +284,7 @@ namespace ChiuMartSAIS2.App
                             double qty = double.Parse(reader["qty"].ToString());
                             double totalAmount = (price * qty);
 
-                            lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(totalAmount.ToString());
+                            lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
 
                             // converts the transdate to datetime
                             DateTime aDate;
