@@ -345,6 +345,7 @@
             this.btnChiumartRetail.TabIndex = 18;
             this.btnChiumartRetail.Text = "Chiumart Retail";
             this.btnChiumartRetail.UseVisualStyleBackColor = true;
+            this.btnChiumartRetail.Click += new System.EventHandler(this.btnChiumartRetail_Click);
             // 
             // frmPO
             // 

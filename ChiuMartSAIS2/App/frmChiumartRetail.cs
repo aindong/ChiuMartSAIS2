@@ -32,11 +32,11 @@ namespace ChiuMartSAIS2.App
                 using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
                 {
                     con.Open();
-                    string sql = "SELECT u.*, c.* FROM conversion c INNER JOIN user u ON c.username = u.username WHERE created_date BETWEEN @from AND @to";
+                    string sql = "SELECT u.*, c.* FROM conversion c INNER JOIN user u ON c.username = u.username WHERE c.created_date BETWEEN @from AND @to";
                     MySqlCommand sqlCmd = new MySqlCommand(sql, con);
 
                     sqlCmd.Parameters.AddWithValue("from", dtpFrom.Value.AddDays(-1));
-                    sqlCmd.Parameters.AddWithValue("to", dtpTo.Value);
+                    sqlCmd.Parameters.AddWithValue("to", dtpTo.Value.AddDays(1));
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -46,7 +46,7 @@ namespace ChiuMartSAIS2.App
                         listView1.Items.Add(reader["id"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["fullname"].ToString());
                         DateTime tmpDate;
-                        DateTime.TryParse(reader["created_at"].ToString(), out tmpDate);
+                        DateTime.TryParse(reader["created_date"].ToString(), out tmpDate);
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(tmpDate.ToString("MMMM dd, yyyy"));
                     }
                 }
@@ -54,7 +54,7 @@ namespace ChiuMartSAIS2.App
             catch (MySqlException ex)
             {
                 string errorCode = string.Format("Error Code : {0}", ex.Number);
-                MessageBox.Show(this, "Restoring client error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, ex.Message.ToString(), errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -89,12 +89,35 @@ namespace ChiuMartSAIS2.App
             {
                 // Insert the new conversion transaction/Update the database stock
                 insertConversion();
+                populateListview();
             }
         }
 
         private void frmChiumartRetail_Load(object sender, EventArgs e)
         {
             populateListview();
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            Dialogs.dlgConversionForm dlg = new Dialogs.dlgConversionForm();
+            dlg.viewing = true;
+            dlg.id = Int32.Parse(listView1.SelectedItems[0].Text);
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                // Do nothing
+            }
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            Dialogs.dlgConversionForm dlg = new Dialogs.dlgConversionForm();
+            dlg.viewing = true;
+            dlg.id = Int32.Parse(listView1.SelectedItems[0].Text);
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                // Do nothing
+            }
         }
     }
 }

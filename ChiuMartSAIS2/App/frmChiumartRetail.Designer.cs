@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.btnFilter = new System.Windows.Forms.Button();
+            this.btnView = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -55,6 +56,7 @@
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.DoubleClick += new System.EventHandler(this.listView1_DoubleClick);
             // 
             // ID
             // 
@@ -127,11 +129,23 @@
             this.btnFilter.Text = "Filter";
             this.btnFilter.UseVisualStyleBackColor = true;
             // 
+            // btnView
+            // 
+            this.btnView.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnView.Location = new System.Drawing.Point(12, 151);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(163, 58);
+            this.btnView.TabIndex = 12;
+            this.btnView.Text = "View";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
             // frmChiumartRetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 489);
+            this.Controls.Add(this.btnView);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtpTo);
             this.Controls.Add(this.label1);
@@ -165,5 +179,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpFrom;
         private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.Button btnView;
     }
 }
