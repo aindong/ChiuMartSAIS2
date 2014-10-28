@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2014 at 02:20 AM
+-- Generation Time: Oct 28, 2014 at 02:37 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `basyo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `basyo_returned` int(11) NOT NULL,
   `status` varchar(10) NOT NULL DEFAULT 'active',
-  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -692,6 +692,19 @@ INSERT INTO `client` (`clientId`, `clientName`, `clientContact`, `created_date`,
 (567, '5 Maria''s Store', '', '2014-10-27 17:50:38', '2014-10-27 17:50:38', 'active', ''),
 (568, 'Quick Trip 24/7', '', '2014-10-27 17:55:07', '2014-10-27 17:55:07', 'active', ''),
 (569, 'ChiuMart for Retail', '', '2014-10-27 19:45:04', '2014-10-27 19:45:04', 'active', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `conversion`
+--
+
+CREATE TABLE IF NOT EXISTS `conversion` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(65) NOT NULL,
+  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
