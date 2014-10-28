@@ -39,13 +39,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.lblCash = new System.Windows.Forms.Label();
             this.lblCheque = new System.Windows.Forms.Label();
             this.lblAccountsReceivables = new System.Windows.Forms.Label();
             this.lblTransparentBasyo = new System.Windows.Forms.Label();
-            this.lblYellowBasyo = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -173,28 +170,6 @@
             this.label7.Text = "Basyo:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Gainsboro;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(106, 341);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 25);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Yellow: ";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Gainsboro;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(106, 305);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 25);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Transparent:";
-            // 
             // lblCash
             // 
             this.lblCash.AutoSize = true;
@@ -235,23 +210,12 @@
             // 
             this.lblTransparentBasyo.AutoSize = true;
             this.lblTransparentBasyo.BackColor = System.Drawing.Color.Gainsboro;
-            this.lblTransparentBasyo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransparentBasyo.Location = new System.Drawing.Point(392, 305);
+            this.lblTransparentBasyo.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransparentBasyo.Location = new System.Drawing.Point(389, 313);
             this.lblTransparentBasyo.Name = "lblTransparentBasyo";
-            this.lblTransparentBasyo.Size = new System.Drawing.Size(167, 25);
+            this.lblTransparentBasyo.Size = new System.Drawing.Size(280, 45);
             this.lblTransparentBasyo.TabIndex = 12;
             this.lblTransparentBasyo.Text = "Transparent basyo";
-            // 
-            // lblYellowBasyo
-            // 
-            this.lblYellowBasyo.AutoSize = true;
-            this.lblYellowBasyo.BackColor = System.Drawing.Color.Gainsboro;
-            this.lblYellowBasyo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYellowBasyo.Location = new System.Drawing.Point(392, 341);
-            this.lblYellowBasyo.Name = "lblYellowBasyo";
-            this.lblYellowBasyo.Size = new System.Drawing.Size(122, 25);
-            this.lblYellowBasyo.TabIndex = 13;
-            this.lblYellowBasyo.Text = "Yellow basyo";
             // 
             // btnPrint
             // 
@@ -327,13 +291,10 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnPrint);
-            this.Controls.Add(this.lblYellowBasyo);
             this.Controls.Add(this.lblTransparentBasyo);
             this.Controls.Add(this.lblAccountsReceivables);
             this.Controls.Add(this.lblCheque);
             this.Controls.Add(this.lblCash);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -367,13 +328,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblCash;
         private System.Windows.Forms.Label lblCheque;
         private System.Windows.Forms.Label lblAccountsReceivables;
         private System.Windows.Forms.Label lblTransparentBasyo;
-        private System.Windows.Forms.Label lblYellowBasyo;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label10;

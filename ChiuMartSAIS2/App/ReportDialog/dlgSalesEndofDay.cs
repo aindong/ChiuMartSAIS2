@@ -18,8 +18,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
         private double cashCount, 
             chequeCount, 
             accountsReceivableCount, 
-            transparentBasyo, 
-            yellowBasyo;
+            transparentBasyo;
 
         public dlgSalesEndofDay()
         {
@@ -38,8 +37,8 @@ namespace ChiuMartSAIS2.App.ReportDialog
                     con.Open();
                     string sql = "SELECT qty, unitPrice FROM transaction WHERE transDate BETWEEN @start AND @end AND paymentMethod = @paymentType";
                     MySqlCommand sqlCmd = new MySqlCommand(sql, con);
-                    sqlCmd.Parameters.AddWithValue("start", start);
-                    sqlCmd.Parameters.AddWithValue("end", end);
+                    sqlCmd.Parameters.AddWithValue("start", dtpStart.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("end", dtpEnd.Value.AddDays(1).Date);
                     sqlCmd.Parameters.AddWithValue("paymentType", paymentType);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
@@ -72,8 +71,8 @@ namespace ChiuMartSAIS2.App.ReportDialog
                     con.Open();
                     string sqlQuery = "SELECT `price` as totalCount FROM logs WHERE `created_date` BETWEEN @start AND @end AND `log_type` = 'Balance' AND `paymentMethod` = @paymentMethod";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
-                    sqlCmd.Parameters.AddWithValue("start", dtpStart.Value.AddDays(-1));
-                    sqlCmd.Parameters.AddWithValue("end", dtpEnd.Value);
+                    sqlCmd.Parameters.AddWithValue("start", dtpStart.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("end", dtpEnd.Value.AddDays(1).Date);
                     sqlCmd.Parameters.AddWithValue("paymentMethod", paymentMethod);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
@@ -100,26 +99,31 @@ namespace ChiuMartSAIS2.App.ReportDialog
             {
                 using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
                 {
+                    string basyo = "";
                     con.Open();
-                    string sql = "SELECT basyo.basyoTransCount, basyo.basyoYellowCount FROM basyo INNER JOIN transaction ON basyo.transId = transaction.orNo WHERE transaction.transDate BETWEEN @start AND @end GROUP BY orNo";
-                    MySqlCommand sqlCmd = new MySqlCommand(sql, con);
-                    sqlCmd.Parameters.AddWithValue("start", start);
-                    sqlCmd.Parameters.AddWithValue("end", end);
+                    string sqlQuery = "SELECT SUM(basyo_returned) as total FROM basyo WHERE date_created BETWEEN @start AND @end ";
+
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    sqlCmd.Parameters.AddWithValue("start", dtpStart.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("end", dtpEnd.Value.AddDays(1).Date);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        yellowBasyo = yellowBasyo + (int)reader["basyoYellowCount"];
-                        transparentBasyo = transparentBasyo + (int)reader["basyoTransCount"];
+                        basyo = reader["total"].ToString();
                     }
 
-                    lblTransparentBasyo.Text = transparentBasyo.ToString();
-                    lblYellowBasyo.Text = yellowBasyo.ToString();
-
-                    yellowBasyo = 0;
-                    transparentBasyo = 0;
-
+                    if (basyo == "")
+                    {
+                        transparentBasyo = 0;
+                    }
+                    else
+                    {
+                        transparentBasyo = Int32.Parse(basyo);
+                    }
+                    transparentBasyo = transparentBasyo * 110;
+                    lblTransparentBasyo.Text = (transparentBasyo).ToString();
                 }
             }
             catch (MySqlException ex)
@@ -137,19 +141,22 @@ namespace ChiuMartSAIS2.App.ReportDialog
         private void dlgSalesEndofDay_Load(object sender, EventArgs e)
         {
 
-            lblCash.Text = string.Format("{0:C}", (getTransactionCount(DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1), "Cash") + getLogCount("Cash")));
-            lblCheque.Text = string.Format("{0:C}", (getTransactionCount(DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1), "Cheque") + +getLogCount("Cheque")));
-            lblAccountsReceivables.Text = string.Format("{0:C}", getTransactionCount(DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1), "Balance"));
+            lblCash.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cash") + getLogCount("Cash")));
+            lblCheque.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque") + getLogCount("Cheque")));
+            lblAccountsReceivables.Text = string.Format("{0:C}", getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Balance"));
+
+            getBasyo(dtpStart.Value.AddDays(-1).ToString("yyyy-MM-dd"), dtpStart.Value.AddDays(1).ToString("yyyy-MM-dd"));
+            lblTransparentBasyo.Text = string.Format("{0:C}", transparentBasyo);
 
             cashCount = double.Parse(lblCash.Text, System.Globalization.NumberStyles.Currency);
             chequeCount = double.Parse(lblCheque.Text, System.Globalization.NumberStyles.Currency);
             accountsReceivableCount = double.Parse(lblAccountsReceivables.Text, System.Globalization.NumberStyles.Currency);
+            transparentBasyo = double.Parse(lblTransparentBasyo.Text, System.Globalization.NumberStyles.Currency);
 
-            getBasyo(DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd"), DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"));
 
             //MessageBox.Show(DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd") + " : " + DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"));
 
-            lblTotalSales.Text = string.Format("{0:C}", (cashCount + chequeCount + accountsReceivableCount));
+            lblTotalSales.Text = string.Format("{0:C}", (cashCount + chequeCount + accountsReceivableCount - transparentBasyo));
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -157,19 +164,19 @@ namespace ChiuMartSAIS2.App.ReportDialog
             lblCash.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cash") + getLogCount("Cash")));
             lblCheque.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque")  + getLogCount("Cheque")));
             lblAccountsReceivables.Text = string.Format("{0:C}", getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Balance"));
+            
+            getBasyo(dtpStart.Value.AddDays(-1).ToString("yyyy-MM-dd"), dtpStart.Value.AddDays(1).ToString("yyyy-MM-dd"));
+            lblTransparentBasyo.Text = string.Format("{0:C}",transparentBasyo);
 
             cashCount = double.Parse(lblCash.Text, System.Globalization.NumberStyles.Currency);
             chequeCount = double.Parse(lblCheque.Text, System.Globalization.NumberStyles.Currency);
             accountsReceivableCount = double.Parse(lblAccountsReceivables.Text, System.Globalization.NumberStyles.Currency);
-
-            getBasyo(dtpStart.Value.AddDays(-1).ToString("yyyy-MM-dd"), dtpStart.Value.AddDays(1).ToString("yyyy-MM-dd"));
-            lblTransparentBasyo.Text = transparentBasyo.ToString();
-            lblYellowBasyo.Text = yellowBasyo.ToString();
+            transparentBasyo = double.Parse(lblTransparentBasyo.Text, System.Globalization.NumberStyles.Currency);
 
 
             //MessageBox.Show(DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd") + " : " + DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"));
 
-            lblTotalSales.Text = string.Format("{0:C}", (cashCount + chequeCount + accountsReceivableCount));
+            lblTotalSales.Text = string.Format("{0:C}", (cashCount + chequeCount + accountsReceivableCount - transparentBasyo));
         }
 
         private void btnChequeView_Click(object sender, EventArgs e)
