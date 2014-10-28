@@ -234,36 +234,6 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void insertBasyo(string transId, string clientId, string basyoTransCount, string basyoYellowCount, string basyoTransReturned, string basyoYellowReturned)
-        {
-            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
-            {
-                try
-                {
-                    DateTime chequeDateFinal;
-                    DateTime.TryParse(chequeDate, out chequeDateFinal);
-
-                    Con.Open();
-                    string sqlQuery = "INSERT INTO basyo (transId, clientId, basyoTransCount, basyoYellowCount, basyoTransReturned, basyoYellowReturned) VALUES (@transId, @clientId, @basyoTransCount, @basyoYellowCount, @basyoTransReturned, @basyoYellowReturned)";
-                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
-
-                    sqlCmd.Parameters.AddWithValue("transId", transId);
-                    sqlCmd.Parameters.AddWithValue("clientId", clientId);
-                    sqlCmd.Parameters.AddWithValue("basyoTransCount", basyoTransCount);
-                    sqlCmd.Parameters.AddWithValue("basyoYellowCount", basyoYellowCount);
-                    sqlCmd.Parameters.AddWithValue("basyoTransReturned", basyoTransReturned);
-                    sqlCmd.Parameters.AddWithValue("basyoYellowReturned", basyoYellowReturned);
-
-                    sqlCmd.ExecuteNonQuery();
-                }
-                catch (MySqlException ex)
-                {
-                    string errorCode = string.Format("Error Code : {0}", ex.Number);
-                    MessageBox.Show(this, "Basyo error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
         //get product ID
         private string getProductID(string crit)
         {
@@ -784,7 +754,6 @@ namespace ChiuMartSAIS2.App
                             }
                         }
                         updateStocks(qty, prodId, newPrice);
-                        insertBasyo(txtOrNo.Text, clientId[1], txtTransBasyo.Text, txtYellowBasyo.Text, "0", "0");
                         // updateProductQueue(prodId, supplierPrice, qty);
 
                         // LOGS
@@ -1277,6 +1246,12 @@ namespace ChiuMartSAIS2.App
             {
 
             }
+        }
+
+        private void btnBasyo_Click(object sender, EventArgs e)
+        {
+            frmBasyo frm = new frmBasyo();
+            frm.ShowDialog();
         }
     }
 }
