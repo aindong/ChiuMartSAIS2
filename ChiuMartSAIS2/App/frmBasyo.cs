@@ -111,8 +111,8 @@ namespace ChiuMartSAIS2.App
                 }
                 catch (MySqlException ex)
                 {
-                    string errorCode = string.Format("Error Code : {0}", ex.ToString());
-                    MessageBox.Show(this, "Can't connect to database" + errorCode, errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
