@@ -52,6 +52,7 @@
             this.dgvConvert.Name = "dgvConvert";
             this.dgvConvert.Size = new System.Drawing.Size(694, 358);
             this.dgvConvert.TabIndex = 0;
+            this.dgvConvert.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvConvert_EditingControlShowing);
             // 
             // label1
             // 

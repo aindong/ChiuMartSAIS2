@@ -137,6 +137,12 @@
     <Compile Include="App\Dialogs\dlgClient.Designer.cs">
       <DependentUpon>dlgClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\Dialogs\dlgConversionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgConversionForm.Designer.cs">
+      <DependentUpon>dlgConversionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\Dialogs\dlgIdleStatus.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,12 @@
     </Compile>
     <Compile Include="App\frmChequeMonitoring.Designer.cs">
       <DependentUpon>frmChequeMonitoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\frmChiumartRetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\frmChiumartRetail.Designer.cs">
+      <DependentUpon>frmChiumartRetail.cs</DependentUpon>
     </Compile>
     <Compile Include="App\frmClient.cs">
       <SubType>Form</SubType>
@@ -390,6 +402,9 @@
     <EmbeddedResource Include="App\Dialogs\dlgClient.resx">
       <DependentUpon>dlgClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgConversionForm.resx">
+      <DependentUpon>dlgConversionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgIdleStatus.resx">
       <DependentUpon>dlgIdleStatus.cs</DependentUpon>
     </EmbeddedResource>
@@ -434,6 +449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App\frmChequeMonitoring.resx">
       <DependentUpon>frmChequeMonitoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\frmChiumartRetail.resx">
+      <DependentUpon>frmChiumartRetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\frmClient.resx">
       <DependentUpon>frmClient.cs</DependentUpon>
