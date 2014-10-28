@@ -227,6 +227,11 @@ namespace ChiuMartSAIS2.App
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (txtReturn.Text == "")
+            {
+                MessageBox.Show("Please enter a number.");
+                return;
+            }
             panel1.Visible = false;
             btnAdd.Enabled = true;
             btnEdit.Enabled = true;

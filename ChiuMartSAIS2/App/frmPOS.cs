@@ -988,9 +988,11 @@ namespace ChiuMartSAIS2.App
                 // Check if the product is already on the cart
                 if (checkProduct(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value.ToString()))
                 {
-                    MessageBox.Show("This product is already entered/inputted on the CART.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    dgvCart.Rows.Remove(dgvCart.Rows[dgvCart.CurrentRow.Index]);
-                    return;
+                    if (MessageBox.Show("This product is already exists on the CART. Do you want to add this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                    {
+                        dgvCart.Rows.Remove(dgvCart.Rows[dgvCart.CurrentRow.Index]);
+                        return;
+                    }
                 }
 
                 try

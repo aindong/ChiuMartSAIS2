@@ -38,8 +38,8 @@ namespace ChiuMartSAIS2.App.ReportDialog
                     string sqlQuery = "SELECT t.`transdate`, t.`productId`, t.`unitPrice`, SUM(t.`qty`) as totalSold, t.`supplierPrice`, p.productName FROM `transaction` t LEFT JOIN `products` p ON p.productId = t.productId WHERE (t.`transDate` BETWEEN @from AND @to) GROUP BY t.`unitPrice`, t.`productId`, t.`supplierPrice`";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
 
-                    sqlCmd.Parameters.AddWithValue("from", dtpFrom.Value.AddDays(-1));
-                    sqlCmd.Parameters.AddWithValue("to", dtpTo.Value);
+                    sqlCmd.Parameters.AddWithValue("from", dtpFrom.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("to", dtpTo.Value.AddDays(1).Date);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
