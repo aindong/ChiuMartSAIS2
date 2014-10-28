@@ -54,6 +54,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.lblVerified = new System.Windows.Forms.Label();
             this.btnVerify = new System.Windows.Forms.Button();
+            this.btnChiumartRetail = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -334,11 +335,23 @@
             this.btnVerify.UseVisualStyleBackColor = true;
             this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
             // 
+            // btnChiumartRetail
+            // 
+            this.btnChiumartRetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChiumartRetail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChiumartRetail.Location = new System.Drawing.Point(534, 546);
+            this.btnChiumartRetail.Name = "btnChiumartRetail";
+            this.btnChiumartRetail.Size = new System.Drawing.Size(175, 51);
+            this.btnChiumartRetail.TabIndex = 18;
+            this.btnChiumartRetail.Text = "Chiumart Retail";
+            this.btnChiumartRetail.UseVisualStyleBackColor = true;
+            // 
             // frmPO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(981, 607);
+            this.Controls.Add(this.btnChiumartRetail);
             this.Controls.Add(this.btnVerify);
             this.Controls.Add(this.lblVerified);
             this.Controls.Add(this.button1);
@@ -402,5 +415,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.Label lblVerified;
         private System.Windows.Forms.Button btnVerify;
+        private System.Windows.Forms.Button btnChiumartRetail;
     }
 }

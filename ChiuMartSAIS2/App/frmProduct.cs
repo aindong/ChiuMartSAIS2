@@ -404,6 +404,7 @@ namespace ChiuMartSAIS2.App
                 insertProduct(productPrice, productStocks, productSafetyStock,
                      productName, unitId, categoryId);
                 populateProduct();
+                listView1.Items[listView1.Items.Count - 1].EnsureVisible();
             }
         }
 

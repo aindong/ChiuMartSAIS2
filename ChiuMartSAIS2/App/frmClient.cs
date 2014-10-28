@@ -225,6 +225,7 @@ namespace ChiuMartSAIS2.App
                 frmClientAdd.getClient(out clientId, out clientName, out clientAddress, out clientContact);
                 insertClient(clientName, clientAddress, clientContact);
                 populateClient();
+                listView1.Items[listView1.Items.Count - 1].EnsureVisible();
             }
         }
 
