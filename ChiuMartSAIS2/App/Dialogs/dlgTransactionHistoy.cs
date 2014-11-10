@@ -118,10 +118,13 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId  WHERE c.clientName LIKE @criteria ORDER BY clientName ASC";
+                    string sqlQuery = "SELECT t.*, c.clientName, p.productPrice FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId WHERE t.transDate BETWEEN @from AND @to AND c.clientName LIKE @criteria ORDER BY orNo ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
                     sqlCmd.Parameters.AddWithValue("criteria", "%" + criteria + "%");
+
+                    sqlCmd.Parameters.AddWithValue("from", dtpFrom.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("to", dtpTo.Value.AddDays(1).Date);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -216,9 +219,12 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus != 'Verified' ORDER BY orNo ASC";
+                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE t.transDate BETWEEN @from AND @to AND transStatus != 'Verified' ORDER BY orNo ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("from", dtpFrom.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("to", dtpTo.Value.AddDays(1).Date);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -258,7 +264,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 // converts the transdate to datetime
                                 DateTime aDate;
                                 DateTime.TryParse(reader["transDate"].ToString(), out aDate);
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transDate"].ToString());
 
                                 double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
@@ -287,7 +293,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                             // converts the transdate to datetime
                             DateTime aDate;
                             DateTime.TryParse(reader["transDate"].ToString(), out aDate);
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transDate"].ToString());
 
                             double price = double.Parse(reader["unitPrice"].ToString());
                             double qty = double.Parse(reader["qty"].ToString());
@@ -325,12 +331,12 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE DATE_FORMAT(t.transDate,'%Y-%m-%d') BETWEEN @from AND @to ORDER BY clientName ASC";
+                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
-                    sqlCmd.Parameters.AddWithValue("from", dtpFrom.Value.ToString("yyyy-MM-dd"));
-                    sqlCmd.Parameters.AddWithValue("to", dtpTo.Value.ToString("yyyy-MM-dd"));
+                    sqlCmd.Parameters.AddWithValue("from", dtpFrom.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("to", dtpTo.Value.AddDays(1).Date);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -343,7 +349,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                         {
                             if (reader["orNo"].ToString() == lstClients.Items[ctr].Text)
                             {
-                                double lstAmount = double.Parse(lstClients.Items[ctr].SubItems[3].Text);
+                                double lstAmount = double.Parse(lstClients.Items[ctr].SubItems[3].Text, System.Globalization.NumberStyles.Currency);
                                 double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
@@ -357,7 +363,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 // converts the transdate to datetime
                                 DateTime aDate;
                                 DateTime.TryParse(reader["transDate"].ToString(), out aDate);
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transDate"].ToString());
 
                                 double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
@@ -386,7 +392,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                             // converts the transdate to datetime
                             DateTime aDate;
                             DateTime.TryParse(reader["transDate"].ToString(), out aDate);
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transDate"].ToString());
 
                             double price = double.Parse(reader["unitPrice"].ToString());
                             double qty = double.Parse(reader["qty"].ToString());
@@ -424,26 +430,29 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus != 'Verified' ORDER BY orNo ASC";
+                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus != 'Verified' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
                     DateTime dateNow = DateTime.Today;
                     if (status == "Cash")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Cash' AND transStatus != 'Verified' ORDER BY orNo ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Cash' AND transStatus != 'Verified' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
                     }
                     else if (status == "Cheque")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Cheque' AND transStatus != 'Verified' ORDER BY orNo ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Cheque' AND transStatus != 'Verified' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
                     }
                     else if (status == "Balance")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Balance' AND transStatus != 'Verified' ORDER BY orNo ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Balance' AND transStatus != 'Verified' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
                     }
                     else if (status == "Verified")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus = 'Verified' ORDER BY orNo ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus = 'Verified' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("from", dtpFrom.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("to", dtpTo.Value.AddDays(1).Date);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -482,7 +491,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 // converts the transdate to datetime
                                 DateTime aDate;
                                 DateTime.TryParse(reader["transDate"].ToString(), out aDate);
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transDate"].ToString());
 
                                 double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
@@ -511,7 +520,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                             // converts the transdate to datetime
                             DateTime aDate;
                             DateTime.TryParse(reader["transDate"].ToString(), out aDate);
-                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                            lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["transDate"].ToString());
 
                             double price = double.Parse(reader["unitPrice"].ToString());
                             double qty = double.Parse(reader["qty"].ToString());
