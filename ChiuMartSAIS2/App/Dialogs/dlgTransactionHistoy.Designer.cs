@@ -53,6 +53,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnPayBalance = new System.Windows.Forms.Button();
             this.btnOverview = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -95,7 +97,7 @@
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(672, 448);
+            this.btnPrint.Location = new System.Drawing.Point(670, 504);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(137, 36);
@@ -218,7 +220,7 @@
             this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnView.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnView.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnView.Location = new System.Drawing.Point(527, 448);
+            this.btnView.Location = new System.Drawing.Point(671, 448);
             this.btnView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(137, 36);
@@ -234,7 +236,7 @@
             this.btnVerify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVerify.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerify.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerify.Location = new System.Drawing.Point(382, 448);
+            this.btnVerify.Location = new System.Drawing.Point(526, 448);
             this.btnVerify.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnVerify.Name = "btnVerify";
             this.btnVerify.Size = new System.Drawing.Size(137, 36);
@@ -346,13 +348,37 @@
             this.btnOverview.UseVisualStyleBackColor = true;
             this.btnOverview.Click += new System.EventHandler(this.btnOverview_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(313, 456);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(47, 21);
+            this.label7.TabIndex = 48;
+            this.label7.Text = "Total:";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(356, 456);
+            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(56, 21);
+            this.lblTotal.TabIndex = 49;
+            this.lblTotal.Text = "TOTAL";
+            // 
             // dlgTransactionHistoy
             // 
             this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(967, 494);
+            this.ClientSize = new System.Drawing.Size(967, 492);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnOverview);
             this.Controls.Add(this.btnPayBalance);
             this.Controls.Add(this.label6);
@@ -414,5 +440,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.Button btnPayBalance;
         private System.Windows.Forms.Button btnOverview;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

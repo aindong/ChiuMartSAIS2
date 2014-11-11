@@ -31,6 +31,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         private string balance = "";
         private string yellowBasyoReturned;
         private string transparentBasyoReturned;
+        private double totalamount = 0;
 
         private Classes.Configuration conf;
         public dlgTransactionHistoy()
@@ -109,6 +110,20 @@ namespace ChiuMartSAIS2.App.Dialogs
                 }
 
             }
+        }
+
+        private void getOverAllSales()
+        {
+            totalamount = 0;
+            int count = lstClients.Items.Count; 
+            if (count > 0) 
+            {
+                for (int i = 0; i < count; i++ )
+                {
+                    totalamount = totalamount + double.Parse(lstClients.Items[i].SubItems[3].Text, System.Globalization.NumberStyles.Currency);
+                }
+            }
+            lblTotal.Text = string.Format("{0:C}", (totalamount));
         }
 
         private void searchClient(string criteria)
@@ -694,6 +709,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
             populateTransaction();
             checkTransaction();
+            getOverAllSales();
 
             btnOverview.Visible = false;
             btnPayBalance.Visible = false;
@@ -709,6 +725,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         {
             searchTransaction();
             checkTransaction();
+            getOverAllSales();
         }
 
         private void btnView_Click(object sender, EventArgs e)
@@ -736,6 +753,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         {
             searchClient(txtSearch.Text);
             checkTransaction();
+            getOverAllSales();
         }
 
         private void lstClients_DoubleClick(object sender, EventArgs e)
@@ -753,6 +771,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         {
             getTransactionByPayment("All");
             checkTransaction();
+            getOverAllSales();
             btnOverview.Visible = false;
             btnPayBalance.Visible = false;
         }
@@ -760,6 +779,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         private void label4_Click(object sender, EventArgs e)
         {
             getTransactionByPayment("Cash");
+            getOverAllSales();
             checkTransaction();
             btnOverview.Visible = false;
             btnPayBalance.Visible = false;
@@ -768,6 +788,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         private void label5_Click(object sender, EventArgs e)
         {
             getTransactionByPayment("Cheque");
+            getOverAllSales();
             checkTransaction();
             btnOverview.Visible = false;
             btnPayBalance.Visible = false;
@@ -776,6 +797,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         private void label6_Click(object sender, EventArgs e)
         {
             getTransactionByPayment("Balance");
+            getOverAllSales();
             checkTransaction();
             btnOverview.Visible = true;
             btnPayBalance.Visible = true;
@@ -784,6 +806,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         private void lblVerify_Click(object sender, EventArgs e)
         {
             getTransactionByPayment("Verified");
+            getOverAllSales();
             checkTransaction();
             btnOverview.Visible = false;
             btnPayBalance.Visible = false;
