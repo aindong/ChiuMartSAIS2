@@ -363,6 +363,24 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        private void clearUI()
+        {
+            dgvCart.Rows.Clear();
+            label1.Text = "Chiumart POS";
+            lblTotal.Text = "0.0";
+            txtAddress.Text = "";
+            txtClient.Text = "Walk-in Client";
+            dgvCart.Enabled = true;
+            txtAddress.ReadOnly = false;
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            txtClient.ReadOnly = false;
+            btnCheckout.Enabled = true;
+            // GENERATE NEW OR
+            txtOrNo.Text = generateOR();
+            txtClient.Focus();
+        }
+
         private String getProductSupplierPrice(string prodname)
         {
             string result = "";
@@ -511,6 +529,7 @@ namespace ChiuMartSAIS2.App
         {
             populateClientTextbox();
             populateProductTextbox();
+            txtClient.Focus();
             
             // Set status bar labels
             txtCashier.Text = Classes.Authentication.Instance.userFullName;
@@ -766,6 +785,7 @@ namespace ChiuMartSAIS2.App
                     btnCheckout.Enabled = false;
                     insertNewOR();
                     MessageBox.Show(this, "Transaction Complete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clearUI();
                 }
             }
         }
@@ -1075,19 +1095,7 @@ namespace ChiuMartSAIS2.App
 
         private void btnNewTransaction_Click(object sender, EventArgs e)
         {
-            dgvCart.Rows.Clear();
-            label1.Text = "Chiumart POS";
-            lblTotal.Text = "0.0";
-            txtAddress.Text = "";
-            txtClient.Text = "Walk-in Client";
-            dgvCart.Enabled = true;
-            txtAddress.ReadOnly = false;
-            checkBox1.Checked = false;
-            checkBox2.Checked = false;
-            txtClient.ReadOnly = false;
-            btnCheckout.Enabled = true;
-            // GENERATE NEW OR
-            txtOrNo.Text = generateOR();
+            clearUI();
         }
 
         private void button5_Click(object sender, EventArgs e)
