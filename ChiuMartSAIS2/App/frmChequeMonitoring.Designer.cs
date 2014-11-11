@@ -115,7 +115,7 @@
             // columnHeader6
             // 
             this.columnHeader6.Text = "Processing Date";
-            this.columnHeader6.Width = 153;
+            this.columnHeader6.Width = 164;
             // 
             // columnHeader5
             // 
@@ -173,7 +173,7 @@
             // columnHeader7
             // 
             this.columnHeader7.Text = "Status";
-            this.columnHeader7.Width = 130;
+            this.columnHeader7.Width = 121;
             // 
             // columnHeader9
             // 

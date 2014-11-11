@@ -38,24 +38,27 @@ namespace ChiuMartSAIS2.App.ReportDialog
 
                     if (logType == "transaction")
                     {
-                        sql = "SELECT l.id, l.username, l.quantity, l.price, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND l.relationId = @relationId ORDER BY l.created_date ASC";
+                        sql = "SELECT l.id, l.username, l.quantity, l.price, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND l.relationId = @relationId AND l.created_date BETWEEN @from AND @to ORDER BY l.created_date ASC";
                     }
                     else if (logType == "client")
                     {
-                        sql = "SELECT l.id, l.username, l.quantity, l.price, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND c.clientId = @relationId ORDER BY l.created_date ASC";
+                        sql = "SELECT l.id, l.username, l.quantity, l.price, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND c.clientId = @relationId AND l.created_date BETWEEN @from AND @to ORDER BY l.created_date ASC";
                     }
                     else if (logType == "supplier")
                     {
-                        sql = "SELECT l.id, l.username, l.quantity, l.created_date, l.log_type, l.supplierPrice, u.unitDesc, p.productName, s.supplierName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN supplier as s ON l.supplierId = s.supplierId WHERE l.log_type = 'transaction' AND s.supplierId = @relationId ORDER BY l.created_date ASC";
+                        sql = "SELECT l.id, l.username, l.quantity, l.created_date, l.log_type, l.supplierPrice, u.unitDesc, p.productName, s.supplierName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN supplier as s ON l.supplierId = s.supplierId WHERE l.log_type = 'transaction' AND s.supplierId = @relationId AND l.created_date BETWEEN @from AND @to ORDER BY l.created_date ASC";
                     }
                     else if (logType == "balance")
                     {
-                        sql = "SELECT l.id, l.username, l.price, l.created_date, l.paymentMethod, l.log_type, c.clientName FROM logs as l INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'balance' AND l.relationId = @relationId ORDER BY l.created_date ASC";
+                        sql = "SELECT l.id, l.username, l.price, l.created_date, l.paymentMethod, l.log_type, c.clientName FROM logs as l INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'balance' AND l.relationId = @relationId AND l.created_date BETWEEN @from AND @to ORDER BY l.created_date ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sql, con);
                     sqlCmd.Parameters.AddWithValue("logType", logType);
                     sqlCmd.Parameters.AddWithValue("relationId", relationId);
+
+                    sqlCmd.Parameters.AddWithValue("from", dtpStart.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("to", dtpEnd.Value.AddDays(1).Date);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
                     quantity = 0;
@@ -114,27 +117,27 @@ namespace ChiuMartSAIS2.App.ReportDialog
 
                     if (logType == "transaction")
                     {
-                        sql = "SELECT l.id, l.username, l.quantity, l.price, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND l.relationId = @relationId AND DATE_FORMAT(l.created_date,'%Y-%m-%d') BETWEEN @from AND @to ORDER BY l.created_date ASC";
+                        sql = "SELECT l.id, l.username, l.quantity, l.price, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND l.relationId = @relationId AND l.created_date BETWEEN @from AND @to ORDER BY l.created_date ASC";
                     }
                     else if (logType == "client")
                     {
-                        sql = "SELECT l.id, l.username, l.quantity, l.price, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND c.clientId = @relationId AND DATE_FORMAT(l.created_date,'%Y-%m-%d') BETWEEN @from AND @to ORDER BY l.created_date ASC";
+                        sql = "SELECT l.id, l.username, l.quantity, l.price, l.created_date, l.log_type, u.unitDesc, p.productName, c.clientName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'transaction' AND c.clientId = @relationId AND l.created_date BETWEEN @from AND @to ORDER BY l.created_date ASC";
                     }
                     else if (logType == "supplier")
                     {
-                        sql = "SELECT l.id, l.username, l.quantity, l.created_date, l.log_type, l.supplierPrice, u.unitDesc, p.productName, s.supplierName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN supplier as s ON l.supplierId = s.supplierId WHERE l.log_type = 'transaction' AND s.supplierId = @relationId AND DATE_FORMAT(l.created_date,'%Y-%m-%d') BETWEEN @from AND @to ORDER BY l.created_date ASC";
+                        sql = "SELECT l.id, l.username, l.quantity, l.created_date, l.log_type, l.supplierPrice, u.unitDesc, p.productName, s.supplierName FROM logs as l INNER JOIN units as u ON l.unit_Id = u.unitId INNER JOIN products as p ON l.product_id = p.productId INNER JOIN supplier as s ON l.supplierId = s.supplierId WHERE l.log_type = 'transaction' AND s.supplierId = @relationId AND l.created_date BETWEEN @from AND @to ORDER BY l.created_date ASC";
                     }
                     else if (logType == "balance")
                     {
-                        sql = "SELECT l.id, l.username, l.price, l.created_date, l.paymentMethod, l.log_type, c.clientName FROM logs as l INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'balance' AND l.relationId = @relationId AND DATE_FORMAT(l.created_date,'%Y-%m-%d') BETWEEN @from AND @to ORDER BY l.created_date ASC";
+                        sql = "SELECT l.id, l.username, l.price, l.created_date, l.paymentMethod, l.log_type, c.clientName FROM logs as l INNER JOIN client as c ON l.clientId = c.clientId WHERE l.log_type = 'balance' AND l.relationId = @relationId AND l.created_date BETWEEN @from AND @to ORDER BY l.created_date ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sql, con);
                     sqlCmd.Parameters.AddWithValue("logType", logType);
                     sqlCmd.Parameters.AddWithValue("relationId", relationId);
 
-                    sqlCmd.Parameters.AddWithValue("from", dtpStart.Value.ToString("yyyy-MM-dd"));
-                    sqlCmd.Parameters.AddWithValue("to", dtpEnd.Value.ToString("yyyy-MM-dd"));
+                    sqlCmd.Parameters.AddWithValue("from", dtpStart.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("to", dtpEnd.Value.AddDays(1).Date);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
                     quantity = 0;

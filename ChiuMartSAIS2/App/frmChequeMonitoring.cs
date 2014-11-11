@@ -49,10 +49,7 @@ namespace ChiuMartSAIS2.App
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeBranch"].ToString());
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(string.Format("{0:C}", reader["chequeAmount"]));
 
-                        // converts the chequeDate to datetime
-                        DateTime aDate;
-                        DateTime.TryParse(reader["chequeDate"].ToString(), out aDate);
-                        lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                        lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeDate"].ToString());
 
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeStatus"].ToString());
@@ -96,10 +93,7 @@ namespace ChiuMartSAIS2.App
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeBranch"].ToString());
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(string.Format("{0:C}", reader["chequeAmount"]));
 
-                        // converts the chequeDate to datetime
-                        DateTime aDate;
-                        DateTime.TryParse(reader["chequeDate"].ToString(), out aDate);
-                        lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                        lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeDate"].ToString());
 
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeStatus"].ToString());
@@ -155,10 +149,7 @@ namespace ChiuMartSAIS2.App
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeBranch"].ToString());
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(string.Format("{0:C}", reader["chequeAmount"]));
 
-                        // converts the chequeDate to datetime
-                        DateTime aDate;
-                        DateTime.TryParse(reader["chequeDate"].ToString(), out aDate);
-                        lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                        lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeDate"].ToString());
 
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["status"].ToString());
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeStatus"].ToString());

@@ -588,6 +588,28 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
         }
 
+        private void unVerifyTransaction()
+        {
+            try
+            {
+                using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE transaction SET transStatus = 'Completed' WHERE orNo = @crit";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("crit", crit);
+
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show(this, "Transaction successfully unverified", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Can't connect to database ", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void insertCheque(string bank, string branch, string chequeName, string chequeDate, string chequeNo, string amount)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
@@ -711,6 +733,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             checkTransaction();
             getOverAllSales();
 
+            btnVerify.Text = "Verify";
             btnOverview.Visible = false;
             btnPayBalance.Visible = false;
         }
@@ -726,6 +749,9 @@ namespace ChiuMartSAIS2.App.Dialogs
             searchTransaction();
             checkTransaction();
             getOverAllSales();
+            btnVerify.Text = "Verify";
+            btnOverview.Visible = false;
+            btnPayBalance.Visible = false;
         }
 
         private void btnView_Click(object sender, EventArgs e)
@@ -772,6 +798,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             getTransactionByPayment("All");
             checkTransaction();
             getOverAllSales();
+            btnVerify.Text = "Verify";
             btnOverview.Visible = false;
             btnPayBalance.Visible = false;
         }
@@ -781,6 +808,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             getTransactionByPayment("Cash");
             getOverAllSales();
             checkTransaction();
+            btnVerify.Text = "Verify";
             btnOverview.Visible = false;
             btnPayBalance.Visible = false;
         }
@@ -790,6 +818,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             getTransactionByPayment("Cheque");
             getOverAllSales();
             checkTransaction();
+            btnVerify.Text = "Verify";
             btnOverview.Visible = false;
             btnPayBalance.Visible = false;
         }
@@ -799,6 +828,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             getTransactionByPayment("Balance");
             getOverAllSales();
             checkTransaction();
+            btnVerify.Text = "Verify";
             btnOverview.Visible = true;
             btnPayBalance.Visible = true;
         }
@@ -808,6 +838,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             getTransactionByPayment("Verified");
             getOverAllSales();
             checkTransaction();
+            btnVerify.Text = "Unverify";
             btnOverview.Visible = false;
             btnPayBalance.Visible = false;
         }
@@ -820,13 +851,25 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
 
             string id = lstClients.SelectedItems[lstClients.SelectedItems.Count - 1].Text;
-
-            if (MessageBox.Show(this, "Do you want to verify this transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnVerify.Text == "Verify")
             {
-                verifyTransaction();
-                populateTransaction();
-                checkTransaction();
+                if (MessageBox.Show(this, "Do you want to verify this transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    verifyTransaction();
+                    populateTransaction();
+                    checkTransaction();
+                }
             }
+            else
+            {
+                if (MessageBox.Show(this, "Do you want to unverify this transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    unVerifyTransaction();
+                    getTransactionByPayment("Verified");
+                    checkTransaction();
+                }
+            }
+            
         }
 
         private void btnPayBalance_Click(object sender, EventArgs e)

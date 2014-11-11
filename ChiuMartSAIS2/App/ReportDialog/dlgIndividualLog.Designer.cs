@@ -33,6 +33,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -45,7 +46,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listView1
@@ -90,6 +90,11 @@
             this.columnHeader4.Text = "Product";
             this.columnHeader4.Width = 166;
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Unit Price";
+            this.columnHeader1.Width = 105;
+            // 
             // columnHeader5
             // 
             this.columnHeader5.Text = "Name";
@@ -103,7 +108,7 @@
             // columnHeader7
             // 
             this.columnHeader7.Text = "Date";
-            this.columnHeader7.Width = 183;
+            this.columnHeader7.Width = 207;
             // 
             // btnFilter
             // 
@@ -195,11 +200,6 @@
             this.label4.Size = new System.Drawing.Size(51, 21);
             this.label4.TabIndex = 25;
             this.label4.Text = "Total: ";
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Unit Price";
-            this.columnHeader1.Width = 105;
             // 
             // dlgIndividualLog
             // 

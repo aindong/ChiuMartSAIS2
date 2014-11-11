@@ -43,11 +43,13 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status  AND p.poStatus != 'Verified' ORDER BY poId ASC";
+                    string sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND p.poDate BETWEEN @from AND @to AND p.poStatus != 'Verified' ORDER BY poId ASC";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("status", this.status);
+                    sqlCmd.Parameters.AddWithValue("from", dtpFrom.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("to", dtpTo.Value.AddDays(1).Date);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -77,11 +79,7 @@ namespace ChiuMartSAIS2.App
                                 double totalAmount = (price * qty);
 
                                 lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
-
-                                // converts the poDate to datetime
-                                DateTime aDate;
-                                DateTime.TryParse(reader["poDate"].ToString(), out aDate);
-                                lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                                lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["poDate"].ToString());
 
                                 lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["poStatus"].ToString());
                                 lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["status"].ToString());
@@ -98,11 +96,7 @@ namespace ChiuMartSAIS2.App
                             double totalAmount = (price * qty);
 
                             lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
-
-                            // converts the transdate to datetime
-                            DateTime aDate;
-                            DateTime.TryParse(reader["poDate"].ToString(), out aDate);
-                            lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                            lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["poDate"].ToString());
 
                             lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["poStatus"].ToString());
                             lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["status"].ToString());
@@ -126,24 +120,26 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND p.poStatus != 'Verified' ORDER BY poId ASC";
+                    string sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND p.poStatus != 'Verified' AND p.poDate BETWEEN @from AND @to ORDER BY poId ASC";
                     DateTime dateNow = DateTime.Today;
                     if (poStatus == "Delivered")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND p.poStatus = 'Delivered' AND p.poStatus != 'Verified' ORDER BY poId ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND p.poStatus = 'Delivered' AND p.poStatus != 'Verified' AND p.poDate BETWEEN @from AND @to ORDER BY poId ASC";
                     }
                     else if (poStatus == "BackOrder")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND p.poStatus = 'Back Order' AND p.poStatus != 'Verified' ORDER BY poId ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND p.poStatus = 'Back Order' AND p.poStatus != 'Verified' AND p.poDate BETWEEN @from AND @to ORDER BY poId ASC";
                     }
                     else if (poStatus == "Verified")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND p.poStatus = 'Verified' ORDER BY poId ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND p.poStatus = 'Verified' AND p.poDate BETWEEN @from AND @to ORDER BY poId ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("status", this.status);
+                    sqlCmd.Parameters.AddWithValue("from", dtpFrom.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("to", dtpTo.Value.AddDays(1).Date);
                     
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -156,7 +152,7 @@ namespace ChiuMartSAIS2.App
                         {
                             if (reader["poId"].ToString() == lstPO.Items[ctr].Text)
                             {
-                                double lstAmount = double.Parse(lstPO.Items[ctr].SubItems[2].Text);
+                                double lstAmount = double.Parse(lstPO.Items[ctr].SubItems[2].Text, System.Globalization.NumberStyles.Currency);
                                 double price = double.Parse(reader["oldPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
@@ -172,11 +168,7 @@ namespace ChiuMartSAIS2.App
                                 double totalAmount = (price * qty);
 
                                 lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
-
-                                // converts the poDate to datetime
-                                DateTime aDate;
-                                DateTime.TryParse(reader["poDate"].ToString(), out aDate);
-                                lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                                lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["poDate"].ToString());
 
                                 lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["poStatus"].ToString());
                                 lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["status"].ToString());
@@ -193,11 +185,7 @@ namespace ChiuMartSAIS2.App
                             double totalAmount = (price * qty);
 
                             lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
-
-                            // converts the transdate to datetime
-                            DateTime aDate;
-                            DateTime.TryParse(reader["poDate"].ToString(), out aDate);
-                            lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                            lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["poDate"].ToString());
 
                             lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["poStatus"].ToString());
                             lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["status"].ToString());
@@ -222,13 +210,13 @@ namespace ChiuMartSAIS2.App
                 {
                     Con.Open();
 
-                    string sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND supplierName LIKE @crit ORDER BY poId ASC";
+                    string sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND supplierName LIKE @crit AND p.poDate BETWEEN @from AND @to ORDER BY poId ASC";
                     
                     if (filter == "Supplier")
                     {
-                        sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND supplierName LIKE @crit ORDER BY poId ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND supplierName LIKE @crit AND p.poDate BETWEEN @from AND @to ORDER BY poId ASC";
                     } else if (filter == "poid") {
-                        sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND poId LIKE @crit ORDER BY poId ASC";
+                        sqlQuery = "SELECT p.*, s.supplierName, p.oldPrice FROM po as p INNER JOIN supplier as s ON p.supplierId = s.supplierId WHERE p.status = @status AND poId LIKE @crit AND p.poDate BETWEEN @from AND @to ORDER BY poId ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -236,6 +224,8 @@ namespace ChiuMartSAIS2.App
                     // SQL Query Parameters
                     sqlCmd.Parameters.AddWithValue("crit", "%" + critera + "%");
                     sqlCmd.Parameters.AddWithValue("status", this.status);
+                    sqlCmd.Parameters.AddWithValue("from", dtpFrom.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("to", dtpTo.Value.AddDays(1).Date);
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -264,11 +254,7 @@ namespace ChiuMartSAIS2.App
                                 double totalAmount = (price * qty);
 
                                 lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
-
-                                // converts the poDate to datetime
-                                DateTime aDate;
-                                DateTime.TryParse(reader["poDate"].ToString(), out aDate);
-                                lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                                lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["poDate"].ToString());
 
                                 lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["poStatus"].ToString());
                                 lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["status"].ToString());
@@ -285,11 +271,7 @@ namespace ChiuMartSAIS2.App
                             double totalAmount = (price * qty);
 
                             lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(string.Format("{0:C}", totalAmount));
-
-                            // converts the transdate to datetime
-                            DateTime aDate;
-                            DateTime.TryParse(reader["poDate"].ToString(), out aDate);
-                            lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(aDate.ToString("MMMM dd, yyyy"));
+                            lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["poDate"].ToString());
 
                             lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["poStatus"].ToString());
                             lstPO.Items[lstPO.Items.Count - 1].SubItems.Add(reader["status"].ToString());
@@ -764,6 +746,12 @@ namespace ChiuMartSAIS2.App
             {
                 populatePo();
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            populatePo();
+            checkPo();
         }
     }
 }
