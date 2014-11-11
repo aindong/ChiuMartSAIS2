@@ -140,13 +140,12 @@ namespace ChiuMartSAIS2.App.ReportDialog
 
         private void dlgSalesEndofDay_Load(object sender, EventArgs e)
         {
-
-            lblCash.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cash") + getLogCount("Cash")));
-            lblCheque.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque") + getLogCount("Cheque")));
-            lblAccountsReceivables.Text = string.Format("{0:C}", getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Balance"));
-
             getBasyo(dtpStart.Value.AddDays(-1).ToString("yyyy-MM-dd"), dtpStart.Value.AddDays(1).ToString("yyyy-MM-dd"));
             lblTransparentBasyo.Text = string.Format("{0:C}", transparentBasyo);
+
+            lblCash.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cash") + getLogCount("Cash")) - transparentBasyo);
+            lblCheque.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque") + getLogCount("Cheque")));
+            lblAccountsReceivables.Text = string.Format("{0:C}", getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Balance"));
 
             cashCount = double.Parse(lblCash.Text, System.Globalization.NumberStyles.Currency);
             chequeCount = double.Parse(lblCheque.Text, System.Globalization.NumberStyles.Currency);
@@ -161,12 +160,12 @@ namespace ChiuMartSAIS2.App.ReportDialog
 
         private void button1_Click(object sender, EventArgs e)
         {
-            lblCash.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cash") + getLogCount("Cash")));
-            lblCheque.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque")  + getLogCount("Cheque")));
-            lblAccountsReceivables.Text = string.Format("{0:C}", getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Balance"));
-            
             getBasyo(dtpStart.Value.AddDays(-1).ToString("yyyy-MM-dd"), dtpStart.Value.AddDays(1).ToString("yyyy-MM-dd"));
-            lblTransparentBasyo.Text = string.Format("{0:C}",transparentBasyo);
+            lblTransparentBasyo.Text = string.Format("{0:C}", transparentBasyo);
+
+            lblCash.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cash") + getLogCount("Cash")) - transparentBasyo);
+            lblCheque.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque") + getLogCount("Cheque")));
+            lblAccountsReceivables.Text = string.Format("{0:C}", getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Balance"));
 
             cashCount = double.Parse(lblCash.Text, System.Globalization.NumberStyles.Currency);
             chequeCount = double.Parse(lblCheque.Text, System.Globalization.NumberStyles.Currency);
