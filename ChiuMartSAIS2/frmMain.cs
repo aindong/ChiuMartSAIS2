@@ -158,7 +158,7 @@ namespace ChiuMartSAIS2
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            
+            lblDate.Text = DateTime.Today.ToLongDateString().ToString();
         }
 
         private void btnPurchaseOrder_Click(object sender, EventArgs e)
@@ -177,8 +177,11 @@ namespace ChiuMartSAIS2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            DateTime dateTime = DateTime.Now;
+            lblTime.Text = dateTime.ToString("hh:mm:ss tt");
+
             // Idle Mode Logic
-            if (Properties.Settings.Default.idleMode == true)
+            /*if (Properties.Settings.Default.idleMode == true)
             {
                 if (Classes.GetLastUserInput.formStatusIdle == false)
                 {
@@ -189,7 +192,7 @@ namespace ChiuMartSAIS2
                         idle.ShowDialog();
                     }
                 }
-            }
+            }*/
             
         }
 

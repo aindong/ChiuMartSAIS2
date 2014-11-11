@@ -1183,6 +1183,8 @@ namespace ChiuMartSAIS2.App
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            DateTime dateTime = DateTime.Now;
+            lblTime.Text = dateTime.ToString("hh:mm:ss tt");
             /*
             if (Classes.GetLastUserInput.formStatusIdle == false)
             {
