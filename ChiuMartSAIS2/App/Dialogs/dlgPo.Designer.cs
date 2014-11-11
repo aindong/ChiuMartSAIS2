@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtPoNo = new System.Windows.Forms.TextBox();
             this.dgvCart = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,11 +40,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblCashier = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.button5 = new System.Windows.Forms.Button();
@@ -57,6 +58,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnNewTransaction = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.panel3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -71,8 +73,9 @@
             this.txtPoNo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPoNo.Location = new System.Drawing.Point(14, 92);
             this.txtPoNo.Name = "txtPoNo";
+            this.txtPoNo.ReadOnly = true;
             this.txtPoNo.Size = new System.Drawing.Size(207, 25);
-            this.txtPoNo.TabIndex = 1;
+            this.txtPoNo.TabIndex = 111;
             this.txtPoNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dgvCart
@@ -167,12 +170,12 @@
             this.panel3.Size = new System.Drawing.Size(371, 238);
             this.panel3.TabIndex = 31;
             // 
-            // toolStripStatusLabel6
+            // lblTime
             // 
-            this.toolStripStatusLabel6.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            this.toolStripStatusLabel6.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel6.Text = "toolStripStatusLabel6";
+            this.lblTime.BackColor = System.Drawing.SystemColors.Control;
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(118, 17);
+            this.lblTime.Text = "toolStripStatusLabel6";
             // 
             // toolStripStatusLabel5
             // 
@@ -182,12 +185,12 @@
             this.toolStripStatusLabel5.Size = new System.Drawing.Size(40, 17);
             this.toolStripStatusLabel5.Text = "Time: ";
             // 
-            // toolStripStatusLabel4
+            // lblDate
             // 
-            this.toolStripStatusLabel4.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel4.Text = "toolStripStatusLabel4";
+            this.lblDate.BackColor = System.Drawing.SystemColors.Control;
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(118, 17);
+            this.lblDate.Text = "toolStripStatusLabel4";
             // 
             // toolStripStatusLabel3
             // 
@@ -197,22 +200,22 @@
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(37, 17);
             this.toolStripStatusLabel3.Text = "Date: ";
             // 
-            // toolStripStatusLabel2
+            // lblCashier
             // 
-            this.toolStripStatusLabel2.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            this.lblCashier.BackColor = System.Drawing.SystemColors.Control;
+            this.lblCashier.Name = "lblCashier";
+            this.lblCashier.Size = new System.Drawing.Size(118, 17);
+            this.lblCashier.Text = "toolStripStatusLabel2";
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2,
+            this.lblCashier,
             this.toolStripStatusLabel3,
-            this.toolStripStatusLabel4,
+            this.lblDate,
             this.toolStripStatusLabel5,
-            this.toolStripStatusLabel6});
+            this.lblTime});
             this.statusStrip1.Location = new System.Drawing.Point(0, 499);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1021, 22);
@@ -276,7 +279,7 @@
             this.txtSupplier.Location = new System.Drawing.Point(227, 92);
             this.txtSupplier.Name = "txtSupplier";
             this.txtSupplier.Size = new System.Drawing.Size(399, 25);
-            this.txtSupplier.TabIndex = 2;
+            this.txtSupplier.TabIndex = 1;
             this.txtSupplier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSupplier.TextChanged += new System.EventHandler(this.txtSupplier_TextChanged);
             this.txtSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSupplier_KeyDown);
@@ -346,6 +349,12 @@
             this.label3.TabIndex = 34;
             this.label3.Text = "Po Number";
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // dlgPo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -389,11 +398,11 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
+        private System.Windows.Forms.ToolStripStatusLabel lblTime;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.ToolStripStatusLabel lblDate;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel lblCashier;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Button button5;
@@ -413,6 +422,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.Timer timer1;
 
     }
 }

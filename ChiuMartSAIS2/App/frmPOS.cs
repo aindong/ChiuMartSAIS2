@@ -530,7 +530,6 @@ namespace ChiuMartSAIS2.App
         {
             populateClientTextbox();
             populateProductTextbox();
-            txtClient.Focus();
             
             // Set status bar labels
             txtCashier.Text = Classes.Authentication.Instance.userFullName;

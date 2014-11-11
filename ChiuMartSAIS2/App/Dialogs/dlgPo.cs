@@ -520,11 +520,32 @@ namespace ChiuMartSAIS2.App.Dialogs
             //}
         }
 
+        private void newPurchaseOrder()
+        {
+            dgvCart.Rows.Clear();
+            label1.Text = "Chiumart PO";
+            lblTotal.Text = "0.0";
+            txtSupplier.Text = "";
+            txtAddress.Text = "";
+            txtSupplier.ReadOnly = false;
+            txtAddress.ReadOnly = false;
+            dgvCart.Enabled = true;
+            btnCheckout.Visible = true;
+            btnCheckout.Enabled = true;
+            txtSupplier.Focus();
+
+            // GENERATE NEW OR
+            txtPoNo.Text = generatePO();
+        }
+
         private void dlgPo_Load(object sender, EventArgs e)
         {
             populateSupplierTextbox();
             populateProductTextbox();
             btnCheckout.Visible = true;
+            // Set status bar labels
+            lblCashier.Text = Classes.Authentication.Instance.userFullName;
+            lblDate.Text = DateTime.Today.ToLongDateString().ToString();
 
             // GENERATE NEW PO
             txtPoNo.Text = generatePO();
@@ -649,6 +670,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 MessageBox.Show(this, "PO successfully added", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgvCart.Enabled = false;
                 btnCheckout.Enabled = false;
+                newPurchaseOrder();
 
 
                 //DialogResult = DialogResult.OK;
@@ -657,19 +679,7 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         private void btnNewTransaction_Click(object sender, EventArgs e)
         {
-            dgvCart.Rows.Clear();
-            label1.Text = "Chiumart PO";
-            lblTotal.Text = "0.0";
-            txtSupplier.Text = "";
-            txtAddress.Text = "";
-            txtSupplier.ReadOnly = false;
-            txtAddress.ReadOnly = false;
-            dgvCart.Enabled = true;
-            btnCheckout.Visible = true;
-            btnCheckout.Enabled = true;
-
-            // GENERATE NEW OR
-            txtPoNo.Text = generatePO();
+            newPurchaseOrder();
         }
 
         private void dgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -739,6 +749,12 @@ namespace ChiuMartSAIS2.App.Dialogs
         private void lblTotal_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DateTime dateTime = DateTime.Now;
+            lblTime.Text = dateTime.ToString("hh:mm:ss tt");
         }
     }
 }
