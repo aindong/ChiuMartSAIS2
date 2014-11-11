@@ -371,6 +371,7 @@ namespace ChiuMartSAIS2.App
             txtAddress.Text = "";
             txtClient.Text = "Walk-in Client";
             dgvCart.Enabled = true;
+            btnCheckout.Text = "Checkout";
             txtAddress.ReadOnly = false;
             checkBox1.Checked = false;
             checkBox2.Checked = false;
@@ -706,86 +707,94 @@ namespace ChiuMartSAIS2.App
             }
             else
             {
-                // Check if ability to checkout
-                if (dgvCart.Rows.Count <= 1)
+                if (btnCheckout.Text == "Checkout")
                 {
-                    MessageBox.Show("There's no item available for checkout because the cart is empty or the total is zero", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Open the checkout form
-                Dialogs.dlgCheckout frm = new Dialogs.dlgCheckout("POS");
-                // Set the variables
-                frm.total = lblTotal.Text;
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
+                    // Check if ability to checkout
+                    if (dgvCart.Rows.Count <= 1)
                     {
-                        string paymentMethod = "";
-                        frm.getProduct(out paymentMethod, out bank, out branch, out chequeName, out chequeDate, out total, out chequeNo);
-                        if (paymentMethod == "Cheque")
-                        {
-                            insertCheque(bank, branch, chequeName, chequeDate, chequeNo, total);
-                        }
+                        MessageBox.Show("There's no item available for checkout because the cart is empty or the total is zero", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
-                        // Check if the cell has a product, if not, continue the loop
-                        if (dgvCart.Rows[i].Cells[3].Value.ToString() == "")
+                    // Open the checkout form
+                    Dialogs.dlgCheckout frm = new Dialogs.dlgCheckout("POS");
+                    // Set the variables
+                    frm.total = lblTotal.Text;
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
                         {
-                            continue;
-                        }
-
-                        string prodId = getProductID(dgvCart.Rows[i].Cells[3].Value.ToString());
-                        string unitId = getUnitID(dgvCart.Rows[i].Cells[2].Value.ToString());
-                        string currentPrice = getProductProductPrice(dgvCart.Rows[i].Cells[3].Value.ToString());
-                        string supplierPrice = getProductSupplierPrice(dgvCart.Rows[i].Cells[3].Value.ToString());
-
-                        string str = txtClient.Text;
-                        string[] clientId = new string[2];
-                        if (str == "Walk-in Client")
-                        {
-                            clientId[1] = "0";
-                        }
-                        else
-                        {
-                            clientId = str.Split(new string[] { " - " }, StringSplitOptions.None);
-                        }
-                        string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
-                        string newPrice = dgvCart.Rows[i].Cells[4].Value.ToString();
-                        int prodqty = Int32.Parse(qty);
-
-                        getPoQueue(prodId);
-                        for (int j = 0; j < poStock.Count; j++)
-                        {
-                            if (poStock[j] >= prodqty)
+                            string paymentMethod = "";
+                            frm.getProduct(out paymentMethod, out bank, out branch, out chequeName, out chequeDate, out total, out chequeNo);
+                            if (paymentMethod == "Cheque")
                             {
-                                updateProductQueue(prodId, poSupplierPrice[j], prodqty.ToString());
-                                insertTransaction(txtOrNo.Text, prodId, clientId[1], prodqty.ToString(), unitId, paymentMethod, poSupplierPrice[j], newPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
-                                break;
+                                insertCheque(bank, branch, chequeName, chequeDate, chequeNo, total);
+                            }
+
+                            // Check if the cell has a product, if not, continue the loop
+                            if (dgvCart.Rows[i].Cells[3].Value.ToString() == "")
+                            {
+                                continue;
+                            }
+
+                            string prodId = getProductID(dgvCart.Rows[i].Cells[3].Value.ToString());
+                            string unitId = getUnitID(dgvCart.Rows[i].Cells[2].Value.ToString());
+                            string currentPrice = getProductProductPrice(dgvCart.Rows[i].Cells[3].Value.ToString());
+                            string supplierPrice = getProductSupplierPrice(dgvCart.Rows[i].Cells[3].Value.ToString());
+
+                            string str = txtClient.Text;
+                            string[] clientId = new string[2];
+                            if (str == "Walk-in Client")
+                            {
+                                clientId[1] = "0";
                             }
                             else
                             {
-                                updateProductQueue(prodId, poSupplierPrice[j], poStock[j].ToString());
-                                if (poStock[j] != 0)
-                                {
-                                    insertTransaction(txtOrNo.Text, prodId, clientId[1], poStock[j].ToString(), unitId, paymentMethod, poSupplierPrice[j], newPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
-                                }
-                                prodqty = prodqty - poStock[j];
+                                clientId = str.Split(new string[] { " - " }, StringSplitOptions.None);
                             }
-                        }
-                        updateStocks(qty, prodId, newPrice);
-                        // updateProductQueue(prodId, supplierPrice, qty);
+                            string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
+                            string newPrice = dgvCart.Rows[i].Cells[4].Value.ToString();
+                            int prodqty = Int32.Parse(qty);
 
-                        // LOGS
-                        Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), clientId[1], "", newPrice, "", "");
+                            getPoQueue(prodId);
+                            for (int j = 0; j < poStock.Count; j++)
+                            {
+                                if (poStock[j] >= prodqty)
+                                {
+                                    updateProductQueue(prodId, poSupplierPrice[j], prodqty.ToString());
+                                    insertTransaction(txtOrNo.Text, prodId, clientId[1], prodqty.ToString(), unitId, paymentMethod, poSupplierPrice[j], newPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
+                                    break;
+                                }
+                                else
+                                {
+                                    updateProductQueue(prodId, poSupplierPrice[j], poStock[j].ToString());
+                                    if (poStock[j] != 0)
+                                    {
+                                        insertTransaction(txtOrNo.Text, prodId, clientId[1], poStock[j].ToString(), unitId, paymentMethod, poSupplierPrice[j], newPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
+                                    }
+                                    prodqty = prodqty - poStock[j];
+                                }
+                            }
+                            updateStocks(qty, prodId, newPrice);
+                            // updateProductQueue(prodId, supplierPrice, qty);
+
+                            // LOGS
+                            Classes.ActionLogger.LogAction(qty, unitId, prodId, "transaction", prodId.ToString(), clientId[1], "", newPrice, "", "");
+                        }
+
+                        Reports.frmOrReport rpt = new Reports.frmOrReport();
+                        rpt.orno = txtOrNo.Text;
+                        rpt.ShowDialog();
+                        insertNewOR();
+                        MessageBox.Show(this, "Transaction Complete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clearUI();
                     }
-                   
+                }
+                else
+                {
                     Reports.frmOrReport rpt = new Reports.frmOrReport();
                     rpt.orno = txtOrNo.Text;
                     rpt.ShowDialog();
-                    btnCheckout.Enabled = false;
-                    insertNewOR();
-                    MessageBox.Show(this, "Transaction Complete", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    clearUI();
                 }
             }
         }
@@ -805,12 +814,11 @@ namespace ChiuMartSAIS2.App
                     dgvCart.Enabled = false;
                     txtAddress.ReadOnly = true;
                     txtClient.ReadOnly = true;
-                    btnCheckout.Enabled = false;
                     txtTransBasyo.Text = transparentBasyoReturned;
                     txtYellowBasyo.Text = yellowBasyoReturned;
 
                     label1.Text = "View Transaction";
-
+                    btnCheckout.Text = "Reprint";
                     populatePosUi();
                 }
                 else
