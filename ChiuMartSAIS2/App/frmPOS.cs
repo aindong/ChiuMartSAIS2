@@ -1254,7 +1254,7 @@ namespace ChiuMartSAIS2.App
             }
             else
             {
-
+                clearUI();
             }
         }
 
