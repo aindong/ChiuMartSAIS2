@@ -93,6 +93,90 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
         }
 
+        private List<int> poStock = new List<int>();
+        private List<String> poSupplierPrice = new List<string>();
+        // Get The PO Queue
+        private void getPoQueue(string crit)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "SELECT * FROM po_queue WHERE product_id = @crit";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("crit", crit);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    poStock.Clear();
+                    poSupplierPrice.Clear();
+
+                    while (reader.Read())
+                    {
+                        poStock.Add(Int32.Parse(reader["stock"].ToString()));
+                        poSupplierPrice.Add(reader["supplier_price"].ToString());
+                    }
+
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Message);
+                    MessageBox.Show(this, "Error Retrieving queue stocks", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        // Add a product stock on queue
+        private void updateProductQueueAdd(string productId, string price, string stock)
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "UPDATE po_queue SET stock = stock + @stock WHERE product_id = @productId AND supplier_price = @price";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    sqlCmd.Parameters.AddWithValue("stock", stock);
+                    sqlCmd.Parameters.AddWithValue("productId", productId);
+                    sqlCmd.Parameters.AddWithValue("price", price);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Adding new po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Subtract a product stock on queue
+        private void updateProductQueueSubtract(string productId, string price, string stock)
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "UPDATE po_queue SET stock = stock - @stock WHERE product_id = @productId AND supplier_price = @price";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    sqlCmd.Parameters.AddWithValue("stock", stock);
+                    sqlCmd.Parameters.AddWithValue("productId", productId);
+                    sqlCmd.Parameters.AddWithValue("price", price);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Adding new po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         // Get productId by productName
         private int getProductIdByName(string productName)
         {
@@ -268,6 +352,32 @@ namespace ChiuMartSAIS2.App.Dialogs
                     updateStockByProductName(productName, qty, false);
                     // Subtract from source product stock
                     updateStockByProductName(originalProductName, originalQty, true);
+
+                    int originalProductId = getProductIdByName(originalProductName);
+                    getPoQueue(originalProductId.ToString());
+
+                    // Subtract the PO Queue of the source product
+                    for (int j = 0; j < poStock.Count; j++)
+                    {
+                        if (poStock[j] >= originalQty)
+                        {
+                            updateProductQueueSubtract(originalProductId.ToString(), poSupplierPrice[j], originalQty.ToString());
+                            break;
+                        }
+                        else
+                        {
+                            if (poStock[j] != 0)
+                            {
+                                updateProductQueueSubtract(originalProductId.ToString(), poSupplierPrice[j], poStock[j].ToString());
+                            }
+                        }
+                        originalQty = originalQty - poStock[j];
+                    }
+
+                    // TODO: GET THE HIGHEST PRICE SOLD
+                    // CHECK IF PRODUCT_ID EXIST ON THE PO_QUEUE TABLE
+                    // IF NOT, ADD A NEW PO_QUEUE FOR THIS PRODUCT
+                    // 
 
                     // Insert log
                     insertLog(qty, productName, originalProductName, originalQty);

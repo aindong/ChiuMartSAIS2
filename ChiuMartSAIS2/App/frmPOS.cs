@@ -406,6 +406,29 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        private void updateProductQueueReturn(string productId, string price, string stock)
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "UPDATE po_queue SET stock = stock + @stock WHERE product_id = @productId AND supplier_price = @price";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    sqlCmd.Parameters.AddWithValue("stock", stock);
+                    sqlCmd.Parameters.AddWithValue("productId", productId);
+                    sqlCmd.Parameters.AddWithValue("price", price);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Adding new po error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         /// <summary>
         /// Get the product by product name
         /// </summary>
@@ -919,7 +942,16 @@ namespace ChiuMartSAIS2.App
                             string newPrice = dgvCart.Rows[i].Cells[4].Value.ToString();
                             int prodqty = Int32.Parse(qty);
 
-                            insertTransactionReturn(txtOrNo.Text, prodId, clientId[1], qty, unitId, "Cash", supplierPrice, newPrice);
+                            getPoQueue(prodId);
+                            for (int j = 0; j < poStock.Count; j++)
+                            {
+                                if (poStock[j] > 0)
+                                {
+                                    updateProductQueueReturn(prodId, poSupplierPrice[j], prodqty.ToString());
+                                    insertTransactionReturn(txtOrNo.Text, prodId, clientId[1], qty, unitId, "Cash", poSupplierPrice[j], newPrice);
+                                    break;
+                                }
+                            }
 
                             revertStocks(qty, prodId);
                         }
@@ -1442,6 +1474,16 @@ namespace ChiuMartSAIS2.App
                     {
                         string prodId = getProductID(dgvCart.Rows[i].Cells[3].Value.ToString());
                         string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
+
+                        getPoQueue(prodId);
+                        for (int j = 0; j < poStock.Count; j++)
+                        {
+                            if (poStock[j] > 0)
+                            {
+                                updateProductQueueReturn(prodId, poSupplierPrice[j], qty);
+                                break;
+                            }
+                        }
 
                         revertStocks(qty, prodId);
                     }
