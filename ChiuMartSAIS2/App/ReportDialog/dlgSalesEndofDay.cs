@@ -55,7 +55,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
             catch(MySqlException ex) 
             {
                 string errorCode = string.Format("Error Code : {0}", ex.Number);
-                MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Can't connect to database" + ex.Message.ToString(), errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
@@ -88,7 +88,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
             catch (MySqlException ex)
             {
                 string errorCode = string.Format("Error Code : {0}", ex.Number);
-                MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Can't connect to database" + ex.Message.ToString(), errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
@@ -129,7 +129,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
             catch (MySqlException ex)
             {
                 string errorCode = string.Format("Error Code : {0}", ex.Number);
-                MessageBox.Show(this, "Can't connect to database", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Can't connect to database " + ex.Message.ToString(), errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

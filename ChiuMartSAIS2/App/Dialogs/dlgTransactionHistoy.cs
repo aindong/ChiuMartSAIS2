@@ -566,7 +566,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
         }
 
-        private void verifyTransaction()
+        private void verifyTransaction(string orNo)
         {
             try
             {
@@ -575,10 +575,9 @@ namespace ChiuMartSAIS2.App.Dialogs
                     Con.Open();
                     string sqlQuery = "UPDATE transaction SET transStatus = 'Verified' WHERE orNo = @crit";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
-                    sqlCmd.Parameters.AddWithValue("crit", crit);
+                    sqlCmd.Parameters.AddWithValue("crit", orNo);
 
                     sqlCmd.ExecuteNonQuery();
-                    MessageBox.Show(this, "Transaction successfully verified", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (MySqlException ex)
@@ -843,6 +842,18 @@ namespace ChiuMartSAIS2.App.Dialogs
             btnPayBalance.Visible = false;
         }
 
+        private void removeFromListview(List<int> indexes)
+        {
+            int lastIndex = lstClients.SelectedItems[0].Index;
+            for (int i = 0; i < indexes.Count; i++)
+            {
+                lstClients.SelectedItems[0].Remove();
+            }
+
+            lstClients.Focus();
+            lstClients.Items[lastIndex].Selected = true;
+        }
+
         private void btnVerify_Click(object sender, EventArgs e)
         {
             if (lstClients.SelectedItems.Count <= 0)
@@ -853,16 +864,36 @@ namespace ChiuMartSAIS2.App.Dialogs
             string id = lstClients.SelectedItems[lstClients.SelectedItems.Count - 1].Text;
             if (btnVerify.Text == "Verify")
             {
-                if (MessageBox.Show(this, "Do you want to verify this transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(this, "Do you want to verify this transaction/s?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    verifyTransaction();
-                    populateTransaction();
+                    List<int> indexes = new List<int>();
+                    for (int i = 0; i < lstClients.SelectedItems.Count; i++)
+                    {
+                        string orNo = lstClients.SelectedItems[i].Text;
+
+                        // Check if ORNO is in balance status
+                        if (lstClients.SelectedItems[i].SubItems[4].Text.ToLower() == "balance") {
+                            if (MessageBox.Show(this, "TRANSACTION with OR NUMBER OF " + orNo + " has a payment method of BALANCE, DO YOU WANT TO VERIFY THIS?", "CONFIRMATION", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
+                            {
+                                verifyTransaction(orNo);
+                                indexes.Add(i);
+                                continue;
+                            }
+                        }
+
+                        verifyTransaction(orNo);
+                        indexes.Add(i);
+                    }
+
+                    //MessageBox.Show(this, "Transaction successfully verified", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //populateTransaction();
+                    removeFromListview(indexes);
                     checkTransaction();
                 }
             }
             else
             {
-                if (MessageBox.Show(this, "Do you want to unverify this transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(this, "Do you want to unverify this transaction/s?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     unVerifyTransaction();
                     getTransactionByPayment("Verified");

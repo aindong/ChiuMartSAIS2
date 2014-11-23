@@ -119,9 +119,9 @@
             this.lstClients.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstClients.FullRowSelect = true;
             this.lstClients.GridLines = true;
+            this.lstClients.HideSelection = false;
             this.lstClients.Location = new System.Drawing.Point(11, 123);
             this.lstClients.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.lstClients.MultiSelect = false;
             this.lstClients.Name = "lstClients";
             this.lstClients.Size = new System.Drawing.Size(943, 315);
             this.lstClients.TabIndex = 28;
