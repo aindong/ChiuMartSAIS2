@@ -155,7 +155,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
 
             //MessageBox.Show(DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd") + " : " + DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"));
 
-            lblTotalSales.Text = string.Format("{0:C}", (cashCount + chequeCount + accountsReceivableCount - transparentBasyo));
+            lblTotalSales.Text = string.Format("{0:C}", (cashCount + chequeCount + accountsReceivableCount));
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -175,7 +175,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
 
             //MessageBox.Show(DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd") + " : " + DateTime.Today.AddDays(1).ToString("yyyy-MM-dd"));
 
-            lblTotalSales.Text = string.Format("{0:C}", (cashCount + chequeCount + accountsReceivableCount - transparentBasyo));
+            lblTotalSales.Text = string.Format("{0:C}", (cashCount + chequeCount + accountsReceivableCount));
         }
 
         private void btnChequeView_Click(object sender, EventArgs e)
