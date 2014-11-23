@@ -116,6 +116,35 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        private void insertTransactionReturn(string orNo, string productId, string clientId, string qty, string unitId, string paymentMethod, string supplierPrice, string unitPrice)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "INSERT INTO transaction (orNo, productId, clientId, paymentMethod, qty, unitId, transStatus, supplierPrice, unitPrice) VALUES (@orNo, @productId, @clientId, @paymentMethod, @qty, @unitId, 'Return', @supplierPrice, @unitPrice)";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("orNo", orNo);
+                    sqlCmd.Parameters.AddWithValue("productId", productId);
+                    sqlCmd.Parameters.AddWithValue("clientId", clientId);
+                    sqlCmd.Parameters.AddWithValue("qty", qty);
+                    sqlCmd.Parameters.AddWithValue("unitId", unitId);
+                    sqlCmd.Parameters.AddWithValue("paymentMethod", paymentMethod);
+                    sqlCmd.Parameters.AddWithValue("supplierPrice", supplierPrice);
+                    sqlCmd.Parameters.AddWithValue("unitPrice", unitPrice);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Transaction error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void updateStocks(string qty, string crit, string newPrice)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
@@ -890,23 +919,7 @@ namespace ChiuMartSAIS2.App
                             string newPrice = dgvCart.Rows[i].Cells[4].Value.ToString();
                             int prodqty = Int32.Parse(qty);
 
-                            for (int j = 0; j < poStock.Count; j++)
-                            {
-                                if (poStock[j] >= prodqty)
-                                {
-                                    insertTransaction(txtOrNo.Text, prodId, clientId[1], prodqty.ToString(), unitId, "Cash", poSupplierPrice[j], newPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
-                                    break;
-                                }
-                                else
-                                {
-                                    updateProductQueue(prodId, poSupplierPrice[j], poStock[j].ToString());
-                                    if (poStock[j] != 0)
-                                    {
-                                        insertTransaction(txtOrNo.Text, prodId, clientId[1], poStock[j].ToString(), unitId, "Cash", poSupplierPrice[j], newPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
-                                    }
-                                    prodqty = prodqty - poStock[j];
-                                }
-                            }
+                            insertTransactionReturn(txtOrNo.Text, prodId, clientId[1], qty, unitId, "Cash", supplierPrice, newPrice);
 
                             revertStocks(qty, prodId);
                         }
@@ -919,6 +932,7 @@ namespace ChiuMartSAIS2.App
                         txtClient.Enabled = false;
                         txtAddress.Enabled = false;
                         btnCheckout.Enabled = false;
+                        cboTransactionType.Enabled = false;
                     }
                 }
                 else
@@ -1340,6 +1354,7 @@ namespace ChiuMartSAIS2.App
         {
             DateTime dateTime = DateTime.Now;
             lblTime.Text = dateTime.ToString("hh:mm:ss tt");
+            lblDate.Text = DateTime.Today.ToLongDateString().ToString();
             /*
             if (Classes.GetLastUserInput.formStatusIdle == false)
             {
