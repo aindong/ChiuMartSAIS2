@@ -31,6 +31,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         private string balance = "";
         private string yellowBasyoReturned;
         private string transparentBasyoReturned;
+        private string status;
         private double totalamount = 0;
 
         private Classes.Configuration conf;
@@ -50,7 +51,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.unitPrice, t.orNo, t.qty, t.yellowBasyoReturned, t.transparentBasyoReturned, u.unitDesc, c.clientName, c.clientAddress, p.productName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId INNER JOIN units as u ON t.unitId = u.unitId WHERE t.orNo = @crit";
+                    string sqlQuery = "SELECT t.unitPrice, t.orNo, t.qty, t.yellowBasyoReturned, t.transparentBasyoReturned, t.transStatus, u.unitDesc, c.clientName, c.clientAddress, p.productName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId INNER JOIN units as u ON t.unitId = u.unitId WHERE t.orNo = @crit";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -69,6 +70,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                         address = reader["clientAddress"].ToString();
                         yellowBasyoReturned = reader["yellowBasyoReturned"].ToString();
                         transparentBasyoReturned = reader["transparentBasyoReturned"].ToString();
+                        status = reader["transStatus"].ToString();
                     }
                 }
                 catch (MySqlException ex)
@@ -665,7 +667,7 @@ namespace ChiuMartSAIS2.App.Dialogs
 
 
         public void getTransaction(out List<String> qty, out List<String> productName, out List<String> units, out List<String> productPrice,
-                out string orNo, out string clientName, out string clientAddress, out string action, out string yellowBasyoReturned, out string transparentBasyoReturned)
+                out string orNo, out string clientName, out string clientAddress, out string action, out string yellowBasyoReturned, out string transparentBasyoReturned, out string status)
         {
             // Set the qty
             qty = this.qty;
@@ -687,6 +689,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             yellowBasyoReturned = this.yellowBasyoReturned;
             // set the transparent basyo returned
             transparentBasyoReturned = this.transparentBasyoReturned;
+            status = this.status;
         }
 
         private void checkTransaction()

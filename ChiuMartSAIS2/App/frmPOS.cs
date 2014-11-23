@@ -36,6 +36,7 @@ namespace ChiuMartSAIS2.App
         private string total = "";
         private string yellowBasyoReturned;
         private string transparentBasyoReturned;
+        private string status;
 
         public frmPOS(List<String> _qty, List<String> _productName, List<String> _units, List<String> _productPrice, string _poId, string _clientName, string _clientAddress, string _action)
         {
@@ -135,6 +136,60 @@ namespace ChiuMartSAIS2.App
                     string errorCode = string.Format("Error Code : {0}", ex.Number);
                     MessageBox.Show(this, "Updating stocks error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Return stocks
+        /// </summary>
+        /// <param name="qty"></param>
+        /// <param name="productId"></param>
+        private void revertStocks(string qty, string productId)
+        {
+            using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+            {
+                try
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE products SET productStock = productStock + @qty WHERE productId = @crit";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+
+                    sqlCmd.Parameters.AddWithValue("qty", qty);
+                    sqlCmd.Parameters.AddWithValue("crit", productId);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    string errorCode = string.Format("Error Code : {0}", ex.Number);
+                    MessageBox.Show(this, "Updating stocks error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Update the status of a sales into a VOID
+        /// </summary>
+        /// <param name="orNo"></param>
+        private void voidTransaction(string orNo)
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sql = "UPDATE transaction SET transStatus = 'Void' WHERE orNo = @orNo";
+                    MySqlCommand sqlCmd = new MySqlCommand(sql, con);
+
+                    sqlCmd.Parameters.AddWithValue("orNo", orNo);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Transaction status changing error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -365,6 +420,12 @@ namespace ChiuMartSAIS2.App
 
         private void clearUI()
         {
+            btnVoid.Visible = false;
+            cboTransactionType.Enabled = true;
+            cboTransactionType.SelectedIndex = 0;
+
+            dgvCart.ForeColor = Color.Black;
+
             dgvCart.Rows.Clear();
             label1.Text = "Chiumart POS";
             lblTotal.Text = "0.0";
@@ -528,6 +589,7 @@ namespace ChiuMartSAIS2.App
 
         private void frmPOS_Load(object sender, EventArgs e)
         {
+            cboTransactionType.SelectedIndex = 0;
             populateClientTextbox();
             populateProductTextbox();
             
@@ -550,7 +612,8 @@ namespace ChiuMartSAIS2.App
             {
                 // GENERATE NEW OR
                 txtOrNo.Text = generateOR();
-            }            
+            }
+
         }
 
         private void txtClient_Click(object sender, EventArgs e)
@@ -806,9 +869,11 @@ namespace ChiuMartSAIS2.App
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 frm.getTransaction(out qty, out productName, out units, out productPrice,
-                out orNo, out clientName, out clientAddress, out action, out yellowBasyoReturned, out transparentBasyoReturned);
+                out orNo, out clientName, out clientAddress, out action, out yellowBasyoReturned, out transparentBasyoReturned, out status);
                 if (action == "View")
                 {
+                    btnVoid.Visible = true;
+                    cboTransactionType.Enabled = false;
 
                     dgvCart.Enabled = false;
                     txtAddress.ReadOnly = true;
@@ -819,6 +884,17 @@ namespace ChiuMartSAIS2.App
                     label1.Text = "View Transaction";
                     btnCheckout.Text = "Reprint";
                     populatePosUi();
+
+                    if (status == "Return")
+                    {
+                        cboTransactionType.SelectedIndex = 1;
+                        dgvCart.ForeColor = Color.Red;
+                        cboTransactionType.SelectedIndex = 1;
+                    }
+                    else
+                    {
+                        cboTransactionType.SelectedIndex = 0;
+                    }
                 }
                 else
                 {
@@ -1267,9 +1343,26 @@ namespace ChiuMartSAIS2.App
             }
             else
             {
-                clearUI();
+                if (MessageBox.Show("Are you sure to void this transaction? All items in this transaction will go back into the stock and sales will be deducted", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    voidTransaction(txtOrNo.Text);
+
+                    for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
+                    {
+                        string prodId = getProductID(dgvCart.Rows[i].Cells[3].Value.ToString());
+                        string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
+
+                        revertStocks(qty, prodId);
+                    }
+                }
+
+                MessageBox.Show("Transaction successfully changed to VOID", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvCart.ForeColor = Color.Red;
+                cboTransactionType.SelectedIndex = 1;
             }
         }
+
+        
 
         private void btnBasyo_Click(object sender, EventArgs e)
         {
