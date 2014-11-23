@@ -463,6 +463,10 @@ namespace ChiuMartSAIS2.App.Dialogs
                     {
                         sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus = 'Verified' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
                     }
+                    else if (status == "Voided")
+                    {
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus = 'Voided' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
+                    }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
@@ -946,6 +950,16 @@ namespace ChiuMartSAIS2.App.Dialogs
         private void lstClients_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            getTransactionByPayment("Voided");
+            getOverAllSales();
+            checkTransaction();
+            btnVerify.Text = "Verify";
+            btnOverview.Visible = false;
+            btnPayBalance.Visible = false;
         }
     }
 }
