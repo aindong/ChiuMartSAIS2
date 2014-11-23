@@ -724,6 +724,12 @@ namespace ChiuMartSAIS2.App.Dialogs
                     lvw.BackColor = Color.Silver;
                 }
 
+                // Check for voided
+                if (paymentStatus == "Voided")
+                {
+                    lvw.BackColor = Color.Red;
+                }
+
                 // Check for Verified
                 if (stat == "Verified")
                 {
