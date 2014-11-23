@@ -1107,7 +1107,11 @@ namespace ChiuMartSAIS2.App
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (MessageBox.Show(this, "Are you sure to close the Point of Sales?", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            
         }
 
         private void txtClient_KeyPress(object sender, KeyPressEventArgs e)
