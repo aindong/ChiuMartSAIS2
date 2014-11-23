@@ -37,6 +37,7 @@ namespace ChiuMartSAIS2.App
         private string yellowBasyoReturned;
         private string transparentBasyoReturned;
         private string status;
+        private DateTime transDate;
 
         public frmPOS(List<String> _qty, List<String> _productName, List<String> _units, List<String> _productPrice, string _poId, string _clientName, string _clientAddress, string _action)
         {
@@ -420,6 +421,7 @@ namespace ChiuMartSAIS2.App
 
         private void clearUI()
         {
+            btnVoid.Enabled = true;
             btnVoid.Visible = false;
             cboTransactionType.Enabled = true;
             cboTransactionType.SelectedIndex = 0;
@@ -852,6 +854,73 @@ namespace ChiuMartSAIS2.App
                         clearUI();
                     }
                 }
+                else if (btnCheckout.Text == "Return") 
+                {
+                    if (MessageBox.Show("Are you sure to return this product/s? All item/s in this transaction will go back into the stock and sales will be deducted", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        // Loop Through each item on the cart
+                        for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
+                        {
+                            // Check if the cell has a product, if not, continue the loop
+                            if (dgvCart.Rows[i].Cells[3].Value.ToString() == "")
+                            {
+                                continue;
+                            }
+
+                            // Get variables
+                            string prodId = getProductID(dgvCart.Rows[i].Cells[3].Value.ToString());
+                            string unitId = getUnitID(dgvCart.Rows[i].Cells[2].Value.ToString());
+                            string currentPrice = getProductProductPrice(dgvCart.Rows[i].Cells[3].Value.ToString());
+                            string supplierPrice = getProductSupplierPrice(dgvCart.Rows[i].Cells[3].Value.ToString());
+
+                            // Get the client
+                            string str = txtClient.Text;
+                            string[] clientId = new string[2];
+                            if (str == "Walk-in Client")
+                            {
+                                clientId[1] = "0";
+                            }
+                            else
+                            {
+                                clientId = str.Split(new string[] { " - " }, StringSplitOptions.None);
+                            }
+
+                            // Get variables
+                            string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
+                            string newPrice = dgvCart.Rows[i].Cells[4].Value.ToString();
+                            int prodqty = Int32.Parse(qty);
+
+                            for (int j = 0; j < poStock.Count; j++)
+                            {
+                                if (poStock[j] >= prodqty)
+                                {
+                                    insertTransaction(txtOrNo.Text, prodId, clientId[1], prodqty.ToString(), unitId, "Cash", poSupplierPrice[j], newPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
+                                    break;
+                                }
+                                else
+                                {
+                                    updateProductQueue(prodId, poSupplierPrice[j], poStock[j].ToString());
+                                    if (poStock[j] != 0)
+                                    {
+                                        insertTransaction(txtOrNo.Text, prodId, clientId[1], poStock[j].ToString(), unitId, "Cash", poSupplierPrice[j], newPrice, txtYellowBasyo.Text, txtTransBasyo.Text);
+                                    }
+                                    prodqty = prodqty - poStock[j];
+                                }
+                            }
+
+                            revertStocks(qty, prodId);
+                        }
+
+
+                        MessageBox.Show("Transaction successfully RETURNED", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dgvCart.ForeColor = Color.Red;
+                        cboTransactionType.SelectedIndex = 1;
+                        dgvCart.Enabled = false;
+                        txtClient.Enabled = false;
+                        txtAddress.Enabled = false;
+                        btnCheckout.Enabled = false;
+                    }
+                }
                 else
                 {
                     Reports.frmOrReport rpt = new Reports.frmOrReport();
@@ -863,13 +932,14 @@ namespace ChiuMartSAIS2.App
 
         private void button8_Click(object sender, EventArgs e)
         {
+            string tDate;
             // Open the transaction history form
             Dialogs.dlgTransactionHistoy frm = new Dialogs.dlgTransactionHistoy();
             // Set the variables
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 frm.getTransaction(out qty, out productName, out units, out productPrice,
-                out orNo, out clientName, out clientAddress, out action, out yellowBasyoReturned, out transparentBasyoReturned, out status);
+                out orNo, out clientName, out clientAddress, out action, out yellowBasyoReturned, out transparentBasyoReturned, out status, out tDate);
                 if (action == "View")
                 {
                     btnVoid.Visible = true;
@@ -885,15 +955,21 @@ namespace ChiuMartSAIS2.App
                     btnCheckout.Text = "Reprint";
                     populatePosUi();
 
-                    if (status == "Return")
+                    if (status == "Return" || status == "Void")
                     {
                         cboTransactionType.SelectedIndex = 1;
                         dgvCart.ForeColor = Color.Red;
-                        cboTransactionType.SelectedIndex = 1;
                     }
                     else
                     {
                         cboTransactionType.SelectedIndex = 0;
+                    }
+
+                    // Check if date today is equal to date of transaction;
+                    transDate = DateTime.Parse(tDate);
+                    if (transDate.Date.CompareTo(DateTime.Now.Date) < 0)
+                    {
+                        btnVoid.Enabled = false;
                     }
                 }
                 else
@@ -1354,11 +1430,11 @@ namespace ChiuMartSAIS2.App
 
                         revertStocks(qty, prodId);
                     }
-                }
 
-                MessageBox.Show("Transaction successfully changed to VOID", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dgvCart.ForeColor = Color.Red;
-                cboTransactionType.SelectedIndex = 1;
+                    MessageBox.Show("Transaction successfully changed to VOID", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvCart.ForeColor = Color.Red;
+                    cboTransactionType.SelectedIndex = 1;
+                }
             }
         }
 
@@ -1368,6 +1444,20 @@ namespace ChiuMartSAIS2.App
         {
             frmBasyo frm = new frmBasyo();
             frm.ShowDialog();
+        }
+
+        private void cboTransactionType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboTransactionType.SelectedIndex == 0)
+            {
+                btnCheckout.Text = "Checkout";
+                dgvCart.ForeColor = Color.Black;
+            }
+            else
+            {
+                btnCheckout.Text = "Return";
+                dgvCart.ForeColor = Color.Red;
+            }
         }
     }
 }

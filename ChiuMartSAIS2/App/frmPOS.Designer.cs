@@ -490,6 +490,7 @@
             this.cboTransactionType.Name = "cboTransactionType";
             this.cboTransactionType.Size = new System.Drawing.Size(366, 25);
             this.cboTransactionType.TabIndex = 28;
+            this.cboTransactionType.SelectedIndexChanged += new System.EventHandler(this.cboTransactionType_SelectedIndexChanged);
             // 
             // label5
             // 
