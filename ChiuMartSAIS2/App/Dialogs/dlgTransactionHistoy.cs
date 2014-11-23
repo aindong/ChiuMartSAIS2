@@ -449,27 +449,31 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus != 'Verified' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
+                    string sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE t.transDate BETWEEN @from AND @to AND t.transStatus != 'Verified' ORDER BY orNo ASC";
                     DateTime dateNow = DateTime.Today;
                     if (status == "Cash")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Cash' AND transStatus != 'Verified' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Cash' AND t.transDate BETWEEN @from AND @to AND (t.transStatus != 'Verified' AND t.transStatus != 'Void' AND t.transStatus != 'Return') ORDER BY orNo ASC";
                     }
                     else if (status == "Cheque")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Cheque' AND transStatus != 'Verified' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Cheque' AND t.transDate BETWEEN @from AND @to AND (t.transStatus != 'Verified' AND t.transStatus != 'Void' AND t.transStatus != 'Return') ORDER BY orNo ASC";
                     }
                     else if (status == "Balance")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Balance' AND transStatus != 'Verified' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE paymentMethod = 'Balance' AND t.transDate BETWEEN @from AND @to AND (t.transStatus != 'Verified' AND t.transStatus != 'Void' AND t.transStatus != 'Return') ORDER BY orNo ASC";
                     }
                     else if (status == "Verified")
                     {
                         sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus = 'Verified' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
                     }
-                    else if (status == "Voided")
+                    else if (status == "Void")
                     {
-                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus = 'Voided' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus = 'Void' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
+                    }
+                    else if (status == "Return")
+                    {
+                        sqlQuery = "SELECT t.*, c.clientName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId WHERE transStatus = 'Return' AND t.transDate BETWEEN @from AND @to ORDER BY orNo ASC";
                     }
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
@@ -725,9 +729,15 @@ namespace ChiuMartSAIS2.App.Dialogs
                 }
 
                 // Check for voided
-                if (paymentStatus == "Voided")
+                if (stat == "Void")
                 {
-                    lvw.BackColor = Color.Red;
+                    lvw.BackColor = Color.DarkRed;
+                }
+
+                // Check for return
+                if (stat == "Return")
+                {
+                    lvw.BackColor = Color.Firebrick;
                 }
 
                 // Check for Verified
@@ -966,7 +976,17 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         private void label8_Click(object sender, EventArgs e)
         {
-            getTransactionByPayment("Voided");
+            getTransactionByPayment("Void");
+            getOverAllSales();
+            checkTransaction();
+            btnVerify.Text = "Verify";
+            btnOverview.Visible = false;
+            btnPayBalance.Visible = false;
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+            getTransactionByPayment("Return");
             getOverAllSales();
             checkTransaction();
             btnVerify.Text = "Verify";

@@ -478,6 +478,12 @@ namespace ChiuMartSAIS2.App
             cboTransactionType.Enabled = true;
             cboTransactionType.SelectedIndex = 0;
 
+            dgvCart.Enabled = true;
+            txtClient.Enabled = true;
+            txtAddress.Enabled = true;
+            btnCheckout.Enabled = true;
+            cboTransactionType.Enabled = true;
+
             dgvCart.ForeColor = Color.Black;
 
             dgvCart.Rows.Clear();
@@ -965,6 +971,7 @@ namespace ChiuMartSAIS2.App
                         txtAddress.Enabled = false;
                         btnCheckout.Enabled = false;
                         cboTransactionType.Enabled = false;
+                        insertNewOR();
                     }
                 }
                 else

@@ -35,7 +35,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
                 using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
                 {
                     con.Open();
-                    string sql = "SELECT qty, unitPrice FROM transaction WHERE transDate BETWEEN @start AND @end AND paymentMethod = @paymentType";
+                    string sql = "SELECT qty, unitPrice FROM transaction WHERE transDate BETWEEN @start AND @end AND paymentMethod = @paymentType AND (transStatus != 'Void' AND transStatus != 'Return')";
                     MySqlCommand sqlCmd = new MySqlCommand(sql, con);
                     sqlCmd.Parameters.AddWithValue("start", dtpStart.Value.Date);
                     sqlCmd.Parameters.AddWithValue("end", dtpEnd.Value.AddDays(1).Date);
