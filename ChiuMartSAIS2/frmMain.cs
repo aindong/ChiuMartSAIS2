@@ -179,7 +179,7 @@ namespace ChiuMartSAIS2
         {
             DateTime dateTime = DateTime.Now;
             lblTime.Text = dateTime.ToString("hh:mm:ss tt");
-
+            lblDate.Text = DateTime.Today.ToLongDateString().ToString();
             // Idle Mode Logic
             /*if (Properties.Settings.Default.idleMode == true)
             {

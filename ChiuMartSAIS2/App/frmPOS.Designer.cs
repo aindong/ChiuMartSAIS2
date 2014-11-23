@@ -68,6 +68,8 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.txtTransBasyo = new System.Windows.Forms.TextBox();
             this.txtYellowBasyo = new System.Windows.Forms.TextBox();
+            this.cboTransactionType = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -213,6 +215,7 @@
             this.btnVoid.TabIndex = 5;
             this.btnVoid.Text = "Void";
             this.btnVoid.UseVisualStyleBackColor = false;
+            this.btnVoid.Visible = false;
             this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // btnCheckout
@@ -307,9 +310,9 @@
             this.panel3.BackColor = System.Drawing.Color.LightGray;
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.lblTotal);
-            this.panel3.Location = new System.Drawing.Point(630, 92);
+            this.panel3.Location = new System.Drawing.Point(630, 120);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(371, 238);
+            this.panel3.Size = new System.Drawing.Size(371, 210);
             this.panel3.TabIndex = 20;
             // 
             // label9
@@ -412,6 +415,7 @@
             this.txtOrNo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOrNo.Location = new System.Drawing.Point(12, 92);
             this.txtOrNo.Name = "txtOrNo";
+            this.txtOrNo.ReadOnly = true;
             this.txtOrNo.Size = new System.Drawing.Size(207, 25);
             this.txtOrNo.TabIndex = 22;
             this.txtOrNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -432,6 +436,7 @@
             this.checkBox1.TabIndex = 24;
             this.checkBox1.Text = "Return Transparent Basyo";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // checkBox2
@@ -444,6 +449,7 @@
             this.checkBox2.TabIndex = 25;
             this.checkBox2.Text = "Return Yellow Basyo";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.Visible = false;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // txtTransBasyo
@@ -456,6 +462,7 @@
             this.txtTransBasyo.TabIndex = 26;
             this.txtTransBasyo.Text = "0";
             this.txtTransBasyo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTransBasyo.Visible = false;
             this.txtTransBasyo.TextChanged += new System.EventHandler(this.txtTransBasyo_TextChanged);
             // 
             // txtYellowBasyo
@@ -468,7 +475,32 @@
             this.txtYellowBasyo.TabIndex = 27;
             this.txtYellowBasyo.Text = "0";
             this.txtYellowBasyo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtYellowBasyo.Visible = false;
             this.txtYellowBasyo.TextChanged += new System.EventHandler(this.txtYellowBasyo_TextChanged);
+            // 
+            // cboTransactionType
+            // 
+            this.cboTransactionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTransactionType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboTransactionType.FormattingEnabled = true;
+            this.cboTransactionType.Items.AddRange(new object[] {
+            "Sales",
+            "Return"});
+            this.cboTransactionType.Location = new System.Drawing.Point(630, 92);
+            this.cboTransactionType.Name = "cboTransactionType";
+            this.cboTransactionType.Size = new System.Drawing.Size(366, 25);
+            this.cboTransactionType.TabIndex = 28;
+            this.cboTransactionType.SelectedIndexChanged += new System.EventHandler(this.cboTransactionType_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(627, 72);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(107, 17);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "Transaction Type";
             // 
             // frmPOS
             // 
@@ -476,6 +508,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 631);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cboTransactionType);
             this.Controls.Add(this.txtYellowBasyo);
             this.Controls.Add(this.txtTransBasyo);
             this.Controls.Add(this.checkBox2);
@@ -554,5 +588,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.ComboBox cboTransactionType;
+        private System.Windows.Forms.Label label5;
     }
 }
