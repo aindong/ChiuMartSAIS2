@@ -1011,10 +1011,6 @@ namespace ChiuMartSAIS2.App
                     btnCheckout.Text = "Reprint";
                     populatePosUi();
 
-                    lblTransDateLabel.Visible = true;
-                    lblTransDate.Visible = true;
-                    lblTransDate.Text = transDate.ToLongDateString().ToString();
-
                     if (status == "Return" || status == "Void")
                     {
                         cboTransactionType.SelectedIndex = 1;
@@ -1031,6 +1027,14 @@ namespace ChiuMartSAIS2.App
                     {
                         btnVoid.Enabled = false;
                     }
+                    else
+                    {
+                        btnVoid.Enabled = true;
+                    }
+
+                    lblTransDateLabel.Visible = true;
+                    lblTransDate.Visible = true;
+                    lblTransDate.Text = transDate.ToLongDateString().ToString();
                 }
                 else
                 {
@@ -1055,7 +1059,7 @@ namespace ChiuMartSAIS2.App
             }
             else
             {
-                dgvCart.RowCount = qty.Count;
+                dgvCart.RowCount = qty.Count + 1;
             }
             foreach (string q in qty)
             {
@@ -1480,6 +1484,22 @@ namespace ChiuMartSAIS2.App
             }
             else
             {
+                if (status == "Return" || status == "Void")
+                {
+                    dgvCart.ForeColor = Color.Black;
+                    cboTransactionType.SelectedIndex = 0;
+                    btnCheckout.Enabled = true;
+                    dgvCart.Enabled = true;
+                    cboTransactionType.Enabled = true;
+                    btnCheckout.Text = "Checkout";
+                    txtOrNo.Text = generateOR();
+                    btnVoid.Visible = false;
+                    lblTransDate.Visible = false;
+                    lblTransDateLabel.Visible = false;
+
+                    return;
+                }
+
                 if (MessageBox.Show("Are you sure to void this transaction? All items in this transaction will go back into the stock and sales will be deducted", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     voidTransaction(txtOrNo.Text);
@@ -1498,13 +1518,20 @@ namespace ChiuMartSAIS2.App
                                 break;
                             }
                         }
-
                         revertStocks(qty, prodId);
                     }
 
                     MessageBox.Show("Transaction successfully changed to VOID", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dgvCart.ForeColor = Color.Red;
-                    cboTransactionType.SelectedIndex = 1;
+                    dgvCart.ForeColor = Color.Black;
+                    cboTransactionType.SelectedIndex = 0;
+                    btnCheckout.Enabled = true;
+                    dgvCart.Enabled = true;
+                    cboTransactionType.Enabled = true;
+                    btnCheckout.Text = "Checkout";
+                    txtOrNo.Text = generateOR();
+                    btnVoid.Visible = false;
+                    lblTransDate.Visible = false;
+                    lblTransDateLabel.Visible = false;
                 }
             }
         }
@@ -1521,12 +1548,17 @@ namespace ChiuMartSAIS2.App
         {
             if (cboTransactionType.SelectedIndex == 0)
             {
-                btnCheckout.Text = "Checkout";
+                if (cboTransactionType.Enabled)
+                {
+                    btnCheckout.Text = "Checkout";
+                }
                 dgvCart.ForeColor = Color.Black;
             }
             else
             {
-                btnCheckout.Text = "Return";
+                if (cboTransactionType.Enabled) { 
+                    btnCheckout.Text = "Return";
+                }
                 dgvCart.ForeColor = Color.Red;
             }
         }
