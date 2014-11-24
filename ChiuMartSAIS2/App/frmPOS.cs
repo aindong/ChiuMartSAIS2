@@ -39,6 +39,9 @@ namespace ChiuMartSAIS2.App
         private string status;
         private DateTime transDate;
 
+        private DateTime fromtDate = DateTime.Now;
+        private DateTime toDate = DateTime.Now;
+
         public frmPOS(List<String> _qty, List<String> _productName, List<String> _units, List<String> _productPrice, string _poId, string _clientName, string _clientAddress, string _action)
         {
             InitializeComponent();
@@ -992,10 +995,12 @@ namespace ChiuMartSAIS2.App
             // Open the transaction history form
             Dialogs.dlgTransactionHistoy frm = new Dialogs.dlgTransactionHistoy();
             // Set the variables
+            frm.fromtDate = fromtDate;
+            frm.toDate = toDate;
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 frm.getTransaction(out qty, out productName, out units, out productPrice,
-                out orNo, out clientName, out clientAddress, out action, out yellowBasyoReturned, out transparentBasyoReturned, out status, out tDate);
+                out orNo, out clientName, out clientAddress, out action, out yellowBasyoReturned, out transparentBasyoReturned, out status, out tDate, out fromtDate, out toDate);
                 if (action == "View")
                 {
                     btnVoid.Visible = true;

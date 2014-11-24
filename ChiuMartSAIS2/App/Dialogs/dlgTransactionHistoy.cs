@@ -35,6 +35,9 @@ namespace ChiuMartSAIS2.App.Dialogs
         private string tDate;
         private double totalamount = 0;
 
+        public DateTime fromtDate = DateTime.Now;
+        public DateTime toDate = DateTime.Now;
+
         private Classes.Configuration conf;
         public dlgTransactionHistoy()
         {
@@ -677,7 +680,7 @@ namespace ChiuMartSAIS2.App.Dialogs
 
 
         public void getTransaction(out List<String> qty, out List<String> productName, out List<String> units, out List<String> productPrice,
-                out string orNo, out string clientName, out string clientAddress, out string action, out string yellowBasyoReturned, out string transparentBasyoReturned, out string status, out string tDate)
+                out string orNo, out string clientName, out string clientAddress, out string action, out string yellowBasyoReturned, out string transparentBasyoReturned, out string status, out string tDate, out DateTime from, out DateTime to)
         {
             // Set the qty
             qty = this.qty;
@@ -701,6 +704,9 @@ namespace ChiuMartSAIS2.App.Dialogs
             transparentBasyoReturned = this.transparentBasyoReturned;
             status = this.status;
             tDate = this.tDate;
+
+            from = dtpFrom.Value;
+            to = dtpTo.Value;
         }
 
         private void checkTransaction()
@@ -750,6 +756,9 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         private void dlgTransactionHistoy_Load(object sender, EventArgs e)
         {
+            dtpFrom.Value = fromtDate;
+            dtpTo.Value = toDate;
+
             if (Classes.Authentication.Instance.role != "Administrator")
             {
                 btnVerify.Visible = false;
@@ -761,6 +770,8 @@ namespace ChiuMartSAIS2.App.Dialogs
             btnVerify.Text = "Verify";
             btnOverview.Visible = false;
             btnPayBalance.Visible = false;
+
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
