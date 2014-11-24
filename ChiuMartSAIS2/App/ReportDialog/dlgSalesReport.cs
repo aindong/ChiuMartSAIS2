@@ -69,6 +69,37 @@ namespace ChiuMartSAIS2.App.ReportDialog
             }
         }
 
+        private Double getReturnCount()
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sql = "SELECT qty, unitPrice FROM transaction WHERE transDate BETWEEN @start AND @end AND transStatus = 'Return'";
+                    MySqlCommand sqlCmd = new MySqlCommand(sql, con);
+                    sqlCmd.Parameters.AddWithValue("start", dtpFrom.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("end", dtpTo.Value.AddDays(1).Date);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    double count = 0;
+                    while (reader.Read())
+                    {
+                        count += Double.Parse(reader["qty"].ToString()) * Double.Parse(reader["unitPrice"].ToString());
+                    }
+
+                    return count;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Can't connect to database" + ex.Message.ToString(), errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
         // Calculate total gross
         private void calculateTotalGross()
         {
@@ -77,6 +108,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
             {
                 totalGross += Double.Parse(listView1.Items[i].SubItems[4].Text);
             }
+            totalGross = totalGross - getReturnCount();
             lblGross.Text = string.Format("{0:C}", totalGross);
         }
 
