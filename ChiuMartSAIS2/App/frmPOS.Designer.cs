@@ -70,6 +70,8 @@
             this.txtYellowBasyo = new System.Windows.Forms.TextBox();
             this.cboTransactionType = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.lblTransDateLabel = new System.Windows.Forms.Label();
+            this.lblTransDate = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -308,6 +310,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.LightGray;
+            this.panel3.Controls.Add(this.lblTransDate);
+            this.panel3.Controls.Add(this.lblTransDateLabel);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.lblTotal);
             this.panel3.Location = new System.Drawing.Point(630, 120);
@@ -502,6 +506,28 @@
             this.label5.TabIndex = 29;
             this.label5.Text = "Transaction Type";
             // 
+            // lblTransDateLabel
+            // 
+            this.lblTransDateLabel.AutoSize = true;
+            this.lblTransDateLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransDateLabel.Location = new System.Drawing.Point(11, 4);
+            this.lblTransDateLabel.Name = "lblTransDateLabel";
+            this.lblTransDateLabel.Size = new System.Drawing.Size(121, 20);
+            this.lblTransDateLabel.TabIndex = 13;
+            this.lblTransDateLabel.Text = "Transaction Date";
+            this.lblTransDateLabel.Visible = false;
+            // 
+            // lblTransDate
+            // 
+            this.lblTransDate.AutoSize = true;
+            this.lblTransDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransDate.Location = new System.Drawing.Point(11, 24);
+            this.lblTransDate.Name = "lblTransDate";
+            this.lblTransDate.Size = new System.Drawing.Size(126, 21);
+            this.lblTransDate.TabIndex = 14;
+            this.lblTransDate.Text = "Transaction Date";
+            this.lblTransDate.Visible = false;
+            // 
             // frmPOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -541,6 +567,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -590,5 +617,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.ComboBox cboTransactionType;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblTransDate;
+        private System.Windows.Forms.Label lblTransDateLabel;
     }
 }

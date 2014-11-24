@@ -478,6 +478,9 @@ namespace ChiuMartSAIS2.App
             cboTransactionType.Enabled = true;
             cboTransactionType.SelectedIndex = 0;
 
+            lblTransDateLabel.Visible = false;
+            lblTransDate.Visible = false;
+
             dgvCart.Enabled = true;
             txtClient.Enabled = true;
             txtAddress.Enabled = true;
@@ -1007,6 +1010,10 @@ namespace ChiuMartSAIS2.App
                     label1.Text = "View Transaction";
                     btnCheckout.Text = "Reprint";
                     populatePosUi();
+
+                    lblTransDateLabel.Visible = true;
+                    lblTransDate.Visible = true;
+                    lblTransDate.Text = transDate.ToLongDateString().ToString();
 
                     if (status == "Return" || status == "Void")
                     {
