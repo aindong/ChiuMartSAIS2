@@ -507,6 +507,8 @@ namespace ChiuMartSAIS2.App
             // GENERATE NEW OR
             txtOrNo.Text = generateOR();
             txtClient.Focus();
+
+            button5.Enabled = true;
         }
 
         private String getProductSupplierPrice(string prodname)
@@ -785,22 +787,12 @@ namespace ChiuMartSAIS2.App
                     total += double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString(), System.Globalization.NumberStyles.Currency);
                 }
 
-                if (checkBox1.Checked == true)
-                {
-                    total -= double.Parse(txtTransBasyo.Text) * 100;
-                }
-
-                if (checkBox1.Checked == true)
-                {
-                    total -= double.Parse(txtYellowBasyo.Text) * 130;
-                }
-
                 lblTotal.Text = string.Format("{0:C}", total);
 
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show("Updating total price error: " + ex.Message.ToString());
             }
         }
 
@@ -809,17 +801,17 @@ namespace ChiuMartSAIS2.App
             try
             {
                 double total = 0;
-                for (int i = 0; i < (dgvCart.Rows.Count); i++)
+                for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
                 {
                     total += double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString(), System.Globalization.NumberStyles.Currency);
                 }
 
-                lblTotal.Text = total.ToString();
+                lblTotal.Text = string.Format("{0:C}", total);
 
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("Error on updating the total amount " + ex.Message.ToString());
             }
         }
 
@@ -1040,6 +1032,7 @@ namespace ChiuMartSAIS2.App
                     lblTransDateLabel.Visible = true;
                     lblTransDate.Visible = true;
                     lblTransDate.Text = transDate.ToLongDateString().ToString();
+                    button5.Enabled = false;
                 }
                 else
                 {
@@ -1066,6 +1059,12 @@ namespace ChiuMartSAIS2.App
             {
                 dgvCart.RowCount = qty.Count + 1;
             }
+            foreach (string item in productName)
+            {
+                dgvCart.Rows[ctr].Cells[0].Value = getProductID(item);
+                ctr++;
+            }
+            ctr = 0;
             foreach (string q in qty)
             {
                 dgvCart.Rows[ctr].Cells[1].Value = q;
@@ -1330,7 +1329,7 @@ namespace ChiuMartSAIS2.App
         {
             if (MessageBox.Show(this, "Are you sure to close the Point of Sales?", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                this.Close();
+                clearUI();
             }
             
         }
@@ -1487,6 +1486,14 @@ namespace ChiuMartSAIS2.App
                     }
                 }
             }
+            else if (btnVoid.Text == "Remove")
+            {
+                if (MessageBox.Show("Are you sure to remove this item from the cart?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    dgvCart.Rows.Remove(dgvCart.Rows[dgvCart.CurrentRow.Index]);
+                    updateTotalAmount();
+                }
+            }
             else
             {
                 if (status == "Return" || status == "Void")
@@ -1498,10 +1505,9 @@ namespace ChiuMartSAIS2.App
                     cboTransactionType.Enabled = true;
                     btnCheckout.Text = "Checkout";
                     txtOrNo.Text = generateOR();
-                    btnVoid.Visible = false;
                     lblTransDate.Visible = false;
                     lblTransDateLabel.Visible = false;
-
+                    btnVoid.Text = "Remove";
                     return;
                 }
 
@@ -1534,7 +1540,6 @@ namespace ChiuMartSAIS2.App
                     cboTransactionType.Enabled = true;
                     btnCheckout.Text = "Checkout";
                     txtOrNo.Text = generateOR();
-                    btnVoid.Visible = false;
                     lblTransDate.Visible = false;
                     lblTransDateLabel.Visible = false;
                 }
