@@ -46,9 +46,13 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtClient = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtReturn = new System.Windows.Forms.TextBox();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,12 +61,13 @@
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
+            this.columnHeader4,
             this.columnHeader3});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(14, 155);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(427, 179);
+            this.listView1.Size = new System.Drawing.Size(549, 179);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -76,18 +81,18 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Date";
-            this.columnHeader2.Width = 240;
+            this.columnHeader2.Width = 180;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Returned Basyo";
-            this.columnHeader3.Width = 180;
+            this.columnHeader3.Width = 140;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(172, 8);
+            this.label2.Location = new System.Drawing.Point(237, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 21);
             this.label2.TabIndex = 11;
@@ -97,10 +102,10 @@
             // 
             this.dtpTo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTo.Location = new System.Drawing.Point(176, 32);
+            this.dtpTo.Location = new System.Drawing.Point(241, 32);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(158, 29);
-            this.dtpTo.TabIndex = 10;
+            this.dtpTo.Size = new System.Drawing.Size(216, 29);
+            this.dtpTo.TabIndex = 2;
             // 
             // label3
             // 
@@ -118,16 +123,16 @@
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFrom.Location = new System.Drawing.Point(13, 32);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(158, 29);
-            this.dtpFrom.TabIndex = 8;
+            this.dtpFrom.Size = new System.Drawing.Size(216, 29);
+            this.dtpFrom.TabIndex = 1;
             // 
             // btnFilter
             // 
             this.btnFilter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.Location = new System.Drawing.Point(340, 29);
+            this.btnFilter.Location = new System.Drawing.Point(464, 29);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(100, 32);
-            this.btnFilter.TabIndex = 7;
+            this.btnFilter.TabIndex = 3;
             this.btnFilter.Text = "Filter";
             this.btnFilter.UseVisualStyleBackColor = true;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
@@ -138,7 +143,7 @@
             this.lblSold.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSold.Location = new System.Drawing.Point(15, 94);
             this.lblSold.Name = "lblSold";
-            this.lblSold.Size = new System.Drawing.Size(204, 46);
+            this.lblSold.Size = new System.Drawing.Size(262, 46);
             this.lblSold.TabIndex = 13;
             this.lblSold.Text = "SOLD BASYO";
             this.lblSold.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -157,9 +162,9 @@
             // 
             this.lblReturned.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblReturned.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReturned.Location = new System.Drawing.Point(230, 94);
+            this.lblReturned.Location = new System.Drawing.Point(301, 95);
             this.lblReturned.Name = "lblReturned";
-            this.lblReturned.Size = new System.Drawing.Size(210, 46);
+            this.lblReturned.Size = new System.Drawing.Size(262, 46);
             this.lblReturned.TabIndex = 15;
             this.lblReturned.Text = "RETURNED BASYO";
             this.lblReturned.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -168,7 +173,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(225, 73);
+            this.label5.Location = new System.Drawing.Point(297, 73);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(157, 21);
             this.label5.TabIndex = 14;
@@ -176,61 +181,89 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(351, 340);
+            this.btnCancel.Location = new System.Drawing.Point(474, 352);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 49);
-            this.btnCancel.TabIndex = 16;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(159, 340);
+            this.btnEdit.Location = new System.Drawing.Point(282, 352);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(90, 49);
-            this.btnEdit.TabIndex = 17;
+            this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(63, 340);
+            this.btnAdd.Location = new System.Drawing.Point(186, 352);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(90, 49);
-            this.btnAdd.TabIndex = 19;
+            this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(255, 340);
+            this.btnDelete.Location = new System.Drawing.Point(378, 352);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(90, 49);
-            this.btnDelete.TabIndex = 18;
+            this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.txtClient);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtReturn);
-            this.panel1.Location = new System.Drawing.Point(63, 192);
+            this.panel1.Location = new System.Drawing.Point(124, 160);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(330, 113);
+            this.panel1.Size = new System.Drawing.Size(330, 166);
             this.panel1.TabIndex = 20;
             this.panel1.Visible = false;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(99, 20);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "Client Name:";
+            // 
+            // txtClient
+            // 
+            this.txtClient.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtClient.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtClient.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClient.Location = new System.Drawing.Point(13, 33);
+            this.txtClient.Name = "txtClient";
+            this.txtClient.Size = new System.Drawing.Size(298, 25);
+            this.txtClient.TabIndex = 8;
+            this.txtClient.Text = "Walk-in Client";
+            this.txtClient.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtClient.Click += new System.EventHandler(this.txtClient_Click);
+            this.txtClient.TextChanged += new System.EventHandler(this.txtClient_TextChanged);
+            this.txtClient.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtClient_KeyDown);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(222, 68);
+            this.button1.Location = new System.Drawing.Point(127, 122);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 32);
-            this.button1.TabIndex = 25;
+            this.button1.TabIndex = 10;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -238,7 +271,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 13);
+            this.label4.Location = new System.Drawing.Point(9, 67);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 20);
             this.label4.TabIndex = 24;
@@ -246,17 +279,32 @@
             // 
             // txtReturn
             // 
-            this.txtReturn.Location = new System.Drawing.Point(13, 36);
+            this.txtReturn.Location = new System.Drawing.Point(13, 90);
             this.txtReturn.Name = "txtReturn";
             this.txtReturn.Size = new System.Drawing.Size(298, 26);
-            this.txtReturn.TabIndex = 23;
+            this.txtReturn.TabIndex = 9;
+            this.txtReturn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtReturn_KeyDown);
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Client Name";
+            this.columnHeader4.Width = 220;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(222, 122);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(89, 32);
+            this.button2.TabIndex = 28;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // frmBasyo
             // 
-            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 398);
+            this.ClientSize = new System.Drawing.Size(575, 413);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnDelete);
@@ -312,5 +360,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtReturn;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtClient;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Button button2;
     }
 }
