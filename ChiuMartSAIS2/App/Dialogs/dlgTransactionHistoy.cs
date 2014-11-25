@@ -263,25 +263,24 @@ namespace ChiuMartSAIS2.App.Dialogs
                                 double price = double.Parse(reader["unitPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
-                                lstClients.Items[ctr].SubItems[3].Text = string.Format("{0:C}", (lstAmount + totalAmount));
                                 double grandTotal = lstAmount + totalAmount;
+                                lstClients.Items[ctr].SubItems[3].Text = string.Format("{0:C}", (grandTotal));
+
                                 double balancePayment = double.Parse(reader["paidBalance"].ToString());
                                 string method = (reader["paymentMethod"].ToString());
-
                                 if (grandTotal != balancePayment && method == "Balance")
                                 {
-                                    lstClients.Items[ctr].SubItems[5].Text = string.Format("{0:C}", (grandTotal - balancePayment));
+                                    lstClients.Items[ctr].SubItems[5].Text = (string.Format("{0:C}", (grandTotal - balancePayment)));
                                 }
                                 else
                                 {
-                                    lstClients.Items[ctr].SubItems[5].Text = reader["transStatus"].ToString();
+                                    lstClients.Items[ctr].SubItems[5].Text = (reader["transStatus"].ToString());
                                 }
                             }
                             else
                             {
                                 lstClients.Items.Add(reader["orNo"].ToString());
-
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["clientName"].ToString() != "" ? reader["clientName"].ToString() : "WALK-IN CLIENT"); 
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(reader["clientName"].ToString() != "" ? reader["clientName"].ToString() : "WALK-IN CLIENT");
 
                                 // converts the transdate to datetime
                                 DateTime aDate;
@@ -327,7 +326,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                             lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(method);
                             if (totalAmount != balancePayment && method == "Balance")
                             {
-                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add((totalAmount - balancePayment).ToString());
+                                lstClients.Items[lstClients.Items.Count - 1].SubItems.Add(string.Format("{0:C}", (totalAmount - balancePayment)));
                             }
                             else
                             {
@@ -624,6 +623,28 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
         }
 
+        private void changePaymentMethod(string orNo, string paymentMethod)
+        {
+            try
+            {
+                using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
+                {
+                    Con.Open();
+                    string sqlQuery = "UPDATE transaction SET paymentMethod = @paymentMethod WHERE orNo = @crit";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
+                    sqlCmd.Parameters.AddWithValue("crit", orNo);
+                    sqlCmd.Parameters.AddWithValue("paymentMethod", paymentMethod);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Can't connect to database ", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void insertCheque(string bank, string branch, string chequeName, string chequeDate, string chequeNo, string amount)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
@@ -737,13 +758,13 @@ namespace ChiuMartSAIS2.App.Dialogs
                 // Check for voided
                 if (stat == "Void")
                 {
-                    lvw.BackColor = Color.DarkRed;
+                    lvw.BackColor = Color.Violet;
                 }
 
                 // Check for return
                 if (stat == "Return")
                 {
-                    lvw.BackColor = Color.Firebrick;
+                    lvw.BackColor = Color.HotPink;
                 }
 
                 // Check for Verified
@@ -1003,6 +1024,26 @@ namespace ChiuMartSAIS2.App.Dialogs
             btnVerify.Text = "Verify";
             btnOverview.Visible = false;
             btnPayBalance.Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (lstClients.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            string payment = lstClients.SelectedItems[lstClients.SelectedItems.Count - 1].SubItems[4].Text;
+            string orNo = lstClients.SelectedItems[lstClients.SelectedItems.Count - 1].Text;
+            dlgChangePaymentMethod frm = new dlgChangePaymentMethod(payment);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                string method;
+                frm.getMethod(out method);
+                changePaymentMethod(orNo, method);
+                populateTransaction();
+                checkTransaction();
+            }
         }
     }
 }

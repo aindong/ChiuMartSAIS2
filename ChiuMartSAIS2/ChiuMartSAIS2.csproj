@@ -125,6 +125,12 @@
     <Compile Include="App\Dialogs\dlgCategory.Designer.cs">
       <DependentUpon>dlgCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\Dialogs\dlgChangePaymentMethod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Dialogs\dlgChangePaymentMethod.Designer.cs">
+      <DependentUpon>dlgChangePaymentMethod.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\Dialogs\dlgCheckout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -395,6 +401,9 @@
     </Compile>
     <EmbeddedResource Include="App\Dialogs\dlgCategory.resx">
       <DependentUpon>dlgCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\Dialogs\dlgChangePaymentMethod.resx">
+      <DependentUpon>dlgChangePaymentMethod.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\Dialogs\dlgCheckout.resx">
       <DependentUpon>dlgCheckout.cs</DependentUpon>
