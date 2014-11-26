@@ -336,6 +336,89 @@ namespace ChiuMartSAIS2.App.Dialogs
             return result;
         }
 
+        private Boolean checkProductQueue(string productId, string price)
+        {
+            bool result = false;
+
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "SELECT * FROM po_queue WHERE product_id = @productId AND supplier_price = @price";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    sqlCmd.Parameters.AddWithValue("productId", productId);
+                    sqlCmd.Parameters.AddWithValue("price", price);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+                    reader.Read();
+
+                    if (reader.HasRows)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        result = false;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Adding new purchase order error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                result = false;
+            }
+
+            return result;
+        }
+
+        private void updateProductQueue(string productId, string price, string stock)
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "UPDATE po_queue SET stock = stock + @stock WHERE product_id = @productId AND supplier_price = @price";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    sqlCmd.Parameters.AddWithValue("stock", stock);
+                    sqlCmd.Parameters.AddWithValue("productId", productId);
+                    sqlCmd.Parameters.AddWithValue("price", price);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Adding new purchase order error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void insertProductQueue(string productId, string price, string stock)
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sqlQuery = "INSERT INTO po_queue(product_id, supplier_price, stock) VALUES(@productId, @price, @stock)";
+                    MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, con);
+                    sqlCmd.Parameters.AddWithValue("productId", productId);
+                    sqlCmd.Parameters.AddWithValue("price", price);
+                    sqlCmd.Parameters.AddWithValue("stock", stock);
+
+                    sqlCmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Adding new purchase order error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void startConversion()
         {
             for (int i = 0; i < dgvConvert.Rows.Count - 1; i++)
@@ -347,6 +430,7 @@ namespace ChiuMartSAIS2.App.Dialogs
 
                     string originalProductName = dgvConvert.Rows[i].Cells[3].Value.ToString();
                     int originalQty = Int32.Parse(dgvConvert.Rows[i].Cells[2].Value.ToString());
+                    string newPrice = dgvConvert.Rows[i].Cells[4].Value.ToString();
 
                     // Add new product stock
                     updateStockByProductName(productName, qty, false);
@@ -354,6 +438,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                     updateStockByProductName(originalProductName, originalQty, true);
 
                     int originalProductId = getProductIdByName(originalProductName);
+                    int prodId = getProductIdByName(productName);
                     getPoQueue(originalProductId.ToString());
 
                     // Subtract the PO Queue of the source product
@@ -378,6 +463,15 @@ namespace ChiuMartSAIS2.App.Dialogs
                     // CHECK IF PRODUCT_ID EXIST ON THE PO_QUEUE TABLE
                     // IF NOT, ADD A NEW PO_QUEUE FOR THIS PRODUCT
                     // 
+                    //Update queue as well
+                    if (checkProductQueue(prodId.ToString(), newPrice) == true)
+                    {
+                        updateProductQueue(prodId.ToString(), newPrice, qty.ToString());
+                    }
+                    else
+                    {
+                        insertProductQueue(prodId.ToString(), newPrice, qty.ToString());
+                    }
 
                     // Insert log
                     insertLog(qty, productName, originalProductName, originalQty);

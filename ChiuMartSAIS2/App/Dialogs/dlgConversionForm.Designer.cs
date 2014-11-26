@@ -124,7 +124,7 @@
             // 
             // Column5
             // 
-            this.Column5.HeaderText = "Supplier Price";
+            this.Column5.HeaderText = "Buying Price";
             this.Column5.Name = "Column5";
             this.Column5.Width = 80;
             // 
