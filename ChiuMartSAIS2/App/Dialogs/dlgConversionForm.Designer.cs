@@ -31,12 +31,13 @@
             this.dgvConvert = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConvert)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +48,8 @@
             this.Column1,
             this.Column2,
             this.Column3,
-            this.Column4});
+            this.Column4,
+            this.Column5});
             this.dgvConvert.Location = new System.Drawing.Point(12, 81);
             this.dgvConvert.Name = "dgvConvert";
             this.dgvConvert.Size = new System.Drawing.Size(694, 358);
@@ -75,28 +77,6 @@
             this.lblUser.TabIndex = 2;
             this.lblUser.Text = "User in charge";
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "QTY";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Product to convert";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 220;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "QTY Converted";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Product converted";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 220;
-            // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -117,6 +97,36 @@
             this.btnRemove.TabIndex = 4;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "QTY";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 80;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Product to convert";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 200;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "QTY Converted";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 80;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Product converted";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 200;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Supplier Price";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 80;
             // 
             // dlgConversionForm
             // 
@@ -148,11 +158,12 @@
         private System.Windows.Forms.DataGridView dgvConvert;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

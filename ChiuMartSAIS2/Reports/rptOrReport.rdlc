@@ -610,7 +610,7 @@
   <Width>4.01339in</Width>
   <Page>
     <PageHeader>
-      <Height>1.05208in</Height>
+      <Height>1.3125in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -690,6 +690,7 @@
                 <TextRun>
                   <Value>=First(Fields!transDate.Value, "DataSet1")</Value>
                   <Style>
+                    <FontSize>8pt</FontSize>
                     <Format>D</Format>
                   </Style>
                 </TextRun>
@@ -699,9 +700,9 @@
           </Paragraphs>
           <rd:DefaultName>transDate</rd:DefaultName>
           <Top>0.46403in</Top>
-          <Left>1.93334in</Left>
+          <Left>2.05952in</Left>
           <Height>0.2in</Height>
-          <Width>1.88214in</Width>
+          <Width>1.75596in</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -728,8 +729,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox27</rd:DefaultName>
-          <Top>0.46403in</Top>
-          <Left>0.13542in</Left>
+          <Top>0.72236in</Top>
+          <Left>0.14822in</Left>
           <Height>0.2in</Height>
           <Width>0.52083in</Width>
           <ZIndex>3</ZIndex>
@@ -758,10 +759,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>clientName</rd:DefaultName>
-          <Top>0.45625in</Top>
-          <Left>0.72569in</Left>
+          <Top>0.71458in</Top>
+          <Left>0.73849in</Left>
           <Height>0.2in</Height>
-          <Width>1.12848in</Width>
+          <Width>3.07699in</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -788,8 +789,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox27</rd:DefaultName>
-          <Top>0.71126in</Top>
-          <Left>0.12262in</Left>
+          <Top>0.96959in</Top>
+          <Left>0.13542in</Left>
           <Height>0.2in</Height>
           <Width>0.5625in</Width>
           <ZIndex>5</ZIndex>
@@ -818,10 +819,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>clientAddress</rd:DefaultName>
-          <Top>0.71959in</Top>
-          <Left>0.71289in</Left>
+          <Top>0.97792in</Top>
+          <Left>0.72569in</Left>
           <Height>0.2in</Height>
-          <Width>1.25347in</Width>
+          <Width>3.08979in</Width>
           <ZIndex>6</ZIndex>
           <Style>
             <Border>

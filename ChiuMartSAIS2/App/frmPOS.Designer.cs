@@ -52,15 +52,11 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblTransDate = new System.Windows.Forms.Label();
+            this.lblTransDateLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.dgvCart = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.txtOrNo = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -70,8 +66,12 @@
             this.txtYellowBasyo = new System.Windows.Forms.TextBox();
             this.cboTransactionType = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblTransDateLabel = new System.Windows.Forms.Label();
-            this.lblTransDate = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -319,6 +319,28 @@
             this.panel3.Size = new System.Drawing.Size(371, 210);
             this.panel3.TabIndex = 20;
             // 
+            // lblTransDate
+            // 
+            this.lblTransDate.AutoSize = true;
+            this.lblTransDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransDate.Location = new System.Drawing.Point(11, 24);
+            this.lblTransDate.Name = "lblTransDate";
+            this.lblTransDate.Size = new System.Drawing.Size(126, 21);
+            this.lblTransDate.TabIndex = 14;
+            this.lblTransDate.Text = "Transaction Date";
+            this.lblTransDate.Visible = false;
+            // 
+            // lblTransDateLabel
+            // 
+            this.lblTransDateLabel.AutoSize = true;
+            this.lblTransDateLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransDateLabel.Location = new System.Drawing.Point(11, 4);
+            this.lblTransDateLabel.Name = "lblTransDateLabel";
+            this.lblTransDateLabel.Size = new System.Drawing.Size(121, 20);
+            this.lblTransDateLabel.TabIndex = 13;
+            this.lblTransDateLabel.Text = "Transaction Date";
+            this.lblTransDateLabel.Visible = false;
+            // 
             // label9
             // 
             this.label9.BackColor = System.Drawing.Color.White;
@@ -362,45 +384,10 @@
             this.dgvCart.EditModeChanged += new System.EventHandler(this.dgvCart_EditModeChanged);
             this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellValueChanged);
             this.dgvCart.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellEndEdit);
+            this.dgvCart.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellEnter);
             this.dgvCart.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellValueChanged);
             this.dgvCart.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvCart_EditingControlShowing);
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column2.HeaderText = "QTY";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 50;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Unit";
-            this.Column4.Name = "Column4";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Item";
-            this.Column3.Name = "Column3";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Unit Price";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Total";
-            this.Column6.Name = "Column6";
+            this.dgvCart.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvCart_KeyDown);
             // 
             // label3
             // 
@@ -506,27 +493,44 @@
             this.label5.TabIndex = 29;
             this.label5.Text = "Transaction Type";
             // 
-            // lblTransDateLabel
+            // Column1
             // 
-            this.lblTransDateLabel.AutoSize = true;
-            this.lblTransDateLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransDateLabel.Location = new System.Drawing.Point(11, 4);
-            this.lblTransDateLabel.Name = "lblTransDateLabel";
-            this.lblTransDateLabel.Size = new System.Drawing.Size(121, 20);
-            this.lblTransDateLabel.TabIndex = 13;
-            this.lblTransDateLabel.Text = "Transaction Date";
-            this.lblTransDateLabel.Visible = false;
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "id";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
             // 
-            // lblTransDate
+            // Column2
             // 
-            this.lblTransDate.AutoSize = true;
-            this.lblTransDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransDate.Location = new System.Drawing.Point(11, 24);
-            this.lblTransDate.Name = "lblTransDate";
-            this.lblTransDate.Size = new System.Drawing.Size(126, 21);
-            this.lblTransDate.TabIndex = 14;
-            this.lblTransDate.Text = "Transaction Date";
-            this.lblTransDate.Visible = false;
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column2.HeaderText = "QTY";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 50;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Unit";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Item";
+            this.Column3.Name = "Column3";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Unit Price";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Total";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // frmPOS
             // 
@@ -609,15 +613,15 @@
         private System.Windows.Forms.TextBox txtTransBasyo;
         private System.Windows.Forms.TextBox txtYellowBasyo;
         private System.Windows.Forms.Button btnBasyo;
+        private System.Windows.Forms.ComboBox cboTransactionType;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblTransDate;
+        private System.Windows.Forms.Label lblTransDateLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.ComboBox cboTransactionType;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblTransDate;
-        private System.Windows.Forms.Label lblTransDateLabel;
     }
 }

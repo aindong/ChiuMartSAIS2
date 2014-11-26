@@ -655,6 +655,7 @@ namespace ChiuMartSAIS2.App
             }
         }
 
+        
         private void frmPOS_Load(object sender, EventArgs e)
         {
             cboTransactionType.SelectedIndex = 0;
@@ -715,6 +716,7 @@ namespace ChiuMartSAIS2.App
         private void dgvCart_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             // cartUpdateTotal();
+            
         }
 
         /// <summary>
@@ -784,6 +786,10 @@ namespace ChiuMartSAIS2.App
                 double total = 0;
                 for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
                 {
+                    if (dgvCart.Rows[i].Cells[5].Value == null)
+                    {
+                        continue;
+                    }
                     total += double.Parse(dgvCart.Rows[i].Cells[5].Value.ToString(), System.Globalization.NumberStyles.Currency);
                 }
 
@@ -852,7 +858,7 @@ namespace ChiuMartSAIS2.App
                             }
 
                             // Check if the cell has a product, if not, continue the loop
-                            if (dgvCart.Rows[i].Cells[3].Value.ToString() == "")
+                            if (dgvCart.Rows[i].Cells[3].Value == null || dgvCart.Rows[i].Cells[3].Value.ToString() == "")
                             {
                                 continue;
                             }
@@ -1571,6 +1577,54 @@ namespace ChiuMartSAIS2.App
                 }
                 dgvCart.ForeColor = Color.Red;
             }
+        }
+
+        private void dgvCart_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvCart.CurrentCell.ReadOnly)
+            {
+                SendKeys.Send("{tab}");
+            }
+        }
+
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+        {
+            try
+            {
+                int icolumn = dgvCart.CurrentCell.ColumnIndex;
+                int irow = dgvCart.CurrentCell.RowIndex;
+
+                if (keyData == Keys.Enter)
+                {
+                    if (icolumn == dgvCart.Columns.Count - 1)
+                    {
+                        dgvCart.Rows.Add();
+                        dgvCart.CurrentCell = dgvCart[0, irow + 1];
+                    }
+                    else
+                    {
+                        dgvCart.CurrentCell = dgvCart[icolumn + 1, irow];
+                    }
+                    return true;
+                }
+                else
+                {
+                    return base.ProcessCmdKey(ref msg, keyData);
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                return false;
+            }
+            catch(NullReferenceException ex)
+            {
+                return false;
+            }
+        }
+
+        private void dgvCart_KeyDown(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }
