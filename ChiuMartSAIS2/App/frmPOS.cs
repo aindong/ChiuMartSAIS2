@@ -33,6 +33,8 @@ namespace ChiuMartSAIS2.App
         private string chequeNo = "";
         private string chequeName = "";
         private string chequeDate = "";
+        private string chequeAmount = "";
+        private string overAmount = "";
         private string total = "";
         private string yellowBasyoReturned;
         private string transparentBasyoReturned;
@@ -292,7 +294,7 @@ namespace ChiuMartSAIS2.App
             }
         }
 
-        private void insertCheque(string bank, string branch, string chequeName, string chequeDate, string chequeNo, string amount)
+        private void insertCheque(string bank, string branch, string chequeName, string chequeDate, string chequeNo, string amount, string totalAm, string over)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
@@ -302,7 +304,7 @@ namespace ChiuMartSAIS2.App
                     DateTime.TryParse(chequeDate, out chequeDateFinal);
 
                     Con.Open();
-                    string sqlQuery = "INSERT INTO cheque (chequeNo, chequeName, chequeBank, chequeBranch, chequeAmount, chequeDate, status) VALUES (@chequeNo, @chequeName, @chequeBank, @chequeBranch, @chequeAmount, @chequeDate, 'active')";
+                    string sqlQuery = "INSERT INTO cheque (chequeNo, chequeName, chequeBank, chequeBranch, chequeAmount, totalAmount, overAmount, chequeDate, status) VALUES (@chequeNo, @chequeName, @chequeBank, @chequeBranch, @chequeAmount, @totalAmount, @overAmount, @chequeDate, 'active')";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("chequeNo", chequeNo);
@@ -310,6 +312,8 @@ namespace ChiuMartSAIS2.App
                     sqlCmd.Parameters.AddWithValue("chequeBank", bank);
                     sqlCmd.Parameters.AddWithValue("chequeBranch", branch);
                     sqlCmd.Parameters.AddWithValue("chequeAmount", amount);
+                    sqlCmd.Parameters.AddWithValue("totalAmount", totalAm);
+                    sqlCmd.Parameters.AddWithValue("overAmount", over);
                     sqlCmd.Parameters.AddWithValue("chequeDate", chequeDateFinal.ToString("yyyy-MM-dd"));
 
                     sqlCmd.ExecuteNonQuery();
@@ -478,6 +482,7 @@ namespace ChiuMartSAIS2.App
         {
             btnVoid.Enabled = true;
             btnVoid.Visible = false;
+            btnVoid.Text = "Void";
             cboTransactionType.Enabled = true;
             cboTransactionType.SelectedIndex = 0;
 
@@ -842,6 +847,8 @@ namespace ChiuMartSAIS2.App
                         return;
                     }
 
+                    int chequeInserted = 0;
+
                     // Open the checkout form
                     Dialogs.dlgCheckout frm = new Dialogs.dlgCheckout("POS");
                     // Set the variables
@@ -851,10 +858,11 @@ namespace ChiuMartSAIS2.App
                         for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
                         {
                             string paymentMethod = "";
-                            frm.getProduct(out paymentMethod, out bank, out branch, out chequeName, out chequeDate, out total, out chequeNo);
-                            if (paymentMethod == "Cheque")
+                            frm.getProduct(out paymentMethod, out bank, out branch, out chequeName, out chequeDate, out total, out chequeNo, out chequeAmount, out overAmount);
+                            if (paymentMethod == "Cheque" && chequeInserted == 0)
                             {
-                                insertCheque(bank, branch, chequeName, chequeDate, chequeNo, total);
+                                insertCheque(bank, branch, chequeName, chequeDate, chequeNo, chequeAmount, total, overAmount);
+                                chequeInserted = 1;
                             }
 
                             // Check if the cell has a product, if not, continue the loop

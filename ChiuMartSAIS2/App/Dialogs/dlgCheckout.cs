@@ -21,6 +21,8 @@ namespace ChiuMartSAIS2.App.Dialogs
         private string chequeDate = "";
         private string balance = "";
         private string _action;
+        private string chequeAmount = "";
+        private string overAmount = "";
 
         public dlgCheckout(string action)
         {
@@ -29,7 +31,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             _action = action;
         }
 
-        public void getProduct(out string method, out string bank, out string branch, out string chequeName, out string chequeDate, out string total, out string chequeNo)
+        public void getProduct(out string method, out string bank, out string branch, out string chequeName, out string chequeDate, out string total, out string chequeNo, out string chequeAmount, out string overAmount)
         {
             // Set the payment method
             method = this.method;
@@ -45,6 +47,8 @@ namespace ChiuMartSAIS2.App.Dialogs
             chequeDate = this.chequeDate;
             // Set the total
             total = this.total;
+            chequeAmount = this.chequeAmount;
+            overAmount = this.overAmount;
         }
 
         public void getTotalPaid(out string balance)
@@ -153,6 +157,9 @@ namespace ChiuMartSAIS2.App.Dialogs
                 cheque = txtChequeNumber.Text;
                 chequeName = txtName.Text;
                 chequeDate = dtpDate.Text;
+                chequeAmount = double.Parse(textBox1.Text, System.Globalization.NumberStyles.Currency).ToString();
+                overAmount = double.Parse(txtChequeChange.Text, System.Globalization.NumberStyles.Currency).ToString();
+                total = double.Parse(txtTotal.Text, System.Globalization.NumberStyles.Currency).ToString();
                 DialogResult = DialogResult.OK;
             }
         }
@@ -181,6 +188,19 @@ namespace ChiuMartSAIS2.App.Dialogs
         private void button5_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                txtChequeChange.Text = ((double.Parse(textBox1.Text, System.Globalization.NumberStyles.Currency) - double.Parse(txtTotal.Text, System.Globalization.NumberStyles.Currency))).ToString();
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message.ToString());
+                txtChequeChange.Text = "0.0";
+            }
         }
     }
 }

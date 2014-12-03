@@ -50,6 +50,8 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.lblVerify = new System.Windows.Forms.Label();
             this.btnVerify = new System.Windows.Forms.Button();
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,7 +121,7 @@
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "Total Amount";
+            this.columnHeader5.Text = "Cheque Amount";
             this.columnHeader5.Width = 120;
             // 
             // columnHeader4
@@ -151,6 +153,8 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5,
+            this.columnHeader10,
+            this.columnHeader11,
             this.columnHeader6,
             this.columnHeader7,
             this.columnHeader9});
@@ -268,6 +272,16 @@
             this.btnVerify.UseVisualStyleBackColor = true;
             this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
             // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Purchased Amount";
+            this.columnHeader10.Width = 163;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Over";
+            this.columnHeader11.Width = 114;
+            // 
             // frmChequeMonitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -324,5 +338,7 @@
         private System.Windows.Forms.Label lblVerify;
         private System.Windows.Forms.Button btnVerify;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
     }
 }

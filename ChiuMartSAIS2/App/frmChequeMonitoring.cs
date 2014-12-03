@@ -49,6 +49,9 @@ namespace ChiuMartSAIS2.App
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeBranch"].ToString());
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(string.Format("{0:C}", reader["chequeAmount"]));
 
+                        lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(string.Format("{0:C}", reader["totalAmount"]));
+
+                        lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(string.Format("{0:C}", reader["overAmount"]));
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeDate"].ToString());
 
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["status"].ToString());
@@ -92,6 +95,9 @@ namespace ChiuMartSAIS2.App
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeBank"].ToString());
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeBranch"].ToString());
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(string.Format("{0:C}", reader["chequeAmount"]));
+                        lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(string.Format("{0:C}", reader["totalAmount"]));
+
+                        lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(string.Format("{0:C}", reader["overAmount"]));
 
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeDate"].ToString());
 
@@ -148,6 +154,9 @@ namespace ChiuMartSAIS2.App
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeBank"].ToString());
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeBranch"].ToString());
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(string.Format("{0:C}", reader["chequeAmount"]));
+                        lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(string.Format("{0:C}", reader["totalAmount"]));
+
+                        lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(string.Format("{0:C}", reader["overAmount"]));
 
                         lstCheques.Items[lstCheques.Items.Count - 1].SubItems.Add(reader["chequeDate"].ToString());
 
@@ -173,7 +182,7 @@ namespace ChiuMartSAIS2.App
             // Check the status
             foreach (ListViewItem lvw in lstCheques.Items)
             {
-                DateTime chequeDate = Convert.ToDateTime(lvw.SubItems[6].Text);
+                DateTime chequeDate = Convert.ToDateTime(lvw.SubItems[8].Text);
                 DateTime dateNow = DateTime.Today;
                 string chequeStatus = lvw.SubItems[8].Text;
 

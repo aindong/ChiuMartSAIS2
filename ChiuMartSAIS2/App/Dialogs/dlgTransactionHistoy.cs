@@ -645,7 +645,7 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
         }
 
-        private void insertCheque(string bank, string branch, string chequeName, string chequeDate, string chequeNo, string amount)
+        private void insertCheque(string bank, string branch, string chequeName, string chequeDate, string chequeNo, string amount, string chequeAm, string overAm)
         {
             using (MySqlConnection Con = new MySqlConnection(conf.connectionstring))
             {
@@ -655,7 +655,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                     DateTime.TryParse(chequeDate, out chequeDateFinal);
 
                     Con.Open();
-                    string sqlQuery = "INSERT INTO cheque (chequeNo, chequeName, chequeBank, chequeBranch, chequeAmount, chequeDate, status) VALUES (@chequeNo, @chequeName, @chequeBank, @chequeBranch, @chequeAmount, @chequeDate, 'active')";
+                    string sqlQuery = "INSERT INTO cheque (chequeNo, chequeName, chequeBank, chequeBranch, chequeAmount, totalAmount, overAmount, chequeDate, status) VALUES (@chequeNo, @chequeName, @chequeBank, @chequeBranch, @chequeAmount, @totalAmount, @overAmount, @chequeDate, 'active')";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
                     sqlCmd.Parameters.AddWithValue("chequeNo", chequeNo);
@@ -663,6 +663,8 @@ namespace ChiuMartSAIS2.App.Dialogs
                     sqlCmd.Parameters.AddWithValue("chequeBank", bank);
                     sqlCmd.Parameters.AddWithValue("chequeBranch", branch);
                     sqlCmd.Parameters.AddWithValue("chequeAmount", amount);
+                    sqlCmd.Parameters.AddWithValue("totalAmount", chequeAm);
+                    sqlCmd.Parameters.AddWithValue("overAmount", overAm);
                     sqlCmd.Parameters.AddWithValue("chequeDate", chequeDateFinal.ToString("yyyy-MM-dd"));
 
                     sqlCmd.ExecuteNonQuery();
@@ -960,7 +962,8 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
             
         }
-
+        private string chequeAmount = "";
+        private string overAmount = "";
         private void btnPayBalance_Click(object sender, EventArgs e)
         {
             dlgCheckout frm = new dlgCheckout("balance");
@@ -968,10 +971,10 @@ namespace ChiuMartSAIS2.App.Dialogs
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 string paymentMethod = "";
-                frm.getProduct(out paymentMethod, out bank, out branch, out chequeName, out chequeDate, out total, out chequeNo);
+                frm.getProduct(out paymentMethod, out bank, out branch, out chequeName, out chequeDate, out total, out chequeNo, out chequeAmount, out overAmount);
                 if (paymentMethod == "Cheque")
                 {
-                    insertCheque(bank, branch, chequeName, chequeDate, chequeNo, total);
+                    insertCheque(bank, branch, chequeName, chequeDate, chequeNo, total, chequeAmount, overAmount);
                 }
 
                 frm.getTotalPaid(out balance);

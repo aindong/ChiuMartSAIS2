@@ -156,7 +156,7 @@ namespace ChiuMartSAIS2.App
                                 double price = double.Parse(reader["oldPrice"].ToString());
                                 double qty = double.Parse(reader["qty"].ToString());
                                 double totalAmount = (price * qty);
-                                lstPO.Items[ctr].SubItems[2].Text = (string.Format("{0:C}",(lstAmount + totalAmount).ToString());
+                                lstPO.Items[ctr].SubItems[2].Text = (string.Format("{0:C}",(lstAmount + totalAmount).ToString()));
                             }
                             else
                             {
