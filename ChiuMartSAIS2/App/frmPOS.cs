@@ -1341,7 +1341,7 @@ namespace ChiuMartSAIS2.App
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(this, "Are you sure to close the Point of Sales?", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(this, "Are you sure you want to cancel this transaction?", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 clearUI();
             }
