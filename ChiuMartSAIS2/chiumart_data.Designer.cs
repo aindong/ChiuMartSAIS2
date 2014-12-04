@@ -6528,11 +6528,11 @@ namespace ChiuMartSAIS2 {
             
             private global::System.Data.DataColumn columnclientAddress;
             
-            private global::System.Data.DataColumn columnqty;
-            
             private global::System.Data.DataColumn columnunitPrice;
             
             private global::System.Data.DataColumn columntransDate;
+            
+            private global::System.Data.DataColumn columnqty;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -6609,14 +6609,6 @@ namespace ChiuMartSAIS2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn qtyColumn {
-                get {
-                    return this.columnqty;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn unitPriceColumn {
                 get {
                     return this.columnunitPrice;
@@ -6628,6 +6620,14 @@ namespace ChiuMartSAIS2 {
             public global::System.Data.DataColumn transDateColumn {
                 get {
                     return this.columntransDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn qtyColumn {
+                get {
+                    return this.columnqty;
                 }
             }
             
@@ -6668,7 +6668,7 @@ namespace ChiuMartSAIS2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public vw_ORReportRow Addvw_ORReportRow(int orNo, string productName, string unitDesc, string clientName, string clientAddress, int qty, double unitPrice, System.DateTime transDate) {
+            public vw_ORReportRow Addvw_ORReportRow(int orNo, string productName, string unitDesc, string clientName, string clientAddress, double unitPrice, System.DateTime transDate, decimal qty) {
                 vw_ORReportRow rowvw_ORReportRow = ((vw_ORReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         orNo,
@@ -6676,9 +6676,9 @@ namespace ChiuMartSAIS2 {
                         unitDesc,
                         clientName,
                         clientAddress,
-                        qty,
                         unitPrice,
-                        transDate};
+                        transDate,
+                        qty};
                 rowvw_ORReportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowvw_ORReportRow);
                 return rowvw_ORReportRow;
@@ -6706,9 +6706,9 @@ namespace ChiuMartSAIS2 {
                 this.columnunitDesc = base.Columns["unitDesc"];
                 this.columnclientName = base.Columns["clientName"];
                 this.columnclientAddress = base.Columns["clientAddress"];
-                this.columnqty = base.Columns["qty"];
                 this.columnunitPrice = base.Columns["unitPrice"];
                 this.columntransDate = base.Columns["transDate"];
+                this.columnqty = base.Columns["qty"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6724,12 +6724,12 @@ namespace ChiuMartSAIS2 {
                 base.Columns.Add(this.columnclientName);
                 this.columnclientAddress = new global::System.Data.DataColumn("clientAddress", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnclientAddress);
-                this.columnqty = new global::System.Data.DataColumn("qty", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnqty);
                 this.columnunitPrice = new global::System.Data.DataColumn("unitPrice", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnunitPrice);
                 this.columntransDate = new global::System.Data.DataColumn("transDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntransDate);
+                this.columnqty = new global::System.Data.DataColumn("qty", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnqty);
                 this.columnorNo.AllowDBNull = false;
                 this.columnproductName.AllowDBNull = false;
                 this.columnproductName.MaxLength = 250;
@@ -6737,7 +6737,6 @@ namespace ChiuMartSAIS2 {
                 this.columnunitDesc.MaxLength = 65;
                 this.columnclientName.MaxLength = 50;
                 this.columnclientAddress.MaxLength = 200;
-                this.columnqty.AllowDBNull = false;
                 this.columnunitPrice.AllowDBNull = false;
                 this.columntransDate.AllowDBNull = false;
             }
@@ -8613,17 +8612,6 @@ namespace ChiuMartSAIS2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int qty {
-                get {
-                    return ((int)(this[this.tablevw_ORReport.qtyColumn]));
-                }
-                set {
-                    this[this.tablevw_ORReport.qtyColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public double unitPrice {
                 get {
                     return ((double)(this[this.tablevw_ORReport.unitPriceColumn]));
@@ -8641,6 +8629,22 @@ namespace ChiuMartSAIS2 {
                 }
                 set {
                     this[this.tablevw_ORReport.transDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal qty {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablevw_ORReport.qtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'qty\' in table \'vw_ORReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevw_ORReport.qtyColumn] = value;
                 }
             }
             
@@ -8666,6 +8670,18 @@ namespace ChiuMartSAIS2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetclientAddressNull() {
                 this[this.tablevw_ORReport.clientAddressColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsqtyNull() {
+                return this.IsNull(this.tablevw_ORReport.qtyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetqtyNull() {
+                this[this.tablevw_ORReport.qtyColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -18736,9 +18752,9 @@ namespace ChiuMartSAIS2.chiumart_dataTableAdapters {
             tableMapping.ColumnMappings.Add("unitDesc", "unitDesc");
             tableMapping.ColumnMappings.Add("clientName", "clientName");
             tableMapping.ColumnMappings.Add("clientAddress", "clientAddress");
-            tableMapping.ColumnMappings.Add("qty", "qty");
             tableMapping.ColumnMappings.Add("unitPrice", "unitPrice");
             tableMapping.ColumnMappings.Add("transDate", "transDate");
+            tableMapping.ColumnMappings.Add("qty", "qty");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -18755,13 +18771,14 @@ namespace ChiuMartSAIS2.chiumart_dataTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        transaction.orNo, products.productName, units.unitDesc, client.clientName, client.clientAddress, transaction.qty, transaction.unitPrice, transaction.transDate
+            this._commandCollection[0].CommandText = @"SELECT        transaction.orNo, products.productName, units.unitDesc, client.clientName, client.clientAddress, SUM(transaction.qty) as qty, transaction.unitPrice, transaction.transDate
 FROM            category INNER JOIN
                          products ON category.categoryId = products.categoryId INNER JOIN
                          transaction ON products.productId = transaction.productId INNER JOIN
                          units ON products.unitId = units.unitId LEFT OUTER JOIN
                          client ON transaction.clientId = client.clientId
-WHERE        (transaction.orNo = @orno)";
+WHERE        (transaction.orNo = @orno)
+GROUP BY transaction.orNo";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@orno";
