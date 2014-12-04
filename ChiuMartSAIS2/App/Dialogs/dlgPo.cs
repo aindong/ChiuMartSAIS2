@@ -608,7 +608,7 @@ namespace ChiuMartSAIS2.App.Dialogs
 
             for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
             {
-                if (dgvCart.Rows[i].Cells[3].Value.ToString() == productName)
+                if (dgvCart.Rows[i].Cells[3].Value.ToString().ToLower() == productName.ToLower())
                 {
                     count++;
                 }
