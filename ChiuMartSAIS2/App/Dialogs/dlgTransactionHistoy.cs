@@ -671,8 +671,8 @@ namespace ChiuMartSAIS2.App.Dialogs
                 }
                 catch (MySqlException ex)
                 {
-                    string errorCode = string.Format("Error Code : {0}", ex.Number);
-                    MessageBox.Show(this, "Transaction error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string errorCode = string.Format("Error Code : {0}", ex.ToString());
+                    MessageBox.Show(this, "Transaction error"+ errorCode, errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -975,9 +975,13 @@ namespace ChiuMartSAIS2.App.Dialogs
                 if (paymentMethod == "Cheque")
                 {
                     insertCheque(bank, branch, chequeName, chequeDate, chequeNo, total, chequeAmount, overAmount);
+                    balance = chequeAmount;
                 }
-
-                frm.getTotalPaid(out balance);
+                else
+                {
+                    frm.getTotalPaid(out balance);
+                }
+                
                 updateTransaction(balance, lstClients.SelectedItems[0].Text);
 
                 string clientName = lstClients.SelectedItems[lstClients.SelectedItems.Count - 1].SubItems[1].Text;
@@ -1037,14 +1041,23 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
 
             string payment = lstClients.SelectedItems[lstClients.SelectedItems.Count - 1].SubItems[4].Text;
+            string amount = lstClients.SelectedItems[lstClients.SelectedItems.Count - 1].SubItems[3].Text;
             string orNo = lstClients.SelectedItems[lstClients.SelectedItems.Count - 1].Text;
-            dlgChangePaymentMethod frm = new dlgChangePaymentMethod(payment);
+            dlgChangePaymentMethod frm = new dlgChangePaymentMethod(payment, amount);
+
+            
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 string method;
                 frm.getMethod(out method);
+                if (method == "Cheque")
+                {
+                    frm.getProduct(out bank, out branch, out chequeName, out chequeDate, out total, out chequeNo, out chequeAmount, out overAmount);
+                    insertCheque(bank, branch, chequeName, chequeDate, chequeNo, total, chequeAmount, overAmount);
+                }
+                
                 changePaymentMethod(orNo, method);
-                populateTransaction();
+                lstClients.SelectedItems[lstClients.SelectedItems.Count - 1].SubItems[4].Text = method;
                 checkTransaction();
             }
         }
