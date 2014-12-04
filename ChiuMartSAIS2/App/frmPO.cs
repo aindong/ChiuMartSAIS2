@@ -370,7 +370,6 @@ namespace ChiuMartSAIS2.App
                     sqlCmd.Parameters.AddWithValue("criteria", criteria);
 
                     sqlCmd.ExecuteNonQuery();
-                    MessageBox.Show(this, "Po successfully verified", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (MySqlException ex)
                 {
@@ -723,14 +722,34 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
-            string id = lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text;
-
             if (MessageBox.Show(this, "Do you want to verify this purchase order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                verifyPo(id);
-                populatePo();
-                checkPo();
+                List<int> indexes = new List<int>();
+                for (int i = 0; i < lstPO.SelectedItems.Count; i++)
+                {
+                    string orNo = lstPO.SelectedItems[i].Text;
+
+                    verifyPo(orNo);
+                    indexes.Add(i);
+                    checkPo();
+                }
+
+                MessageBox.Show(this, "Po successfully verified", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                removeFromListview(indexes);
+
             }
+        }
+
+        private void removeFromListview(List<int> indexes)
+        {
+            int lastIndex = lstPO.SelectedItems[0].Index;
+            for (int i = 0; i < indexes.Count; i++)
+            {
+                lstPO.SelectedItems[0].Remove();
+            }
+
+            lstPO.Focus();
+            lstPO.Items[lastIndex].Selected = true;
         }
 
         private void frmPO_FormClosing(object sender, FormClosingEventArgs e)
