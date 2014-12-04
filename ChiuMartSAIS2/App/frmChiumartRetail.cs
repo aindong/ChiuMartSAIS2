@@ -32,7 +32,7 @@ namespace ChiuMartSAIS2.App
                 using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
                 {
                     con.Open();
-                    string sql = "SELECT u.*, c.* FROM conversion c INNER JOIN user u ON c.username = u.username WHERE c.created_date BETWEEN @from AND @to";
+                    string sql = "SELECT u.*, c.*, c.created_date as datecreated FROM conversion c INNER JOIN user u ON c.username = u.username WHERE c.created_date BETWEEN @from AND @to";
                     MySqlCommand sqlCmd = new MySqlCommand(sql, con);
 
                     sqlCmd.Parameters.AddWithValue("from", dtpFrom.Value.AddDays(-1));
@@ -46,7 +46,7 @@ namespace ChiuMartSAIS2.App
                         listView1.Items.Add(reader["id"].ToString());
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(reader["fullname"].ToString());
                         DateTime tmpDate;
-                        DateTime.TryParse(reader["created_date"].ToString(), out tmpDate);
+                        DateTime.TryParse(reader["datecreated"].ToString(), out tmpDate);
                         listView1.Items[listView1.Items.Count - 1].SubItems.Add(tmpDate.ToString("MMMM dd, yyyy"));
                     }
                 }
