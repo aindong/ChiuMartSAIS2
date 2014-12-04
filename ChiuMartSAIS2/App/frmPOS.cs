@@ -334,10 +334,10 @@ namespace ChiuMartSAIS2.App
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT productId FROM products WHERE productName = @crit";
+                    string sqlQuery = "SELECT productId FROM products WHERE productName LIKE @crit";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
-                    sqlCmd.Parameters.AddWithValue("crit", crit);
+                    sqlCmd.Parameters.AddWithValue("crit", "%"+crit+"%");
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -549,16 +549,16 @@ namespace ChiuMartSAIS2.App
         private String getProductProductPrice(string prodname)
         {
             string result = "";
-            string client = "0";
+            string client = "571";
 
             if (txtClient.Text == "")
             {
-                return "0";
+                return "571";
             }
 
             if (txtClient.Text == "Walk-in Client")
             {
-                client = "0";
+                client = "571";
             }
             else
             {
@@ -876,11 +876,12 @@ namespace ChiuMartSAIS2.App
                             string currentPrice = getProductProductPrice(dgvCart.Rows[i].Cells[3].Value.ToString());
                             string supplierPrice = getProductSupplierPrice(dgvCart.Rows[i].Cells[3].Value.ToString());
 
+
                             string str = txtClient.Text;
                             string[] clientId = new string[2];
                             if (str == "Walk-in Client")
                             {
-                                clientId[1] = "0";
+                                clientId[1] = "571";
                             }
                             else
                             {
@@ -948,7 +949,7 @@ namespace ChiuMartSAIS2.App
                             string[] clientId = new string[2];
                             if (str == "Walk-in Client")
                             {
-                                clientId[1] = "0";
+                                clientId[1] = "571";
                             }
                             else
                             {
@@ -1227,7 +1228,7 @@ namespace ChiuMartSAIS2.App
 
             for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
             {
-                if (dgvCart.Rows[i].Cells[3].Value.ToString() == productName)
+                if (dgvCart.Rows[i].Cells[3].Value.ToString().ToLower() == productName.ToLower())
                 {
                     count++;
                 }
@@ -1371,7 +1372,7 @@ namespace ChiuMartSAIS2.App
                 string[] clientId = new string[2];
                 if (str == "Walk-in Client")
                 {
-                    clientId[1] = "0";
+                    clientId[1] = "571";
                 }
                 else
                 {
