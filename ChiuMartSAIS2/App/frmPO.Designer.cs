@@ -74,7 +74,6 @@
             this.lstPO.FullRowSelect = true;
             this.lstPO.GridLines = true;
             this.lstPO.Location = new System.Drawing.Point(13, 121);
-            this.lstPO.MultiSelect = false;
             this.lstPO.Name = "lstPO";
             this.lstPO.Size = new System.Drawing.Size(956, 419);
             this.lstPO.TabIndex = 0;
