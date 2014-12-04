@@ -690,7 +690,7 @@ namespace ChiuMartSAIS2.App.Dialogs
         private void dgvCart_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             TextBox prodName = e.Control as TextBox;
-            if (dgvCart.CurrentCell.ColumnIndex == 2)
+            if (dgvCart.CurrentCell.ColumnIndex == 3)
             {
                 if (prodName != null)
                 {
