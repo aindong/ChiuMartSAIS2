@@ -518,6 +518,41 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
         }
 
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+        {
+            try
+            {
+                int icolumn = dgvConvert.CurrentCell.ColumnIndex;
+                int irow = dgvConvert.CurrentCell.RowIndex;
+
+                if (keyData == Keys.Enter)
+                {
+                    if (icolumn == dgvConvert.Columns.Count - 1)
+                    {
+                        dgvConvert.Rows.Add();
+                        dgvConvert.CurrentCell = dgvConvert[0, irow + 1];
+                    }
+                    else
+                    {
+                        dgvConvert.CurrentCell = dgvConvert[icolumn + 1, irow];
+                    }
+                    return true;
+                }
+                else
+                {
+                    return base.ProcessCmdKey(ref msg, keyData);
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                return false;
+            }
+            catch (NullReferenceException ex)
+            {
+                return false;
+            }
+        }
+
         private void dlgConversionForm_Load(object sender, EventArgs e)
         {
             if (viewing && this.id > 0)

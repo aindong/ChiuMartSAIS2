@@ -301,7 +301,6 @@ namespace ChiuMartSAIS2.App
                     sqlCmd.Parameters.AddWithValue("criteria", criteria);
 
                     sqlCmd.ExecuteNonQuery();
-                    MessageBox.Show(this, "PO turned to Back Order", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (MySqlException ex)
                 {
@@ -591,20 +590,26 @@ namespace ChiuMartSAIS2.App
                 return;
             }
 
-            string id = lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text;
-
             if (MessageBox.Show(this, "Do you want to back order this purchase order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                getProductID(lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text);
-                for (int i = 0; i < (prodId.Count()); i++)
+                List<int> indexes = new List<int>();
+                for (int i = 0; i < lstPO.SelectedItems.Count; i++)
                 {
-                    int crit = Int32.Parse(prodId[i]);
-                    updateStocks(prodQty[i], prodId[i]);
+                    string orNo = lstPO.SelectedItems[i].Text;
+                    indexes.Add(i);
 
+                    getProductID(lstPO.SelectedItems[lstPO.SelectedItems.Count - 1].Text);
+                    for (int j = 0; j < (prodId.Count()); j++)
+                    {
+                        int crit = Int32.Parse(prodId[j]);
+                        updateStocks(prodQty[j], prodId[j]);
+                    }
+
+                    lstPO.SelectedItems[i].BackColor = Color.IndianRed;
+                    backPo(orNo);
                 }
-                backPo(id);
-                populatePo();
-                checkPo();
+
+                MessageBox.Show(this, "PO turned to Back Order", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
