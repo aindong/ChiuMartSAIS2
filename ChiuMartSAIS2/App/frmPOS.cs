@@ -1073,6 +1073,7 @@ namespace ChiuMartSAIS2.App
             {
                 dgvCart.RowCount = qty.Count + 1;
             }
+
             foreach (string item in productName)
             {
                 dgvCart.Rows[ctr].Cells[0].Value = getProductID(item);

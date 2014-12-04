@@ -55,7 +55,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT t.unitPrice, t.transDate, t.orNo, t.qty, t.yellowBasyoReturned, t.transparentBasyoReturned, t.transStatus, u.unitDesc, c.clientName, c.clientAddress, p.productName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId INNER JOIN units as u ON t.unitId = u.unitId WHERE t.orNo = @crit";
+                    string sqlQuery = "SELECT SUM(t.qty) as qty, t.unitPrice, t.transDate, t.orNo, t.yellowBasyoReturned, t.transparentBasyoReturned, t.transStatus, u.unitDesc, c.clientName, c.clientAddress, p.productName FROM transaction as t LEFT JOIN client as c ON t.clientId = c.clientId INNER JOIN products as p ON t.productId = p.productId INNER JOIN units as u ON t.unitId = u.unitId WHERE t.orNo = @crit GROUP BY t.productId";
 
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 

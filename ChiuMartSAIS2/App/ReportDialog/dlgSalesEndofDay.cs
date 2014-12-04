@@ -60,6 +60,37 @@ namespace ChiuMartSAIS2.App.ReportDialog
             }
         }
 
+        private Double getChequeOver(DateTime start, DateTime end)
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sql = "SELECT overAmount FROM cheque WHERE created_date BETWEEN @start AND @end";
+                    MySqlCommand sqlCmd = new MySqlCommand(sql, con);
+                    sqlCmd.Parameters.AddWithValue("start", dtpStart.Value.Date);
+                    sqlCmd.Parameters.AddWithValue("end", dtpEnd.Value.AddDays(1).Date);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    double count = 0;
+                    while (reader.Read())
+                    {
+                        count += Double.Parse(reader["overAmount"].ToString());
+                    }
+
+                    return count;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Can't connect to database" + ex.Message.ToString(), errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
         private Double getReturnCount(DateTime start, DateTime end, string paymentType)
         {
             try
@@ -176,7 +207,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
             lblTransparentBasyo.Text = string.Format("{0:C}", transparentBasyo);
 
             lblCash.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cash") + getLogCount("Cash")) - transparentBasyo - getReturnCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cash"));
-            lblCheque.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque") + getLogCount("Cheque") - getReturnCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque")));
+            lblCheque.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque") + getLogCount("Cheque") - getReturnCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque") - getChequeOver(dtpStart.Value.AddDays(-1), dtpEnd.Value)));
             lblAccountsReceivables.Text = string.Format("{0:C}", getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Balance") - getReturnCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Balance"));
 
             cashCount = double.Parse(lblCash.Text, System.Globalization.NumberStyles.Currency);
@@ -196,7 +227,7 @@ namespace ChiuMartSAIS2.App.ReportDialog
             lblTransparentBasyo.Text = string.Format("{0:C}", transparentBasyo);
 
             lblCash.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cash") + getLogCount("Cash")) - transparentBasyo - getReturnCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cash"));
-            lblCheque.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque") + getLogCount("Cheque") - getReturnCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque")));
+            lblCheque.Text = string.Format("{0:C}", (getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque") + getLogCount("Cheque") - getReturnCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Cheque") - getChequeOver(dtpStart.Value.AddDays(-1), dtpEnd.Value)));
             lblAccountsReceivables.Text = string.Format("{0:C}", getTransactionCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Balance") - getReturnCount(dtpStart.Value.AddDays(-1), dtpEnd.Value, "Balance"));
 
             cashCount = double.Parse(lblCash.Text, System.Globalization.NumberStyles.Currency);
