@@ -237,10 +237,10 @@ namespace ChiuMartSAIS2.App.Dialogs
                 try
                 {
                     Con.Open();
-                    string sqlQuery = "SELECT productId FROM products WHERE productName = @crit";
+                    string sqlQuery = "SELECT productId FROM products WHERE productName LIKE @crit";
                     MySqlCommand sqlCmd = new MySqlCommand(sqlQuery, Con);
 
-                    sqlCmd.Parameters.AddWithValue("crit", crit);
+                    sqlCmd.Parameters.AddWithValue("crit", "%"+crit+"%");
 
                     MySqlDataReader reader = sqlCmd.ExecuteReader();
 
@@ -571,7 +571,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 ctr = 0;
                 foreach (string item in productName)
                 {
-                    dgvCart.Rows[ctr].Cells[2].Value = item;
+                    dgvCart.Rows[ctr].Cells[3].Value = item;
                     ctr++;
                 }
                 ctr = 0;
@@ -680,6 +680,13 @@ namespace ChiuMartSAIS2.App.Dialogs
                     }
 
                     string prodId = getProductID(dgvCart.Rows[i].Cells[3].Value.ToString());
+
+                    if (prodId == "")
+                    {
+                        MessageBox.Show(this, "There's an error with inserting your new purchase order, to make the database clean this transaction is terminated.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    
                     string unitId = getUnitID(dgvCart.Rows[i].Cells[2].Value.ToString());
                     string str = txtSupplier.Text;
                     string[] supplierId = str.Split(new string[] { " - " }, StringSplitOptions.None);
