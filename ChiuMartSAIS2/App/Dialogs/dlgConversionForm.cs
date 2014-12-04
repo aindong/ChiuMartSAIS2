@@ -57,6 +57,37 @@ namespace ChiuMartSAIS2.App.Dialogs
             }
         }
 
+        // Check stocks
+        private int checkStockByProductName(string productName)
+        {
+            int result = 0;
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
+                {
+                    con.Open();
+                    string sql = "SELECT productStock FROM products WHERE productName = @productName";
+                    MySqlCommand sqlCmd = new MySqlCommand(sql, con);
+
+                    sqlCmd.Parameters.AddWithValue("productName", productName);
+
+                    MySqlDataReader reader = sqlCmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        result = Int32.Parse(reader["productStock"].ToString());
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string errorCode = string.Format("Error Code : {0}", ex.Number);
+                MessageBox.Show(this, "Restoring client error", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return result;
+        }
+
         // update stocks
         private void updateStockByProductName(string productName, int qty, bool add)
         {
@@ -226,11 +257,12 @@ namespace ChiuMartSAIS2.App.Dialogs
 
                     while (reader.Read())
                     {
-                        string[] rows = new string[4];
+                        string[] rows = new string[5];
                         rows[0] = reader["quantity"].ToString();
                         rows[1] = getProductName(reader["product_id"].ToString());
                         rows[2] = reader["price"].ToString();
                         rows[3] = getProductName(reader["relationId"].ToString());
+                        rows[4] = reader["supplierPrice"].ToString();
 
                         dgvConvert.Rows.Add(rows);
                     }
@@ -278,14 +310,14 @@ namespace ChiuMartSAIS2.App.Dialogs
         }
 
         // Insert conversion log
-        private void insertLog(int qty, string productName, string originalProductName, int originalQty)
+        private void insertLog(int qty, string productName, string originalProductName, int originalQty, string price)
         {
             try
             {
                 using (MySqlConnection con = new MySqlConnection(conf.connectionstring))
                 {
                     con.Open();
-                    string sql = "INSERT INTO logs(quantity, product_id, relationId, price, clientId, username, log_type) VALUES(@quantity, @product_id, @relationId, @price, @clientId, @username, @log_type)";
+                    string sql = "INSERT INTO logs(quantity, product_id, relationId, price, clientId, username, log_type, supplierPrice) VALUES(@quantity, @product_id, @relationId, @price, @clientId, @username, @log_type, @supplierPrice)";
                     MySqlCommand sqlCmd = new MySqlCommand(sql, con);
 
                     sqlCmd.Parameters.AddWithValue("quantity", qty);
@@ -295,6 +327,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                     sqlCmd.Parameters.AddWithValue("clientId", getConversionId() + 1);
                     sqlCmd.Parameters.AddWithValue("username", Classes.Authentication.Instance.username);
                     sqlCmd.Parameters.AddWithValue("log_type", "Conversion");
+                    sqlCmd.Parameters.AddWithValue("supplierPrice", price);
                     
                     sqlCmd.ExecuteNonQuery();
                 }
@@ -423,13 +456,19 @@ namespace ChiuMartSAIS2.App.Dialogs
         {
             for (int i = 0; i < dgvConvert.Rows.Count - 1; i++)
             {
+                // If the row has null value, then don't include it
+                if (dgvConvert.Rows[i].Cells[1].Value == null)
+                {
+                    continue;
+                }
+
                 if (dgvConvert.Rows[i].Cells[1].Value.ToString() != "")
                 {
-                    string productName = dgvConvert.Rows[i].Cells[1].Value.ToString();
-                    int qty = Int32.Parse(dgvConvert.Rows[i].Cells[0].Value.ToString());
+                    string productName = dgvConvert.Rows[i].Cells[3].Value.ToString();
+                    int qty = Int32.Parse(dgvConvert.Rows[i].Cells[2].Value.ToString());
 
-                    string originalProductName = dgvConvert.Rows[i].Cells[3].Value.ToString();
-                    int originalQty = Int32.Parse(dgvConvert.Rows[i].Cells[2].Value.ToString());
+                    string originalProductName = dgvConvert.Rows[i].Cells[1].Value.ToString();
+                    int originalQty = Int32.Parse(dgvConvert.Rows[i].Cells[0].Value.ToString());
                     string newPrice = dgvConvert.Rows[i].Cells[4].Value.ToString();
 
                     // Add new product stock
@@ -474,7 +513,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                     }
 
                     // Insert log
-                    insertLog(qty, productName, originalProductName, originalQty);
+                    insertLog(qty, productName, originalProductName, originalQty, newPrice);
                 }
             }
         }
@@ -518,6 +557,29 @@ namespace ChiuMartSAIS2.App.Dialogs
                 prodName.AutoCompleteCustomSource = null;
             }
 
+        }
+
+        private void dgvConvert_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvConvert.CurrentCell.ColumnIndex == 1)
+            {
+                string prodName = dgvConvert.Rows[dgvConvert.CurrentRow.Index].Cells[1].Value.ToString();
+                int wantConvert = Int32.Parse(dgvConvert.Rows[dgvConvert.CurrentRow.Index].Cells[0].Value.ToString());
+
+                if (checkStockByProductName(prodName) <= 0)
+                {
+                    MessageBox.Show("This product is out of stock", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dgvConvert.Rows.Remove(dgvConvert.Rows[dgvConvert.CurrentRow.Index]);
+                    return;
+                }
+
+                if (checkStockByProductName(prodName) <= wantConvert)
+                {
+                    MessageBox.Show("This product only has " + checkStockByProductName(prodName) + " left", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dgvConvert.Rows.Remove(dgvConvert.Rows[dgvConvert.CurrentRow.Index]);
+                    return;
+                }
+            }
         }
     }
 }

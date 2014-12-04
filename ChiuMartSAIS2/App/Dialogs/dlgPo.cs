@@ -97,8 +97,8 @@ namespace ChiuMartSAIS2.App.Dialogs
                     {
                         result[0] = reader["productId"].ToString();
                         result[1] = "1";
-                        result[2] = reader["productName"].ToString();
-                        result[3] = reader["unitDesc"].ToString();
+                        result[3] = reader["productName"].ToString();
+                        result[2] = reader["unitDesc"].ToString();
                         result[4] = reader["supplierPrice"].ToString();
 
                         double total = double.Parse(result[1]) * double.Parse(result[4]);
@@ -577,7 +577,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 ctr = 0;
                 foreach (string unit in units)
                 {
-                    dgvCart.Rows[ctr].Cells[3].Value = unit;
+                    dgvCart.Rows[ctr].Cells[2].Value = unit;
                     ctr++;
                 }
                 ctr = 0;
@@ -601,17 +601,48 @@ namespace ChiuMartSAIS2.App.Dialogs
 
         }
 
+        private Boolean checkProduct(string productName)
+        {
+            bool result = false;
+            int count = 0;
+
+            for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
+            {
+                if (dgvCart.Rows[i].Cells[3].Value.ToString() == productName)
+                {
+                    count++;
+                }
+
+                if (count > 1)
+                {
+                    result = true;
+                }
+            }
+
+            return result;
+        }
+
         private void dgvCart_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvCart.CurrentCell.ColumnIndex == 2)
+            if (dgvCart.CurrentCell.ColumnIndex == 3)
             {
+                // Check if the product is already on the cart
+                if (checkProduct(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value.ToString()))
+                {
+                    if (MessageBox.Show("This product is already exists on the CART. Do you want to add this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                    {
+                        dgvCart.Rows.Remove(dgvCart.Rows[dgvCart.CurrentRow.Index]);
+                        return;
+                    }
+                }
+
                 try
                 {
-                    string[] item = getProductByName(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value.ToString());
+                    string[] item = getProductByName(dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value.ToString());
 
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[0].Value = item[0];
                     //dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[1].Value = 1;
-                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[3].Value = item[3];
+                    dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[2].Value = item[2];
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[4].Value = item[4];
                     dgvCart.Rows[dgvCart.CurrentRow.Index].Cells[5].Value = item[5];
 
@@ -621,7 +652,7 @@ namespace ChiuMartSAIS2.App.Dialogs
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, "Please enter a product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(this, "Please enter a product " + ex.Message.ToString(), "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
             }
@@ -643,8 +674,13 @@ namespace ChiuMartSAIS2.App.Dialogs
             {
                 for (int i = 0; i < (dgvCart.Rows.Count - 1); i++)
                 {
-                    string prodId = getProductID(dgvCart.Rows[i].Cells[2].Value.ToString());
-                    string unitId = getUnitID(dgvCart.Rows[i].Cells[3].Value.ToString());
+                    if (dgvCart.Rows[i].Cells[3].Value == null)
+                    {
+                        continue;
+                    }
+
+                    string prodId = getProductID(dgvCart.Rows[i].Cells[3].Value.ToString());
+                    string unitId = getUnitID(dgvCart.Rows[i].Cells[2].Value.ToString());
                     string str = txtSupplier.Text;
                     string[] supplierId = str.Split(new string[] { " - " }, StringSplitOptions.None);
                     string qty = dgvCart.Rows[i].Cells[1].Value.ToString();
