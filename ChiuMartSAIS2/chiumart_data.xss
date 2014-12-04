@@ -21,7 +21,7 @@
     <Shape ID="DesignTable:supplier" ZOrder="6" X="2500" Y="55" Height="229" Width="191" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
     <Shape ID="DesignTable:transaction" ZOrder="4" X="2700" Y="277" Height="305" Width="210" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:units" ZOrder="5" X="2836" Y="79" Height="172" Width="173" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
-    <Shape ID="DesignTable:vw_ORReport" ZOrder="1" X="229" Y="115" Height="229" Width="210" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
+    <Shape ID="DesignTable:vw_ORReport" ZOrder="1" X="229" Y="115" Height="229" Width="223" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
   </Shapes>
   <Connectors />
 </DiagramLayout>
